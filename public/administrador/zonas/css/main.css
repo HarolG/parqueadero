@@ -1,0 +1,86 @@
+*{
+    padding: 5px;
+    margin: 0;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+body{
+    background-color: gray;
+}
+
+#form{
+    width: 1065px;
+    background-color: white;
+    margin: 45px auto;
+    border-radius: 10px;
+}
+
+#inputzona{
+    width: 230px;
+    margin: 10px auto;
+    border-radius: 10px;
+    background-color: white;
+    border: 1px solid gray;
+}
+
+#inputcupos{
+    width: 230px;
+    margin: 10px auto;
+    border-radius: 10px;
+    background-color: white;
+    border: 1px solid gray;
+}
+
+#tipozona{
+    width: 230px;
+    margin: 10px auto;
+    border-radius: 10px;
+    background-color: white;
+}
+
+#cupozona{
+    width: 230px;
+    margin: 10px auto;
+    border-radius: 10px;
+    background-color: white;
+}
+
+#guardar{
+    background-color: blue;
+    color: white;
+    border-radius: 10px;
+    border: 1px solid gray;
+    width: 100px;
+}
+
+#guardar:hover{
+    background-color: white;
+    color: black;
+}
+
+.titulo{
+    font-size: 15px;
+    width: 125px;
+    margin: 15px auto;
+    background-color: white;
+}
+
+.zonas_registradas{
+    width: 1065px;
+    /* background-color: white; */
+    margin: 45px auto;
+}
+
+.head_table{
+    text-align: center;
+    font-size: 15px;
+    background-color: blue;
+    color: white;
+}
+
+.body_table{
+    text-align: center;
+    font-size: 15px;
+    background-color: white;
+    color: black;
+}
