@@ -17,15 +17,15 @@
                 <img src="../../img/login.jpg" alt="">
             </div>
             <div class="login_container-right">
-                <form action="php/login.php" class="form_iniciar">
+                <form action="php/login.php" class="form_iniciar" method="POST">
                     <div class="container_form">
                         <h2>INICIAR SESIÓN</h2>
                         <div class="grupo grupo_datos-ingreso">
-                            <input type="text" name="username" id="username" placeholder="Nombre de Usuario">
-                            <input type="text" name="password" id="password" placeholder="Contraseña">
+                            <input type="text" name="username" id="username" placeholder="Nombre de Usuario" required>
+                            <input type="password" name="password" id="password" placeholder="Contraseña" required>
                         </div>
                         <div class="grupo grupo_boton-ingreso">
-                            <input type="submit" value="INICIAR SESIÓN">
+                            <input type="submit" name="enviar" value="INICIAR SESIÓN">
                             <small>¿Olvidaste tu <a href="#">Nombre de usuario / contraseña?</a></small>
                         </div>
                     </div>
