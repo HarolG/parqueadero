@@ -1,6 +1,6 @@
 <?php
 
-    include("conexion.php");
+    include("../../../../php/conexion.php");
 
     if (isset($_POST['guardar'])) {
         
