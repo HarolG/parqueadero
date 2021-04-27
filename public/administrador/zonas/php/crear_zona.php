@@ -15,12 +15,12 @@
         if ($query) {
             echo'<script type="text/javascript">
                     alert("Se creo la zona correctamente");
-                    window.location.href="../../administrador/zonas/zona.php";
+                    window.location.href="../zona.php";
                 </script>';
         } else {
             echo '<script type="text/javascript">
                     alert("ID de la zona ya existe");
-                    window.location.href="../../administrador/zonas/zona.php";
+                    window.location.href="../zona.php";
                 </script>';
         }
 
