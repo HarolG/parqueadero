@@ -1,5 +1,5 @@
 <?php
-    include("../../login/php/conexion.php");
+    include("../../../php/conexion.php");
 ?>
 
 <!DOCTYPE html>
@@ -84,7 +84,7 @@
                 </div>
            </div>
            <!-- Aquí va el contenido -->
-           <form action="../../login/php/crear_zona.php" id="form" method="POST">
+           <form action="../../../../crear_zona.php" id="form" method="POST">
                 <h2 class="titulo">CREAR ZONAS</h2>
                 <input type="text" name="idzona" id="inputzona" placeholder="Ingrese el id de la zona" autocomplete="off" required>
                 <select name="tipozona" id="tipozona">
