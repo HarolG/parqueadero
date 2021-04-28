@@ -15,21 +15,21 @@
     $cupos_ciclas = 0;
     
     while ($row = mysqli_fetch_array($query2)) {
-        $cupos_carros = $cupos_carros + $row['cupos'];
+        $cupos_carros = $cupos_carros + $row['cupos_live'];
     }
 
     $sql3 = "SELECT * FROM zona_parqueo WHERE id_tip_zona = '2'";
     $query3 = mysqli_query($mysqli, $sql3);
     
     while ($row2 = mysqli_fetch_array($query3)) {
-        $cupos_motos = $cupos_motos + $row2['cupos'];
+        $cupos_motos = $cupos_motos + $row2['cupos_live'];
     }
 
     $sql4 = "SELECT * FROM zona_parqueo WHERE id_tip_zona = '3'";
     $query4 = mysqli_query($mysqli, $sql4);
     
     while ($row3 = mysqli_fetch_array($query4)) {
-        $cupos_ciclas = $cupos_ciclas + $row3['cupos'];
+        $cupos_ciclas = $cupos_ciclas + $row3['cupos_live'];
     }
 
 ?>
