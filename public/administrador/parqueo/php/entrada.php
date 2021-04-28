@@ -12,7 +12,7 @@
 
   
 
-  $registrarEntrada = $mysqli->query("INSERT INTO registro_parqueadero (id_registro, id_tip_entrada, placa, fecha_hora, id_zona) VALUES (NULL, 1, '$placa', now(), '$zonaPae')");
+  $registrarEntrada = $mysqli->query("INSERT INTO registro_parqueadero (id_registro, id_tip_entrada, placa, fecha, hora, id_zona) VALUES (NULL, 1, '$placa', now(), now(), '$zonaPae')");
 
 
   if ($registrarEntrada){
