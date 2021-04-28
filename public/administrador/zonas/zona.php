@@ -86,8 +86,7 @@
            <!-- Aquí va el contenido -->
         <form action="php/crear_zona.php" id="form" method="POST">
             <h2 class="titulo">CREAR ZONAS</h2>
-            <input type="text" name="idzona" id="inputzona" placeholder="Ingrese el id de la zona" autocomplete="off"
-                required>
+            <!-- <input type="text" name="idzona" id="inputzona" placeholder="Ingrese el id de la zona" autocomplete="off" required> -->
             <select name="tipozona" id="tipozona">
                 <option value="">Seleccione un tipo de zona</option>
                 <?php

@@ -4,12 +4,13 @@
 
     if (isset($_POST['guardar'])) {
         
-        $idzona = $_POST['idzona'];
+        // $idzona = $_POST['idzona'];
         $tipozona = $_POST['tipozona'];
         $cupo = $_POST['cupos_zona'];
         $estado = $_POST['cupozona'];
+        $cupolive = $_POST['cupos_zona'];
 
-        $sqli = "INSERT INTO zona_parqueo (id_zona, id_tip_zona, id_estado, cupos) VALUES ('$idzona', '$tipozona', '$estado', '$cupo')";
+        $sqli = "INSERT INTO zona_parqueo (id_zona, id_tip_zona, id_estado, cupos, cupos_live) VALUES (NULL, '$tipozona', '$estado', '$cupo', '$cupolive')";
         $query = mysqli_query($mysqli, $sqli);
 
         if ($query) {
