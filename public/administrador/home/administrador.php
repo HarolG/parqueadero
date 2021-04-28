@@ -1,5 +1,4 @@
 <?php
-
     include_once("../../../php/conexion.php");
 
     $sql = "SELECT * FROM registro_parqueadero WHERE fecha = CURDATE() AND id_tip_entrada = '1' ORDER BY hora ASC";
@@ -10,6 +9,9 @@
 
     $sql2 = "SELECT * FROM zona_parqueo WHERE id_tip_zona = '1'";
     $query2 = mysqli_query($mysqli, $sql2);
+
+    $cupos_carros = 0;
+    $cupos_motos = 0;
     
     while ($row = mysqli_fetch_array($query2)) {
         $cupos_carros = $cupos_carros + $row['cupos'];
