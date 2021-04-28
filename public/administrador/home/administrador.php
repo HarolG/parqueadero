@@ -12,6 +12,7 @@
 
     $cupos_carros = 0;
     $cupos_motos = 0;
+    $cupos_ciclas = 0;
     
     while ($row = mysqli_fetch_array($query2)) {
         $cupos_carros = $cupos_carros + $row['cupos'];
@@ -22,6 +23,13 @@
     
     while ($row2 = mysqli_fetch_array($query3)) {
         $cupos_motos = $cupos_motos + $row2['cupos'];
+    }
+
+    $sql4 = "SELECT * FROM zona_parqueo WHERE id_tip_zona = '3'";
+    $query4 = mysqli_query($mysqli, $sql4);
+    
+    while ($row3 = mysqli_fetch_array($query4)) {
+        $cupos_ciclas = $cupos_ciclas + $row3['cupos'];
     }
 
 ?>
@@ -120,9 +128,9 @@
                     </div>
                 </div>
                 <div class="dato_container">
-                    <small><i class="fa fa-clock-o" aria-hidden="true"></i> Tiempo Promedio de Parqueo</small>
+                    <small><i class="fa fa-bicycle" aria-hidden="true"></i> Cupos Disponibles Bicicletas</small>
                     <div class="container_conteo">
-                        <p>2 Horas</p>
+                        <p><?php print($cupos_ciclas);?></</p>
                     </div>
                 </div>
                 <div class="dato_container">
