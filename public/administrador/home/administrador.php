@@ -149,7 +149,31 @@
             </div>
             <div class="grafica_historia_parqueo">
                 <h2>Actividad del Parqueadero</h2>
-                <div id="graficaHistoria"></div>
+                <div class="graficas">
+                    <div class="grafica_container">
+                        <form id="formZonas">
+                            <label for="zona">Seleccione la Zona</label>
+                            <select name="zona" id="zona">
+                                <?php
+                                    $zonasSql = "SELECT id_zona FROM zona_parqueo";
+                                    $queryZonas = mysqli_query($mysqli, $zonasSql);
+
+                                    while ($row = mysqli_fetch_array($queryZonas)) {
+                                ?>
+                                    <option value="<?php print($row["id_zona"]);?>">Zona <?php print($row["id_zona"]);?></option>
+                                <?php
+                                    }
+                                ?>
+                                <input type="submit" value="Generar">
+                            </select>
+                        </form>
+                        <div id="graficaHistoria" class="graficaHistoria"></div>
+                    </div>
+                    <div class="info_zonas">
+                        <h2>Información de la zona</h2>
+                        <div class ="informacion_zona" id="informacion_zona"></div>
+                    </div>
+                </div>
             </div>
         </div>
 </body>
