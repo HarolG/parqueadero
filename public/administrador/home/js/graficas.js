@@ -1,46 +1,89 @@
-var trace1 = {
-  x: ["6:30", "7:00", "7:30", "8:00", "8:30", "9:00", "9:30", "10:00", "10:30", "11:00", "11:30", "12:00"],
-  y: [5, 10, 40, 30, 25, 25],
-  mode: 'markers+lines',
-  name: 'Carros',
-  marker: {
-    color: 'rgb(164, 194, 244)',
-    size: 12,
-    line: {
-      color: 'white',
-      width: 0.5
-    }
-  },
-  type: 'scatter'
-};
+$(document).ready(function () {
 
-var trace2 = {
-  x: ["6:30", "7:00", "7:30", "8:00", "8:30", "9:00", "9:30", "10:00", "10:30", "11:00", "11:30", "12:00"],
-  y: [10, 20, 30, 40, 27, 19, 49, 44, 38],
-  mode: 'markers+lines',
-  name: 'Motos',
-  marker: {
-    color: 'rgb(255, 217, 102)',
-    size: 12
-  },
-  type: 'scatter'
-};
+  inicio()
 
-var data = [trace1, trace2];
+  function inicio() {
 
-var layout = {
-  title: 'Actividad de Entradas al Parqueadero',
-  xaxis: {
-    title: 'Hora de entrada',
-    showgrid: false,
-    zeroline: false
-  },
-  yaxis: {
-    title: 'Cantidad',
-    showline: false
+    let idZona = 1;
+
+    $.post("php/graficas.php", {
+        idZona
+      },
+      function (response) {
+        const tasks = JSON.parse(response);
+        let template = '';
+
+        tasks.forEach(element => {
+          let ocupados = element.cupos - element.cupos_live
+
+          var data = [{
+            values: [element.cupos_live, ocupados],
+            labels: ['Disponible', 'Ocupado'],
+            type: 'pie'
+          }];
+
+          var layout = {
+            title: `Porcentaje de Cupos Disponibles Zona ${element.id_zona}`,
+            width: 500
+          };
+
+          Plotly.newPlot('graficaHistoria', data, layout);
+
+          template += `
+          <p>Tipo de zona: ${element.nom_tip_zona}</p>
+          <p>Estado: ${element.nom_estado}</p>
+          <p>Cupos Libres: ${element.cupos_live}</p>
+          <p>Total Cupos: ${element.cupos}</p>
+          `
+        });
+
+        $('#informacion_zona').html(template);
+
+      }
+    );
   }
-};
 
-Plotly.newPlot('graficaHistoria', data, layout);
+  $('#formZonas').submit(function (e) {
+    e.preventDefault();
 
-  
+    let idZona = $('#zona').val()
+
+    $.post("php/graficas.php", {
+        idZona
+      },
+      function (response) {
+        const tasks = JSON.parse(response);
+        let template = '';
+
+        tasks.forEach(element => {
+
+          let ocupados = element.cupos - element.cupos_live
+
+          var data = [{
+            values: [element.cupos_live, ocupados],
+            labels: ['Disponible', 'Ocupado'],
+            type: 'pie'
+          }];
+
+          var layout = {
+            title: `Porcentaje de Cupos Disponibles Zona ${element.id_zona}`,
+            width: 500
+          };
+
+          Plotly.newPlot('graficaHistoria', data, layout);
+
+          template += `
+          <p>Tipo de zona: ${element.nom_tip_zona}</p>
+          <p>Estado: ${element.nom_estado}</p>
+          <p>Cupos Libres: ${element.cupos_live}</p>
+          <p>Total Cupos: ${element.cupos}</p>
+          `
+        });
+
+        $('#informacion_zona').html(template);
+
+      }
+    );
+
+  });
+});
