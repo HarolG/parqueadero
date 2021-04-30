@@ -1,3 +1,8 @@
+<?php
+include("../../../php/conexion.php");
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -86,8 +91,8 @@
                                         </option>
                 
                                         <?php
-                                                            }
-                                                            ?>
+                                        }
+                                        ?>
                                     </select>
                                 </div>
                                 <div class="caja">
