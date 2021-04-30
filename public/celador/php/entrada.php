@@ -1,5 +1,5 @@
 <?php
- include("../../../../php/conexion.php");
+ include("../../../php/conexion.php");
 
  if(@$_POST['registrar']){
   $placa = $_POST['placa'];
@@ -9,10 +9,12 @@
   $busca = $mysqli -> query ("SELECT * FROM zona_parqueo WHERE id_tip_zona = '$tipZo'");   
   $infoZo = mysqli_fetch_array($busca);
   $zonaPae = $infoZo['id_zona'];
+  $cupos = $infoZo['cupos'];
 
+  $d =mt_rand(1,$cupos);
   
 
-  $registrarEntrada = $mysqli->query("INSERT INTO registro_parqueadero (id_registro, id_tip_entrada, placa, fecha, hora, id_zona) VALUES (NULL, 1, '$placa', now(), now(), '$zonaPae')");
+  $registrarEntrada = $mysqli->query("INSERT INTO registro_parqueadero (id_registro, id_tip_entrada, placa, fecha, hora, id_zona, lugar) VALUES (NULL, 1, '$placa', now(), now(), '$zonaPae', $d)");
 
 
   if ($registrarEntrada){
