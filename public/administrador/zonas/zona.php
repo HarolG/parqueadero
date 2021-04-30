@@ -79,8 +79,8 @@
                     <div class="user">
                         <div class="user_pic">
                             <img src="../../../img/foto_perfil.png" alt="">
+                            <p>John Doe <i class="fa fa-caret-down" aria-hidden="true"></i></p>
                         </div>
-                        <p>John Doe <i class="fa fa-caret-down" aria-hidden="true"></i></p>
                     </div>
                 </div>
            </div>
@@ -148,5 +148,8 @@
     </div>
         </div>
     </div>
+
+    <script src="../../../library/jquery-3.6.0.min.js"></script>
+    <script src="js/main.js"></script>
 </body>
 </html>
