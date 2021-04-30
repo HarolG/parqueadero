@@ -1,6 +1,9 @@
 <?php
     include("../../../php/conexion.php");
-?>
+
+    if(isset($_SESSION['tipo']) && isset($_SESSION['nom']) && isset($_SESSION['ape']) && isset($_SESSION['pass']) ) {
+?> 
+
 <!-- 
 Importante,
 Esto es solo una plantilla
@@ -37,7 +40,7 @@ Favor revisar los direccionamientos
     <div class="container">
         <div class="navegacion">
             <div class="site_title">
-                <span>Parqueadero</span>
+                <img src="../../../img/logo1.png" alt="logo" class="logo">
             </div>
             <div class="nav_profile">
                 <div class="profile_pic">
@@ -66,11 +69,11 @@ Favor revisar los direccionamientos
                         <div class="nav_decorate"></div>
                     </li>
                     <li>
-                        <a href=""><i class="fa fa-users" aria-hidden="true"> Usuarios </i></a>
+                        <a href="../usuarios/usuarios.php"><i class="fa fa-users" aria-hidden="true"> Crear Usuarios </i></a>
                         <div class="nav_decorate"></div>
                     </li>
                     <li>
-                        <a href="#"> <i class="fa fa-car" aria-hidden="true"> Registrar Vehiculos </i></i></a>
+                        <a href="../crear/crearusu.php"> <i class="fa fa-car" aria-hidden="true"> Registrar Vehiculos </i></i></a>
                         <div class="nav_decorate"></div>
                     </li>
                 </ul>
@@ -93,12 +96,20 @@ Favor revisar los direccionamientos
                     <div class="icon_menu">
                         <i class="fa fa-bars" aria-hidden="true"></i>
                     </div>
-
                     <div class="user">
                         <div class="user_pic">
                             <img src="../../../img/foto_perfil.png" alt="">
                         </div>
-                        <p>John Doe <i class="fa fa-caret-down" aria-hidden="true"></i></p>
+                            <ul class="navy">
+                                <li>
+                                    <a href=""><p>John Doe <i class="fa fa-caret-down" aria-hidden="true"></i></p></a>
+                                    <ul>
+                                        <li><a href="">Your Profile</a></li>
+                                        <li><a href="">Settings</a></li>
+                                        <li><a href="../../../php/cerrarsesion.php">Logout</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
                     </div>
                 </div>
             </div>
@@ -184,5 +195,11 @@ Favor revisar los direccionamientos
 
 </html>
 
-
+<?php
+    } else {
+        echo '<script type="text/javascript">
+                    window.location.href="../../login/login.html";
+                </script>';
+    }
+?>
 

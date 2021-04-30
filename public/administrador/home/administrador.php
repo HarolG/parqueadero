@@ -59,7 +59,7 @@
     <div class="container">
         <div class="navegacion">
             <div class="site_title">
-                <span>Parqueadero</span>
+                <img src="../../../img/logo1.png" alt="logo" class="logo">
             </div>
             <div class="nav_profile">
                 <div class="profile_pic">
@@ -109,7 +109,7 @@
             </div> -->
         </div>
         <div class="contenido">
-        <div class="nav_menu">
+            <div class="nav_menu">
                 <div class="container_nav-menu">
                     <div class="icon_menu">
                         <i class="fa fa-bars" aria-hidden="true"></i>
