@@ -1,36 +1,38 @@
 <?php
     include_once("../../../php/conexion.php");
 
-    $sql = "SELECT * FROM registro_parqueadero WHERE fecha = CURDATE() AND id_tip_entrada = '1' ORDER BY hora ASC";
-    $query = mysqli_query($mysqli, $sql);
-    $result = mysqli_fetch_array($query);
+    if(isset($_SESSION['tipo']) && isset($_SESSION['nom']) && isset($_SESSION['ape']) && isset($_SESSION['pass']) ) {
 
-    $vehiculos_parqueados = $query->num_rows;
+        $sql = "SELECT * FROM registro_parqueadero WHERE fecha = CURDATE() AND id_tip_entrada = '1' ORDER BY hora ASC";
+        $query = mysqli_query($mysqli, $sql);
+        $result = mysqli_fetch_array($query);
 
-    $sql2 = "SELECT * FROM zona_parqueo WHERE id_tip_zona = '1'";
-    $query2 = mysqli_query($mysqli, $sql2);
+        $vehiculos_parqueados = $query->num_rows;
 
-    $cupos_carros = 0;
-    $cupos_motos = 0;
-    $cupos_ciclas = 0;
+        $sql2 = "SELECT * FROM zona_parqueo WHERE id_tip_zona = '1'";
+        $query2 = mysqli_query($mysqli, $sql2);
+
+        $cupos_carros = 0;
+        $cupos_motos = 0;
+        $cupos_ciclas = 0;
     
-    while ($row = mysqli_fetch_array($query2)) {
-        $cupos_carros = $cupos_carros + $row['cupos_live'];
-    }
+        while ($row = mysqli_fetch_array($query2)) {
+            $cupos_carros = $cupos_carros + $row['cupos_live'];
+        }
 
-    $sql3 = "SELECT * FROM zona_parqueo WHERE id_tip_zona = '2'";
-    $query3 = mysqli_query($mysqli, $sql3);
+        $sql3 = "SELECT * FROM zona_parqueo WHERE id_tip_zona = '2'";
+        $query3 = mysqli_query($mysqli, $sql3);
     
-    while ($row2 = mysqli_fetch_array($query3)) {
-        $cupos_motos = $cupos_motos + $row2['cupos_live'];
-    }
+        while ($row2 = mysqli_fetch_array($query3)) {
+            $cupos_motos = $cupos_motos + $row2['cupos_live'];
+        }
 
-    $sql4 = "SELECT * FROM zona_parqueo WHERE id_tip_zona = '3'";
-    $query4 = mysqli_query($mysqli, $sql4);
+        $sql4 = "SELECT * FROM zona_parqueo WHERE id_tip_zona = '3'";
+        $query4 = mysqli_query($mysqli, $sql4);
     
-    while ($row3 = mysqli_fetch_array($query4)) {
-        $cupos_ciclas = $cupos_ciclas + $row3['cupos_live'];
-    }
+        while ($row3 = mysqli_fetch_array($query4)) {
+            $cupos_ciclas = $cupos_ciclas + $row3['cupos_live'];
+        }
 
 ?>
 
@@ -90,7 +92,7 @@
                         <div class="nav_decorate"></div>
                     </li>
                     <li>
-                        <a href="#"> <i class="fa fa-car" aria-hidden="true"> Registrar Vehiculos </i></i></a>
+                        <a href="../crear/crearusu.php"> <i class="fa fa-car" aria-hidden="true"> Registrar Vehiculos </i></i></a>
                         <div class="nav_decorate"></div>
                     </li>
                 </ul>
@@ -192,3 +194,11 @@
 <script src="js/graficas.js"></script>
 
 </html>
+
+<?php
+    } else {
+        echo '<script type="text/javascript">
+                    window.location.href="../../login/login.html";
+                </script>';
+    }
+?>
