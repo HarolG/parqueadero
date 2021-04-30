@@ -79,8 +79,17 @@
                     <div class="user">
                         <div class="user_pic">
                             <img src="../../../img/foto_perfil.png" alt="">
-                            <p>John Doe <i class="fa fa-caret-down" aria-hidden="true"></i></p>
                         </div>
+                            <ul class="navy">
+                                <li>
+                                    <a href=""><p>John Doe <i class="fa fa-caret-down" aria-hidden="true"></i></p></a>
+                                    <ul>
+                                        <li><a href="">Your Profile</a></li>
+                                        <li><a href="">Settings</a></li>
+                                        <li><a href="../../../php/cerrarsesion.php">Logout</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
                     </div>
                 </div>
            </div>
