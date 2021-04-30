@@ -86,7 +86,7 @@
                         <div class="nav_decorate"></div>
                     </li>
                     <li>
-                        <a href="../usuarios/usuarios.html"><i class="fa fa-users" aria-hidden="true"> Crear Usuarios </i></a>
+                        <a href="../usuarios/usuarios.php"><i class="fa fa-users" aria-hidden="true"> Crear Usuarios </i></a>
                         <div class="nav_decorate"></div>
                     </li>
                     <li>
