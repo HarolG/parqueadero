@@ -18,8 +18,6 @@ Favor revisar los direccionamientos
     <!-- Estilos Generales -->
     <link rel="stylesheet" href="../../../layout/css/navegacion.css">
     <link rel="stylesheet" href="css/usuarios.css">
-    <!-- Data tables -->
-    <link rel="stylesheet" href="//cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css">
     <!-- Font awesome -->
     <script src="https://kit.fontawesome.com/a90c49b6b2.js" crossorigin="anonymous"></script>
     <!-- Tipo de letra -->
@@ -68,7 +66,7 @@ Favor revisar los direccionamientos
                         <div class="nav_decorate"></div>
                     </li>
                     <li>
-                        <a href="../usuarios/usuarios.html"><i class="fa fa-users" aria-hidden="true"> Usuarios </i></a>
+                        <a href=""><i class="fa fa-users" aria-hidden="true"> Usuarios </i></a>
                         <div class="nav_decorate"></div>
                     </li>
                     <li>
