@@ -1,0 +1,38 @@
+   $dir_subida = 'crearusu.php';
+
+   $fichero_subido = $dir_subida . basename($_FILES['vehic']['name']);
+
+        echo '<pre>';
+        if (move_uploaded_file($_FILES['vehic']['tmp_name'], $fichero_subido)) {
+            echo "El fichero es válido y se subió con éxito.\n";
+           // echo '<script> window.location="crearusu.php" </script>';
+        } else {
+            echo "¡Posible ataque de subida de ficheros!\n";
+            //echo '<script> window.location="crearusu.php" </script>';
+        }
+
+        echo 'Más información de depuración:';
+        print_r($_FILES);
+        print "</pre>";
+
+
+        
+  <div class="form">
+                              
+                                <!-- MAX_FILE_SIZE debe preceder al campo de entrada del fichero -->
+                                <input type="hidden" name="sooat" value="30000" />
+                                <!-- El nombre del elemento de entrada determina el nombre en el array $_FILES -->
+                                Subir SOAT: <input name="sooat" type="file" /> <br>
+                            
+                        
+                                <!-- MAX_FILE_SIZE debe preceder al campo de entrada del fichero -->
+                                <input type="hidden" name="tecno" value="30000" />
+                                <!-- El nombre del elemento de entrada determina el nombre en el array $_FILES -->
+                                Archivo de la Tecnomecanica: <input name="tecno" type="file" /> <br>
+                            
+                        
+                                <!-- MAX_FILE_SIZE debe preceder al campo de entrada del fichero -->
+                                <input type="hidden" name="vehic" value="30000" />
+                                <!-- El nombre del elemento de entrada determina el nombre en el array $_FILES -->
+                                Imagen del Vehiculo: <input name="vehic" type="file" />                            
+                        </div><br>

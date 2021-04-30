@@ -82,18 +82,18 @@
                     </div>
             </div>
         <!-- Aquí va el contenido -->
-            <form action="insertar.php" method="POST" class="formur">
-            <h2 class="title">Formulario para el registro de Vehiculos</h2>
+            <form enctype="multipart/form-data" action="insertar.php" method="POST" class="formur">
+                <h2 class="title">Formulario para el registro de Vehiculos</h2>
                 <div class="inicio">
                     <label for="placa">No. Placa</label><br>
                     <input type="text" class="placa" name="placa" placeholder="Ingrese Numero de la placa" autocomplete="off"><br> 
                     <label for="placa">Documento</label><br>
-                    <input type="number" class="doc" name="doc" placeholder="Numero de Documento de la persona" autocomplete="off"><br> 
+                    <input type="number" class="doc" name="doc" placeholder="Numero de Documento" autocomplete="off"><br> 
             <!--    Tipo de Vehiculo-->
-                    <label for="placa">Tipo de Vehiculo</label><br>
-                    <select name="vehiculo" id="sele" autocomplete="off">
+                    <label class="vehiculo" for="placa">Tipo de Vehiculo</label><br>
+                    <select class="vehiculo" name="vehiculo" id="sele" autocomplete="off">
                         
-                        <option class="vehiculo" value="0">Tipo de Vehiculo</option>
+                        <option value="0">Tipo de Vehiculo</option>
                         <?php
                             $tip = "SELECT * FROM tipo_vehiculo";
                             $inser = mysqli_query($mysqli,$tip);
@@ -108,8 +108,8 @@
                 </div>
             <!--    Modelo-->
                     <div class="modelo">
-                        <label for="placa">Modelo</label><br>
-                        <select name="modelo" id="sele" autocomplete="off">
+                        <label class="placa" for="placa">Modelo</label><br>
+                        <select class="placa" name="modelo" id="sele" autocomplete="off">
                             <option  value="0">Modelo del Vehiculo</option>
                             <?php
                                 $tipo = "SELECT * FROM modelo";
@@ -123,8 +123,8 @@
                         </select><br>
                     
             <!--   Tipo de Marca-->
-                        <label for="placa">Marca</label><br>
-                        <select name="marca" id="sele" autocomplete="off">
+                        <label class="marca" for="placa">Marca</label><br>
+                        <select class="marca" name="marca" id="sele" autocomplete="off">
                             <option value="0">Tipo de Marca</option>
                             <?php
                                 $tipo = "SELECT * FROM marca";
@@ -140,8 +140,8 @@
             
                     
             <!--    Tipo de color-->
-                        <label for="placa">Color del Vehiculo</label><br>
-                        <select name="color" id="sele" autocomplete="off">
+                        <label class="color" for="placa">Color del Vehiculo</label><br>
+                        <select class="color" name="color" id="sele" autocomplete="off">
                             
                             <option value="0">Color de Vehiculo</option>
                             <?php
@@ -155,7 +155,7 @@
                             ?>
                         </select><br>
                     </div>
-                    <div class="texto   ">
+                    <div class="texto">
 
                         <label class="title">Anotaciones</label><br>
                         <textarea class="anota" name="anotaciones">
@@ -165,29 +165,29 @@
                     <div class="archivos">
                         <h2>Cargue los siguiente Documentos</h2>
                         <div class="form">
-                            <form enctype="multipart/form-data" action="insertar.php" method="POST" class="formur">
+                              
                                 <!-- MAX_FILE_SIZE debe preceder al campo de entrada del fichero -->
-                                <input type="hidden" name="MAX_FILE_SIZE" value="30000" />
+                                <input type="hidden" name="sooat" value="30000" />
                                 <!-- El nombre del elemento de entrada determina el nombre en el array $_FILES -->
-                                Subir SOAT: <input name="fichero_usuario" type="file" /> <br>
+                                Subir SOAT: <input name="sooat" type="file" /> <br>
                             
                         
                                 <!-- MAX_FILE_SIZE debe preceder al campo de entrada del fichero -->
-                                <input type="hidden" name="MAX_FILE_SIZE" value="30000" />
+                                <input type="hidden" name="tecno" value="30000" />
                                 <!-- El nombre del elemento de entrada determina el nombre en el array $_FILES -->
-                                Archivo de la Tecnomecanica: <input name="fichero_usuario" type="file" /> <br>
+                                Archivo de la Tecnomecanica: <input name="tecno" type="file" /> <br>
                             
                         
                                 <!-- MAX_FILE_SIZE debe preceder al campo de entrada del fichero -->
-                                <input type="hidden" name="MAX_FILE_SIZE" value="30000" />
+                                <input type="hidden" name="vehic" value="30000" />
                                 <!-- El nombre del elemento de entrada determina el nombre en el array $_FILES -->
-                                Imagen del Vehiculo: <input name="fichero_usuario" type="file" /> 
-                            </form> <br>
-                        </div>
+                                Imagen del Vehiculo: <input name="vehic" type="file" />                            
+                        </div><br>
                     </div>
                 <div class="button">                   
                 <!--    <input type="submit" class="btn" name="registro" value="Crear"> -->
                     <input type="submit" class="btn" value="crear" name="registro">
+                    
                 </div>            
                 
             </form>       
