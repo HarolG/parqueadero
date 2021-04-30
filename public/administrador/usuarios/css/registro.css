@@ -1,0 +1,59 @@
+.uno .dos{
+    width: 100%;
+    margin-top: 50px;
+}
+.uno h1{
+    text-align: center;
+}
+
+.form{
+    width: 600px;
+    padding: 30px;
+    margin-top: 100px;
+    margin: auto;
+    border: radius 5px;
+    font-family: 'Roboto', sans-serif;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 50px;
+    grid-auto-rows: 20px;
+}
+
+.cajitas .extras1{
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    background: none;
+    border: none;
+
+}
+.cajitas .extras2{
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    background: none;
+    border: none;
+    border-bottom: 2px solid #2a3f54;
+    outline: 0;
+}
+.back i{
+    font-size: 40px;
+    color: #2a3f54;
+    margin-top: -40px;
+    padding: 10px 8px;
+    display: flex;
+
+}
+.caja .boton{
+    padding: 10px;
+    margin-top: 10px;
+    border-radius: 5px;
+    margin-left: 170px;
+    background: #2a3f54;
+    border: 2px solid black;
+    color: white;
+    cursor: pointer;
+    font-size: 15px;
+    width: 100%;
+}
+
