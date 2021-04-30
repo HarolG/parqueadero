@@ -116,7 +116,7 @@ ul, ol {
 }
 
 .navy li a {
-    /* background-color:rgb(247, 247, 247); */
+    background-color:#2a3f54;
     color:rgb(10, 10, 10);
     text-decoration:none;
     padding:10px 12px;

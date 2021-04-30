@@ -78,3 +78,43 @@ body {
     background-color: white;
 }
 
+
+ul, ol {
+    list-style:none;
+}
+
+.navy > li {
+    float:left;
+}
+
+.navy li a {
+    background-color: #2a3f54;
+    color:rgb(10, 10, 10);
+    text-decoration:none;
+    padding:10px 12px;
+    display:block;
+}
+
+.navy li a:hover {
+    color: white;
+    background-color:#2a3f54;
+}
+
+.navy li ul {
+    display:none;
+    position:absolute;
+    min-width:100px;
+}
+
+.navy li:hover > ul {
+    display:block;
+}
+
+.navy li ul li {
+    position:relative;
+}
+
+.navy li ul li ul {
+    right:-140px;
+    top:0px;
+}
