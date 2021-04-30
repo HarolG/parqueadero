@@ -1,5 +1,7 @@
 <?php
     include('../../../php/conexion.php');
+
+    if(isset($_SESSION['tipo']) && isset($_SESSION['nom']) && isset($_SESSION['ape']) && isset($_SESSION['pass']) ) {
 ?>
 
 <!DOCTYPE html>
@@ -17,7 +19,7 @@
 </head>
 <body>
 <div class="container">
-        <div class="navegacion">
+<div class="navegacion">
             <div class="site_title">
                 <span>Parqueadero</span>
             </div>
@@ -36,7 +38,7 @@
                 <h5>GENERAL</h5>
                 <ul>
                     <li>
-                        <a href="administrador.php"><i class="fa fa-home " aria-hidden="true"> Inicio </i></a>
+                        <a href="../home/administrador.php"><i class="fa fa-home " aria-hidden="true"> Inicio </i></a>
                         <div class="nav_decorate"></div>
                     </li>
                     <li>
@@ -47,15 +49,8 @@
                         <a href="../zonas/zona.php"><i class="fa fa-plus" aria-hidden="true"> Crear Zonas </i></a>
                         <div class="nav_decorate"></div>
                     </li>
-
-                </ul>
-            </div>
-            <div class="menu_section">
-                <h5>SUBGENERAL</h5>
-                <ul>
-
                     <li>
-                        <a href="../public/administrador/usuarios/usuarios.php"><i class="fa fa-users" aria-hidden="true"> Crear Usuarios </i></a>
+                        <a href="../usuarios/usuarios.php"><i class="fa fa-users" aria-hidden="true"> Crear Usuarios </i></a>
                         <div class="nav_decorate"></div>
                     </li>
                     <li>
@@ -76,16 +71,25 @@
             </div> -->
         </div>
         <div class="contenido">
-           <div class="nav_menu">
+        <div class="nav_menu">
                 <div class="container_nav-menu">
                     <div class="icon_menu">
                         <i class="fa fa-bars" aria-hidden="true"></i>
                     </div>
                     <div class="user">
                         <div class="user_pic">
-                            <img src="../img/foto_perfil.png" alt="">
+                            <img src="../../../img/foto_perfil.png" alt="">
                         </div>
-                        <p>John Doe <i class="fa fa-caret-down" aria-hidden="true"></i></p>
+                            <ul class="navy">
+                                <li>
+                                    <a href=""><p>John Doe <i class="fa fa-caret-down" aria-hidden="true"></i></p></a>
+                                    <ul>
+                                        <li><a href="">Your Profile</a></li>
+                                        <li><a href="">Settings</a></li>
+                                        <li><a href="../../../php/cerrarsesion.php">Logout</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
                     </div>
                 </div>
            </div>
@@ -204,8 +208,12 @@
     </div>
         </div>
     </div>
-       
-  
-    
 </body>
 </html>
+<?php
+    } else {
+        echo '<script type="text/javascript">
+                    window.location.href="../../login/login.html";
+                </script>';
+    }
+?>
