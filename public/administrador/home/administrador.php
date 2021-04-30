@@ -107,7 +107,7 @@
             </div> -->
         </div>
         <div class="contenido">
-            <div class="nav_menu">
+        <div class="nav_menu">
                 <div class="container_nav-menu">
                     <div class="icon_menu">
                         <i class="fa fa-bars" aria-hidden="true"></i>
@@ -116,10 +116,19 @@
                         <div class="user_pic">
                             <img src="../../../img/foto_perfil.png" alt="">
                         </div>
-                        <p>John Doe <i class="fa fa-caret-down" aria-hidden="true"></i></p>
+                            <ul class="navy">
+                                <li>
+                                    <a href=""><p>John Doe <i class="fa fa-caret-down" aria-hidden="true"></i></p></a>
+                                    <ul>
+                                        <li><a href="">Your Profile</a></li>
+                                        <li><a href="">Settings</a></li>
+                                        <li><a href="../../../php/cerrarsesion.php">Logout</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
                     </div>
                 </div>
-            </div>
+           </div>
             <!-- Aquí va el contenido -->
             <div class="datos_parqueo-container">
                 <div class="dato_container">
