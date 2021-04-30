@@ -22,6 +22,41 @@ body {
     
 }
 
+.placa {
+    width: 200px;
+    text-align: center;
+    border-radius:5px ;
+}
+
+.doc{
+    width: 200px;
+    text-align: center;
+    border-radius:5px ;
+}
+
+.vehiculo{
+    width: 200px;
+    text-align: center;
+    border-radius:5px ;
+}
+
+.placa{
+    width: 200px;
+    text-align: center;
+    border-radius:5px ;
+}
+.color{
+    width: 200px;
+    text-align: center;
+    border-radius:5px ;
+}
+.marca{
+    width: 200px;
+    text-align: center;
+    border-radius:5px ;
+}
+
+
 .title{
     color: rgb(48, 67, 86);
     font-size: 20px;
@@ -30,17 +65,6 @@ body {
 .texto{
     padding: 20px
 }
-
-.vehiculo:hover,
-    .vehiculo:focus {
-      box-shadow: inset 6.5em 0 0 0 var(--hover);
-    }
-
-.vehiculo {
-    --color: #8fc866;
-    --hover: #66c887;
-}
-
 .anota{
     width: 30%;
     height: 200px;
@@ -76,8 +100,7 @@ body {
     width: 70px;
     height: 25px;
 }
-.btn:hover,
-.btn:focus {
+.btn:hover{
   box-shadow: 0 0.5em 0.5em -0.4em var(--hover);
   -webkit-transform: translateY(-0.25em);
           transform: translateY(-0.25em);
