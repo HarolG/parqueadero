@@ -83,7 +83,7 @@ body {
     border-radius: 4px;
 }
 
-.grupo_boton-ingreso input{
+.btnInicio{
     width: 100%;
     height: 40px;
     margin-bottom: 10px;
@@ -91,7 +91,14 @@ body {
     background-color: royalblue;
     border-radius: 4px;
     color: white;
+    cursor: pointer;
+    transition: .3s;
 }
+
+.btnInicio:hover{
+    background: rgb(248, 104, 21);
+}
+
 
 .grupo_datos-ingreso input:focus {
     outline-color: royalblue;

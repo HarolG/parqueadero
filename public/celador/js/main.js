@@ -14,6 +14,7 @@ cupo.addEventListener("click",function(){
 })
 
 
+
 function actual() {
     var fecha = new Date(); //Actualizar fecha.
     var hora = fecha.getHours(); //hora actual
