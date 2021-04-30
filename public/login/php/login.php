@@ -17,11 +17,16 @@
             $_SESSION['pass'] = $fila['clave'];
 
             if ($_SESSION['pass'] == $pass) {
-                header("Location: ../../administrador/administrador.php");
+                header("Location: ../../administrador/home/administrador.php");
                 // echo 'ta bien';
             } else {
                 echo 'este usuario es invalido';
             }
+        } else {
+            echo '<script type="text/javascript">
+                    alert("Usuario y/o contraseña incorrectos");
+                    window.location.href="../login.html";
+                </script>';
         }
     } else {
         echo 'hay un error';
