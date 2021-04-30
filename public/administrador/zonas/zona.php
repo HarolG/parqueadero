@@ -1,5 +1,7 @@
 <?php
     include("../../../php/conexion.php");
+
+    if(isset($_SESSION['tipo']) && isset($_SESSION['nom']) && isset($_SESSION['ape']) && isset($_SESSION['pass']) ) {
 ?>
 
 <!DOCTYPE html>
@@ -54,7 +56,7 @@
                         <div class="nav_decorate"></div>
                     </li>
                     <li>
-                        <a href="#"> <i class="fa fa-car" aria-hidden="true"> Registrar Vehiculos </i></i></a>
+                        <a href="../crear/crearusu.php"> <i class="fa fa-car" aria-hidden="true"> Registrar Vehiculos </i></i></a>
                         <div class="nav_decorate"></div>
                     </li>
                 </ul>
@@ -71,7 +73,7 @@
             </div> -->
         </div>
         <div class="contenido">
-           <div class="nav_menu">
+            <div class="nav_menu">
                 <div class="container_nav-menu">
                     <div class="icon_menu">
                         <i class="fa fa-bars" aria-hidden="true"></i>
@@ -162,3 +164,11 @@
     <script src="js/main.js"></script>
 </body>
 </html>
+
+<?php
+    } else {
+        echo '<script type="text/javascript">
+                    window.location.href="../../login/login.html";
+                </script>';
+    }
+?>
