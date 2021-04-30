@@ -16,14 +16,14 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;1,100;1,300;1,400&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="container">
+<div class="container">
         <div class="navegacion">
             <div class="site_title">
                 <span>Parqueadero</span>
             </div>
             <div class="nav_profile">
                 <div class="profile_pic">
-                    <img src="../img/foto_perfil.png" alt="">
+                    <img src="../../../img/foto_perfil.png" alt="">
                 </div>
                 <div class="profile_info">
                     <div>
@@ -36,52 +36,60 @@
                 <h5>GENERAL</h5>
                 <ul>
                     <li>
-                        <a href="#"><i class="fa fa-home " aria-hidden="true"> Inicio </i></a>
+                        <a href="administrador.php"><i class="fa fa-home " aria-hidden="true"> Inicio </i></a>
                         <div class="nav_decorate"></div>
                     </li>
                     <li>
-                        <a href="#"><i class="fa fa-archive" aria-hidden="true"> Formularios </i></a>
+                        <a href="../parqueo/parqueo.php"> <i class="fa fa-sign-in-alt" aria-hidden="true"> Registro de Entrada y Salida </i></i></a>
                         <div class="nav_decorate"></div>
                     </li>
                     <li>
-                        <a href="#"><i class="fa fa-archway" aria-hidden="true"> UI Elements </i></a>
+                        <a href="../zonas/zona.php"><i class="fa fa-plus" aria-hidden="true"> Crear Zonas </i></a>
                         <div class="nav_decorate"></div>
                     </li>
+
                 </ul>
             </div>
             <div class="menu_section">
                 <h5>SUBGENERAL</h5>
                 <ul>
+
                     <li>
-                        <a href="#"><i class="fa fa-home " aria-hidden="true"> Inicio </i></a>
+                        <a href="../public/administrador/usuarios/usuarios.php"><i class="fa fa-users" aria-hidden="true"> Crear Usuarios </i></a>
                         <div class="nav_decorate"></div>
                     </li>
                     <li>
-                        <a href="#"><i class="fa fa-archive" aria-hidden="true"> Formularios </i></a>
-                        <div class="nav_decorate"></div>
-                    </li>
-                    <li>
-                        <a href="#"><i class="fa fa-archway" aria-hidden="true"> UI Elements </i></a>
+                        <a href="../crear/crearusu.php"> <i class="fa fa-car" aria-hidden="true"> Registrar Vehiculos </i></i></a>
                         <div class="nav_decorate"></div>
                     </li>
                 </ul>
             </div>
+            <!-- <div class="menu_section">
+                <h5>PROXIMAMENTE</h5>
+                <ul>
+                    <li>
+                        <a href="#"><i class="fa fa-chart-pie " aria-hidden="true"> Informes </i></a>
+                        <div class="nav_decorate"></div>
+                    </li>
+
+                </ul>
+            </div> -->
         </div>
         <div class="contenido">
-            <div class="nav_menu">
-                    <div class="container_nav-menu">
-                        <div class="icon_menu">
-                            <i class="fa fa-bars" aria-hidden="true"></i>
-                        </div>
-                        <div class="user">
-                            <div class="user_pic">
-                                <img src="../img/foto_perfil.png" alt="">
-                            </div>
-                            <p>John Doe <i class="fa fa-caret-down" aria-hidden="true"></i></p>
-                        </div>
+           <div class="nav_menu">
+                <div class="container_nav-menu">
+                    <div class="icon_menu">
+                        <i class="fa fa-bars" aria-hidden="true"></i>
                     </div>
-            </div>
-        <!-- Aquí va el contenido -->
+                    <div class="user">
+                        <div class="user_pic">
+                            <img src="../img/foto_perfil.png" alt="">
+                        </div>
+                        <p>John Doe <i class="fa fa-caret-down" aria-hidden="true"></i></p>
+                    </div>
+                </div>
+           </div>
+           <!-- Aquí va el contenido -->
             <form enctype="multipart/form-data" action="insertar.php" method="POST" class="formur">
                 <h2 class="title">Formulario para el registro de Vehiculos</h2>
                 <div class="inicio">
@@ -194,6 +202,9 @@
             
         </div>
     </div>
+        </div>
+    </div>
+       
   
     
 </body>
