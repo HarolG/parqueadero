@@ -19,7 +19,7 @@
 <div class="container">
         <div class="navegacion">
             <div class="site_title">
-                <span>Parqueadero</span>
+                <img src="../../../img/logo1.png" alt="logo" class="logo">
             </div>
             <div class="nav_profile">
                 <div class="profile_pic">

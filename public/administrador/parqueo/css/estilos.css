@@ -8,13 +8,6 @@
   text-align: center;
 }
 
-.logo{
-  height: 80px;
-  width: 170px;
-  margin-right: 15%;
-  padding: 20px 10px;
-}
-
 select{
   margin:5px auto;        
   border:2px solid #a7a4a4;

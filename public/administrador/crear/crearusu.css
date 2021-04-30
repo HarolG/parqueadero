@@ -40,6 +40,14 @@ body {
     border-radius:5px ;
 }
 
+.logo{
+    height: 80px;
+    width: 170px;
+    margin-right: 15%;
+    padding: 20px 10px;
+}
+
+
 .placa{
     width: 200px;
     text-align: center;
