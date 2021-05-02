@@ -10,7 +10,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Crear Zonas</title>
     <!-- Estilos Generales -->
     <link rel="stylesheet" href="../../../layout/css/navegacion.css">
     <link rel="stylesheet" href="css/main.css">
@@ -23,7 +23,7 @@
     <div class="container">
     <div class="navegacion">
             <div class="site_title">
-                <img src="../../../img/logo1.png" alt="logo" class="logo">
+                <img src="../../../img/logo_blanco.png" alt="logo" class="logo">
             </div>
             <div class="nav_profile">
                 <div class="profile_pic">
@@ -44,7 +44,7 @@
                         <div class="nav_decorate"></div>
                     </li>
                     <li>
-                        <a href="../parqueo/parqueo.php"> <i class="fa fa-sign-in-alt" aria-hidden="true"> Registro de Entrada y Salida </i></i></a>
+                        <a href="../parqueo/parqueo.php"> <i class="fa fa-sign-in-alt" aria-hidden="true"> Reporte de Entradas </i></i></a>
                         <div class="nav_decorate"></div>
                     </li>
                     <li>

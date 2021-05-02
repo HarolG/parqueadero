@@ -40,7 +40,7 @@ Favor revisar los direccionamientos
     <div class="container">
         <div class="navegacion">
             <div class="site_title">
-                <img src="../../../img/logo1.png" alt="logo" class="logo">
+                <img src="../../../img/logo_blanco.png" alt="logo" class="logo">
             </div>
             <div class="nav_profile">
                 <div class="profile_pic">
@@ -61,7 +61,7 @@ Favor revisar los direccionamientos
                         <div class="nav_decorate"></div>
                     </li>
                     <li>
-                        <a href="../parqueo/parqueo.php"> <i class="fa fa-sign-in-alt" aria-hidden="true"> Registro de Entrada y Salida </i></i></a>
+                        <a href="../parqueo/parqueo.php"> <i class="fa fa-sign-in-alt" aria-hidden="true"> Reporte de Entradas </i></i></a>
                         <div class="nav_decorate"></div>
                     </li>
                     <li>
