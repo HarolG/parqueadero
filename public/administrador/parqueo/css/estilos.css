@@ -1,3 +1,22 @@
+.enlaces{
+  width: 90%;
+  padding: 20px 40px;
+}
+.enlaces a{
+  text-decoration: none;
+  color: rgb(233, 118, 23);
+}
+
+.enlaces ul{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.enlaces li{
+  width: 250px;
+  text-align: center;
+}
+
 .formRegistro{
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -19,6 +38,16 @@ select:hover{
   border:3px solid rgb(63, 96, 197);
 }
 
+.btnReporte{
+  background: rgb(211, 211, 211);
+  padding: 8px;
+  border: none;
+}
+
+.btnReporte:hover{
+  color: white;
+  background-color: rgb(63, 96, 197);
+}
 
 .infoZonas{
   display: grid;
@@ -103,13 +132,27 @@ tbody tr:nth-child(even) {
 
 .numVehi{
   text-align: center;
-  padding: 40px;
-  margin-top: 5%;
+  padding: 45px 30px;
   margin-right: 10%;
 }
 
+.num{
+  display: flex;
+  font-size: 50px;
+  margin-top: 5%;
+  margin-left: 30%;
+}
+
+.logo2{
+  display: flex;
+  margin-top: -19%;
+  margin-left: 39%;
+  width: 160px;
+  height: 80px;
+}
 .fas{
   font-size: 65px;
+  margin-left: -5%;
 }
 
 #error{
