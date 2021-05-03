@@ -114,6 +114,12 @@
                     <div class="icon_menu">
                         <i class="fa fa-bars" aria-hidden="true"></i>
                     </div>
+                    <div class="enlaces">
+                        <ul>
+                            <li><strong><a href="http://centrodeindustria.blogspot.com">Centro de Industria y Construcción</a></strong></li>
+                            <li><strong><a href="http://oferta.senasofiaplus.edu.co/sofia-oferta/">Portal de Sofia Plus</a></strong></li>
+                        </ul>
+                    </div>
                     <div class="user">
                         <div class="user_pic">
                             <img src="../../../img/foto_perfil.png" alt="">
