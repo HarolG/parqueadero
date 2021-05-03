@@ -41,7 +41,7 @@
                 <div class="profile_info">
                     <div>
                         <p class="profile_welcome">Bienvenido,</p>
-                        <p class="profile_name">John Doe</p>
+                        <p class="profile_name"><?php echo $_SESSION['nom']," ", $_SESSION['ape']?></p>
                     </div>
                 </div>
             </div>
@@ -101,7 +101,7 @@
                         <ul class="navy">
                             <li>
                                 <a href="">
-                                    <p>John Doe <i class="fa fa-caret-down" aria-hidden="true"></i></p>
+                                    <p><?php echo $_SESSION['nom']," ", $_SESSION['ape']?> <i class="fa fa-caret-down" aria-hidden="true"></i></p>
                                 </a>
                                 <ul>
                                     <li><a href="">Your Profile</a></li>
@@ -286,35 +286,6 @@
                    </div>
             </div>
         </div>
-
-
-    <script src="js/main.js">
-    function actual() {
-    var fecha = new Date($tiempoR); //Actualizar fecha.
-    var hora = fecha.getHours(); //hora actual
-    var minuto=fecha.getMinutes(); //minuto actual
-    var segundo=fecha.getSeconds(); //segundo actual
-    if (hora<10) { //dos cifras para la hora
-       hora="0"+hora;
-       }
-    if (minuto<10) { //dos cifras para el minuto
-       minuto="0"+minuto;
-       }
-    if (segundo<10) { //dos cifras para el segundo
-       segundo="0"+segundo;
-       }
-    //ver en el recuadro del reloj:
-    var mireloj = hora+" : "+minuto+" : "+segundo;	
-            return mireloj; 
-    }
-    function actualizar() { //función del temporizador
-    var mihora=actual(); //recoger hora actual
-    var mireloj=document.getElementById("reloj"); //buscar elemento reloj
-    mireloj.innerHTML=mihora; //incluir hora en elemento
-    }
-    setInterval(actualizar,1000); //iniciar temporizador
-    
-    </script>
  
 </body>
 

@@ -30,7 +30,7 @@ include("../../../php/conexion.php");
                 <div class="profile_info">
                     <div>
                         <p class="profile_welcome">Bienvenido,</p>
-                        <p class="profile_name">John Doe</p>
+                        <p class="profile_name"><?php echo $_SESSION['nom']," ", $_SESSION['ape']?></p>
                     </div>
                 </div>
             </div>
@@ -93,7 +93,7 @@ include("../../../php/conexion.php");
                         <div class="user_pic">
                             <img src="../../../img/foto_perfil.png" alt="">
                         </div>
-                        <p>John Doe <i class="fa fa-caret-down" aria-hidden="true"></i></p>
+                        <p><?php echo $_SESSION['nom']," ", $_SESSION['ape']?><i class="fa fa-caret-down" aria-hidden="true"></i></p>
                     </div>
                 </div>
            </div>
