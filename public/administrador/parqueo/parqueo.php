@@ -238,7 +238,7 @@
                                         $intervalo = $hora2->diff($hora1);
                                         $tiempoR = $intervalo->format('%H:%i:%s');
                                         $tabla.= "<td>$infoSalida[4]</td>
-                                                <td><label for=' id='reloj' class='reloj'> 00 : 00 : 00</label></td>";
+                                                <td>$tiempoR</td>";
                                         
                                     }else{
                                         $h_entrada = $fila[4];
