@@ -146,37 +146,37 @@ Favor revisar los direccionamientos
                                 ?>
                         <tbody>
                             <tr>
-                                <td>
+                                <th>
                                     <?php echo $mostrar1['documento']; ?>
-                                </td>
-                                <td>
+                                </th>
+                                <th>
                                     <?php echo $mostrar1['nombre']; ?>
-                                </td>
-                                <td>
+                                </th>
+                                <th>
                                     <?php echo $mostrar1['apellido']; ?>
-                                </td>
-                                <td>
+                                </th>
+                                <th>
                                     <?php echo $mostrar1['edad'];?>
-                                </td>
-                                <td>
+                                </th>
+                                <th>
                                     <?php echo $mostrar1['celular']; ?>
-                                </td>
-                                <td>
+                                </th>
+                                <th>
                                     <?php echo $mostrar1['direccion']; ?>
-                                </td>
-                                <td>
+                                </th>
+                                <th>
                                     <?php echo $mostrar1['correo']; ?>
-                                </td>
-                                <td>
+                                </th>
+                                <th>
                                     <?php echo $mostrar1['nom_tip_usu']; ?>
-                                </td>
-                                <td>
+                                </th>
+                                <th>
                                     <?php echo $mostrar1['nom_tip_doc']; ?>
-                                </td>
-                                <td>
-                                <?php echo "<a href='editar.php?documento=".$mostrar1['documento']."'>editar</a>";?>
-                                <?php echo "<a href='eliminar.php?documento=".$mostrar1['documento']."'onclick='return confirmar()'> Eliminar </a>";?>
-                                </td>
+                                </th>
+                                <th>
+                                <a <?php echo "href='editar.php?documento=".$mostrar1['documento']."'";?>><i class="fas fa-user-edit"></i></a>
+                                <a <?php echo "href='eliminar.php?documento=".$mostrar1['documento']."'onclick='return confirmar()'";?>><i class="fas fa-trash-alt"></i></a>
+                                </th>
                             </tr>
                         </tbody>
                         <?php

@@ -131,7 +131,7 @@ include("../../../php/conexion.php");
                                 <!-- input de correo -->
                             <div class="cajitas">
                                 <label for="placa" class="extras1">Correo</label>
-                                <input type="text" id="correo" name="correo" placeholder="Correo" class="extras2" required autocomplete="off">
+                                <input type="email" id="correo" name="correo" placeholder="Correo" class="extras2" required autocomplete="off">
                             </div>
                                 <!-- input de clave -->
                             <div class="cajitas">
