@@ -114,6 +114,24 @@ body {
           background-color: #c98020;
 }
 
+.enlaces{
+    width: 90%;
+    padding: 20px 40px;
+  }
+.enlaces a{
+    text-decoration: none;
+    color: rgb(233, 118, 23);
+}
+  
+.enlaces ul{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+  
+.enlaces li{
+    width: 250px;
+    text-align: center;
+}
 
 /* ESTILOS GENERALES */
 

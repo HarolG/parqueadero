@@ -49,7 +49,7 @@ Favor revisar los direccionamientos
                 <div class="profile_info">
                     <div>
                         <p class="profile_welcome">Bienvenido,</p>
-                        <p class="profile_name">John Doe</p>
+                        <p class="profile_name"><?php echo $_SESSION['nom']," ", $_SESSION['ape']?></p>
                     </div>
                 </div>
             </div>
@@ -108,7 +108,7 @@ Favor revisar los direccionamientos
                         </div>
                             <ul class="navy">
                                 <li>
-                                    <a href=""><p>John Doe <i class="fa fa-caret-down" aria-hidden="true"></i></p></a>
+                                    <a href=""><p><?php echo $_SESSION['nom']," ", $_SESSION['ape']?><i class="fa fa-caret-down" aria-hidden="true"></i></p></a>
                                     <ul>
                                         <li><a href="">Your Profile</a></li>
                                         <li><a href="">Settings</a></li>
