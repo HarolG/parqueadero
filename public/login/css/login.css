@@ -6,6 +6,9 @@
 body {
     background-color: #ededed;
     font-family: 'Roboto', sans-serif;
+    background: url(../../../img/fondo_sena.jpeg);
+    background-repeat: no-repeat;
+    background-size: 100%;
 }
 
 .container {
@@ -18,8 +21,9 @@ body {
 }
 
 .login_container {
-    width: 800px;
-    height: 600px;
+    box-shadow: 5px 10px 15px 20px rgba(0, 0, 0, 0.2);
+    width: 700px;
+    height: 500px;
     border-radius: 10px;
     background-color: white;
     overflow: hidden;
@@ -46,7 +50,8 @@ body {
 
 .form_iniciar {
     width: 95%;
-    height: 95%;
+    height: 95%
+
 }
 
 .container_form {
@@ -88,7 +93,7 @@ body {
     height: 40px;
     margin-bottom: 10px;
     border: none;
-    background-color: royalblue;
+    background-color: #268a52;
     border-radius: 4px;
     color: white;
     cursor: pointer;
@@ -96,11 +101,11 @@ body {
 }
 
 .btnInicio:hover{
-    background: rgb(248, 104, 21);
+    background: rgba(221, 94, 21, 0.864);
 }
 
 
 .grupo_datos-ingreso input:focus {
-    outline-color: royalblue;
+    outline-color: #268a52;
     
 }
