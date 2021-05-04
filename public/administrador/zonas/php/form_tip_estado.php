@@ -1,5 +1,5 @@
 <?php
-    include("../../../php/conexion.php");
+    include("../../../../php/conexion.php");
 
     if(isset($_SESSION['tipo']) && isset($_SESSION['nom']) && isset($_SESSION['ape']) && isset($_SESSION['pass']) ) {
 ?>
@@ -12,8 +12,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Crear Zonas</title>
     <!-- Estilos Generales -->
-    <link rel="stylesheet" href="../../../layout/css/navegacion.css">
-    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="../../../../layout/css/navegacion.css">
+    <link rel="stylesheet" href="../css/estado.css">
     <!-- Font awesome -->
     <script src="https://kit.fontawesome.com/a90c49b6b2.js" crossorigin="anonymous"></script>
     <!-- Tipo de letra -->
@@ -23,11 +23,11 @@
     <div class="container">
     <div class="navegacion">
             <div class="site_title">
-                <img src="../../../img/logo_blanco.png" alt="logo" class="logo">
+                <img src="../../../../img/logo_blanco.png" alt="logo" class="logo">
             </div>
             <div class="nav_profile">
                 <div class="profile_pic">
-                    <img src="../../../img/foto_perfil.png" alt="">
+                    <img src="../../../../img/foto_perfil.png" alt="">
                 </div>
                 <div class="profile_info">
                     <div>
@@ -40,23 +40,23 @@
                 <h5>GENERAL</h5>
                 <ul>
                     <li>
-                        <a href="../home/administrador.php"><i class="fa fa-home " aria-hidden="true"> Inicio </i></a>
+                        <a href="../../home/administrador.php"><i class="fa fa-home " aria-hidden="true"> Inicio </i></a>
                         <div class="nav_decorate"></div>
                     </li>
                     <li>
-                        <a href="../parqueo/parqueo.php"> <i class="fa fa-sign-in-alt" aria-hidden="true"> Reporte de Entradas </i></i></a>
+                        <a href="../../parqueo/parqueo.php"> <i class="fa fa-sign-in-alt" aria-hidden="true"> Reporte de Entradas </i></i></a>
                         <div class="nav_decorate"></div>
                     </li>
                     <li>
-                        <a href="../zonas/zona.php"><i class="fa fa-plus" aria-hidden="true"> Crear Zonas </i></a>
+                        <a href="../../zonas/zona.php"><i class="fa fa-plus" aria-hidden="true"> Crear Zonas </i></a>
                         <div class="nav_decorate"></div>
                     </li>
                     <li>
-                        <a href="../usuarios/usuarios.php"><i class="fa fa-users" aria-hidden="true"> Crear Usuarios </i></a>
+                        <a href="../../usuarios/usuarios.php"><i class="fa fa-users" aria-hidden="true"> Crear Usuarios </i></a>
                         <div class="nav_decorate"></div>
                     </li>
                     <li>
-                        <a href="../crear/crearusu.php"> <i class="fa fa-car" aria-hidden="true"> Registrar Vehiculos </i></i></a>
+                        <a href="../../crear/crearusu.php"> <i class="fa fa-car" aria-hidden="true"> Registrar Vehiculos </i></i></a>
                         <div class="nav_decorate"></div>
                     </li>
                 </ul>
@@ -86,7 +86,7 @@
                     </div>
                     <div class="user">
                         <div class="user_pic">
-                            <img src="../../../img/foto_perfil.png" alt="">
+                            <img src="../../../../img/foto_perfil.png" alt="">
                         </div>
                             <ul class="navy">
                                 <li>
@@ -94,7 +94,7 @@
                                     <ul>
                                         <li><a href="">Your Profile</a></li>
                                         <li><a href="">Settings</a></li>
-                                        <li><a href="../../../php/cerrarsesion.php">Logout</a></li>
+                                        <li><a href="../../../../php/cerrarsesion.php">Logout</a></li>
                                     </ul>
                                 </li>
                             </ul>
@@ -102,67 +102,37 @@
                 </div>
            </div>
            <!-- Aquí va el contenido -->
-        <form action="php/crear_zona.php" id="form" method="POST">
-            <h2 class="titulo">CREAR ZONAS</h2>
+        <form action="tipo_estado.php" id="form" method="POST">
+            <h2 class="titulo">CREAR ESTADO</h2>
             <!-- <input type="text" name="idzona" id="inputzona" placeholder="Ingrese el id de la zona" autocomplete="off" required> -->
-            <select name="tipozona" id="tipozona">
-                <option value="">Seleccione un tipo de zona</option>
-                <?php
-                            $sql = "SELECT * FROM tipo_zona";
-                            $query = mysqli_query($mysqli, $sql);
-                
-                            while ($row = mysqli_fetch_array($query)) {
-                        ?>
-                <option value="<?php echo $row['id_tip_zona'];?>"><?php echo $row['nom_tip_zona'];?></option>
-                <?php
-                            }
-                        ?>
-            </select>
-            <input type="text" name="cupos_zona" id="inputcupos" placeholder="Ingrese la cantidad de cupos"
+            <input type="text" name="estado" id="inputcupos" placeholder="Ingrese el estado"
                 autocomplete="off" required>
-            <select name="cupozona" id="cupozona">
-                <option value="">Seleccione un estado</option>
-                <?php
-                            $sql = "SELECT * FROM estado";
-                            $query = mysqli_query($mysqli, $sql);
-                
-                            while ($row = mysqli_fetch_array($query)) {
-                        ?>
-                <option value="<?php echo $row['id_estado'];?>"><?php echo $row['nom_estado'];?></option>
-                <?php
-                            }
-                        ?>
-            </select>
-            <a class="crear" href="php/form_tip_estado.php">+ Crear estado</a>
-            <a class="crear_zona"href="php/form_tip_zona.php">+ Crear tipo zona</a>
-            <input type="submit" name="guardar" id="guardar" value="Crear Zona">
+            <input type="submit" name="guardar" id="guardar" value="Crear Estado">
         </form>
 
         <table class="zonas_registradas">
             <thead>
                 <tr>
-                    <td class="head_table">ID zona</td>
-                    <td class="head_table">Tipo de Zona</td>
-                    <td class="head_table">Cantidad de cupos</td>
-                    <td class="head_table">Estado</td>
+                    <td class="head_table">ID tipo estado</td>
+                    <td class="head_table">Nombre de Estado</td>
                 </tr>
             </thead>
             <tbody>
                 <?php
-                            $query = "SELECT * FROM zona_parqueo, tipo_zona, estado 
-                            WHERE zona_parqueo.id_tip_zona = tipo_zona.id_tip_zona AND zona_parqueo.id_estado = estado.id_estado";
+                            $query = "SELECT * FROM estado";
                             $result_tasks = mysqli_query($mysqli, $query);    
                     
                             while($row = mysqli_fetch_assoc($result_tasks)) { ?>
                 <tr>
-                    <td class="body_table"><?php echo $row['id_zona'] ?></td>
-                    <td class="body_table"><?php echo $row['nom_tip_zona'] ?></td>
-                    <td class="body_table"><?php echo $row['cupos'] ?></td>
-                    <td class="body_table"><?php echo $row['nom_estado']; ?></td>
+                    <td class="body_table"><?php echo $row['id_estado'] ?></td>
+                    <td class="body_table"><?php echo $row['nom_estado'] ?></td>
                 </tr>
                 <?php } ?>
             </tbody>
         </table>
+        <div class="btn-volver">
+            <a href="../zona.php">REGRESAR</a>
+        </div>
     </div>
     </div>
         </div>
