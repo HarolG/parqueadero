@@ -11,43 +11,16 @@ body {
 }
 
 #form{
-    width: 825px;
+    width: 300px;
     background-color: white;
-    margin: 50px auto;
+    margin: 50px 100px;
     border-radius: 10px;
     border: 1px solid gray;
     padding: 7px;
 }
 
-.crear{
-    position: absolute;
-    margin: -10px -230px;
-    /* background-color: red; */
-    text-decoration: none;
-    color: #2a3f54;
-}
-
-.crear_zona{
-    position: absolute;
-    margin: -10px -710px;
-    /* background-color: red; */
-    text-decoration: none;
-    color: #2a3f54;
-}
-
-#inputzona{
-    width: 230px;
-    margin: 10px auto;
-    border-radius: 10px;
-    background-color: white;
-    border: 2px solid #2a3f54;
-    font-size: 15px;
-    text-align: center;
-    padding: 3px;
-}
-
 #inputcupos{
-    width: 230px;
+    width: 160px;
     margin: 10px auto;
     border-radius: 10px;
     background-color: white;
@@ -55,28 +28,6 @@ body {
     font-size: 15px;
     text-align: center;
     padding: 3px;
-}
-
-#tipozona{
-    width: 230px;
-    margin: 10px auto;
-    border-radius: 10px;
-    background-color: white;
-    font-size: 15px;
-    text-align: center;
-    padding: 3px;
-    border: 2px solid #2a3f54;
-}
-
-#cupozona{
-    width: 230px;
-    margin: 10px auto;
-    border-radius: 10px;
-    background-color: white;
-    font-size: 15px;
-    text-align: center;
-    padding: 3px;
-    border: 2px solid #2a3f54;
 }
 
 #guardar{
@@ -98,15 +49,16 @@ body {
 
 .titulo{
     font-size: 15px;
-    width: 125px;
+    width: 150px;
     margin: 15px auto;
     background-color: white;
 }
 
 .zonas_registradas{
-    width: 900px;
+    width: 400px;
     /* background-color: white; */
-    margin: 45px auto;
+    margin: -164px 500px;
+    position: absolute;
 }
 
 .head_table{
@@ -163,4 +115,22 @@ ul, ol {
 .navy li ul li ul {
     right:-140px;
     top:0px;
+}
+
+.btn-volver{
+    margin: 10px 100px;
+}
+
+.btn-volver a{
+    text-decoration: none;
+    background-color: #2a3f54;
+    padding: 7px;
+    border-radius: 10px;
+    color: white;
+    border: 2px solid #2a3f54;
+}
+
+.btn-volver a:hover{
+    color: black;
+    background-color: white;
 }
