@@ -6,6 +6,7 @@
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -13,14 +14,17 @@
     <title>Registro</title>
     <link rel="stylesheet" href="../../../layout/css/navegacion.css">
     <link rel="stylesheet" href="crearusu.css">
-      <!-- Font awesome -->
+    <!-- Font awesome -->
     <script src="https://kit.fontawesome.com/a90c49b6b2.js" crossorigin="anonymous"></script>
-      <!-- Tipo de letra -->
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;1,100;1,300;1,400&display=swap" rel="stylesheet">
+    <!-- Tipo de letra -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;1,100;1,300;1,400&display=swap"
+        rel="stylesheet">
 </head>
+
 <body>
-<div class="container">
-<div class="navegacion">
+    <div class="container">
+        <div class="navegacion">
             <div class="site_title">
                 <img src="../../../img/logo_blanco.png" alt="logo" class="logo">
             </div>
@@ -43,7 +47,8 @@
                         <div class="nav_decorate"></div>
                     </li>
                     <li>
-                        <a href="../parqueo/parqueo.php"> <i class="fa fa-sign-in-alt" aria-hidden="true"> Reporte de Entradas </i></i></a>
+                        <a href="../parqueo/parqueo.php"> <i class="fa fa-sign-in-alt" aria-hidden="true"> Reporte de
+                                Entradas </i></i></a>
                         <div class="nav_decorate"></div>
                     </li>
                     <li>
@@ -51,11 +56,13 @@
                         <div class="nav_decorate"></div>
                     </li>
                     <li>
-                        <a href="../usuarios/usuarios.php"><i class="fa fa-users" aria-hidden="true"> Crear Usuarios </i></a>
+                        <a href="../usuarios/usuarios.php"><i class="fa fa-users" aria-hidden="true"> Crear Usuarios
+                            </i></a>
                         <div class="nav_decorate"></div>
                     </li>
                     <li>
-                        <a href="../crear/crearusu.php"> <i class="fa fa-car" aria-hidden="true"> Registrar Vehiculos </i></i></a>
+                        <a href="../crear/crearusu.php"> <i class="fa fa-car" aria-hidden="true"> Registrar Vehiculos
+                            </i></i></a>
                         <div class="nav_decorate"></div>
                     </li>
                 </ul>
@@ -72,150 +79,184 @@
             </div> -->
         </div>
         <div class="contenido">
-        <div class="nav_menu">
+            <div class="nav_menu">
                 <div class="container_nav-menu">
                     <div class="icon_menu">
                         <i class="fa fa-bars" aria-hidden="true"></i>
                     </div>
                     <div class="enlaces">
                         <ul>
-                            <li><strong><a href="http://centrodeindustria.blogspot.com">Centro de Industria y Construcción</a></strong></li>
-                            <li><strong><a href="http://oferta.senasofiaplus.edu.co/sofia-oferta/">Portal de Sofia Plus</a></strong></li>
+                            <li><strong><a href="http://centrodeindustria.blogspot.com">Centro de Industria y
+                                        Construcción</a></strong></li>
+                            <li><strong><a href="http://oferta.senasofiaplus.edu.co/sofia-oferta/">Portal de Sofia
+                                        Plus</a></strong></li>
                         </ul>
                     </div>
                     <div class="user">
                         <div class="user_pic">
                             <img src="../../../img/foto_perfil.png" alt="">
                         </div>
-                            <ul class="navy">
-                                <li>
-                                    <a href=""><p><?php echo $_SESSION['nom']," ", $_SESSION['ape']?><i class="fa fa-caret-down" aria-hidden="true"></i></p></a>
-                                    <ul>
-                                        <li><a href="">Your Profile</a></li>
-                                        <li><a href="">Settings</a></li>
-                                        <li><a href="../../../php/cerrarsesion.php">Logout</a></li>
-                                    </ul>
-                                </li>
-                            </ul>
+                        <ul class="navy">
+                            <li>
+                                <a href="">
+                                    <p><?php echo $_SESSION['nom']," ", $_SESSION['ape']?><i class="fa fa-caret-down"
+                                            aria-hidden="true"></i></p>
+                                </a>
+                                <ul>
+                                    <li><a href="">Your Profile</a></li>
+                                    <li><a href="">Settings</a></li>
+                                    <li><a href="../../../php/cerrarsesion.php">Logout</a></li>
+                                </ul>
+                            </li>
+                        </ul>
                     </div>
                 </div>
-           </div>
-           <!-- Aquí va el contenido -->
-            <form enctype="multipart/form-data" action="insertar.php" method="POST" class="formur">
-                <h2 class="title">Formulario para el registro de Vehiculos</h2>
-                <div class="inicio">
-                    <label for="placa">No. Placa</label><br>
-                    <input type="text" class="placa" name="placa" placeholder="Ingrese Numero de la placa" autocomplete="off"><br> 
-                    <label for="placa">Documento</label><br>
-                    <input type="number" class="doc" name="doc" placeholder="Numero de Documento" autocomplete="off"><br> 
-            <!--    Tipo de Vehiculo-->
-                    <label class="vehiculo" for="placa">Tipo de Vehiculo</label><br>
-                    <select class="vehiculo" name="vehiculo" id="sele" autocomplete="off">
-                        
-                        <option value="0">Tipo de Vehiculo</option>
-                        <?php
-                            $tip = "SELECT * FROM tipo_vehiculo";
-                            $inser = mysqli_query($mysqli,$tip);
-                            while($tip = mysqli_fetch_array($inser)){
-                        ?>
-                        <option name="tipo" value="<?php echo $tip[0]; ?>"><?php echo $tip[1]; ?></option>
-                        <?php
-                        }
-                        ?>
-                        
-                    </select><br> 
+            </div>
+            <!-- Aquí va el contenido -->
+            <div class="main_content">
+                <div class="form_container">
+                    <form enctype="multipart/form-data" action="insertar.php" method="POST" class="formur">
+                        <h2 class="title">Formulario para el registro de Vehiculos</h2>
+                        <div class="grupos_formulario">
+
+                            <div class="contenedor_columnas">
+                                <div class="columna_formulario">
+                                    <!-- Número de placa del vehiculo -->
+                                    <div class="grupo_formulario grupo_formulario-noPlaca">
+                                        <label for="placa">No. Placa</label>
+                                        <input type="text" class="placa" name="placa" placeholder="Ingrese Numero de la placa"
+                                            autocomplete="off">
+                                    </div>
+                                    
+                                    <!-- Número de documento del propietario -->
+                                    <div class="grupo_formulario grupo_formulario-documento">
+                                        <label for="placa">Documento</label>
+                                        <input type="number" class="doc" name="doc" placeholder="Numero de Documento"
+                                            autocomplete="off">
+                                    </div>
+                                    
+                                    <!--    Tipo de Vehiculo-->
+                                    <div class="grupo_formulario grupo_formulario-tipoVehiculo">
+                                        <label class="vehiculo" for="placa">Tipo de Vehiculo</label>
+                                        <select class="vehiculo" name="vehiculo" id="sele" autocomplete="off">
+                                    
+                                            <option value="0">Tipo de Vehiculo</option>
+                                            <?php
+                                                    $tip = "SELECT * FROM tipo_vehiculo";
+                                                    $inser = mysqli_query($mysqli,$tip);
+                                                    while($tip = mysqli_fetch_array($inser)){
+                                                ?>
+                                            <option name="tipo" value="<?php echo $tip[0]; ?>"><?php echo $tip[1]; ?></option>
+                                            <?php
+                                                }
+                                                ?>
+                                        </select>
+                                    </div>
+                                </div>
+                                
+                                <div class="columna_formulario">
+                                    <!--    Modelo-->
+                                    <div class="grupo_formulario grupo_formulario-modelo">
+                                        <label class="placa" for="placa">Modelo</label>
+                                        <select class="placa" name="modelo" id="sele" autocomplete="off">
+                                            <option value="0">Modelo del Vehiculo</option>
+                                            <?php
+                                                        $tipo = "SELECT * FROM modelo";
+                                                        $inser = mysqli_query($mysqli,$tipo);
+                                                        while($tip = mysqli_fetch_array($inser)){
+                                                    ?>
+                                            <option name="tipo" value="<?php echo $tip[0]; ?>"><?php echo $tip[1]; ?></option>
+                                            <?php
+                                                    }
+                                                    ?>
+                                        </select>
+                                    </div>
+                                    
+                                    <!--   Tipo de Marca-->
+                                    <div class="grupo_formulario grupo_formulario-marca">
+                                        <label class="marca" for="placa">Marca</label>
+                                        <select class="marca" name="marca" id="sele" autocomplete="off">
+                                            <option value="0">Tipo de Marca</option>
+                                            <?php
+                                                        $tipo = "SELECT * FROM marca";
+                                                        $inser = mysqli_query($mysqli,$tipo);
+                                                        while($tip = mysqli_fetch_array($inser)){
+                                                    ?>
+                                            <option name="tipo" value="<?php echo $tip[0]; ?>"><?php echo $tip[1]; ?></option>
+                                            <?php
+                                                    }
+                                                    ?>
+                                        </select>
+                                    </div>
+                                    
+                                    <!--    Tipo de color-->
+                                    <div class="grupo_formulario grupo_formulario-color">
+                                        <label class="color" for="placa">Color del Vehiculo</label>
+                                        <select class="color" name="color" id="sele" autocomplete="off">
+                                        
+                                            <option value="0">Color de Vehiculo</option>
+                                            <?php
+                                                        $selec = "SELECT * FROM color";
+                                                        $inser = mysqli_query($mysqli,$selec);
+                                                        while($tip = mysqli_fetch_array($inser)){
+                                                    ?>
+                                            <option name="tipo" value="<?php echo $tip[0]; ?>"><?php echo $tip[1]; ?></option>
+                                            <?php
+                                                    }
+                                                    ?>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Area de texto para anotaciones -->
+                            <div class="grupo_formulario grupo_formulario-anotaciones">
+                                <label class="title">Anotaciones</label>
+                                <textarea class="anota" name="anotaciones"></textarea>
+                            </div>
+
+                            <div class="archivos">
+                                <h2>Cargue los siguiente Documentos</h2>
+                                <div class="form">
+
+                                    <!-- MAX_FILE_SIZE debe preceder al campo de entrada del fichero -->
+                                    <input type="hidden" name="sooat" value="30000" />
+                                    <!-- El nombre del elemento de entrada determina el nombre en el array $_FILES -->
+                                    Subir SOAT: <input name="sooat" type="file" /> <br>
+
+
+                                    <!-- MAX_FILE_SIZE debe preceder al campo de entrada del fichero -->
+                                    <input type="hidden" name="tecno" value="30000" />
+                                    <!-- El nombre del elemento de entrada determina el nombre en el array $_FILES -->
+                                    Archivo de la Tecnomecanica: <input name="tecno" type="file" /> <br>
+
+
+                                    <!-- MAX_FILE_SIZE debe preceder al campo de entrada del fichero -->
+                                    <input type="hidden" name="vehic" value="30000" />
+                                    <!-- El nombre del elemento de entrada determina el nombre en el array $_FILES -->
+                                    Imagen del Vehiculo: <input name="vehic" type="file" />
+                                </div><br>
+                            </div>
+                            <div class="button">
+                                <!--    <input type="submit" class="btn" name="registro" value="Crear"> -->
+                                <input type="submit" class="btn" value="CREAR" name="registro">
+
+                            </div>
+                        </div>
+
+                    </form>
                 </div>
-            <!--    Modelo-->
-                    <div class="modelo">
-                        <label class="placa" for="placa">Modelo</label><br>
-                        <select class="placa" name="modelo" id="sele" autocomplete="off">
-                            <option  value="0">Modelo del Vehiculo</option>
-                            <?php
-                                $tipo = "SELECT * FROM modelo";
-                                $inser = mysqli_query($mysqli,$tipo);
-                                while($tip = mysqli_fetch_array($inser)){
-                            ?>
-                            <option name="tipo" value="<?php echo $tip[0]; ?>"><?php echo $tip[1]; ?></option>
-                            <?php
-                            }
-                            ?>
-                        </select><br>
+                <div class="prueba">
                     
-            <!--   Tipo de Marca-->
-                        <label class="marca" for="placa">Marca</label><br>
-                        <select class="marca" name="marca" id="sele" autocomplete="off">
-                            <option value="0">Tipo de Marca</option>
-                            <?php
-                                $tipo = "SELECT * FROM marca";
-                                $inser = mysqli_query($mysqli,$tipo);
-                                while($tip = mysqli_fetch_array($inser)){
-                            ?>
-                            <option name="tipo" value="<?php echo $tip[0]; ?>"><?php echo $tip[1]; ?></option>
-                            <?php
-                            }
-                            ?>
-                        </select><br>
-                    
-            
-                    
-            <!--    Tipo de color-->
-                        <label class="color" for="placa">Color del Vehiculo</label><br>
-                        <select class="color" name="color" id="sele" autocomplete="off">
-                            
-                            <option value="0">Color de Vehiculo</option>
-                            <?php
-                                $selec = "SELECT * FROM color";
-                                $inser = mysqli_query($mysqli,$selec);
-                                while($tip = mysqli_fetch_array($inser)){
-                            ?>
-                            <option name="tipo" value="<?php echo $tip[0]; ?>"><?php echo $tip[1]; ?></option>
-                            <?php
-                            }
-                            ?>
-                        </select><br>
-                    </div>
-                    <div class="texto">
+                </div>
+            </div>
 
-                        <label class="title">Anotaciones</label><br>
-                        <textarea class="anota" name="anotaciones">
-                        </textarea><br>
-
-                    </div>
-                    <div class="archivos">
-                        <h2>Cargue los siguiente Documentos</h2>
-                        <div class="form">
-                              
-                                <!-- MAX_FILE_SIZE debe preceder al campo de entrada del fichero -->
-                                <input type="hidden" name="sooat" value="30000" />
-                                <!-- El nombre del elemento de entrada determina el nombre en el array $_FILES -->
-                                Subir SOAT: <input name="sooat" type="file" /> <br>
-                            
-                        
-                                <!-- MAX_FILE_SIZE debe preceder al campo de entrada del fichero -->
-                                <input type="hidden" name="tecno" value="30000" />
-                                <!-- El nombre del elemento de entrada determina el nombre en el array $_FILES -->
-                                Archivo de la Tecnomecanica: <input name="tecno" type="file" /> <br>
-                            
-                        
-                                <!-- MAX_FILE_SIZE debe preceder al campo de entrada del fichero -->
-                                <input type="hidden" name="vehic" value="30000" />
-                                <!-- El nombre del elemento de entrada determina el nombre en el array $_FILES -->
-                                Imagen del Vehiculo: <input name="vehic" type="file" />                            
-                        </div><br>
-                    </div>
-                <div class="button">                   
-                <!--    <input type="submit" class="btn" name="registro" value="Crear"> -->
-                    <input type="submit" class="btn" value="crear" name="registro">
-                    
-                </div>            
-                
-            </form>       
-            
         </div>
     </div>
-        </div>
+    </div>
     </div>
 </body>
+
 </html>
 <?php
     } else {
