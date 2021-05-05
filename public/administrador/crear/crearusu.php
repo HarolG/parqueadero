@@ -113,28 +113,30 @@
                 </div>
             </div>
             <!-- Aquí va el contenido -->
-            <div class="main_content">
+            <main class="main">
                 <div class="form_container">
-                    <form enctype="multipart/form-data" action="insertar.php" method="POST" class="formur">
-                        <h2 class="title">Formulario para el registro de Vehiculos</h2>
-                        <div class="grupos_formulario">
-
-                            <div class="contenedor_columnas">
-                                <div class="columna_formulario">
+                    <div class="wrapper">
+                        <div class="form_title">
+                            <p>Formulario para el registro de Vehiculos</p>
+                        </div>
+                        <form action="" class="form_vehiculo">
+                            <div class="column_container">
+                                <div class="column_form">
+                        
                                     <!-- Número de placa del vehiculo -->
                                     <div class="grupo_formulario grupo_formulario-noPlaca">
                                         <label for="placa">No. Placa</label>
                                         <input type="text" class="placa" name="placa" placeholder="Ingrese Numero de la placa"
                                             autocomplete="off">
                                     </div>
-                                    
+                        
                                     <!-- Número de documento del propietario -->
                                     <div class="grupo_formulario grupo_formulario-documento">
                                         <label for="placa">Documento</label>
                                         <input type="number" class="doc" name="doc" placeholder="Numero de Documento"
                                             autocomplete="off">
                                     </div>
-                                    
+                        
                                     <!--    Tipo de Vehiculo-->
                                     <div class="grupo_formulario grupo_formulario-tipoVehiculo">
                                         <label class="vehiculo" for="placa">Tipo de Vehiculo</label>
@@ -152,11 +154,12 @@
                                                 ?>
                                         </select>
                                     </div>
+                        
                                 </div>
-                                
-                                <div class="columna_formulario">
-                                    <!--    Modelo-->
-                                    <div class="grupo_formulario grupo_formulario-modelo">
+                                <div class="column_form">
+                        
+                                     <!--    Modelo-->
+                                     <div class="grupo_formulario grupo_formulario-modelo">
                                         <label class="placa" for="placa">Modelo</label>
                                         <select class="placa" name="modelo" id="sele" autocomplete="off">
                                             <option value="0">Modelo del Vehiculo</option>
@@ -171,7 +174,7 @@
                                                     ?>
                                         </select>
                                     </div>
-                                    
+                        
                                     <!--   Tipo de Marca-->
                                     <div class="grupo_formulario grupo_formulario-marca">
                                         <label class="marca" for="placa">Marca</label>
@@ -188,9 +191,9 @@
                                                     ?>
                                         </select>
                                     </div>
-                                    
-                                    <!--    Tipo de color-->
-                                    <div class="grupo_formulario grupo_formulario-color">
+                        
+                                     <!--    Tipo de color-->
+                                     <div class="grupo_formulario grupo_formulario-color">
                                         <label class="color" for="placa">Color del Vehiculo</label>
                                         <select class="color" name="color" id="sele" autocomplete="off">
                                         
@@ -206,51 +209,81 @@
                                                     ?>
                                         </select>
                                     </div>
+                        
                                 </div>
                             </div>
-
-                            <!-- Area de texto para anotaciones -->
-                            <div class="grupo_formulario grupo_formulario-anotaciones">
-                                <label class="title">Anotaciones</label>
-                                <textarea class="anota" name="anotaciones"></textarea>
+                            <div class="anotaciones_container">
+                                <label for="anotaciones">Anotaciones</label>
+                                <textarea class="anota" name="anotaciones" id="anotaciones"></textarea>
                             </div>
-
-                            <div class="archivos">
-                                <h2>Cargue los siguiente Documentos</h2>
-                                <div class="form">
-
-                                    <!-- MAX_FILE_SIZE debe preceder al campo de entrada del fichero -->
-                                    <input type="hidden" name="sooat" value="30000" />
-                                    <!-- El nombre del elemento de entrada determina el nombre en el array $_FILES -->
-                                    Subir SOAT: <input name="sooat" type="file" /> <br>
-
-
-                                    <!-- MAX_FILE_SIZE debe preceder al campo de entrada del fichero -->
-                                    <input type="hidden" name="tecno" value="30000" />
-                                    <!-- El nombre del elemento de entrada determina el nombre en el array $_FILES -->
-                                    Archivo de la Tecnomecanica: <input name="tecno" type="file" /> <br>
+                            <div class="cargue_container">
+                                <div class="subtitle_form">
+                                    <p>Cargue los siguiente Documentos</p>
+                                </div>
+                                <div class="cargue_main">
+                                    <div class="grupo_cargue">
+                                        <!-- MAX_FILE_SIZE debe preceder al campo de entrada del fichero -->
+                                        <input type="hidden" name="sooat" value="30000" />
+                                        <!-- El nombre del elemento de entrada determina el nombre en el array $_FILES -->
+                                        Subir SOAT: <input name="sooat" type="file" />
+                                    </div>
 
 
-                                    <!-- MAX_FILE_SIZE debe preceder al campo de entrada del fichero -->
-                                    <input type="hidden" name="vehic" value="30000" />
-                                    <!-- El nombre del elemento de entrada determina el nombre en el array $_FILES -->
-                                    Imagen del Vehiculo: <input name="vehic" type="file" />
-                                </div><br>
+                                    <div class="grupo_cargue">
+                                        <!-- MAX_FILE_SIZE debe preceder al campo de entrada del fichero -->
+                                        <input type="hidden" name="tecno" value="30000" />
+                                        <!-- El nombre del elemento de entrada determina el nombre en el array $_FILES -->
+                                        Archivo de la Tecnomecanica: <input name="tecno" type="file" />
+                                    </div>
+
+
+                                    <div class="grupo_cargue">
+                                        <!-- MAX_FILE_SIZE debe preceder al campo de entrada del fichero -->
+                                        <input type="hidden" name="vehic" value="30000" />
+                                        <!-- El nombre del elemento de entrada determina el nombre en el array $_FILES -->
+                                        Imagen del Vehiculo: <input name="vehic" type="file" />
+                                    </div>
+                                </div>
                             </div>
-                            <div class="button">
-                                <!--    <input type="submit" class="btn" name="registro" value="Crear"> -->
-                                <input type="submit" class="btn" value="CREAR" name="registro">
-
+                            <div class="boton_container">
+                                <input type="submit" value="CREAR">
                             </div>
-                        </div>
-
-                    </form>
+                        </form>
+                    </div>
                 </div>
-                <div class="prueba">
-                    
+                <div class="crud_container">
+                    <div class="table_container">
+                        <table>
+                            <thead>
+                                <th>Placa</th>
+                                <th>Modelo</th>
+                                <th>Marca</th>
+                                <th>Tipo de Vehiculo</th>
+                                <th>Documento</th>
+                                <th>Soat</th>
+                                <th>Tecnomecanica</th>
+                                <th>Foto</th>
+                                <th>Color</th>
+                                <th>Acciones</th>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td>2</td>
+                                    <td>3</td>
+                                    <td>4</td>
+                                </tr>
+                                <tr>
+                                    <td>1</td>
+                                    <td>2</td>
+                                    <td>3</td>
+                                    <td>4</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
-            </div>
-
+            </main>
         </div>
     </div>
     </div>

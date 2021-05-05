@@ -1,86 +1,152 @@
-/*Diseño formulario*/
-
-.main_content {
+.main {
     width: 100%;
-
     display: flex;
+    justify-content: center;
+    align-items: flex-start;
 }
 
 .form_container {
-    width: 50%;
-}
+    width: 40%;
 
-.form_container .formur {
-    width: 100%;
-    margin-top: 40px;
+    background-color: #f7f7f7;
+    border-radius: 10px;
+    padding-bottom: 20px;
+    border: 1px solid darkgray;
+    margin: 15px 15px;
 
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 15px;
-}
-
-.grupos_formulario {
-    display: flex;
-    flex-direction: column;
-}
-
-.contenedor_columnas {
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.columna_formulario {
-    width: 50%;
+.form_container .wrapper {
+    width: 95%;
 }
 
-.grupo_formulario {
+.form_container .form_title {
+    width: 100%;
+    padding: 15px 0px;
+}
+
+.form_container .form_title p {
+    font-size: 25px;
+    font-weight: 500;
+    margin-bottom: 5px;
+    color: #304356;
+    text-align: center;
+}
+
+.form_container .column_container {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.form_container .column_container .column_form {
+    width: 48%;
+}
+
+.form_container .column_container .column_form .grupo_formulario {
+    width: 100%;
     margin: 10px 0;
+
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
-.grupo_formulario label {
+.form_container .column_container .column_form .grupo_formulario label {
+    color: #304356;
     margin-bottom: 5px;
 }
 
-.grupo_formulario input {
-    width: 95%;
+.form_container .column_container .column_form .grupo_formulario input {
+    width: 100%;
     height: 40px;
-    padding-left: 3px;
+    padding-left: 5px;
 }
 
-.grupo_formulario select {
+.form_container .column_container .column_form .grupo_formulario select {
+    width: calc(100% + 5px);
     height: 44px;
-    width: calc(95% + 3px);
+    padding-left: 5px;
 }
 
-.grupo_formulario textarea {
-    width: 98%;
-    height: 80px;
+.form_container .anotaciones_container {
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
 }
 
-.prueba {
-    width: 50%;
+.form_container .anotaciones_container label {
+    color: #304356;
+    margin-bottom: 5px;
 }
 
-.archivos h2 {
+.form_container .anotaciones_container textarea {
+    height: 50px;
+}
+
+.form_container .cargue_container {
     margin-bottom: 10px;
 }
 
-.button {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.form_container .cargue_container .subtitle_form {
+    margin: 10px 0px;
 }
 
-.button input {
+.form_container .cargue_container .subtitle_form p {
+    font-size: 20px;
+    font-weight: 500;
+    margin-bottom: 5px;
+    color: #304356;
+    text-align: center;
+}
+
+.form_container .cargue_container .cargue_main {
+    display: flex;
+    flex-direction: column;
+}
+
+.form_container .boton_container {
+    width: 100%;
+}
+
+.form_container .boton_container input {
     width: 100%;
     height: 40px;
+    margin-top: 20px;
     border: none;
     background-color: royalblue;
     border-radius: 4px;
     color: white;
-    cursor: pointer;
+}
+
+.crud_container {
+    width: 60%;
+
+    background-color: #f7f7f7;
+    border-radius: 10px;
+    padding-bottom: 20px;
+    border: 1px solid darkgray;
+    margin: 15px 15px;
+}
+
+.crud_container table {
+    border-collapse: collapse;
+    margin: 15px 15px;
+}
+
+.crud_container table thead {
+    background-color: #2a3f54;
+}
+
+.crud_container table thead th {
+    color: white;
+    font-size: 14.5px;
+    font-weight: normal;
+    padding: 10px 4px;
+    border: 1px solid white;
 }
