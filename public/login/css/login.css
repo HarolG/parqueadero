@@ -37,9 +37,8 @@ body {
     overflow: hidden;
 }
 
-.login_container-left img {
+.login_container-left video {
     width: 100%;
-    height: 100%;
 }
 
 .login_container-right {
