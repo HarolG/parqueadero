@@ -105,7 +105,7 @@
         <form action="../php/tipo_zona.php" id="form" method="POST">
             <h2 class="titulo">CREAR TIPO DE ZONA</h2>
             <!-- <input type="text" name="idzona" id="inputzona" placeholder="Ingrese el id de la zona" autocomplete="off" required> -->
-            <input type="text" name="zonita" id="inputcupos" placeholder="Ingrese el estado"
+            <input type="text" name="zonita" id="inputcupos" placeholder="Ingrese el tipo de zona"
                 autocomplete="off" required>
             <input type="submit" name="guardar" id="guardar" value="Crear Estado">
         </form>
