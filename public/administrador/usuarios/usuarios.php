@@ -108,7 +108,7 @@ Favor revisar los direccionamientos
                         </div>
                             <ul class="navy">
                                 <li>
-                                    <a href=""><p><?php echo $_SESSION['nom']," ", $_SESSION['ape']?><i class="fa fa-caret-down" aria-hidden="true"></i></p></a>
+                                    <a href=""><p><?php echo $_SESSION['nom'];?><i class="fa fa-caret-down" aria-hidden="true"></i></p></a>
                                     <ul>
                                         <li><a href="">Your Profile</a></li>
                                         <li><a href="">Settings</a></li>
@@ -123,10 +123,10 @@ Favor revisar los direccionamientos
             <div class="elduro">
                 <h1 style="text-align: center; padding: 25px;">USUARIOS</h1>
 
-                <a href="registrar.php" class="btn"><i class="fas fa-user-plus"> CREAR USUARIO</i></a>
+                <a href="php/registrar.php" class="btn"><i class="fas fa-user-plus"> CREAR USUARIO</i></a>
                 <!-- codigo para mostrar los usuarios existentes -->
                 <div class="tabla"> 
-                    <table class="table">
+                    <table class="table" id="tabla">
                     <?php
                         $consul="SELECT usuario.documento,usuario.nombre,usuario.apellido,usuario.edad,usuario.celular,usuario.direccion,usuario.correo,tipo_usuario.nom_tip_usu,tipo_documento.nom_tip_doc FROM usuario 
                         INNER JOIN tipo_usuario on usuario.id_tip_usu = tipo_usuario.id_tip_usu 
@@ -180,8 +180,8 @@ Favor revisar los direccionamientos
                                     <?php echo $mostrar1['nom_tip_doc']; ?>
                                 </th>
                                 <th>
-                                <a <?php echo "href='editar.php?documento=".$mostrar1['documento']."'";?>><i class="fas fa-user-edit"></i></a>
-                                <a <?php echo "href='eliminar.php?documento=".$mostrar1['documento']."'onclick='return confirmar()'";?>><i class="fas fa-trash-alt"></i></a>
+                                <a <?php echo "href='php/editar.php?documento=".$mostrar1['documento']."'";?>><i class="fas fa-user-edit"></i></a>
+                                <a <?php echo "href='php/eliminar.php?documento=".$mostrar1['documento']."'onclick='return confirmar()'";?>><i class="fas fa-trash-alt"></i></a>
                                 </th>
                             </tr>
                         </tbody>
@@ -198,7 +198,6 @@ Favor revisar los direccionamientos
         </div>
     </div>
 </body>
-
 </html>
 
 <?php

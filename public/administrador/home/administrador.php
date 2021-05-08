@@ -140,7 +140,7 @@
             <!-- Aquí va el contenido -->
             <div class="datos_parqueo-container">
                 <div class="dato_container">
-                    <small> <i class="fas fa-car"></i> Entrada al Parqueadero Hoy</small>
+                    <small> <i class="fas fa-car"></i> Entradas al Parqueadero Hoy</small>
                     <div class="container_conteo">
                         <p><?php print($vehiculos_parqueados); ?></p>
                     </div>
