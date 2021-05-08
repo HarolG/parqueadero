@@ -134,3 +134,35 @@ ul, ol {
     color: black;
     background-color: white;
 }
+
+/* estilos actualizar estado */
+
+#formu{
+    width: 320px;
+    background-color: white;
+    margin: 50px auto;
+    border-radius: 10px;
+    border: 1px solid gray;
+    padding: 5px;
+}
+
+#cambiar{
+    width: 200px;
+    margin: 10px auto;
+    padding: 5px;
+    border-radius: 10px;
+    border: 2px solid #2a3f54;
+}
+
+.btn-actualizar{
+    background-color: #2a3f54;
+    padding: 3px 4px;
+    border-radius: 10px;
+    color: white;
+    border: 2px solid #2a3f54;
+}
+
+.btn-actualizar:hover{
+    color: black;
+    background-color: white;
+}

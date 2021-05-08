@@ -13,7 +13,7 @@
     <title>Crear Zonas</title>
     <!-- Estilos Generales -->
     <link rel="stylesheet" href="../../../../layout/css/navegacion.css">
-    <link rel="stylesheet" href="../css/estado.css">
+    <link rel="stylesheet" href="../css/form_insert.css">
     <!-- Font awesome -->
     <script src="https://kit.fontawesome.com/a90c49b6b2.js" crossorigin="anonymous"></script>
     <!-- Tipo de letra -->
@@ -102,7 +102,7 @@
                 </div>
            </div>
            <!-- Aquí va el contenido -->
-        <form action="tipo_zona.php" id="form" method="POST">
+        <form action="../php/tipo_zona.php" id="form" method="POST">
             <h2 class="titulo">CREAR TIPO DE ZONA</h2>
             <!-- <input type="text" name="idzona" id="inputzona" placeholder="Ingrese el id de la zona" autocomplete="off" required> -->
             <input type="text" name="zonita" id="inputcupos" placeholder="Ingrese el estado"
