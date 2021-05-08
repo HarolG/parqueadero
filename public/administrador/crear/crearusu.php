@@ -218,7 +218,7 @@
                             </div>
                             <div class="cargue_container">
                                 <div class="subtitle_form">
-                                    <p>Cargue los siguiente Documentoss</p>
+                                    <p>Cargue los siguiente Documentos</p>
                                 </div>
                                 <div class="cargue_main">
                                     <div class="grupo_cargue">
