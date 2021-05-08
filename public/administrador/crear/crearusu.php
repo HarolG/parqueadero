@@ -119,7 +119,7 @@
                         <div class="form_title">
                             <p>Formulario para el registro de Vehiculos</p>
                         </div>
-                        <form action="" class="form_vehiculo">
+                        <form action="insertar.php" class="form_vehiculo">
                             <div class="column_container">
                                 <div class="column_form">
                         
@@ -253,31 +253,45 @@
                 </div>
                 <div class="crud_container">
                     <div class="table_container">
+                        <form action="" class="form_search">
+                            <input type="search" name="" id="" class="search_bar" placeholder="Ingrese la placa del Vehiculo">
+                            <button type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
+                        </form>
+                                                    
                         <table>
                             <thead>
-                                <th>Placa</th>
+                                <th class="th_start">Placa</th>
                                 <th>Modelo</th>
                                 <th>Marca</th>
                                 <th>Tipo de Vehiculo</th>
                                 <th>Documento</th>
-                                <th>Soat</th>
-                                <th>Tecnomecanica</th>
-                                <th>Foto</th>
                                 <th>Color</th>
-                                <th>Acciones</th>
+                                <th class="th_end">Acciones</th>
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td>1</td>
-                                    <td>2</td>
-                                    <td>3</td>
-                                    <td>4</td>
+                                    <td>NAK-14A</td>
+                                    <td>2020</td>
+                                    <td>Susuki</td>
+                                    <td>Moto</td>
+                                    <td>1234</td>
+                                    <td>Negro</td>
+                                    <td>
+                                        <a href="#" class="edit">Editar</a>
+                                        <a href="#" class="delete">Eliminar</a>
+                                    </td>
                                 </tr>
                                 <tr>
-                                    <td>1</td>
-                                    <td>2</td>
-                                    <td>3</td>
-                                    <td>4</td>
+                                    <td>NAK-14A</td>
+                                    <td>2020</td>
+                                    <td>Susuki</td>
+                                    <td>Moto</td>
+                                    <td>1234</td>
+                                    <td>Rojo</td>
+                                    <td>
+                                        <a href="#" class="edit">Editar</a>
+                                        <a href="#" class="delete">Eliminar</a>
+                                    </td>
                                 </tr>
                             </tbody>
                         </table>
