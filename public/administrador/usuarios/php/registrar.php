@@ -1,31 +1,48 @@
 <?php
-include("../../../php/conexion.php");
-?>
+    include("../../../../php/conexion.php");
+?> 
 
+<!-- 
+Importante,
+Esto es solo una plantilla
+En caso de que las imagenes no se inserten, o los estilos no se inserten
+Favor revisar los direccionamientos 
+-->
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Usuarios</title>
     <!-- Estilos Generales -->
-    <link rel="stylesheet" href="../../../layout/css/navegacion.css">
-    <link rel="stylesheet" href="css/registro.css">
+    <link rel="stylesheet" href="../../../../layout/css/navegacion.css">
+    <link rel="stylesheet" href="../css/registro.css">
     <!-- Font awesome -->
     <script src="https://kit.fontawesome.com/a90c49b6b2.js" crossorigin="anonymous"></script>
     <!-- Tipo de letra -->
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;1,100;1,300;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;1,100;1,300;1,400&display=swap"rel="stylesheet">
+    <!-- funcion para hacer una pregunta -->
+    <script type="text/javascript">
+		function confirmar(){
+			return confirm('¿Estas Seguro? se eliminaran los datos y no podras restaurarlos');
+
+		}
+
+	</script>
+    
 </head>
+
 <body>
     <div class="container">
         <div class="navegacion">
             <div class="site_title">
-                <img src="../../../img/logo_blanco.png" alt="logo" class="logo">
+                <img src="../../../../img/logo_blanco.png" alt="logo" class="logo">
             </div>
             <div class="nav_profile">
                 <div class="profile_pic">
-                    <img src="../../../img/foto_perfil.png" alt="">
+                    <img src="../../../../img/foto_perfil.png" alt="">
                 </div>
                 <div class="profile_info">
                     <div>
@@ -38,7 +55,7 @@ include("../../../php/conexion.php");
                 <h5>GENERAL</h5>
                 <ul>
                     <li>
-                        <a href="administrador.php"><i class="fa fa-home " aria-hidden="true"> Inicio </i></a>
+                        <a href="../home/administrador.php"><i class="fa fa-home " aria-hidden="true"> Inicio </i></a>
                         <div class="nav_decorate"></div>
                     </li>
                     <li>
@@ -49,19 +66,12 @@ include("../../../php/conexion.php");
                         <a href="../zonas/zona.php"><i class="fa fa-plus" aria-hidden="true"> Crear Zonas </i></a>
                         <div class="nav_decorate"></div>
                     </li>
-
-                </ul>
-            </div>
-            <div class="menu_section">
-                <h5>SUBGENERAL</h5>
-                <ul>
-                    
                     <li>
-                        <a href="usuarios.php"><i class="fa fa-users" aria-hidden="true"> Usuarios </i></a>
+                        <a href="../usuarios/usuarios.php"><i class="fa fa-users" aria-hidden="true"> Crear Usuarios </i></a>
                         <div class="nav_decorate"></div>
                     </li>
                     <li>
-                        <a href="../public/administrador/crear/crearusu.php"> <i class="fa fa-car" aria-hidden="true"> Registrar Vehiculos </i></i></a>
+                        <a href="../crear/crearusu.php"> <i class="fa fa-car" aria-hidden="true"> Registrar Vehiculos </i></i></a>
                         <div class="nav_decorate"></div>
                     </li>
                 </ul>
@@ -77,8 +87,9 @@ include("../../../php/conexion.php");
                 </ul>
             </div> -->
         </div>
+        <!-- Aquí va el contenido -->
         <div class="contenido">
-           <div class="nav_menu">
+            <div class="nav_menu">
                 <div class="container_nav-menu">
                     <div class="icon_menu">
                         <i class="fa fa-bars" aria-hidden="true"></i>
@@ -91,22 +102,109 @@ include("../../../php/conexion.php");
                     </div>
                     <div class="user">
                         <div class="user_pic">
-                            <img src="../../../img/foto_perfil.png" alt="">
+                            <img src="../../../../img/foto_perfil.png" alt="">
                         </div>
-                        <p><?php echo $_SESSION['nom']," ", $_SESSION['ape']?><i class="fa fa-caret-down" aria-hidden="true"></i></p>
+                            <ul class="navy">
+                                <li>
+                                    <a href=""><p><?php echo $_SESSION['nom'];?><i class="fa fa-caret-down" aria-hidden="true"></i></p></a>
+                                    <ul>
+                                        <li><a href="">Your Profile</a></li>
+                                        <li><a href="">Settings</a></li>
+                                        <li><a href="../../../../php/cerrarsesion.php">Logout</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
-                </div>
-           </div>
-           <!-- Aquí va el contenido -->
-                <div class="uno">
-                    <h1>REGISTRO DE USUARIO</h1>
-                    <a href="usuarios.php" class="back" style="text-decoration:none;"><i class="fas fa-hand-point-left" ></i></a>
+                
+            </div>  
+        <div>
+            <!-- codigo para registrar un tipo de usuario nuevo -->
+        <div id="tipousu" class="mostrar">
+            <form class="form1" method="POST">
+                <i class="fas fa-times" onclick="cerrar1();"></i>
+                <label>Registrar nuevo</label> <br>
+                <label>Tipo de usuario</label>
+                <input type="text" name="restipusu" placeholder="Tipo de usuario" class="input" autocomplete="off">   
+                <input type="submit" value="Registrar" class="btn">
+                <input type="hidden" name="regisusu">
+            </form>
+             <?php
+                    
+                    if(isset($_POST['regisusu'])){
+                        $tipusu=$_POST['restipusu'];
+                       
+                        
+                        $sql="INSERT INTO `tipo_usuario` (nom_tip_usu) VALUES ('$tipusu')";
+                            
+                        $resul=mysqli_query($mysqli,$sql);
+                            
+                        if($resul){  
+                            echo "<script language='JavaScript'>
+                            alert('Se ha creado el tipo de usuario correctamente');
+                            window.location.href='registrar.php';
+                            </script>";  
+                        }else{
+                            echo "<script language='JavaScript'>
+                            alert('el tipo de usuario no fue creado');
+                            </script>";
+                        }
+                        mysqli_close($mysqli);
+                    }else{          
+                ?>
+                <?php
+                    }
+            ?>
+        </div>
+
+           <!-- codigo para registrar un tipo de documento nuevo -->
+        <div id="tipodoc" class="mostrar1">
+            <form class="form2" method="POST">
+                <i class="fas fa-times" onclick="cerrar2();"></i>
+                <label class="label">Registrar nuevo</label> <br>
+                <label class="label">Tipo de documento</label>
+                <input type="text" name="restipdoc" placeholder="Tipo de usuario" class="input1" autocomplete="off">   
+                <input type="submit" value="Registrar" class="btn1">
+                <input type="hidden" name="regisdoc">
+            </form>
+             <?php
+                    
+                    if(isset($_POST['regisdoc'])){
+                        $tipdoc=$_POST['restipdoc'];
+                       
+                        
+                        $sql="INSERT INTO `tipo_documento` (nom_tip_doc) VALUES ('$tipdoc')";
+                            
+                        $resul=mysqli_query($mysqli,$sql);
+                            
+                        if($resul){  
+                            echo "<script language='JavaScript'>
+                            alert('Se ha creado el tipo de documento correctamente');
+                            window.location.href='registrar.php';
+                            </script>";  
+                        }else{
+                            echo "<script language='JavaScript'>
+                            alert('el tipo de documento no fue creado');
+                            </script>";
+                        }
+                        mysqli_close($mysqli);
+                    }else{          
+                ?>
+                <?php
+                    }
+            ?>
+        </div>
+
+        <div class="uno">
+                        <h1>REGISTRO DE USUARIO</h1>
+                        <a href="../usuarios.php" class="back" style="text-decoration:none;"><i class="fas fa-hand-point-left"></i></a>
+                   
                     <div class="dos">
                         <form method="POST" class="form">
                                 <!-- input de documento -->
                             <div class="cajitas">
                                 <label for="placa" class="extras1">Documento</label>
-                                <input type="text" id="documento" name="documento" placeholder="Documento" class="extras2" required
+                                <input type="number" id="documento" name="documento" placeholder="Documento" class="extras2" required
                                 autocomplete="off">
                             </div>
                                 <!-- input de nombre -->
@@ -122,12 +220,12 @@ include("../../../php/conexion.php");
                                 <!-- input de edad -->
                             <div class="cajitas">
                                 <label for="placa" class="extras1">Edad</label>
-                                <input type="text" id="edad" name="edad" placeholder="Edad" class="extras2" required autocomplete="off">
+                                <input type="number" id="edad" name="edad" placeholder="Edad" class="extras2" required autocomplete="off">
                             </div>
                                 <!-- input de celular -->
                             <div class="cajitas">
                                 <label for="placa" class="extras1">Celular</label>
-                                <input type="text" id="celular" name="celular" placeholder="Celular" class="extras2" required autocomplete="off">
+                                <input type="number" id="celular" name="celular" placeholder="Celular" class="extras2" required autocomplete="off">
                             </div>
                                 <!-- input de direccion-->
                             <div class="cajitas">
@@ -146,7 +244,8 @@ include("../../../php/conexion.php");
                             </div>
                                 <!-- TIPO DE USUARIO -->
                             <div class="cajitas">
-                                <label for="" class="extras1">Tipo de usuario</label>
+                                <label for="" class="extras1">Tipo de usuario</label> <br>
+                                <a onclick="tipoUsu()" class="extras1" style="cursor:pointer; text-decoration: underline; color:blue;">Registrar nuevo tipo de usuario</a>
                                 <select id="" name="tipo_usuario" class="extras2">
                         <!-- consultas y codigo para validar que los registros esten el la bd y guardarlos en una lista -->
                                     <?php
@@ -165,7 +264,8 @@ include("../../../php/conexion.php");
                             </div>
                                 <!-- TIPO DE DOCUMENTO -->
                             <div class="cajitas">
-                                <label for="" class="extras1">Tipo de documento</label>
+                                <label for="" class="extras1">Tipo de documento</label> <br>
+                                <a onclick="tipoDoc()" class="extras1" style="cursor:pointer; text-decoration: underline; color:blue;">Registrar nuevo tipo de documento</a>
                                 <select id="" name="tipo_documento" class="extras2">
                                     <?php
                                         $sql="SELECT*FROM tipo_documento";
@@ -211,7 +311,8 @@ include("../../../php/conexion.php");
                             
                         if($resul){  
                             echo "<script language='JavaScript'>
-                            alert('Se ha creado el usuario correctamente');
+                                alert('Se ha creado el usuario correctamente');
+                                
                             </script>";  
                         }else{
                             echo "<script language='JavaScript'>
@@ -224,8 +325,28 @@ include("../../../php/conexion.php");
                 <?php
                     }
             ?>
+    </div>
+    <script type="text/javascript">
+    function tipoUsu(){
+
+        document.getElementById('tipousu').style.display ='block';
+        
+    }
+    function cerrar1() {
+        
+        document.getElementById('tipousu').style.display ='none';
+    }
+    function cerrar2() {
+        document.getElementById('tipodoc').style.display ='none';
+    }
+    function tipoDoc(){
+
+        document.getElementById('tipodoc').style.display ='block';
+        
+    }
+
+
+
+</script>
 </body>
 </html>
-
-  
-                
