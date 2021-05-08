@@ -1,7 +1,35 @@
 <?php
-    include("../../../../php/conexion.php");
+ include("../../../../php/conexion.php");
+// $cantidad = '';
+$estado= '';
 
-    if(isset($_SESSION['tipo']) && isset($_SESSION['nom']) && isset($_SESSION['ape']) && isset($_SESSION['pass']) ) {
+if  (isset($_GET['id_zona'])) {
+  $id = $_GET['id_zona'];
+  $query = "SELECT * FROM zona_parqueo, estado WHERE zona_parqueo.id_estado = estado.id_estado AND id_zona=$id";
+  $result = mysqli_query($mysqli, $query);
+  if (mysqli_num_rows($result) == 1) {
+    $row = mysqli_fetch_array($result);
+    // $cantidad = $row['title'];
+    $estado = $row['nom_estado'];
+  }
+}
+
+if (isset($_POST['update'])) {
+  $id = $_GET['id_zona'];
+//   $title= $_POST['title'];
+  $estado = $_POST['cambiar_estado'];
+
+  $query = "UPDATE zona_parqueo set id_estado = '$estado' WHERE id_zona=$id";
+  mysqli_query($mysqli, $query);
+
+  if ($query) {
+      echo '<script type="text/javascript">
+                alert("se actualizo el estado correctamente");
+                window.location.href="../zona.php";
+            </script>';
+  }
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -13,7 +41,7 @@
     <title>Crear Zonas</title>
     <!-- Estilos Generales -->
     <link rel="stylesheet" href="../../../../layout/css/navegacion.css">
-    <link rel="stylesheet" href="../css/estado.css">
+    <link rel="stylesheet" href="../css/form_insert.css">
     <!-- Font awesome -->
     <script src="https://kit.fontawesome.com/a90c49b6b2.js" crossorigin="anonymous"></script>
     <!-- Tipo de letra -->
@@ -102,34 +130,27 @@
                 </div>
            </div>
            <!-- Aquí va el contenido -->
-        <form action="tipo_estado.php" id="form" method="POST">
-            <h2 class="titulo">CREAR ESTADO</h2>
+           <form action="editar.php?id_zona=<?php echo $_GET['id_zona']; ?>" method="POST" id="formu">
+            <h2 class="titulo">EDITAR ESTADO</h2>
             <!-- <input type="text" name="idzona" id="inputzona" placeholder="Ingrese el id de la zona" autocomplete="off" required> -->
-            <input type="text" name="estado" id="inputcupos" placeholder="Ingrese el estado"
-                autocomplete="off" required>
-            <input type="submit" name="guardar" id="guardar" value="Crear Estado">
-        </form>
-
-        <table class="zonas_registradas">
-            <thead>
-                <tr>
-                    <td class="head_table">ID tipo estado</td>
-                    <td class="head_table">Nombre de Estado</td>
-                </tr>
-            </thead>
-            <tbody>
+            <select name="cambiar_estado" id="cambiar">
+                <option value=""><?php echo $row['nom_estado'];?></option>
                 <?php
-                            $query = "SELECT * FROM estado";
-                            $result_tasks = mysqli_query($mysqli, $query);    
-                    
-                            while($row = mysqli_fetch_assoc($result_tasks)) { ?>
-                <tr>
-                    <td class="body_table"><?php echo $row['id_estado'] ?></td>
-                    <td class="body_table"><?php echo $row['nom_estado'] ?></td>
-                </tr>
-                <?php } ?>
-            </tbody>
-        </table>
+                            $sql = "SELECT * FROM estado";
+                            $query = mysqli_query($mysqli, $sql);
+                
+                            while ($row = mysqli_fetch_array($query)) {
+                        ?>
+                <option value="<?php echo $row['id_estado'];?>"><?php echo $row['nom_estado'];?></option>
+                <?php
+                            }
+                        ?>
+            </select>
+            <!-- <input type="submit" name="guardar" id="guardar" value="Crear Estado"> -->
+            <button class="btn-actualizar" name="update">
+                Actualizar Estado
+            </button>
+        </form>
         <div class="btn-volver">
             <a href="../zona.php">REGRESAR</a>
         </div>
@@ -143,10 +164,3 @@
 </body>
 </html>
 
-<?php
-    } else {
-        echo '<script type="text/javascript">
-                    window.location.href="../../login/login.html";
-                </script>';
-    }
-?>
