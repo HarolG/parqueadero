@@ -11,12 +11,12 @@ if (isset($_POST['guardar'])) {
     if ($query) {
         echo '<script type="text/javascript">
                     alert("Se creo el tipo de zona correctamente");
-                    window.location.href="form_tip_zona.php";
+                    window.location.href="../includes/form_tip_zona.php";
               </script>';
     } else {
         echo '<script type="text/javascript">
                 alert("ERROR");
-                window.location.href="form_tip_zona.php";
+                window.location.href="../includes/form_tip_zona.php";
             </script>';
     }
 }
