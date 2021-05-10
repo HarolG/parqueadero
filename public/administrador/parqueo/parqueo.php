@@ -4,7 +4,6 @@
     if(isset($_SESSION['tipo']) && isset($_SESSION['nom']) && isset($_SESSION['ape']) && isset($_SESSION['pass']) ) {
         $tipoZona = $mysqli -> query ("SELECT id_zona, nom_tip_zona FROM zona_parqueo, tipo_zona WHERE zona_parqueo.id_tip_zona = tipo_zona.id_tip_zona");
         $zonas = $mysqli -> query ("SELECT id_zona,cupos,id_estado,nom_tip_zona,cupos_live FROM zona_parqueo, tipo_zona WHERE zona_parqueo.id_tip_zona = tipo_zona.id_tip_zona");
-    
 ?>
 
 <!DOCTYPE html>
@@ -131,6 +130,7 @@
                     </div><hr>
                 <div class="filtro"><br>
                     <form method="post" class = "formFiltro">
+                        <h2>REPORTES</h2>
                         <strong>Zona de Parqueo:</strong>
                         <select class = "tipoZona" id="tipoZona" name="tipoZona">
                             <option selected>Seleccione una opción </option>
@@ -189,11 +189,15 @@
 
                     //tipo de zona que desea ver
                     if($tip_zona == 0){
-                        //ver todas las zonas
-                        $entradas = $mysqli -> query ("SELECT * FROM registro_parqueadero WHERE id_tip_entrada = 1 and fecha Between '$tip_repo' And '$fecha_actual'");
+                    //ver todas las zonas
+                        $entradas = $mysqli -> query ("SELECT vehiculo.placa, usuario.documento, usuario.nombre, usuario.apellido,usuario.celular, registro_parqueadero.hora, registro_parqueadero.fecha 
+                                                    FROM usuario, vehiculo, registro_parqueadero 
+                                                    WHERE usuario.documento = vehiculo.documento AND vehiculo.placa = registro_parqueadero.placa AND registro_parqueadero.fecha Between '$tip_repo' And '$fecha_actual'");
                                             
                     }else {
-                        $entradas = $mysqli -> query ("SELECT * FROM registro_parqueadero WHERE id_tip_entrada = 1 and id_zona = '$tip_zona' and fecha Between '$tip_repo' And '$fecha_actual'");
+                        $entradas = $mysqli -> query ("SELECT vehiculo.placa, usuario.documento, usuario.nombre, usuario.apellido,usuario.celular, registro_parqueadero.hora, registro_parqueadero.fecha
+                                                    FROM usuario, vehiculo, registro_parqueadero 
+                                                    WHERE usuario.documento = vehiculo.documento AND vehiculo.placa = registro_parqueadero.placa AND registro_parqueadero.id_zona = '$tip_zona' and registro_parqueadero.fecha Between '$tip_repo' And '$fecha_actual'");
                     }
 
                    
@@ -201,12 +205,15 @@
                     if ($resul > 0)
                     {
                         $tabla= 
-                        '
-                            <div class="tablas">
+                        '<div class="repo" >
+                            <div class="tabla" id ="tabla">
                             <table>
                             <thead>
                                 <tr>
                                     <th>Placa</th>
+                                    <th>Doc. Propietario</th>
+                                    <th>Nom. Propietario</th>
+                                    <th>Tel</th>
                                     <th>Fecha</th>
                                     <th>H. Ingreso</th>
                                     <th>H. Salida</th>
@@ -214,21 +221,24 @@
                                 </tr>
                             </thead>';
                     
-                        while($fila= $entradas->fetch_array())
+                        while($fila = mysqli_fetch_array($entradas))
                         {
-                        $placa = $fila[2];
+                        $placa = $fila['placa'];
                         
                         $tabla.=
                             " <tbody>
                                 <tr>
                                     <td>$placa</td>
-                                    <td>$fila[3]</td>
-                                    <td>$fila[4]</td>";
+                                    <td>".$fila['documento']."</td>
+                                    <td>".$fila['nombre']." ".$fila['apellido']." </td>
+                                    <td>".$fila['celular']."</td>
+                                    <td>".$fila['fecha']."</td>
+                                    <td>".$fila['hora']."</td>";
                                     $salida = $mysqli -> query ("SELECT * FROM registro_parqueadero WHERE placa = '$placa' and id_tip_entrada = 2");
+                                    $h_entrada = $fila['hora'];
                                     $resu = $salida->num_rows;
                                     if ($resu == 1){
                                         $infoSalida = mysqli_fetch_array($salida);
-                                        $h_entrada = $fila[4];
                                         $h_salida = $infoSalida['hora'];
                     
                                         $hora1 = new DateTime($h_entrada);//Hora de entrada
@@ -241,8 +251,6 @@
                                                 <td>$tiempoR</td>";
                                         
                                     }else{
-                                        $h_entrada = $fila[4];
-                    
                                         $hora1 = new DateTime($h_entrada);//Hora de entrada
                                         $hora2 = new DateTime(date("H:i:s"));//Hora de actual
                                         
@@ -253,12 +261,18 @@
                                                 <td>$tiempoR</td>";
                                     }
                         $tabla.='</tr>
-                                </tbody>';
+                                </tbody>
+                                        ';
                     
                         }
                     
-                        $tabla.="</table></div>
-                                <div class='numVehi'>
+                        $tabla.="   </table></div>
+                                    <div class='btnImprimir'>
+                                        <a  onclick='imprimir()' value= 'Imprimir'><i class='fas fa-file-pdf'></i></a>
+                                    </div>
+                                </div>
+
+                                <div class='numVehi' id= 'numVehi'>
                                     <h2>N° DE VEHICULOS INGRESADOS</h2>";
                                     if($tip_zona == 0){
                                         $tabla.="<strong class='num'>$resul</strong><img src='../../../img/logo1.png' class='logo2'>";
@@ -283,12 +297,31 @@
                         echo $tabla;
                     }
                 ?>
-                   </div>
+                
+              
+                <script>
+                  function imprimir(){
+                      var mywindow = window.open('', 'PRINT', 'height=1000,width=900');
+                      mywindow.document.write('<html><head> <link rel="stylesheet" href="css/estilos.css">');
+                      mywindow.document.write('</head><body>');
+                      mywindow.document.write('<img src="../../../img/logo_blanco.png" alt="logo" class="logo"> <br> <h2>REPORTES</h2>');
+                      mywindow.document.write(document.querySelector('#tabla').innerHTML);
+                      mywindow.document.write('<h2>N° DE VEHICULOS INGRESADOS: </h2> <strong><?php echo $resul ?></strong>');
+
+                      mywindow.document.write('</body></html>');
+                      mywindow.document.close(); // necesario para IE >= 10
+                      mywindow.focus(); // necesario para IE >= 10
+                      mywindow.print();
+                      mywindow.close();
+                      return true;
+                  }
+                </script>
+            </div>
+            <br><br><hr>
             </div>
         </div>
  
 </body>
-
 </html>
 
 <?php
