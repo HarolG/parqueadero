@@ -59,6 +59,7 @@ body {
     /* background-color: white; */
     margin: -164px 500px;
     position: absolute;
+    border-collapse: collapse;
 }
 
 .head_table{
@@ -72,7 +73,7 @@ body {
 .body_table{
     text-align: center;
     font-size: 15px;
-    background-color: gray;
+    background-color: rgb(255, 255, 255);
     color: black;
     padding: 5px;
 }

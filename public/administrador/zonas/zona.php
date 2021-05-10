@@ -18,6 +18,7 @@
     <script src="https://kit.fontawesome.com/a90c49b6b2.js" crossorigin="anonymous"></script>
     <!-- Tipo de letra -->
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;1,100;1,300;1,400&display=swap" rel="stylesheet">
+    <script src="js/validar.js"></script>
 </head>
 <body>
     <div class="container">
@@ -102,7 +103,7 @@
                 </div>
            </div>
            <!-- Aquí va el contenido -->
-        <form action="php/crear_zona.php" id="form" method="POST">
+        <form action="php/crear_zona.php" id="form" method="POST" onsubmit="return validar();">
             <h2 class="titulo">CREAR ZONAS</h2>
             <!-- <input type="text" name="idzona" id="inputzona" placeholder="Ingrese el id de la zona" autocomplete="off" required> -->
             <select name="tipozona" id="tipozona">
@@ -119,7 +120,7 @@
                         ?>
             </select>
             <input type="text" name="cupos_zona" id="inputcupos" placeholder="Ingrese la cantidad de cupos"
-                autocomplete="off" required>
+                autocomplete="off">
             <select name="cupozona" id="cupozona">
                 <option value="">Seleccione un estado</option>
                 <?php
@@ -141,11 +142,11 @@
         <table class="zonas_registradas">
             <thead>
                 <tr>
-                    <td class="head_table">ID zona</td>
-                    <td class="head_table">Tipo de Zona</td>
-                    <td class="head_table">Cantidad de cupos</td>
-                    <td class="head_table">Estado</td>
-                    <td class="head_table">Operaciones</td>
+                    <td class="head_table">ID ZONA</td>
+                    <td class="head_table">TIPO DE ZONA</td>
+                    <td class="head_table">CANTIDAD DE CUPOS</td>
+                    <td class="head_table">ESTADO</td>
+                    <td class="head_table">OPERACIONES</td>
                 </tr>
             </thead>
             <tbody>
@@ -156,13 +157,16 @@
                     
                             while($row = mysqli_fetch_assoc($result_tasks)) { ?>
                 <tr>
-                    <td class="body_table"><?php echo $row['id_zona'] ?></td>
-                    <td class="body_table"><?php echo $row['nom_tip_zona'] ?></td>
-                    <td class="body_table"><?php echo $row['cupos'] ?></td>
-                    <td class="body_table"><?php echo $row['nom_estado']; ?></td>
+                    <td class="body_table"><b><?php echo $row['id_zona'] ?></b></td>
+                    <td class="body_table"><b><?php echo $row['nom_tip_zona'] ?></b></td>
+                    <td class="body_table"><b><?php echo $row['cupos'] ?></b></td>
+                    <td class="body_table"><b><?php echo $row['nom_estado']; ?></b></td>
                     <td class="body_table">
-                        <a href="php/editar.php?id_zona=<?php echo $row['id_zona']?>">
-                            <i class="fas fa-marker"></i>
+                        <a href="php/editar.php?id_zona=<?php echo $row['id_zona']?>" class="eliminarlink2">
+                            <i id="marker" class="fas fa-marker"></i>
+                        </a>
+                        <a href="php/eliminar.php?id_zona=<?php echo $row['id_zona']?>" class="eliminarlink">
+                            <i id="trash" class="fas fa-trash"></i>
                         </a>
                     </td>
                 </tr>
@@ -175,7 +179,7 @@
     </div>
 
     <script src="../../../library/jquery-3.6.0.min.js"></script>
-    <script src="js/main.js"></script>
+    <script src="js/confirmacion.js"></script>
 </body>
 </html>
 

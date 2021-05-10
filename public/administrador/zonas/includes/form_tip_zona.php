@@ -102,19 +102,19 @@
                 </div>
            </div>
            <!-- Aquí va el contenido -->
-        <form action="../php/tipo_zona.php" id="form" method="POST">
+        <form action="../php/tipo_zona.php" id="form" method="POST" onsubmit="return validar();">
             <h2 class="titulo">CREAR TIPO DE ZONA</h2>
             <!-- <input type="text" name="idzona" id="inputzona" placeholder="Ingrese el id de la zona" autocomplete="off" required> -->
             <input type="text" name="zonita" id="inputcupos" placeholder="Ingrese el tipo de zona"
-                autocomplete="off" required>
+                autocomplete="off">
             <input type="submit" name="guardar" id="guardar" value="Crear Estado">
         </form>
 
         <table class="zonas_registradas">
             <thead>
                 <tr>
-                    <td class="head_table">ID tipo zona</td>
-                    <td class="head_table">Nombre de tipo zona</td>
+                    <td class="head_table">ID TIPO ZONA</td>
+                    <td class="head_table">NOMBRE DE TIPO ZONA</td>
                 </tr>
             </thead>
             <tbody>
@@ -124,8 +124,8 @@
                     
                             while($row = mysqli_fetch_assoc($result_tasks)) { ?>
                 <tr>
-                    <td class="body_table"><?php echo $row['id_tip_zona'] ?></td>
-                    <td class="body_table"><?php echo $row['nom_tip_zona'] ?></td>
+                    <td class="body_table"><b><?php echo $row['id_tip_zona'] ?></b></td>
+                    <td class="body_table"><b><?php echo $row['nom_tip_zona'] ?></b></td>
                 </tr>
                 <?php } ?>
             </tbody>
@@ -139,7 +139,7 @@
     </div>
 
     <script src="../../../library/jquery-3.6.0.min.js"></script>
-    <script src="js/main.js"></script>
+    <script src="../js/main.js"></script>
 </body>
 </html>
 

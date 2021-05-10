@@ -11,12 +11,12 @@
         if ($query) {
             echo '<script type="text/javascript">
                         alert("Se creo el estado correctamente");
-                        window.location.href="form_tip_estado.php";
+                        window.location.href="../includes/form_tip_estado.php";
                   </script>';
         } else {
             echo '<script type="text/javascript">
                     alert("ERROR");
-                    window.location.href="form_tip_estado.php";
+                    window.location.href="../includes/form_tip_estado.php";
                 </script>';
         }
     }

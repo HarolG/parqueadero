@@ -18,6 +18,7 @@
     <script src="https://kit.fontawesome.com/a90c49b6b2.js" crossorigin="anonymous"></script>
     <!-- Tipo de letra -->
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;1,100;1,300;1,400&display=swap" rel="stylesheet">
+    <script src="../js/main-estado.js"></script>
 </head>
 <body>
     <div class="container">
@@ -102,19 +103,19 @@
                 </div>
            </div>
            <!-- Aquí va el contenido -->
-        <form action="../php/tipo_estado.php" id="form" method="POST">
+        <form action="../php/tipo_estado.php" id="form" method="POST" onsubmit="return validar();">
             <h2 class="titulo">CREAR ESTADO</h2>
             <!-- <input type="text" name="idzona" id="inputzona" placeholder="Ingrese el id de la zona" autocomplete="off" required> -->
             <input type="text" name="estado" id="inputcupos" placeholder="Ingrese el estado"
-                autocomplete="off" required>
+                autocomplete="off">
             <input type="submit" name="guardar" id="guardar" value="Crear Estado">
         </form>
 
         <table class="zonas_registradas">
             <thead>
                 <tr>
-                    <td class="head_table">ID tipo estado</td>
-                    <td class="head_table">Nombre de Estado</td>
+                    <td class="head_table">ID TIPO ESTADO</td>
+                    <td class="head_table">NOMBRE DE ESTADO</td>
                 </tr>
             </thead>
             <tbody>
@@ -124,8 +125,8 @@
                     
                             while($row = mysqli_fetch_assoc($result_tasks)) { ?>
                 <tr>
-                    <td class="body_table"><?php echo $row['id_estado'] ?></td>
-                    <td class="body_table"><?php echo $row['nom_estado'] ?></td>
+                    <td class="body_table"><b><?php echo $row['id_estado'] ?></b></td>
+                    <td class="body_table"><b><?php echo $row['nom_estado'] ?></b></td>
                 </tr>
                 <?php } ?>
             </tbody>
@@ -139,7 +140,6 @@
     </div>
 
     <script src="../../../library/jquery-3.6.0.min.js"></script>
-    <script src="js/main.js"></script>
 </body>
 </html>
 

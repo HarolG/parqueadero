@@ -107,6 +107,7 @@ body {
     width: 900px;
     /* background-color: white; */
     margin: 45px auto;
+    border-collapse: collapse;
 }
 
 .head_table{
@@ -120,7 +121,7 @@ body {
 .body_table{
     text-align: center;
     font-size: 15px;
-    background-color: gray;
+    background-color: rgb(255, 255, 255);
     color: black;
     padding: 5px;
 }
@@ -163,4 +164,20 @@ ul, ol {
 .navy li ul li ul {
     right:-140px;
     top:0px;
+}
+
+.eliminarlink{
+    text-decoration: none;
+}
+
+.eliminarlink2{
+    text-decoration: none;
+}
+
+#marker{
+    color: rgb(15, 169, 15);
+}
+
+#trash{
+    color: red;
 }
