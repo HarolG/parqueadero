@@ -16,10 +16,10 @@
         $foto = $_POST["vehic"];
 
 
-        $fichero_subido = $dir_subida . basename($_FILES['vehic']['name']);
+        $fichero_subido_foto = $dir_subida . basename($_FILES['vehic']['name']);
      
              echo '<pre>';
-             if (move_uploaded_file($_FILES['vehic']['tmp_name'], $fichero_subido)) {
+             if (move_uploaded_file($_FILES['vehic']['tmp_name'], $fichero_subido_foto)) {
                  //echo "El fichero es válido y se subió con éxito.\n";
                  //echo '<script> window.location="crearusu.php" </script>';
              } else {
@@ -31,10 +31,10 @@
              print_r($_FILES);
              print "</pre>";
         
-        $fichero_subido = $dir_subida . basename($_FILES['tecno']['name']);
+        $fichero_subido_tecno = $dir_subida . basename($_FILES['tecno']['name']);
      
              echo '<pre>';
-             if (move_uploaded_file($_FILES['tecno']['tmp_name'], $fichero_subido)) {
+             if (move_uploaded_file($_FILES['tecno']['tmp_name'], $fichero_subido_tecno)) {
                  echo "El fichero es válido y se subió con éxito.\n";
                  echo '<script> window.location="crearusu.php" </script>';
              } else {
@@ -46,10 +46,10 @@
              print_r($_FILES);
              print "</pre>";
 
-        $fichero_subido = $dir_subida . basename($_FILES['sooat']['name']);
+        $fichero_subido_soat = $dir_subida . basename($_FILES['sooat']['name']);
      
              echo '<pre>';
-             if (move_uploaded_file($_FILES['sooat']['tmp_name'], $fichero_subido)) {
+             if (move_uploaded_file($_FILES['sooat']['tmp_name'], $fichero_subido_soat)) {
                  echo "El fichero es válido y se subió con éxito.\n";
                  echo '<script> window.location="crearusu.php" </script>';
              } else {
@@ -66,7 +66,7 @@
         
         //Hacemos la consulta para que me seleccione los datos en la BD y valide
         $consul = "INSERT INTO vehiculo (placa, id_modelo, id_marca, id_tip_vehiculo, documento, id_color, anotaciones, soat, tecnomecanica, foto) 
-        VALUES ('$placa', '$modelo', '$marca', '$vehiculo', '$doc', '$color', '$anota', '$soat', '$tecno', '$foto')";
+        VALUES ('$placa', '$modelo', '$marca', '$vehiculo', '$doc', '$color', '$anota', '$fichero_subido_soat', '$fichero_subido_tecno', '$fichero_subido_foto')";
         $query = mysqli_query($mysqli, $consul);
 
         if(!$query){
