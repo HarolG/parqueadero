@@ -119,7 +119,7 @@
                         <div class="form_title">
                             <p>Formulario para el registro de Vehiculos</p>
                         </div>
-                        <form action="insertar.php" class="form_vehiculo">
+                        <form enctype="multipart/form-data" action="insertar.php" class="form_vehiculo" method="POST">
                             <div class="column_container">
                                 <div class="column_form">
                         
@@ -246,7 +246,7 @@
                                 </div>
                             </div>
                             <div class="boton_container">
-                                <input type="submit" value="CREAR">
+                                <input type="submit" value="CREAR" name="registro">
                             </div>
                         </form>
                     </div>
