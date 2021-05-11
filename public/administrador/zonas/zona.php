@@ -136,7 +136,7 @@
             </select>
             <a class="crear" href="includes/form_tip_estado.php">+ Crear estado</a>
             <a class="crear_zona"href="includes/form_tip_zona.php">+ Crear tipo zona</a>
-            <input type="submit" name="guardar" id="guardar" value="Crear Zona">
+            <input type="submit" name="guardar" id="guardar" value="CREAR ZONA">
         </form>
 
         <table class="zonas_registradas">
@@ -163,10 +163,12 @@
                     <td class="body_table"><b><?php echo $row['nom_estado']; ?></b></td>
                     <td class="body_table">
                         <a href="php/editar.php?id_zona=<?php echo $row['id_zona']?>" class="eliminarlink2">
-                            <i id="marker" class="fas fa-marker"></i>
+                            <!-- <i id="marker" class="fas fa-marker"></i> -->
+                            EDITAR
                         </a>
                         <a href="php/eliminar.php?id_zona=<?php echo $row['id_zona']?>" class="eliminarlink">
-                            <i id="trash" class="fas fa-trash"></i>
+                            <!-- <i id="trash" class="fas fa-trash"></i> -->
+                            ELIMINAR
                         </a>
                     </td>
                 </tr>
