@@ -253,48 +253,16 @@
                 </div>
                 <div class="crud_container">
                     <div class="table_container">
-                        <form action="" class="form_search">
-                            <input type="search" name="" id="" class="search_bar" placeholder="Ingrese la placa del Vehiculo">
+                        <form id="form_info_vehiculo" class="form_search">
+                            <input type="search" name="search_vehiculo" id="search_vehiculo" class="search_bar" placeholder="Ingrese la placa del Vehiculo">
                             <button type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
                         </form>
                                                     
-                        <table>
-                            <thead>
-                                <th class="th_start">Placa</th>
-                                <th>Modelo</th>
-                                <th>Marca</th>
-                                <th>Tipo de Vehiculo</th>
-                                <th>Documento</th>
-                                <th>Color</th>
-                                <th class="th_end">Acciones</th>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>NAK-14A</td>
-                                    <td>2020</td>
-                                    <td>Susuki</td>
-                                    <td>Moto</td>
-                                    <td>1234</td>
-                                    <td>Negro</td>
-                                    <td>
-                                        <a href="#" class="edit">Editar</a>
-                                        <a href="#" class="delete">Eliminar</a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>NAK-14A</td>
-                                    <td>2020</td>
-                                    <td>Susuki</td>
-                                    <td>Moto</td>
-                                    <td>1234</td>
-                                    <td>Rojo</td>
-                                    <td>
-                                        <a href="#" class="edit">Editar</a>
-                                        <a href="#" class="delete">Eliminar</a>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
+                        <div class="tabla_container" id="table_container">
+                            
+
+                        </div>
+
                     </div>
                 </div>
             </main>
@@ -302,6 +270,8 @@
     </div>
     </div>
     </div>
+
+    <script src="js/info_vehiculo.js"></script>
 </body>
 
 </html>
