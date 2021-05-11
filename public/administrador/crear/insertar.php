@@ -31,7 +31,7 @@
              print_r($_FILES);
              print "</pre>";
         
-        $fichero_subido =   . basename($_FILES['tecno']['name']);
+        $fichero_subido = $dir_subida . basename($_FILES['tecno']['name']);
      
              echo '<pre>';
              if (move_uploaded_file($_FILES['tecno']['tmp_name'], $fichero_subido)) {
