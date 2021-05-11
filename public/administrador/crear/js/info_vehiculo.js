@@ -9,6 +9,8 @@ formSearchVehiculo.addEventListener("submit", e => {
 
 function ajaxVehiculo(placa) {
 
+    eliminarNodo("table_container")
+
     const url = "php/info_vehiculo.php";
     const placaVehiculo = placa
 
@@ -90,4 +92,16 @@ function ajaxVehiculo(placa) {
     }
     http.send(`placa=${placaVehiculo}`)
 
+}
+
+function eliminarNodo(id){
+    //Si existe la caja o el div...
+    var div = document.getElementById(id)
+    if(div !== null){
+        while (div.hasChildNodes()){
+            div.removeChild(div.lastChild);
+        }
+    }else{
+        alert ("No existe la caja previamente creada.");
+    }
 }
