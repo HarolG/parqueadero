@@ -1,7 +1,7 @@
 function validar(){
     var estado, expresion;
     estado = document.getElementById("inputcupos").value;
-    expresion = /^[A-Z]+$/i;
+    expresion = /^[A-Za-zÁÉÍÓÚáéíóúñÑ ]+$/g;
 
     if (estado === "") {
         alert("Este campo no puede estar vacio!");
