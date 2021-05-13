@@ -20,3 +20,20 @@ function validar(){
         return false;
     }
 }
+
+function valid() {
+    let estado, cantidad, expresions;
+    estado = document.getElementById("cambiar").value;
+    cantidad = document.getElementById("cant_cupos").value;
+
+    if (estado === "") {
+        alert("Por favor seleccione un estado!");
+        return false;
+    } else if (cantidad === "") {
+        alert("El campo cantidad de cupos no puede estar vacio");
+        return false;
+    } else if (isNaN(cantidad)) {
+        alert("Por favor solo digite numeros en este campo");
+        return false;
+    }
+}
