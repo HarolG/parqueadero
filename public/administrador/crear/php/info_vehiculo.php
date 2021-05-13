@@ -18,8 +18,8 @@ if(isset($_POST['placa'])) {
             'documento' => $row['documento'],
             'tipo_vehiculo' => $row['tipo_vehiculo'],
             'soat' => $row['soat'],
-            'tecnomecanica' => $row['placa'],
-            'foto' => $row['modelo'],
+            'tecnomecanica' => $row['tecnomecanica'],
+            'foto' => $row['foto'],
             'color' => $row['color'],
             'anotaciones' => $row['anotaciones']
         );

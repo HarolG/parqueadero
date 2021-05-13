@@ -60,7 +60,7 @@ function ajaxVehiculo(placa) {
                                     </div>
                                     <div class="column_container_anotherInfo">
                                         <div class="column_anotherInfo">
-                                            <img src="../../../img/moto.png" alt="Foto del vehiculo">
+                                            <img src="${element.foto}" alt="Foto del vehiculo">
                                             <button>Cambiar Imagen</button>
                                         </div>
                                         <div class="column_anotherInfo">

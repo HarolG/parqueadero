@@ -3,23 +3,29 @@
 
     if(isset($_SESSION['tipo']) && isset($_SESSION['nom']) && isset($_SESSION['ape']) && isset($_SESSION['pass']) ) {
 
+        #Consulta para obtener todos los datos de los vehiculos ingresados el día hoy
         $sql = "SELECT * FROM registro_parqueadero WHERE fecha = CURDATE() AND id_tip_entrada = '1' ORDER BY hora ASC";
         $query = mysqli_query($mysqli, $sql);
         $result = mysqli_fetch_array($query);
 
+        #De aquí cuento cuantos vehiculos han entrado el día de hoy
         $vehiculos_parqueados = $query->num_rows;
 
+        #Consulta para obtener los cupos de los vehiculos 
         $sql2 = "SELECT * FROM zona_parqueo WHERE id_tip_zona = '1'";
         $query2 = mysqli_query($mysqli, $sql2);
 
+        #Defino la variable para los cupos
         $cupos_carros = 0;
         $cupos_motos = 0;
         $cupos_ciclas = 0;
     
+        #En este ciclo cuento los cupos que existen en cada zona de parqueo de carros
         while ($row = mysqli_fetch_array($query2)) {
             $cupos_carros = $cupos_carros + $row['cupos_live'];
         }
 
+        #En este ciclo cuento los cupos que existen en cada zona de parqueo de motos
         $sql3 = "SELECT * FROM zona_parqueo WHERE id_tip_zona = '2'";
         $query3 = mysqli_query($mysqli, $sql3);
     
@@ -27,6 +33,7 @@
             $cupos_motos = $cupos_motos + $row2['cupos_live'];
         }
 
+        #En este ciclo cuento los cupos que existen en cada zona de ciclas
         $sql4 = "SELECT * FROM zona_parqueo WHERE id_tip_zona = '3'";
         $query4 = mysqli_query($mysqli, $sql4);
     
@@ -172,6 +179,7 @@
                             <label for="zona">Seleccione la Zona</label>
                             <select name="zona" id="zona">
                                 <?php
+                                    #Esta consulta trae todas las zonas que existen el parqueadero
                                     $zonasSql = "SELECT id_zona FROM zona_parqueo";
                                     $queryZonas = mysqli_query($mysqli, $zonasSql);
 
@@ -195,8 +203,13 @@
         </div>
 </body>
 
+<!-- Libreria para crear gráficas -->
 <script src="../../../library/plotly-latest.min.js"></script>
+
+<!-- Librería que voy a quitar -->
 <script src="../../../library/jquery-3.6.0.min.js"></script>
+
+<!-- Javascript general -->
 <script src="js/graficas.js"></script>
 
 </html>
