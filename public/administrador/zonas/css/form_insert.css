@@ -139,7 +139,7 @@ ul, ol {
 /* estilos actualizar estado */
 
 #formu{
-    width: 320px;
+    width: 450px;
     background-color: white;
     margin: 50px auto;
     border-radius: 10px;
@@ -153,6 +153,19 @@ ul, ol {
     padding: 5px;
     border-radius: 10px;
     border: 2px solid #2a3f54;
+}
+
+#cant_cupos{
+    width: 130px;
+    margin: 10px auto;
+    padding: 6px;
+    border-radius: 10px;
+    border: 2px solid #2a3f54;
+}
+
+.label{
+    position: absolute;
+    margin: -10px 4px;
 }
 
 .btn-actualizar{

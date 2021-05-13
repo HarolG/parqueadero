@@ -2,6 +2,7 @@
  include("../../../../php/conexion.php");
 // $cantidad = '';
 $estado= '';
+$cantidad= '';
 
 if  (isset($_GET['id_zona'])) {
   $id = $_GET['id_zona'];
@@ -11,6 +12,7 @@ if  (isset($_GET['id_zona'])) {
     $row = mysqli_fetch_array($result);
     // $cantidad = $row['title'];
     $estado = $row['nom_estado'];
+    $cantidad = $row['cupos'];
   }
 }
 
@@ -18,8 +20,10 @@ if (isset($_POST['update'])) {
   $id = $_GET['id_zona'];
 //   $title= $_POST['title'];
   $estado = $_POST['cambiar_estado'];
+  $cantidadcupos = $_POST['cant_cupos'];
+  
 
-  $query = "UPDATE zona_parqueo set id_estado = '$estado' WHERE id_zona=$id";
+  $query = "UPDATE zona_parqueo SET id_estado = '$estado', cupos = '$cantidadcupos', cupos_live = '$cantidadcupos' WHERE id_zona = $id";
   mysqli_query($mysqli, $query);
 
   if ($query) {
@@ -38,6 +42,7 @@ if (isset($_POST['update'])) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="../../../../img/logo.ico"/>
     <title>Crear Zonas</title>
     <!-- Estilos Generales -->
     <link rel="stylesheet" href="../../../../layout/css/navegacion.css">
@@ -51,7 +56,7 @@ if (isset($_POST['update'])) {
     <div class="container">
     <div class="navegacion">
             <div class="site_title">
-                <img src="../../../../img/logo_blanco.png" alt="logo" class="logo">
+                <img src="../../../../img/Logo_parking_2.0.png" alt="logo" class="logo">
             </div>
             <div class="nav_profile">
                 <div class="profile_pic">
@@ -130,9 +135,11 @@ if (isset($_POST['update'])) {
                 </div>
            </div>
            <!-- Aquí va el contenido -->
-           <form action="editar.php?id_zona=<?php echo $_GET['id_zona']; ?>" method="POST" id="formu">
+           <form action="editar.php?id_zona=<?php echo $_GET['id_zona']; ?>" method="POST" id="formu" onsubmit="return valid();">
             <h2 class="titulo">EDITAR ESTADO</h2>
             <!-- <input type="text" name="idzona" id="inputzona" placeholder="Ingrese el id de la zona" autocomplete="off" required> -->
+            <label for="cant_cupos" class="label">Cantidad de cupos</label>
+            <input type="text" name="cant_cupos" id="cant_cupos" placeholder="Cupos: <?php echo $row['cupos'];?>">
             <select name="cambiar_estado" id="cambiar">
                 <option value=""><?php echo $row['nom_estado'];?></option>
                 <?php
@@ -148,7 +155,7 @@ if (isset($_POST['update'])) {
             </select>
             <!-- <input type="submit" name="guardar" id="guardar" value="Crear Estado"> -->
             <button class="btn-actualizar" name="update">
-                Actualizar Estado
+                ACTUALIZAR
             </button>
         </form>
         <div class="btn-volver">
@@ -160,7 +167,7 @@ if (isset($_POST['update'])) {
     </div>
 
     <script src="../../../library/jquery-3.6.0.min.js"></script>
-    <script src="js/main.js"></script>
+    <script src="../js/main.js"></script>
 </body>
 </html>
 

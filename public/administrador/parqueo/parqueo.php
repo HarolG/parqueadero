@@ -13,6 +13,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="../../../img/logo.ico"/>
     <title>Reporte de entrada</title>
     <!-- Estilos Generales -->
     <link rel="stylesheet" href="../../../layout/css/navegacion.css">
@@ -31,7 +32,7 @@
     <div class="container">
         <div class="navegacion">
             <div class="site_title">
-                <img src="../../../img/logo_blanco.png" alt="logo" class="logo">
+                <img src="../../../img/Logo_parking_2.0.png" alt="logo" class="logo">
             </div>
             <div class="nav_profile">
                 <div class="profile_pic">
@@ -128,7 +129,7 @@
                             }
                         ?>
                     </div><hr>
-                <div class="filtro"><br>
+                <div class="filtro">
                     <form method="post" class = "formFiltro">
                         <h2>REPORTES</h2>
                         <strong>Zona de Parqueo:</strong>
@@ -155,7 +156,7 @@
                     </form>
                 </div>
                 <div class="lugar">
-
+               
                 <?php
                  if(@$_POST['buscar']){
                     date_default_timezone_set('America/Bogota');
@@ -234,7 +235,11 @@
                                     <td>".$fila['celular']."</td>
                                     <td>".$fila['fecha']."</td>
                                     <td>".$fila['hora']."</td>";
+
+                                    // Validar si el vehiculo ya salio del parqueadero
                                     $salida = $mysqli -> query ("SELECT * FROM registro_parqueadero WHERE placa = '$placa' and id_tip_entrada = 2");
+                                   
+                                    // Variable para hora de entrada del vehiculo
                                     $h_entrada = $fila['hora'];
                                     $resu = $salida->num_rows;
                                     if ($resu == 1){
@@ -265,17 +270,15 @@
                                         ';
                     
                         }
-                    
-                        $tabla.="   </table></div>
-                                    <div class='btnImprimir'>
-                                        <a  onclick='imprimir()' value= 'Imprimir'><i class='fas fa-file-pdf'></i></a>
-                                    </div>
-                                </div>
 
+                    //Contenedor para mostrar la cantidad de registros de la consulta entradas linea 194 
+                        $tabla.="   </table></div>
+                                </div>
+                                
                                 <div class='numVehi' id= 'numVehi'>
                                     <h2>N° DE VEHICULOS INGRESADOS</h2>";
                                     if($tip_zona == 0){
-                                        $tabla.="<strong class='num'>$resul</strong><img src='../../../img/logo1.png' class='logo2'>";
+                                        $tabla.="<strong class='num'>$resul</strong><img src='../../../img/logo.png' class='logo2'>";
                                     }
                                     elseif($tip_zona == 1){
                                         $tabla.="<i class='fas fa-car'><strong>$resul</strong></i>";
@@ -286,9 +289,10 @@
                                         $tabla.="<i class='fas fa-biking'><strong>$resul</strong></i>";
                                     }
                                      
-                                    $tabla.="</div> ";
-                                    } 
-                                    else
+                                $tabla.="</div> ";
+                                } 
+                                // Si la consulta entradas (linea 194) no arrojó ningun resultado
+                                else
                                     {
                                         $tabla="<i id='error' class='fas fa-exclamation-triangle'></i>
                                         <h3 class='sinDatos'>No se encontraron coincidencias con sus criterios de búsqueda.</h3>
@@ -298,28 +302,19 @@
                     }
                 ?>
                 
-              
-                <script>
-                  function imprimir(){
-                      var mywindow = window.open('', 'PRINT', 'height=1000,width=900');
-                      mywindow.document.write('<html><head> <link rel="stylesheet" href="css/estilos.css">');
-                      mywindow.document.write('</head><body>');
-                      mywindow.document.write('<img src="../../../img/logo_blanco.png" alt="logo" class="logo"> <br> <h2>REPORTES</h2>');
-                      mywindow.document.write(document.querySelector('#tabla').innerHTML);
-                      mywindow.document.write('<h2>N° DE VEHICULOS INGRESADOS: </h2> <strong><?php echo $resul ?></strong>');
-
-                      mywindow.document.write('</body></html>');
-                      mywindow.document.close(); // necesario para IE >= 10
-                      mywindow.focus(); // necesario para IE >= 10
-                      mywindow.print();
-                      mywindow.close();
-                      return true;
-                  }
-                </script>
-            </div>
-            <br><br><hr>
+                <div class="acciones">
+                    <div class="btnImprimir" onclick="imprimir()">
+                       <i class="fas fa-file-pdf"></i>
+                    </div>
+                    <div class="btnExcel" onclick="exportTableToExcel('tabla', 'REPORTE_<?php echo date('d_m_Y');?>')" >
+                        <i class="fas fa-file-excel"></i>
+                    </div>
+                </div>
             </div>
         </div>
+    </div>
+    
+    <script src="js/main.js"></script>
  
 </body>
 </html>

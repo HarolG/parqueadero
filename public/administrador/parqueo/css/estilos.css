@@ -40,8 +40,7 @@ select:hover{
 
 h1{
   color: #73879C;
-  font-family: "Helvetica Neue", Roboto, Arial, "Droid Sans", sans-serif;
-  font-size: 49px;
+  font-size: 55px;
   font-weight: 700;
   line-height: 1.471;
   margin-left: auto;
@@ -123,7 +122,7 @@ tbody tr:nth-child(even) {
 
 .numVehi{
   text-align: center;
-  padding: 45px 30px;
+  padding: 65px 30px;
   margin-right: 10%;
 }
 
@@ -136,9 +135,9 @@ tbody tr:nth-child(even) {
 
 .logo2{
   display: flex;
-  margin-top: -19%;
+  margin-top: -21%;
   margin-left: 39%;
-  width: 160px;
+  width: 140px;
   height: 80px;
 }
 .fas{
@@ -157,6 +156,14 @@ tbody tr:nth-child(even) {
   margin-left: -35%;
   margin-top: 4%;
 }
+
+.acciones{
+  display: grid;
+  grid-template-columns: 1fr 1fr ;
+  padding: 27px;
+  position: absolute;
+  margin-top: -1.8%;
+}
 .btnImprimir{
   background: rgb(204, 74, 74);
   color: black;
@@ -164,7 +171,6 @@ tbody tr:nth-child(even) {
   height: 40px;
   text-align: center;
   border-radius: 2px;
-  margin-left: 3%;
   cursor: pointer;
 }
 
@@ -175,5 +181,25 @@ tbody tr:nth-child(even) {
 
 .btnImprimir:hover{
   background: rgb(100, 4, 4);
+  color: white;
+}
+
+.btnExcel{
+  background:rgb(74, 204, 91);
+  color: black;
+  width: 40px;
+  height: 40px;
+  text-align: center;
+  border-radius: 2px;
+  cursor: pointer;
+}
+
+.btnExcel i{
+  font-size: 20px;
+  margin-top: 25%;
+}
+
+.btnExcel:hover{
+  background: rgb(4, 100, 9);
   color: white;
 }
