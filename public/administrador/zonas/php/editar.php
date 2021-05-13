@@ -38,6 +38,7 @@ if (isset($_POST['update'])) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="../../../../img/logo.ico"/>
     <title>Crear Zonas</title>
     <!-- Estilos Generales -->
     <link rel="stylesheet" href="../../../../layout/css/navegacion.css">
@@ -51,7 +52,7 @@ if (isset($_POST['update'])) {
     <div class="container">
     <div class="navegacion">
             <div class="site_title">
-                <img src="../../../../img/logo_blanco.png" alt="logo" class="logo">
+                <img src="../../../../img/Logo_parking_2.0.png" alt="logo" class="logo">
             </div>
             <div class="nav_profile">
                 <div class="profile_pic">

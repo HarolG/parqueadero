@@ -5,7 +5,7 @@
 }
 
 body {
-    font-family: 'Bree Serif', serif;
+    font-family: 'verdana', serif;
 }
 
 .contenedor-portada{
@@ -15,12 +15,6 @@ body {
     height: 100vh;
     animation: mover 5s infinite linear alternate ;
 }
-.capa-azul i{
-    font-size: 30px;
-    color: white;
-    float: right;
-    padding: 20px 30px;
-}
 
 .capa-azul{
     height: 100vh;
@@ -29,8 +23,19 @@ body {
     background: #0b046b93; 
 }
 
+.capa-azul strong{
+    font-size: 15px;
+    color: white;
+    float: right;
+    padding: 20px 30px;
+    
+}
+
+.capa-azul i{
+    font-size: 25px;
+}
 .portada{
-    margin-left: 10%;
+    margin-left: 20%;
 }
 .portada img{
     margin-top: 8%;
@@ -49,7 +54,7 @@ body {
 
 .info h1{
     color: rgb(255, 255, 255);
-    font-size: 80px;
+    font-size: 70px;
     padding: 20px 10px 40px 10px;
 }
 
@@ -64,7 +69,7 @@ body {
     color: #fff;
     transition: .5s;
     padding: 12px;
-    font-family: 'Bree Serif', serif;
+    font-family: 'verdana', serif;
 }
  
 .btnIndex:hover{
@@ -88,15 +93,16 @@ body {
 
 .vista p{
     text-align: justify;
-    font-size: 20px;
+    font-size: 17px;
     padding:  30px;
+    margin-top: 7%;
     border: rgb(63, 155, 11) 3px solid;
 }
 
 .contenedor-servicios{
     margin-top: 5.5%;
     width: 100%;
-    height: 350px;
+    height: 370px;
     position: relative;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
@@ -105,12 +111,13 @@ body {
 }
 .servicios{
     grid-column:1/5;
-    padding: 30px 20px 0px 20px;
-    font-size: 45px;
+    padding: 40px;
+    font-size: 35px;
+    margin-top: 10px;
 }
 .contenedor-servicios i{
     color: #0b046bd3; 
-    font-size: 75px;
+    font-size: 60px;
     padding: 20px;
     transition: transform .5s;
 }
@@ -148,9 +155,9 @@ footer{
 
 footer h2{
     color: white;
-    margin-left: 36%;
-    padding: 30px ;
-    margin-top: -50px;
+    margin-left: 33%;
+    padding: 40px ;
+    margin-top: -60px;
 }
 
 .contenedor-footer{
@@ -169,18 +176,18 @@ footer h2{
 .content-foo label{
     color: #fff;
     border-bottom: 3px solid #2ea011;
-    padding-bottom: 5px;
+    padding-bottom: 6px;
     margin-bottom: 10px;
 }
 
 .content-foo p{
     color: #ccc;
-    padding: 10px;
+    padding: 15px;
 }
 
 .titulo-final{
     text-align: center;
-    font-size: 24px;
+    font-size: 20px;
     margin: 20px 0 0 0;
     color: #eb7222;
 }
