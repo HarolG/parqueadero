@@ -16,6 +16,7 @@ $(document).ready(function () {
         tasks.forEach(element => {
           let ocupados = element.cupos - element.cupos_live
 
+          // Aquí se empieza a crear la gráfica
           var data = [{
             values: [element.cupos_live, ocupados],
             labels: ['Disponible', 'Ocupado'],
