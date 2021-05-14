@@ -4,7 +4,7 @@ function imprimir(){
     var mywindow = window.open('', 'PRINT', 'height=1000,width=900', );
     mywindow.document.write('<html><head> <link rel="stylesheet" href="css/estilos.css">');
     mywindow.document.write('</head><body>');
-    mywindow.document.write('<h2>REPORTE</h2><br><img src="../../../img/logo.png" width= "120px" height= "90px"> <br> ');
+    mywindow.document.write('<div class= "img_repor"><img src="../../../img/logo_sena.png" width= "85px" height= "90px">&nbsp&nbsp<img src="../../../img/Logo_negro.png" width= "220px" height= "100px"></div><br><h2>REPORTE DE ENTRADAS Y SALIDAS PARQUEADERO</h2><br> ');
     // #tabla - id del contenedor de la tabla de reportes
     mywindow.document.write(document.querySelector('#tabla').innerHTML);
     mywindow.document.write('</body></html>');
