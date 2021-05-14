@@ -11,7 +11,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="../../../img/logo.ico"/>
+    <link rel="icon" href="../../../img/logo.ico" />
     <title>Registro</title>
     <link rel="stylesheet" href="../../../layout/css/navegacion.css">
     <link rel="stylesheet" href="crearusu.css">
@@ -123,44 +123,45 @@
                         <form enctype="multipart/form-data" action="insertar.php" class="form_vehiculo" method="POST">
                             <div class="column_container">
                                 <div class="column_form">
-                        
+
                                     <!-- Número de placa del vehiculo -->
                                     <div class="grupo_formulario grupo_formulario-noPlaca">
                                         <label for="placa">No. Placa</label>
-                                        <input type="text" class="placa" name="placa" placeholder="Ingrese Numero de la placa"
-                                            autocomplete="off">
+                                        <input type="text" class="placa" name="placa"
+                                            placeholder="Ingrese Numero de la placa" autocomplete="off">
                                     </div>
-                        
+
                                     <!-- Número de documento del propietario -->
                                     <div class="grupo_formulario grupo_formulario-documento">
                                         <label for="placa">Documento</label>
                                         <input type="number" class="doc" name="doc" placeholder="Numero de Documento"
                                             autocomplete="off">
                                     </div>
-                        
+
                                     <!--    Tipo de Vehiculo-->
                                     <div class="grupo_formulario grupo_formulario-tipoVehiculo">
                                         <label class="vehiculo" for="placa">Tipo de Vehiculo</label>
                                         <select class="vehiculo" name="vehiculo" id="sele" autocomplete="off">
-                                    
+
                                             <option value="0">Tipo de Vehiculo</option>
                                             <?php
                                                     $tip = "SELECT * FROM tipo_vehiculo";
                                                     $inser = mysqli_query($mysqli,$tip);
                                                     while($tip = mysqli_fetch_array($inser)){
                                                 ?>
-                                            <option name="tipo" value="<?php echo $tip[0]; ?>"><?php echo $tip[1]; ?></option>
+                                            <option name="tipo" value="<?php echo $tip[0]; ?>"><?php echo $tip[1]; ?>
+                                            </option>
                                             <?php
                                                 }
                                                 ?>
                                         </select>
                                     </div>
-                        
+
                                 </div>
                                 <div class="column_form">
-                        
-                                     <!--    Modelo-->
-                                     <div class="grupo_formulario grupo_formulario-modelo">
+
+                                    <!--    Modelo-->
+                                    <div class="grupo_formulario grupo_formulario-modelo">
                                         <label class="placa" for="placa">Modelo</label>
                                         <select class="placa" name="modelo" id="sele" autocomplete="off">
                                             <option value="0">Modelo del Vehiculo</option>
@@ -169,13 +170,14 @@
                                                         $inser = mysqli_query($mysqli,$tipo);
                                                         while($tip = mysqli_fetch_array($inser)){
                                                     ?>
-                                            <option name="tipo" value="<?php echo $tip[0]; ?>"><?php echo $tip[1]; ?></option>
+                                            <option name="tipo" value="<?php echo $tip[0]; ?>"><?php echo $tip[1]; ?>
+                                            </option>
                                             <?php
                                                     }
                                                     ?>
                                         </select>
                                     </div>
-                        
+
                                     <!--   Tipo de Marca-->
                                     <div class="grupo_formulario grupo_formulario-marca">
                                         <label class="marca" for="placa">Marca</label>
@@ -186,31 +188,33 @@
                                                         $inser = mysqli_query($mysqli,$tipo);
                                                         while($tip = mysqli_fetch_array($inser)){
                                                     ?>
-                                            <option name="tipo" value="<?php echo $tip[0]; ?>"><?php echo $tip[1]; ?></option>
+                                            <option name="tipo" value="<?php echo $tip[0]; ?>"><?php echo $tip[1]; ?>
+                                            </option>
                                             <?php
                                                     }
                                                     ?>
                                         </select>
                                     </div>
-                        
-                                     <!--    Tipo de color-->
-                                     <div class="grupo_formulario grupo_formulario-color">
+
+                                    <!--    Tipo de color-->
+                                    <div class="grupo_formulario grupo_formulario-color">
                                         <label class="color" for="placa">Color del Vehiculo</label>
                                         <select class="color" name="color" id="sele" autocomplete="off">
-                                        
+
                                             <option value="0">Color de Vehiculo</option>
                                             <?php
                                                         $selec = "SELECT * FROM color";
                                                         $inser = mysqli_query($mysqli,$selec);
                                                         while($tip = mysqli_fetch_array($inser)){
                                                     ?>
-                                            <option name="tipo" value="<?php echo $tip[0]; ?>"><?php echo $tip[1]; ?></option>
+                                            <option name="tipo" value="<?php echo $tip[0]; ?>"><?php echo $tip[1]; ?>
+                                            </option>
                                             <?php
                                                     }
                                                     ?>
                                         </select>
                                     </div>
-                        
+
                                 </div>
                             </div>
                             <div class="anotaciones_container">
@@ -255,12 +259,12 @@
                 <div class="crud_container">
                     <div class="table_container">
                         <form id="form_info_vehiculo" class="form_search">
-                            <input type="search" name="search_vehiculo" id="search_vehiculo" class="search_bar" placeholder="Ingrese la placa del Vehiculo">
+                            <input type="search" name="search_vehiculo" id="search_vehiculo" class="search_bar"
+                                placeholder="Ingrese la placa del Vehiculo" autocomplete="off">
                             <button type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
                         </form>
-                                                    
+
                         <div class="tabla_container" id="table_container">
-                            
 
                         </div>
 
@@ -269,9 +273,21 @@
             </main>
         </div>
     </div>
-    </div>
+
+    <div class="container_modal" id="container_modal">
+        <div class="container_propietario">
+            <div class="btn_cerrar">
+                <i class="fa fa-times-circle-o" aria-hidden="true" id="cerrarModal"></i>
+            </div>
+            <div class="container_gruposModales" id="container_gruposModales">
+                
+            </div>
+        </div>
     </div>
 
+
+
+    <script src="../../../library/jquery-3.6.0.min.js"></script>
     <script src="js/info_vehiculo.js"></script>
 </body>
 

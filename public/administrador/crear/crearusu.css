@@ -1,3 +1,7 @@
+body {
+    position: relative;
+}
+
 .main {
     width: 100%;
     display: flex;
@@ -210,7 +214,7 @@
     background-color: rgb(245, 245, 245);
 }
 
-.crud_container table tbody tr td{
+.crud_container table tbody tr td {
     text-align: center;
 }
 
@@ -256,7 +260,8 @@
     display: flex;
 }
 
-.crud_container .table_container .container_another_info .column_container_anotherInfo .column_anotherInfo {
+.crud_container .table_container .container_another_info .column_container_anotherInfo .column_anotherInfo-izquierda,
+.crud_container .table_container .container_another_info .column_container_anotherInfo .column_anotherInfo-derecha {
     width: 48%;
 
     display: flex;
@@ -265,43 +270,129 @@
     align-items: center;
 }
 
-.crud_container .table_container .container_another_info .column_container_anotherInfo .column_anotherInfo button {
-    background-color: royalblue;
-    color: white;
-    border: none;
-    width: 120px;
-    height: 40px;
-    border-radius: 10px;
-
-    cursor: pointer;
-}
-
-.crud_container .table_container .container_another_info .column_container_anotherInfo .column_anotherInfo img {
+.crud_container .table_container .container_another_info .column_container_anotherInfo .column_anotherInfo-izquierda img {
     width: 90%;
     margin-bottom: 20px;
 }
 
-.crud_container .table_container .container_another_info .column_container_anotherInfo .column_anotherInfo .grupo_anotherInfo {
-    width: 100%;
-    height: 100%;
-    margin: 10px 0;
+.crud_container .table_container .container_another_info .column_container_anotherInfo .column_anotherInfo-izquierda form {
+    width: 90%;
+
+    display: flex;
+    flex-direction: column;
 }
 
-.crud_container .table_container .container_another_info .column_container_anotherInfo .column_anotherInfo .grupo_anotherInfo p {
-    color: #304356;
-    font-size: 17px;
-    margin-bottom: 20px;
-}
-
-.crud_container .table_container .container_another_info .column_container_anotherInfo .column_anotherInfo .grupo_anotherInfo a{
-    text-decoration: none;
-    padding: 10px 15px;
+.crud_container .table_container .container_another_info .column_container_anotherInfo .column_anotherInfo-izquierda form button {
+    height: 40px;
+    margin-top: 10px;
     background-color: royalblue;
-    border-radius: 10px;
+    border: none;
+    border-radius: 4px;
     color: white;
 }
 
-.crud_container .table_container .container_another_info .column_container_anotherInfo .column_anotherInfo .grupo_anotherInfo .texto {
-    color: black;
-    font-size: 15px;
+.crud_container .table_container .container_another_info .column_container_anotherInfo .column_anotherInfo-derecha .grupo_anotherInfo {
+    width: 100%;
+    margin: 10px 0;
+}
+
+.crud_container .table_container .container_another_info .column_container_anotherInfo .column_anotherInfo-derecha .grupo_anotherInfo p {
+    color: #304356;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.crud_container .table_container .container_another_info .column_container_anotherInfo .column_anotherInfo-derecha .grupo_anotherInfo a {
+    text-decoration: none;
+    padding: 8px 30px;
+    background-color: royalblue;
+    border-radius: 4px;
+    color: white;
+}
+
+.crud_container .table_container .container_another_info .column_container_anotherInfo .column_anotherInfo-derecha .grupo_anotherInfo form {
+    margin-top: 20px;
+}
+
+.crud_container .table_container .container_another_info .column_container_anotherInfo .column_anotherInfo-derecha .grupo_anotherInfo form button {
+    margin-top: 10px;
+    width: 50%;
+    height: 30px;
+    background-color: royalblue;
+    border: none;
+    border-radius: 4px;
+    color: white;
+}
+
+.container_modal {
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.26);
+
+    position: absolute;
+    top: 0;
+    right: 0;
+
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+
+.container_modal .container_propietario {
+    width: 600px;
+    height: 300px;
+    background-color: #ededed;
+    border-radius: 15px;
+    border: 1px solid;
+    padding: 10px 15px;
+}
+
+.container_modal .container_propietario .btn_cerrar {
+    width: 100%;
+    height: 40px;
+
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.container_modal .container_propietario .btn_cerrar i {
+    font-size: 25px;
+    color: red;
+    cursor: pointer;
+}
+
+.container_modal .container_propietario .container_gruposModales {
+    width: 100%;
+    margin-top: 10px;
+
+    display: flex;
+    justify-content: center;
+}
+
+.container_modal .container_propietario .container_gruposModales .grupoModal {
+    width: 48%;
+}
+
+.container_modal .container_propietario .container_gruposModales .grupoModal div {
+    width: 100%;
+}
+
+.container_modal .container_propietario .container_gruposModales .grupoModal div p {
+    color: #304356;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.container_modal .container_propietario .container_gruposModales .grupoModal div div {
+    width: 90%;
+    height: 40px;
+    background-color: white;
+    border: 1px solid gray;
+
+    margin-bottom: 10px;
+    padding-left: 10px;
+
+    display: flex;
+    align-items: center;
 }
