@@ -203,3 +203,7 @@ tbody tr:nth-child(even) {
   background: rgb(4, 100, 9);
   color: white;
 }
+
+.img_repor{
+  margin-left: 24%;
+}
