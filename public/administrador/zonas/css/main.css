@@ -11,7 +11,7 @@ body {
 }
 
 #form{
-    width: 825px;
+    width: 830px;
     background-color: white;
     margin: 50px auto;
     border-radius: 10px;
@@ -29,7 +29,7 @@ body {
 
 .crear_zona{
     position: absolute;
-    margin: -10px -710px;
+    margin: -10px -698px;
     /* background-color: red; */
     text-decoration: none;
     color: #2a3f54;
@@ -188,10 +188,12 @@ ul, ol {
 
 .eliminarlink:hover{
     background-color: rgb(186, 34, 34);
+    color: white;
 }
 
 .eliminarlink2:hover{
     background-color: rgb(20, 148, 20);
+    color: white;
 }
 
 #marker{
