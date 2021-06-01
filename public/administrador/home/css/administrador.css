@@ -74,6 +74,7 @@ body {
 }
 
 .grafica_historia_parqueo {
+    margin-left: 27px;
     width: 95%;
     background-color: white;
 }
