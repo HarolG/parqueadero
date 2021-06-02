@@ -19,18 +19,27 @@
             $ape = $fila['apellido'];
             $tip = $fila['id_tip_usu'];
 
-            $sqli = "INSERT INTO informe_celadores (documento, nombre, apellido, id_tip_usu, fecha_inicio) VALUES ('$user', '$nom', '$ape', '$tip', now())";
-            $quer = mysqli_query($mysqli, $sqli);
-
-            if ($_SESSION['pass'] == $pass) {
+            if ($_SESSION['tipo'] == 1) {
                 header("Location: ../../administrador/home/administrador.php");
-                // echo 'ta bien';
-            } else {
-                echo 'este usuario es invalido';
+            } elseif ($_SESSION['tipo'] == 2) {
+                
+                $sqli = "INSERT INTO informe_celadores (documento, nombre, apellido, id_tip_usu, fecha_inicio) VALUES ('$user', '$nom', '$ape', '$tip', now())";
+                $quer = mysqli_query($mysqli, $sqli);
+
+                header("Location: ../../celador/parqueo.php");
+            } elseif ($_SESSION['tipo'] == 3) {
+                header("Location: ../../supervisor/celadores/index.php");
             }
+
+            // if ($_SESSION['pass'] == $pass) {
+            //     header("Location: ../../administrador/home/administrador.php");
+            //     // echo 'ta bien';
+            // } else {
+            //     echo 'este usuario es invalido';
+            // }
         } else {
             echo '<script type="text/javascript">
-                    alert("Usuario y/o contraseña incorrectos");
+                    alert("Este usuario no existe");
                     window.location.href="../login.html";
                 </script>';
         }

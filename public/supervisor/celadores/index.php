@@ -122,15 +122,16 @@
 			</ul>
 		</nav>
 		<!-- Aquí va el contenido -->
+			<h2 class="titulo_informe"><b>INFORME DE INICIO DE SESIÓN</b></h2>
             <table class="celadores_login">
                 <thead>
                     <tr>
-                        <td class="head_table">Documento</td>
-                        <td class="head_table">Nombre</td>
-                        <td class="head_table">Apellido</td>
-                        <td class="head_table">Tipo de Usuario</td>
-                        <td class="head_table">Fecha de inicio de sesion</td>
-                        <td class="head_table">Operaciones</td>
+                        <td class="head_table">DOCUMENTO</td>
+                        <td class="head_table">NOMBRE</td>
+                        <td class="head_table">APELLIDO</td>
+                        <td class="head_table">TIPO DE USUARIO</td>
+                        <td class="head_table">FECHA INICIO DE SESION</td>
+                        <td class="head_table">OPERACIONES</td>
                     </tr>
                 </thead>
                 <tbody>
@@ -141,13 +142,16 @@
                     
                             while($row = mysqli_fetch_assoc($result_tasks)) { ?>
                     <tr>
-                        <td class="body_table"><?php echo $row['documento'] ?></td>
-                        <td class="body_table"><?php echo $row['nombre'] ?></td>
-                        <td class="body_table"><?php echo $row['apellido'] ?></td>
-                        <td class="body_table"><?php echo $row['nom_tip_usu'] ?></td>
-                        <td class="body_table"><?php echo $row['fecha_inicio'] ?></td>
+                        <td class="body_table"><b><?php echo $row['documento'] ?></b></td>
+                        <td class="body_table"><b><?php echo $row['nombre'] ?></b></td>
+                        <td class="body_table"><b><?php echo $row['apellido'] ?></b></td>
+                        <td class="body_table"><b><?php echo $row['nom_tip_usu'] ?></b></td>
+                        <td class="body_table"><b><?php echo $row['fecha_inicio'] ?></b></td>
                         <td class="body_table">
-                            <a href="#">Eliminar</a>
+							<a href="php/eliminar.php?documento=<?php echo $row['documento']?>" class="eliminarlink">
+                            <!-- <i id="trash" class="fas fa-trash"></i> -->
+                            	ELIMINAR
+                        	</a>
                         </td>
                     </tr>
 					<?php } ?>
@@ -240,6 +244,7 @@
 	</div>
 	
 	</body>
+	<script src="js/confirmacion.js"></script>
 	<!-- Scripts cambiables -->
 	
 	<!--====== Scripts pagina ¡¡NO CAMBIAR!! -->
