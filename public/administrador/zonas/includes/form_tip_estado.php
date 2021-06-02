@@ -136,6 +136,7 @@
                 <tr>
                     <td class="head_table">ID TIPO ESTADO</td>
                     <td class="head_table">NOMBRE DE ESTADO</td>
+					<td class="head_table">OPERACIONES</td>
                 </tr>
             </thead>
             <tbody>
@@ -147,6 +148,12 @@
                 <tr>
                     <td class="body_table"><b><?php echo $row['id_estado'] ?></b></td>
                     <td class="body_table"><b><?php echo $row['nom_estado'] ?></b></td>
+					<td class="body_table">
+						<a href="../php/delete_tipestado.php?id_estado=<?php echo $row['id_estado']?>" class="eliminarlink">
+                            <!-- <i id="trash" class="fas fa-trash"></i> -->
+                            	ELIMINAR
+                    	</a>
+					</td>
                 </tr>
                 <?php } ?>
             </tbody>
@@ -239,6 +246,7 @@
 	</div>
 	
 </body>
+	<script src="../js/confirmacion.js"></script>
 	<!-- Scripts cambiables -->
 	<script src="../../../library/jquery-3.6.0.min.js"></script>
 	<!--====== Scripts pagina ¡¡NO CAMBIAR!! -->
