@@ -15,6 +15,12 @@
             $_SESSION['nom'] = $fila['nombre'];
             $_SESSION['ape'] = $fila['apellido'];
             $_SESSION['pass'] = $fila['clave'];
+            $nom = $fila['nombre'];
+            $ape = $fila['apellido'];
+            $tip = $fila['id_tip_usu'];
+
+            $sqli = "INSERT INTO informe_celadores (documento, nombre, apellido, id_tip_usu, fecha_inicio) VALUES ('$user', '$nom', '$ape', '$tip', now())";
+            $quer = mysqli_query($mysqli, $sqli);
 
             if ($_SESSION['pass'] == $pass) {
                 header("Location: ../../administrador/home/administrador.php");

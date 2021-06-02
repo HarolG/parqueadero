@@ -1,0 +1,22 @@
+.celadores_login{
+    width: 900px;
+    /* background-color: white; */
+    margin: 45px auto;
+    border-collapse: collapse;
+}
+
+.head_table{
+    text-align: center;
+    font-size: 15px;
+    background-color: #2a3f54;
+    color: white;
+    padding: 5px;
+}
+
+.body_table{
+    text-align: center;
+    font-size: 15px;
+    background-color: rgb(255, 255, 255);
+    color: black;
+    padding: 5px;
+}
