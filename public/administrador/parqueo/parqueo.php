@@ -43,9 +43,6 @@
 							<?php echo $_SESSION['nom']," ", $_SESSION['ape']?>
 						</p>
 					</div>
-				
-				</figure>
-				
 				<ul class="full-box list-unstyled text-center">
 					<li>
 						<a href="#!">
@@ -57,12 +54,13 @@
 							<i class="fas fa-power-off" style="font-size: 20px;"></i>
 						</a>
 					</li>
-				</ul>
+			</ul>
+				</figure>
 			</div>
 			<!-- SideBar Menu -->
 			<ul class="list-unstyled full-box dashboard-sideBar-Menu">
 				<li>
-					<a href="../home/administrador.php" style="margin-left:12px;">
+					<a href="../home/administrador.php" style="margin-left:4px;">
 						<i class="fas fa-home" style="font-size: 16px;"></i> Inicio 
 					</a>
 				</li>
@@ -92,6 +90,8 @@
 				</li>
 			</ul>
 		</div>
+        
+          
 	</section>
 
 	<!-- barra de menus-->
@@ -113,12 +113,13 @@
 						<i class="far fa-question-circle"></i>
 					</a>
 				</li>
-                <a class="pull-left" style="width: 250px;" href="http://centrodeindustria.blogspot.com">Centro de Industria y Construcción</a>   
+                <a class="pull-left links" style="width: 250px;" href="http://centrodeindustria.blogspot.com">Centro de Industria y Construcción</a>   
                
-                <a class="pull-left" style="width: 170px;"  href="http://oferta.senasofiaplus.edu.co/sofia-oferta/">Portal de Sofia Plus</a>
+                <a class="pull-left links" style="width: 170px;"  href="http://oferta.senasofiaplus.edu.co/sofia-oferta/">Portal de Sofia Plus</a>
 			</ul>    
 		</nav>
             <!-- Aquí va el contenido -->
+    
             <div class="ingreso">
                 <div class="infoZonas">
                     <?php
@@ -138,7 +139,7 @@
                 <div class="filtro">
                     <form method="post" class = "formFiltro">
                         <h2>REPORTES</h2>
-                        <strong>Zona de Parqueo:</strong>
+                        <strong style="color:black;">Zona de Parqueo:</strong>
                         <select class = "tipoZona" id="tipoZona" name="tipoZona">
                             <option selected>Seleccione una opción </option>
                             <option value="0">Todas</option>
@@ -149,7 +150,7 @@
                                     ?>
                         </select>
 
-                        <strong>Reporte de: </strong>
+                        <strong style="color:black;">Reporte de: </strong>
                         <select id='reporte' class='reporte' name='reporte'>
                             <option value="0" selected>Seleccione una opción </option>
                             <option value='1'>Hoy</option>
@@ -158,7 +159,7 @@
                             <option value='4'>Hace un mes</option>
                         </select>
 
-                        <input type="submit" name="buscar"  class="btnReporte" value="Generar">
+                        <input type="submit" name="buscar" style="color: black;"  class="btn btn-primary btnReporte" value="Generar">
                     </form>
                 </div>
                 <div class="lugar">
@@ -287,12 +288,12 @@
                                         $tabla.="<strong class='num'>$resul</strong><img src='../../../img/logo.png' class='logo2'>";
                                     }
                                     elseif($tip_zona == 1){
-                                        $tabla.="<i class='fas fa-car'><strong>$resul</strong></i>";
+                                        $tabla.="<i class='fas fa-car' style='font-size:65px;'><strong>$resul</strong></i>";
                                     }
                                     elseif($tip_zona == 2){
-                                        $tabla.="<i class='fas fa-motorcycle'><strong>$resul</strong></i>";
+                                        $tabla.="<i class='fas fa-motorcycle' style='font-size:65px;'><strong>$resul</strong></i>";
                                     }else{
-                                        $tabla.="<i class='fas fa-biking'><strong>$resul</strong></i>";
+                                        $tabla.="<i class='fas fa-biking' style='font-size:65px;'><strong>$resul</strong></i>";
                                     }
                                      
                                 $tabla.="</div> ";
@@ -300,7 +301,7 @@
                                 // Si la consulta entradas (linea 194) no arrojó ningun resultado
                                 else
                                     {
-                                        $tabla="<i id='error' class='fas fa-exclamation-triangle'></i>
+                                        $tabla="<i id='error' class='fas fa-exclamation-triangle'  style='font-size:65px;'></i>
                                         <h3 class='sinDatos'>No se encontraron coincidencias con sus criterios de búsqueda.</h3>
                                         ";
                                     }
@@ -308,11 +309,11 @@
                     }
                 ?>
                 
-                <div class="acciones">
-                    <div class="btnImprimir" onclick="imprimir()">
-                       <i class="fas fa-file-pdf"></i>
+                <div class="btn-group acciones">
+                    <div class="btn btn-outline-danger btnImprimir" onclick="imprimir()">
+                    <i class="fas fa-file-pdf"></i>
                     </div>
-                    <div class="btnExcel" onclick="exportTableToExcel('tabla', 'REPORTE_<?php echo date('d_m_Y');?>')" >
+                    <div class="btn btn-outline-success btnExcel" onclick="exportTableToExcel('tabla', 'REPORTE_<?php echo date('d_m_Y');?>')" >
                         <i class="fas fa-file-excel"></i>
                     </div>
                 </div>
@@ -320,8 +321,8 @@
         </div>
     </div>
 
-</section>
 
+</section>
 	<!-- Notifications area -->
 
 	<section class="full-box Notifications-area">
@@ -393,7 +394,7 @@
 			        </p>
 			    </div>
 		      	<div class="modal-footer">
-		        	<button type="button" class="btn btn-primary btn-raised" data-dismiss="modal">Ok <i class="fas fa-exclamation"></i></button>
+		        	<button type="button" class="btn btn-primary btn-raised" data-dismiss="modal">Ok <i class="fas fa-exclamation" ></i></button>
 		      	</div>
 		    </div>
 	  	</div>

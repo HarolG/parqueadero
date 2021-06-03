@@ -109,14 +109,14 @@
 						<i class="far fa-question-circle"></i>
 					</a>
 				</li>
-                <a class="pull-left" style="width: 250px;" href="http://centrodeindustria.blogspot.com">Centro de Industria y Construcción</a>   
+                <a class="pull-left links" style="width: 250px;" href="http://centrodeindustria.blogspot.com">Centro de Industria y Construcción</a>   
                
-                <a class="pull-left" style="width: 170px;"  href="http://oferta.senasofiaplus.edu.co/sofia-oferta/">Portal de Sofia Plus</a>
+                <a class="pull-left links" style="width: 170px;"  href="http://oferta.senasofiaplus.edu.co/sofia-oferta/">Portal de Sofia Plus</a>
 			</ul>    
 		</nav>
            <!-- Aquí va el contenido -->
         <form action="php/crear_zona.php" id="form" method="POST" onsubmit="return validar();">
-            <h2 class="titulo">CREAR ZONAS</h2>
+            <h2 class="titulo" style="font-weight: bold; color:black;">CREAR ZONAS</h2>
             <!-- <input type="text" name="idzona" id="inputzona" placeholder="Ingrese el id de la zona" autocomplete="off" required> -->
             <select name="tipozona" id="tipozona">
                 <option value="">Seleccione un tipo de zona</option>
