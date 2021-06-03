@@ -39,7 +39,7 @@ CONTENTS:
 	.mCSB_container{ /* contains the original content */
 		overflow: hidden;
 		width: auto;
-		height: auto;
+		height: 100%;
 	}
 
 
@@ -100,7 +100,7 @@ y-axis
 	.mCSB_scrollTools .mCSB_dragger{ /* the draggable element */
 		cursor: pointer;
 		width: 100%;
-		height: 30px; /* minimum dragger height */
+		height: 20px; /* minimum dragger height */
 		z-index: 1;
 	}
 
@@ -731,7 +731,7 @@ yx-axis
 	
 	.mCS-rounded-dots.mCSB_scrollTools .mCSB_draggerRail, 
 	.mCS-rounded-dots-dark.mCSB_scrollTools .mCSB_draggerRail{
-		background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAICAYAAADED76LAAAANElEQVQYV2NkIAAYiVbw//9/Y6DiM1ANJoyMjGdBbLgJQAX/kU0DKgDLkaQAvxW4HEvQFwCRcxIJK1XznAAAAABJRU5ErkJggg==");
+		/* background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAICAYAAADED76LAAAANElEQVQYV2NkIAAYiVbw//9/Y6DiM1ANJoyMjGdBbLgJQAX/kU0DKgDLkaQAvxW4HEvQFwCRcxIJK1XznAAAAABJRU5ErkJggg=="); */
 		background-repeat: repeat-y;
 		opacity: 0.3;
 		filter: "alpha(opacity=30)"; -ms-filter: "alpha(opacity=30)"; 

@@ -149,9 +149,9 @@
 					</a>
 				</li>
                 
-                <a class="pull-left" style="width: 250px;" href="http://centrodeindustria.blogspot.com">Centro de Industria y Construcción</a>   
+                <a class="pull-left links" style="width: 250px;" href="http://centrodeindustria.blogspot.com">Centro de Industria y Construcción</a>   
                
-                <a class="pull-left" style="width: 170px;"  href="http://oferta.senasofiaplus.edu.co/sofia-oferta/">Portal de Sofia Plus</a>
+                <a class="pull-left links" style="width: 170px;"  href="http://oferta.senasofiaplus.edu.co/sofia-oferta/">Portal de Sofia Plus</a>
               
 			</ul>    
 		</nav>
@@ -183,11 +183,11 @@
                 </div>
             </div>
             <div class="grafica_historia_parqueo">
-                <h2>Actividad del Parqueadero</h2>
+                <h2 style="font-weight: bold; color:black;">Actividad del Parqueadero</h2>
                 <div class="graficas">
                     <div class="grafica_container">
                         <form id="formZonas">
-                            <label for="zona">Seleccione la Zona</label>
+                            <label for="zona" style="font-weight: bold; color:black;">Seleccione la Zona</label>
                             <select name="zona" id="zona">
                                 <?php
                                     #Esta consulta trae todas las zonas que existen el parqueadero
@@ -200,13 +200,13 @@
                                 <?php
                                     }
                                 ?>
-                                <input type="submit" value="Generar">
+                                <input class="btn btn-secondary" type="submit" value="Generar">
                             </select>
                         </form>
                         <div id="graficaHistoria" class="graficaHistoria"></div>
                     </div>
                     <div class="info_zonas">
-                        <h2>Información de la zona</h2>
+                        <h2 style="font-weight: bold; color:black;">Información de la zona</h2>
                         <div class ="informacion_zona" id="informacion_zona"></div>
                     </div>
                 </div>

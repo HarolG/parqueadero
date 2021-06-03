@@ -58,7 +58,7 @@
 			<!-- SideBar Menu -->
 			<ul class="list-unstyled full-box dashboard-sideBar-Menu">
 				<li>
-					<a href="administrador.php">
+					<a href="../home/administrador.php">
 						<i class="fas fa-home"></i> Inicio 
 					</a>
 				</li>
@@ -81,7 +81,7 @@
 					
 				</li>
 				<li>
-					<a href="../crear/crearusu.php" class="btn-sideBar-SubMenu">
+					<a href="crearusu.php" class="btn-sideBar-SubMenu">
 						<i class="fa fa-car" aria-hidden="true"></i> Registro de vehiculos
 					</a>
 					
@@ -110,9 +110,9 @@
 					</a>
 				</li>
                 
-                <a class="pull-left" style="width: 250px;" href="http://centrodeindustria.blogspot.com">Centro de Industria y Construcción</a>   
+                <a class="pull-left links" style="width: 250px;" href="http://centrodeindustria.blogspot.com">Centro de Industria y Construcción</a>   
                
-                <a class="pull-left" style="width: 170px;"  href="http://oferta.senasofiaplus.edu.co/sofia-oferta/">Portal de Sofia Plus</a>
+                <a class="pull-left links" style="width: 170px;"  href="http://oferta.senasofiaplus.edu.co/sofia-oferta/">Portal de Sofia Plus</a>
               
 			</ul>    
 		</nav>
