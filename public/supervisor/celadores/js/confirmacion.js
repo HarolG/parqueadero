@@ -9,4 +9,4 @@ let linkdelete = document.querySelectorAll(".eliminarlink");
 
 for (var i = 0; i < linkdelete.length; i++) {
     linkdelete[i].addEventListener('click', confirmacion);
-}   
+}
