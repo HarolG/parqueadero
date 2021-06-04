@@ -3,6 +3,7 @@
     /* background-color: white; */
     margin: 45px auto;
     border-collapse: collapse;
+    /* border: 2px solid black; */
 }
 
 .head_table{
@@ -11,6 +12,8 @@
     background-color: #2a3f54;
     color: white;
     padding: 5px;
+    border-bottom: solid 5px #17212b;
+    /* border: 2px solid black; */
 }
 
 .body_table{
@@ -18,9 +21,42 @@
     font-size: 15px;
     background-color: rgb(255, 255, 255);
     color: black;
-    padding: 5px;
+    padding: 10px;
+    /* border: 2px solid black; */
 }
 
 .titulo_informe{
     text-align: center;
+}
+
+.imprimir{
+    background-color: red;
+    color: white;
+    padding: 7px;
+    margin: 10px 120px;
+    border: none;
+    border-radius: 5px;
+}
+
+.imprimir:hover{
+    background-color: rgb(162, 27, 27);
+}
+
+#trash{
+    color: white;
+    padding: 5px 5px 5px;
+}
+
+#trash:hover{
+    background-color: rgb(128, 18, 18);
+}
+
+.eliminarlink{
+    text-decoration: none;
+    /* color: red; */
+    background-color: red;
+    border-radius: 2px;
+    /* border: 2px solid black; */
+    width: 70px;
+    height: 70px;
 }

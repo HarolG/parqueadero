@@ -62,7 +62,7 @@
 			<ul class="list-unstyled full-box dashboard-sideBar-Menu">
 				<li>
 					<a href="index.html">
-						<i class="fas fa-home"></i> Celadores
+						<i class="fas fa-home"></i> Informe Inicio de Sesion
 					</a>
 				</li>
 				<!-- <li>
@@ -149,15 +149,14 @@
                         <td class="body_table"><b><?php echo $row['fecha_inicio'] ?></b></td>
                         <td class="body_table">
 							<a href="php/eliminar.php?documento=<?php echo $row['documento']?>" class="eliminarlink">
-                            <!-- <i id="trash" class="fas fa-trash"></i> -->
-                            	ELIMINAR
+                            	<i id="trash" class="fas fa-trash"></i>
                         	</a>
                         </td>
                     </tr>
 					<?php } ?>
                 </tbody>
             </table>
-		
+			<button class="imprimir" onclick="window.print()"><i class="fas fa-file-pdf"></i> Imprimir</button>
 	</section>
 
 	<!-- Notifications area -->
