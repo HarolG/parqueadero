@@ -37,9 +37,10 @@ CONTENTS:
 	}
 
 	.mCSB_container{ /* contains the original content */
-		overflow: hidden;
+		
 		width: auto;
-		height: 100%;
+		height:auto;
+		
 	}
 
 
@@ -199,7 +200,7 @@ x-axis
 		display: block;
 		position: absolute;
 		width: 20px;
-		height: 100%;
+		height: auto;
 		overflow: hidden;
 		margin: 0 auto;
 		cursor: pointer;

@@ -32,12 +32,14 @@
   transform: translate(1px,1px);
 }
 .elduro{
-  width: 96%;
+  width: 100%;
   margin-left: 20px;
   
 }
 
-
+.table{
+  width: 600px;
+}
 .table tr,th,td {
   text-align: center;
   padding: 2px;
@@ -72,3 +74,4 @@
   color: rgba(117, 130, 135, 0.844);
   border-radius: 5px;
 }  */
+
