@@ -43,27 +43,8 @@ $(document).ready(function(){
 			NotificationsArea.removeClass('show-Notification-area');
 		}
 	});
-	$('.btn-search').on('click', function(){
-		swal({
-		  title: 'What are you looking for?',
-		  confirmButtonText: '<i class="zmdi zmdi-search"></i>  Search',
-		  confirmButtonColor: '#03A9F4',
-		  showCancelButton: true,
-		  cancelButtonColor: '#F44336',
-		  cancelButtonText: '<i class="zmdi zmdi-close-circle"></i> Cancel',
-		  html: '<div class="form-group label-floating">'+
-			  		'<label class="control-label" for="InputSearch">write here</label>'+
-			  		'<input class="form-control" id="InputSearch" type="text">'+
-				'</div>'
-		}).then(function () {
-		  swal(
-		    'You wrote',
-		    ''+$('#InputSearch').val()+'',
-		    'success'
-		  )
-		});
-	});
-	$('.btn-modal-help').on('click', function(){
+	
+	$('.btn-modal-help').on('click', function () {
 		$('#Dialog-Help').modal('show');
 	});
 });

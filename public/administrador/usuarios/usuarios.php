@@ -19,7 +19,8 @@ Favor revisar los direccionamientos
 	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 	<link rel="icon" href="../../../img/logo.ico"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css">
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.24/css/dataTables.bootstrap4.min.css">
+	<link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.2.7/css/responsive.bootstrap4.min.css">
+	<link rel="stylesheet" href="https://cdn.datatables.net/1.10.24/css/dataTables.bootstrap4.min.css">
     <!-- estilos generales -->
 	<link rel="stylesheet" href="../../../layout/css/main.css">
 	<link rel="stylesheet" href="css/usuarios.css">
@@ -32,10 +33,11 @@ Favor revisar los direccionamientos
 <body>
 	<!-- SideBar -->
 	<section class="full-box cover dashboard-sideBar">
+	
 		<div class="full-box dashboard-sideBar-bg btn-menu-dashboard"></div>
+		
 		<div class="full-box dashboard-sideBar-ct">
-			<!--SideBar Title -->
-
+				<!--SideBar Title -->
 			<div class="full-box text-uppercase text-center text-titles dashboard-sideBar-title">
 				<img src="../../../img/Logo_parking_2.0.png" alt="logo" class="logo" style="width: 150px; height: 70px; display: flex; justify-content: center; margin-left:40px;">
 			</div>
@@ -50,9 +52,9 @@ Favor revisar los direccionamientos
 						</p>
 					</div>
 				
-				</figure>
 				
-				<ul class="full-box list-unstyled text-center">
+				</figure>
+						<ul class="full-box list-unstyled text-center">
 					<li>
 						<a href="#!">
 							<i class="fas fa-cogs"></i>
@@ -96,7 +98,10 @@ Favor revisar los direccionamientos
 					</a>
 					
 				</li>
+					<!--configuracion y cerrar sesion -->
+				
 			</ul>
+			
 		</div>
 	</section>
 
@@ -126,79 +131,82 @@ Favor revisar los direccionamientos
 		</nav>
 		<!-- Contenido de la pagina -->
             <!-- Aquí va la vista de los usuarios -->
-            <div class="elduro">
+            <div class="container">
                 <h1 style="text-align: center; padding: 25px;">USUARIOS</h1>
 
                 <a href="php/registrar.php" class="btn"><i class="fas fa-user-plus"> CREAR USUARIO</i></a>
                 <!-- codigo para mostrar los usuarios existentes -->
                 
-                <div class="card">
-                    <div class="card-body">
-                        <table class="table" id="ella">
-                            <?php
-                                $consul="SELECT usuario.documento,usuario.nombre,usuario.apellido,usuario.edad,usuario.celular,usuario.direccion,usuario.correo,tipo_usuario.nom_tip_usu,tipo_documento.nom_tip_doc FROM usuario
-                                INNER JOIN tipo_usuario on usuario.id_tip_usu = tipo_usuario.id_tip_usu
-                                INNER JOIN tipo_documento on usuario.id_tip_doc = tipo_documento.id_tip_doc";
-                                $resultado=mysqli_query($mysqli,$consul);
-                            ?>
-                                <thead>
-                                    <tr>
-                                        <th>IDENTIFICACION</th>
-                                        <th>NOMBRE</th>
-                                        <th>APELLIDO</th>
-                                        <th>EDAD</th>
-                                        <th>CELULAR</th>
-                                        <th>DIRECCION</th>
-                                        <th>CORREO</th>
-                                        <th>USUARIO</th>
-                                        <th>DOCUMENTO</th>
-                                        <th>ACCIONES</th>
-                                    </tr>
-                                </thead>
-                                <?php
-                                            while($mostrar1=mysqli_fetch_assoc($resultado)){
-                                        ?>
-                                <tbody>
-                                    <tr>
-                                        <td>
-                                            <?php echo $mostrar1['documento']; ?>
-                                        </td>
-                                        <td>
-                                            <?php echo $mostrar1['nombre']; ?>
-                                        </td>
-                                        <td>
-                                            <?php echo $mostrar1['apellido']; ?>
-                                        </td>
-                                        <td>
-                                            <?php echo $mostrar1['edad'];?>
-                                        </td>
-                                        <td>
-                                            <?php echo $mostrar1['celular']; ?>
-                                        </td>
-                                        <td>
-                                            <?php echo $mostrar1['direccion']; ?>
-                                        </td>
-                                        <td>
-                                            <?php echo $mostrar1['correo']; ?>
-                                        </td>
-                                        <td>
-                                            <?php echo $mostrar1['nom_tip_usu']; ?>
-                                        </td>
-                                        <td>
-                                            <?php echo $mostrar1['nom_tip_doc']; ?>
-                                        </td>
-                                        <td>
-                                        <a <?php echo "href='php/editar.php?documento=".$mostrar1['documento']."'";?>><i class="fas fa-user-edit"></i></a>
-                                        <a <?php echo "href='php/eliminar.php?documento=".$mostrar1['documento']."'onclick='return confirmar()'";?>><i class="fas fa-trash-alt"></i></a>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                                <?php
-                                        }
-                                        ?>
-                            </table>
-                    </div>
-                </div>
+					<div class="responsive">
+						<div class="card">
+							<div class="card-body">
+								<table class="table" id="ella">
+									<?php
+										$consul="SELECT usuario.documento,usuario.nombre,usuario.apellido,usuario.edad,usuario.celular,usuario.direccion,usuario.correo,tipo_usuario.nom_tip_usu,tipo_documento.nom_tip_doc FROM usuario
+										INNER JOIN tipo_usuario on usuario.id_tip_usu = tipo_usuario.id_tip_usu
+										INNER JOIN tipo_documento on usuario.id_tip_doc = tipo_documento.id_tip_doc";
+										$resultado=mysqli_query($mysqli,$consul);
+									?>
+										<thead>
+											<tr>
+												<th>IDENTIFICACION</th>
+												<th>NOMBRE</th>
+												<th>APELLIDO</th>
+												<th>EDAD</th>
+												<th>CELULAR</th>
+												<th>DIRECCION</th>
+												<th>CORREO</th>
+												<th>USUARIO</th>
+												<th>DOCUMENTO</th>
+												<th>ACCIONES</th>
+											</tr>
+										</thead>
+										<?php
+													while($mostrar1=mysqli_fetch_assoc($resultado)){
+												?>
+										<tbody>
+											<tr>
+												<td>
+													<?php echo $mostrar1['documento']; ?>
+												</td>
+												<td>
+													<?php echo $mostrar1['nombre']; ?>
+												</td>
+												<td>
+													<?php echo $mostrar1['apellido']; ?>
+												</td>
+												<td>
+													<?php echo $mostrar1['edad'];?>
+												</td>
+												<td>
+													<?php echo $mostrar1['celular']; ?>
+												</td>
+												<td>
+													<?php echo $mostrar1['direccion']; ?>
+												</td>
+												<td>
+													<?php echo $mostrar1['correo']; ?>
+												</td>
+												<td>
+													<?php echo $mostrar1['nom_tip_usu']; ?>
+												</td>
+												<td>
+													<?php echo $mostrar1['nom_tip_doc']; ?>
+												</td>
+												<td>
+												<a <?php echo "href='php/editar.php?documento=".$mostrar1['documento']."'";?> class="btn btn-success" style="padding:5px 2px; font-size:20px;"><i class="fas fa-user-edit"></i></a>
+												<a <?php echo "href='php/eliminar.php?documento=".$mostrar1['documento']."'onclick='return confirmar()'";?> class="btn btn-danger" style="padding:5px 2px; font-size:20px;"><i class="fas fa-trash-alt"></i></a>
+												</td>
+											</tr>
+										</tbody>
+										<?php
+												}
+												?>
+									</table>
+							</div>
+						</div>
+					</div>
+				</div>
             </div>  
                 <!-- TERMINA EL CODIGO DE MOSTRAR USUARIOS  -->
 		
@@ -282,16 +290,30 @@ Favor revisar los direccionamientos
 	</div>
 
 </body>
-
-    <script src="js/jquery.js"></script>
-    <script src="//cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
+	<script src="js/jquery.js"></script>							
+    <script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.24/js/dataTables.bootstrap4.min.js"></script>
-    <script>
-        $(document).ready( function () {
-        $('#ella').DataTable();
-    } );
+	<script src="https://cdn.datatables.net/responsive/2.2.7/js/dataTables.responsive.min.js"></script>
+	<script src="https://cdn.datatables.net/responsive/2.2.7/js/responsive.bootstrap4.min.js"></script>
+	<script>
+		$('#ella').DataTable({
+        "language": {
+            "lengthMenu": "Mostrar _MENU_ registros por página",
+            "zeroRecords": "Nada encontrado - Lo sentimos",
+            "info": "Mostar la página _PAGE_ de _PAGES_",
+            "infoEmpty": "No records available",
+            "infoFiltered": "(Busqueda entre _MAX_ registros totales)"
+        },
+		searching:false,
+		ordering:false,
+        scrollY: 400,
+        scrollX: false,
+        scrollCollapse: true,
+        lengthMenu: [[5, 10, 25, 50], [5, 10, 25, 50, "All"]],
 
-    </script>
+    });
+	</script>
+   
     <!--====== Scripts pagina ¡¡NO CAMBIAR!! -->
     <script src="../../../layout/js/jquery-3.1.1.min.js"></script>
     <script src="../../../layout/js/sweetalert2.min.js"></script>

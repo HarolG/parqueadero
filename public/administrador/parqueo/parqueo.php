@@ -60,7 +60,7 @@
 			<!-- SideBar Menu -->
 			<ul class="list-unstyled full-box dashboard-sideBar-Menu">
 				<li>
-					<a href="../home/administrador.php" style="margin-left:4px;">
+					<a href="../home/administrador.php">
 						<i class="fas fa-home" style="font-size: 16px;"></i> Inicio 
 					</a>
 				</li>

@@ -29,7 +29,8 @@ body, html{
 	box-sizing: border-box;
 }
 .cover{
-	background: 50% 50% no-repeat;
+	/* background: 50% 50% no-repeat; */
+	background: no-repeat;
 	background-size: cover;
 }
 .text-titles{
@@ -109,7 +110,8 @@ body, html{
 .dashboard-sideBar-UserInfo ul{
 	margin-top: 405px;
 	margin-left: -12px;
-	position: absolute;
+	position:absolute; 
+
 }
 .dashboard-sideBar-UserInfo ul > li,
 .dashboard-sideBar-UserInfo ul > li > a{
@@ -585,9 +587,6 @@ body, html{
 		padding-left: 0;
 	}
 }
-.tabla{
-  width: 100%;
-  
-}
+
 
  

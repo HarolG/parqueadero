@@ -273,8 +273,8 @@
 
 </body>
     <!-- Scripts cambiables -->
+    <script src="js/validar.js"></script>
     <script src="../../../library/jquery-3.6.0.min.js"></script>
-    <script src="js/confirmacion.js"></script>
 
     <!--====== Scripts pagina ¡¡NO CAMBIAR!! -->
     <script src="../../../layout/js/jquery-3.1.1.min.js"></script>

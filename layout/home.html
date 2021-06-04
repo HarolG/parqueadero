@@ -1,9 +1,3 @@
-<?php
-    include("php/conexion.php");
-
-    if(isset($_SESSION['tipo']) && isset($_SESSION['nom']) && isset($_SESSION['ape']) && isset($_SESSION['pass']) ) {
-?>
-
 <!-- 
 Importante,
 Esto es solo una plantilla
@@ -13,15 +7,13 @@ Favor revisar los direccionamientos
 
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
 	<title>Inicio</title>
 	<meta charset="UTF-8">
-	<meta name="viewport"
-		content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-	<link rel="icon" href="../../../img/logo.ico" />
-	<!-- estilos generales -->
-	<link rel="stylesheet" href="../../../layoute/css/main.css">
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<link rel="icon" href="../../../img/logo.ico"/>
+    <!-- estilos generales -->
+	<link rel="stylesheet" href="../../../layout/css/main.css">
 	<link rel="stylesheet" href="css/administrador.css">
 	<!-- Tipo de letra -->
 	<link
@@ -29,7 +21,6 @@ Favor revisar los direccionamientos
 		rel="stylesheet">
 	<script src="https://kit.fontawesome.com/a90c49b6b2.js" crossorigin="anonymous"></script>
 </head>
-
 <body>
 	<!-- SideBar -->
 	<section class="full-box cover dashboard-sideBar">
@@ -37,8 +28,7 @@ Favor revisar los direccionamientos
 		<div class="full-box dashboard-sideBar-ct">
 			<!--SideBar Title -->
 			<div class="full-box text-uppercase text-center text-titles dashboard-sideBar-title">
-				<img src="../../../img/Logo_parking_2.0.png" alt="logo" class="logo"
-					style="margin-top:10px;width: 150px; height: 70px; display: flex; justify-content: center; margin-left:40px;">
+				<img src="../../../img/Logo_parking_2.0.png" alt="logo" class="logo" style="width: 150px; height: 70px; display: flex; justify-content: center; margin-left:40px;">
 			</div>
 			<!-- SideBar User info -->
 			<div class="full-box dashboard-sideBar-UserInfo">
@@ -50,9 +40,9 @@ Favor revisar los direccionamientos
 							<?php echo $_SESSION['nom']," ", $_SESSION['ape']?>
 						</p>
 					</div>
-
+				
 				</figure>
-
+				
 				<ul class="full-box list-unstyled text-center">
 					<li>
 						<a href="#!">
@@ -70,32 +60,32 @@ Favor revisar los direccionamientos
 			<ul class="list-unstyled full-box dashboard-sideBar-Menu">
 				<li>
 					<a href="administrador.php">
-						<i class="fas fa-home"></i> Inicio
+						<i class="fas fa-home"></i> Inicio 
 					</a>
 				</li>
 				<li>
 					<a href="../parqueo/parqueo.php" class="btn-sideBar-SubMenu">
 						<i class="fa fa-sign-in-alt" aria-hidden="true"></i> Reporte de entradas
 					</a>
-
+					
 				</li>
 				<li>
 					<a href="../zonas/zona.php" class="btn-sideBar-SubMenu">
-						<i class="fa fa-plus" aria-hidden="true"></i> Crear zonas
+						<i class="fa fa-plus" aria-hidden="true"></i> Crear zonas 
 					</a>
-
+					
 				</li>
 				<li>
 					<a href="../usuarios/usuarios.php" class="btn-sideBar-SubMenu">
-						<i class="fa fa-users" aria-hidden="true"></i> Crear usuarios
+						<i class="fa fa-users" aria-hidden="true"></i> Crear usuarios 
 					</a>
-
+					
 				</li>
 				<li>
 					<a href="../crear/crearusu.php" class="btn-sideBar-SubMenu">
 						<i class="fa fa-car" aria-hidden="true"></i> Registro de vehiculos
 					</a>
-
+					
 				</li>
 			</ul>
 		</div>
@@ -120,115 +110,115 @@ Favor revisar los direccionamientos
 						<i class="far fa-question-circle"></i>
 					</a>
 				</li>
-
-				<a class="pull-left links" style="width: 250px;" href="http://centrodeindustria.blogspot.com">Centro de
-					Industria y Construcción</a>
-
-				<a class="pull-left links" style="width: 170px;"
-					href="http://oferta.senasofiaplus.edu.co/sofia-oferta/">Portal de Sofia Plus</a>
-
-			</ul>
+                
+                <a class="pull-left links" style="width: 250px;" href="http://centrodeindustria.blogspot.com">Centro de Industria y Construcción</a>   
+               
+                <a class="pull-left links" style="width: 170px;"  href="http://oferta.senasofiaplus.edu.co/sofia-oferta/">Portal de Sofia Plus</a>
+              
+			</ul>    
 		</nav>
 		<!-- Aquí va el contenido -->
 		
-	</section>
+</section>
 
-	<!-- Notifications area -->
-	
-	<section class="full-box Notifications-area">
-		<div class="full-box Notifications-bg btn-Notifications-area">
-	
+<!-- Notifications area -->
+
+<section class="full-box Notifications-area">
+	<div class="full-box Notifications-bg btn-Notifications-area">
+
+	</div>
+	<div class="full-box Notifications-body">
+		<div class="Notifications-body-title text-titles text-center">
+			Notifications <i class="fas fa-times-circle btn-Notifications-area"></i>
 		</div>
-		<div class="full-box Notifications-body">
-			<div class="Notifications-body-title text-titles text-center">
-				Notifications <i class="fas fa-times-circle btn-Notifications-area"></i>
-			</div>
-			<div class="list-group">
-				<div class="list-group-item">
-					<div class="row-action-primary">
-						<i class="zmdi zmdi-alert-triangle"></i>
-					</div>
-					<div class="row-content">
-						<div class="least-content">17m</div>
-						<h4 class="list-group-item-heading">Tile with a label</h4>
-						<p class="list-group-item-text">Donec id elit non mi porta gravida at eget metus.</p>
-					</div>
+		<div class="list-group">
+			<div class="list-group-item">
+				<div class="row-action-primary">
+					<i class="zmdi zmdi-alert-triangle"></i>
 				</div>
-				<div class="list-group-separator"></div>
-				<div class="list-group-item">
-					<div class="row-action-primary">
-						<i class="zmdi zmdi-alert-octagon"></i>
-					</div>
-					<div class="row-content">
-						<div class="least-content">15m</div>
-						<h4 class="list-group-item-heading">Tile with a label</h4>
-						<p class="list-group-item-text">Donec id elit non mi porta gravida at eget metus.</p>
-					</div>
-				</div>
-				<div class="list-group-separator"></div>
-				<div class="list-group-item">
-					<div class="row-action-primary">
-						<i class="zmdi zmdi-help"></i>
-					</div>
-					<div class="row-content">
-						<div class="least-content">10m</div>
-						<h4 class="list-group-item-heading">Tile with a label</h4>
-						<p class="list-group-item-text">Maecenas sed diam eget risus varius blandit.</p>
-					</div>
-				</div>
-				<div class="list-group-separator"></div>
-				<div class="list-group-item">
-					<div class="row-action-primary">
-						<i class="zmdi zmdi-info"></i>
-					</div>
-					<div class="row-content">
-						<div class="least-content">8m</div>
-						<h4 class="list-group-item-heading">Tile with a label</h4>
-						<p class="list-group-item-text">Maecenas sed diam eget risus varius blandit.</p>
-					</div>
+				<div class="row-content">
+					<div class="least-content">17m</div>
+					<h4 class="list-group-item-heading">Tile with a label</h4>
+					<p class="list-group-item-text">Donec id elit non mi porta gravida at eget metus.</p>
 				</div>
 			</div>
-	
+			<div class="list-group-separator"></div>
+			<div class="list-group-item">
+				<div class="row-action-primary">
+					<i class="zmdi zmdi-alert-octagon"></i>
+				</div>
+				<div class="row-content">
+					<div class="least-content">15m</div>
+					<h4 class="list-group-item-heading">Tile with a label</h4>
+					<p class="list-group-item-text">Donec id elit non mi porta gravida at eget metus.</p>
+				</div>
+			</div>
+			<div class="list-group-separator"></div>
+			<div class="list-group-item">
+				<div class="row-action-primary">
+					<i class="zmdi zmdi-help"></i>
+				</div>
+				<div class="row-content">
+					<div class="least-content">10m</div>
+					<h4 class="list-group-item-heading">Tile with a label</h4>
+					<p class="list-group-item-text">Maecenas sed diam eget risus varius blandit.</p>
+				</div>
+			</div>
+			<div class="list-group-separator"></div>
+			<div class="list-group-item">
+				<div class="row-action-primary">
+					<i class="zmdi zmdi-info"></i>
+				</div>
+				<div class="row-content">
+					<div class="least-content">8m</div>
+					<h4 class="list-group-item-heading">Tile with a label</h4>
+					<p class="list-group-item-text">Maecenas sed diam eget risus varius blandit.</p>
+				</div>
+			</div>
 		</div>
-	</section>
-	
-	<!-- Dialog help -->
-	<div class="modal fade" tabindex="-1" role="dialog" id="Dialog-Help">
-		<div class="modal-dialog" role="document">
-			<div class="modal-content">
-				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-							aria-hidden="true">&times;</span></button>
-					<h4 class="modal-title">Help!!</h4>
-				</div>
-				<div class="modal-body">
-					<p>
-						Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt beatae esse velit ipsa sunt
-						incidunt aut voluptas, nihil reiciendis maiores eaque hic vitae saepe voluptatibus. Ratione
-						veritatis a unde autem!
-					</p>
-				</div>
-				<div class="modal-footer">
-					<button type="button" class="btn btn-primary btn-raised" data-dismiss="modal">Ok <i
-							class="fas fa-exclamation"></i> </button>
-				</div>
+
+	</div>
+</section>
+
+<!-- Dialog help -->
+<div class="modal fade" tabindex="-1" role="dialog" id="Dialog-Help">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+						aria-hidden="true">&times;</span></button>
+				<h4 class="modal-title">Help!!</h4>
+			</div>
+			<div class="modal-body">
+				<p>
+					Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt beatae esse velit ipsa sunt
+					incidunt aut voluptas, nihil reiciendis maiores eaque hic vitae saepe voluptatibus. Ratione
+					veritatis a unde autem!
+				</p>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-primary btn-raised" data-dismiss="modal">Ok <i
+						class="fas fa-exclamation"></i> </button>
 			</div>
 		</div>
 	</div>
-	
-	</body>
-	<!-- Scripts cambiables -->
-	
-	<!--====== Scripts pagina ¡¡NO CAMBIAR!! -->
-	<script src="../../../layoute/js/jquery-3.1.1.min.js"></script>
-	<script src="../../../layoute/js/sweetalert2.min.js"></script>
-	<script src="../../../layoute/js/bootstrap.min.js"></script>
-	<script src="../../../layoute/js/material.min.js"></script>
-	<script src="../../../layoute/js/ripples.min.js"></script>
-	<script src="../../../layoute/js/jquery.mCustomScrollbar.concat.min.js"></script>
-	<script src="../../../layoute/js/main.js"></script>
-	<script>
-		$.material.init();
-	</script>
-	
-	</html>
+</div>
+
+</body>
+<!--====== Scripts pagina cambiables -->
+
+
+
+<!--====== Scripts pagina ¡¡NO CAMBIAR!! -->
+<script src="../../../layout/js/jquery-3.1.1.min.js"></script>
+<script src="../../../layout/js/sweetalert2.min.js"></script>
+<script src="../../../layout/js/bootstrap.min.js"></script>
+<script src="../../../layout/js/material.min.js"></script>
+<script src="../../../layout/js/ripples.min.js"></script>
+<script src="../../../layout/js/jquery.mCustomScrollbar.concat.min.js"></script>
+<script src="../../../layout/js/main.js"></script>
+<script>
+	$.material.init();
+</script>
+
+</html>
