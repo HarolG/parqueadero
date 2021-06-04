@@ -25,7 +25,6 @@ $(document).ready(function () {
 
           var layout = {
             title: `Porcentaje de Cupos Disponibles Zona ${element.id_zona}`,
-            width: 500
           };
 
           Plotly.newPlot('graficaHistoria', data, layout);
@@ -68,7 +67,6 @@ $(document).ready(function () {
 
           var layout = {
             title: `Porcentaje de Cupos Disponibles Zona ${element.id_zona}`,
-            width: 500
           };
 
           Plotly.newPlot('graficaHistoria', data, layout);
