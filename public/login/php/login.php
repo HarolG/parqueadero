@@ -18,15 +18,25 @@
             $nom = $fila['nombre'];
             $ape = $fila['apellido'];
             $tip = $fila['id_tip_usu'];
+            $estadousu = $fila['id_estado_usu'];
 
             if ($_SESSION['tipo'] == 1) {
                 header("Location: ../../administrador/home/administrador.php");
             } elseif ($_SESSION['tipo'] == 2) {
-                
-                $sqli = "INSERT INTO informe_celadores (documento, nombre, apellido, id_tip_usu, fecha_inicio) VALUES ('$user', '$nom', '$ape', '$tip', now())";
-                $quer = mysqli_query($mysqli, $sqli);
 
-                header("Location: ../../celador/parqueo.php");
+                if ($_SESSION['tipo'] == 2 && $estadousu == 1) {
+                    
+                    $sqli = "INSERT INTO informe_celadores (documento, nombre, apellido, id_tip_usu, fecha_inicio) VALUES ('$user', '$nom', '$ape', '$tip', now())";
+                    $quer = mysqli_query($mysqli, $sqli);
+    
+                    header("Location: ../../celador/parqueo.php");
+                } else if ($_SESSION['tipo'] == 2 && $estadousu == 2) {
+                    echo '<script type="text/javascript">
+                            alert("Este usuario esta inhabilitado");
+                            window.location.href="../login.html";
+                        </script>';
+                }
+                
             } elseif ($_SESSION['tipo'] == 3) {
                 header("Location: ../../supervisor/celadores/index.php");
             }
