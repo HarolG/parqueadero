@@ -53,10 +53,18 @@
 
 .eliminarlink{
     text-decoration: none;
-    /* color: red; */
-    background-color: red;
-    border-radius: 2px;
+    color: white;
+    background-color: rgb(221, 33, 33);
+    border-radius: 5px;
     /* border: 2px solid black; */
-    width: 70px;
-    height: 70px;
+    /* width: 70px;
+    height: 70px; */
+    padding: 10px;
+    margin: 2px;
+}
+
+.eliminarlink:hover{
+    background-color: rgb(138, 24, 24);
+    color: white;
+    text-decoration: none;
 }

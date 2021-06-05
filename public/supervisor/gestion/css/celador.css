@@ -1,0 +1,121 @@
+.celadores_login{
+    width: 900px;
+    /* background-color: white; */
+    margin: 45px auto;
+    border-collapse: collapse;
+    /* border: 2px solid black; */
+    box-shadow: 2px 2px 2px 1px rgba(100, 98, 98, 0.2);
+}
+
+.head_table{
+    text-align: center;
+    font-size: 15px;
+    background-color: #2a3f54;
+    color: white;
+    padding: 5px;
+    border-bottom: solid 5px #17212b;
+    /* margin: 10px; */
+    /* border: 2px solid black; */
+}
+
+.body_table{
+    text-align: center;
+    font-size: 15px;
+    background-color: rgb(255, 255, 255);
+    color: black;
+    padding: 10px;
+    /* margin: 10px; */
+    /* border: 2px solid black; */
+}
+
+.titulo_informe{
+    text-align: center;
+}
+
+.eliminarlink{
+    text-decoration: none;
+    color: white;
+    background-color: rgb(35, 172, 35);
+    border-radius: 5px;
+    /* border: 2px solid black; */
+    /* width: 70px;
+    height: 70px; */
+    padding: 10px;
+    margin: 2px;
+}
+
+.eliminarlink:hover{
+    background-color: green;
+    color: white;
+    text-decoration: none;
+}
+
+.eliminarlink2{
+    text-decoration: none;
+    color: white;
+    background-color: rgb(221, 33, 33);
+    border-radius: 5px;
+    /* border: 2px solid black; */
+    /* width: 70px;
+    height: 70px; */
+    padding: 10px;
+    margin: 2px;
+}
+
+.eliminarlink2:hover{
+    background-color: rgb(138, 24, 24);
+    color: white;
+    text-decoration: none;
+}
+
+.body_table2{
+    text-align: center;
+    font-size: 13px;
+    background-color: rgb(35, 172, 35);
+    color: white;
+    padding: 7px;
+    border-radius: 7px;
+    /* height: 10px; */
+    /* margin: 10px; */
+    /* border: 2px solid black; */
+}
+
+.body_table3{
+    text-align: center;
+    font-size: 13px;
+    background-color: rgb(221, 33, 33);
+    color: white;
+    padding: 7px;
+    border-radius: 7px;
+    /* margin: 10px; */
+    /* border: 2px solid black; */
+}
+
+.body_table4{
+    text-align: center;
+    font-size: 13px;
+    background-color: rgb(11, 125, 232);
+    color: white;
+    padding: 7px;
+    border-radius: 7px;
+    /* margin: 10px; */
+    /* border: 2px solid black; */
+}
+
+.eliminarlink3{
+    text-decoration: none;
+    color: white;
+    background-color: rgb(11, 125, 232);
+    border-radius: 5px;
+    /* border: 2px solid black; */
+    /* width: 70px;
+    height: 70px; */
+    padding: 10px;
+    margin: 2px;
+}
+
+.eliminarlink3:hover{
+    background-color: rgb(27, 68, 114);
+    color: white;
+    text-decoration: none;
+}
