@@ -7,15 +7,18 @@ include("../../../php/conexion.php");
 <html lang="es">
 
 <head>
-	<title>Supervisor</title>
+	<title>Inicio</title>
 	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<meta name="viewport"
+		content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 	<link rel="icon" href="../../../img/logo.ico" />
 	<!-- estilos generales -->
 	<link rel="stylesheet" href="../../../layout/css/main.css">
 	<link rel="stylesheet" href="css/celador.css">
 	<!-- Tipo de letra -->
-	<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;1,100;1,300;1,400&display=swap" rel="stylesheet">
+	<link
+		href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;1,100;1,300;1,400&display=swap"
+		rel="stylesheet">
 	<script src="https://kit.fontawesome.com/a90c49b6b2.js" crossorigin="anonymous"></script>
 </head>
 
@@ -26,7 +29,8 @@ include("../../../php/conexion.php");
 		<div class="full-box dashboard-sideBar-ct">
 			<!--SideBar Title -->
 			<div class="full-box text-uppercase text-center text-titles dashboard-sideBar-title">
-				<img src="../../../img/Logo_parking_2.0.png" alt="logo" class="logo" style="margin-top:10px;width: 150px; height: 70px; display: flex; justify-content: center; margin-left:40px;">
+				<img src="../../../img/Logo_parking_2.0.png" alt="logo" class="logo"
+					style="width: 150px; height: 70px; display: flex; justify-content: center; margin-left:40px;">
 			</div>
 			<!-- SideBar User info -->
 			<div class="full-box dashboard-sideBar-UserInfo">
@@ -35,7 +39,7 @@ include("../../../php/conexion.php");
 					<div class="text-center text-titles">
 						<p class="profile_welcome">Bienvenido,</p>
 						<p class="profile_name">
-							<?php echo $_SESSION['nom'], " ", $_SESSION['ape'] ?>
+							<?php echo $_SESSION['nom']," ", $_SESSION['ape']?>
 						</p>
 					</div>
 
@@ -63,33 +67,14 @@ include("../../../php/conexion.php");
 				</li>
 				<li>
 					<a href="index.php">
-						<i class="fas fa-home"></i> Informe Inicio de Sesion
+						<i class="fas fa-home"></i> Informe Inicio de Sesión
 					</a>
 				</li>
 				<li>
-					<a href="../gestion/index.php" class="btn-sideBar-SubMenu">
-						<i class="fa fa-sign-in-alt" aria-hidden="true"></i> Gestion Usuarios
+					<a href="../gestion/index.php">
+						<i class="fa fa-sign-in-alt"></i> Gestión de Usuarios
 					</a>
-
 				</li>
-				<!--<li>
-					<a href="../zonas/zona.php" class="btn-sideBar-SubMenu">
-						<i class="fa fa-plus" aria-hidden="true"></i> Crear zonas
-					</a>
-
-				</li>
-				<li>
-					<a href="../usuarios/usuarios.php" class="btn-sideBar-SubMenu">
-						<i class="fa fa-users" aria-hidden="true"></i> Crear usuarios
-					</a>
-
-				</li>
-				<li>
-					<a href="../crear/crearusu.php" class="btn-sideBar-SubMenu">
-						<i class="fa fa-car" aria-hidden="true"></i> Registro de vehiculos
-					</a>
-
-				</li> -->
 			</ul>
 		</div>
 	</section>
@@ -114,10 +99,11 @@ include("../../../php/conexion.php");
 					</a>
 				</li>
 
-				<a class="pull-left" style="width: 250px;" href="http://centrodeindustria.blogspot.com">Centro de
+				<a class="pull-left links" style="width: 250px;" href="http://centrodeindustria.blogspot.com">Centro de
 					Industria y Construcción</a>
 
-				<a class="pull-left" style="width: 170px;" href="http://oferta.senasofiaplus.edu.co/sofia-oferta/">Portal de Sofia Plus</a>
+				<a class="pull-left links" style="width: 170px;"
+					href="http://oferta.senasofiaplus.edu.co/sofia-oferta/">Portal de Sofia Plus</a>
 
 			</ul>
 		</nav>
@@ -156,8 +142,9 @@ include("../../../php/conexion.php");
 				<?php } ?>
 			</tbody>
 		</table>
-		<button class="imprimir" onclick="window.print()"><i class="fas fa-file-pdf"></i> Imprimir</button>
+		<button class="imprimir" onclick="window.print()"><i class="fa-solid fa-file-pdf"></i>Imprimir</button>
 	</section>
+
 	<!-- Notifications area -->
 
 	<section class="full-box Notifications-area">
@@ -222,7 +209,8 @@ include("../../../php/conexion.php");
 		<div class="modal-dialog" role="document">
 			<div class="modal-content">
 				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+							aria-hidden="true">&times;</span></button>
 					<h4 class="modal-title">Help!!</h4>
 				</div>
 				<div class="modal-body">
@@ -233,24 +221,25 @@ include("../../../php/conexion.php");
 					</p>
 				</div>
 				<div class="modal-footer">
-					<button type="button" class="btn btn-primary btn-raised" data-dismiss="modal">Ok <i class="fas fa-exclamation"></i> </button>
+					<button type="button" class="btn btn-primary btn-raised" data-dismiss="modal">Ok <i
+							class="fas fa-exclamation"></i> </button>
 				</div>
 			</div>
 		</div>
 	</div>
 
 </body>
-<script src="js/confirmacion.js"></script>
 <!-- Scripts cambiables -->
+<script src="js/confirmacion.js"></script>
 
 <!--====== Scripts pagina ¡¡NO CAMBIAR!! -->
-<script src="../../../layoute/js/jquery-3.1.1.min.js"></script>
-<script src="../../../layoute/js/sweetalert2.min.js"></script>
-<script src="../../../layoute/js/bootstrap.min.js"></script>
-<script src="../../../layoute/js/material.min.js"></script>
-<script src="../../../layoute/js/ripples.min.js"></script>
-<script src="../../../layoute/js/jquery.mCustomScrollbar.concat.min.js"></script>
-<script src="../../../layoute/js/main.js"></script>
+<script src="../../../layout/js/jquery-3.1.1.min.js"></script>
+<script src="../../../layout/js/sweetalert2.min.js"></script>
+<script src="../../../layout/js/bootstrap.min.js"></script>
+<script src="../../../layout/js/material.min.js"></script>
+<script src="../../../layout/js/ripples.min.js"></script>
+<script src="../../../layout/js/jquery.mCustomScrollbar.concat.min.js"></script>
+<script src="../../../layout/js/main.js"></script>
 <script>
 	$.material.init();
 </script>
