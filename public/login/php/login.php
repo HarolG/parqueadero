@@ -38,7 +38,7 @@
                 }
                 
             } elseif ($_SESSION['tipo'] == 3) {
-                header("Location: ../../supervisor/celadores/index.php");
+                header("Location: ../../supervisor/home/home.php");
             }
 
             // if ($_SESSION['pass'] == $pass) {

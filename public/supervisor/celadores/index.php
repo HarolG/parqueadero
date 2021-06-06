@@ -57,6 +57,11 @@ include("../../../php/conexion.php");
 			<!-- SideBar Menu -->
 			<ul class="list-unstyled full-box dashboard-sideBar-Menu">
 				<li>
+					<a href="../home/home.php">
+						<i class="fas fa-home"></i> Inicio
+					</a>
+				</li>
+				<li>
 					<a href="index.php">
 						<i class="fas fa-home"></i> Informe Inicio de Sesion
 					</a>
