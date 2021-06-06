@@ -4,6 +4,7 @@
     margin: 45px auto;
     border-collapse: collapse;
     /* border: 2px solid black; */
+    box-shadow: 2px 2px 2px 1px rgba(100, 98, 98, 0.2);
 }
 
 .head_table{
