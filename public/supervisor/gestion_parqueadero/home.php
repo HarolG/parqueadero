@@ -116,8 +116,7 @@
         </nav>
         <!-- Aquí va el contenido -->
         <div class="gestion_container container">
-            <h3 class="">Gestión de Parqueadero</h3>
-            <div class="row">
+            <div class="row contenedor_general">
                 <div class="col-sm-4">
                     <div class="card">
                         <div class="card-body">
@@ -126,13 +125,6 @@
                                 <div class="form-group">
                                     <input type="text" id="name" placeholder="Ingrese la placa del vehiculo"
                                         class="form-control">
-                                </div>
-                                <div class="form-group">
-                                    <select class="form-select btn-block" aria-label="Default select example">
-                                        <option selected>Seleccione el tipo de entrada</option>
-                                        <option value="1">Entrada</option>
-                                        <option value="2">Salida</option>
-                                      </select>
                                 </div>
                                 <div class="form-group">
                                     <select class="form-select btn-block" aria-label="Default select example">
@@ -156,7 +148,7 @@
                                         <option value="2">Salida</option>
                                       </select>
                                 </div>
-                                <button type="submit" class="btn btn-primary btn-block text-center">salvar
+                                <button type="submit" class="btn btn-primary btn-block text-center boton">salvar
                                     registro</button>
                             </form>
                         </div>
@@ -174,9 +166,9 @@
                                             <select class="form-select form-select-lg mb-3"
                                                 aria-label=".form-select-lg example">
                                                 <option selected>Abre el menú</option>
-                                                <option value="1">One</option>
-                                                <option value="2">Two</option>
-                                                <option value="3">Three</option>
+                                                <option value="1">Carro</option>
+                                                <option value="2">Moto</option>
+                                                <option value="3">Ciclas</option>
                                             </select>
                                         </div>
                                     </div>
@@ -186,9 +178,9 @@
                                             <select class="form-select form-select-lg mb-3"
                                                 aria-label=".form-select-lg example">
                                                 <option selected>Abre el menú</option>
-                                                <option value="1">One</option>
-                                                <option value="2">Two</option>
-                                                <option value="3">Three</option>
+                                                <option value="1">1</option>
+                                                <option value="2">2</option>
+                                                <option value="3">3</option>
                                             </select>
                                         </div>
                                     </div>
