@@ -3,7 +3,8 @@
 
     if(isset($_SESSION['tipo']) && isset($_SESSION['nom']) && isset($_SESSION['ape']) && isset($_SESSION['pass']) ) {
         $tipoZona = $mysqli -> query ("SELECT id_zona, nom_tip_zona FROM zona_parqueo, tipo_zona WHERE zona_parqueo.id_tip_zona = tipo_zona.id_tip_zona");
-        $zonas = $mysqli -> query ("SELECT id_zona,cupos,id_estado,nom_tip_zona,cupos_live FROM zona_parqueo, tipo_zona WHERE zona_parqueo.id_tip_zona = tipo_zona.id_tip_zona");
+        $zonas = $mysqli -> query ("SELECT id_zona,id_estado,nom_tip_zona FROM zona_parqueo, tipo_zona WHERE zona_parqueo.id_tip_zona = tipo_zona.id_tip_zona");
+        
 ?>
 
 <!DOCTYPE html>
@@ -124,12 +125,14 @@
                 <div class="infoZonas">
                     <?php
                         while ($resul2 = mysqli_fetch_array($zonas)) {
-
+                            $cupos_libres = $mysqli -> query ("SELECT * FROM detalle_cupos WHERE id_zona = '$resul2[id_zona]' AND estado_cupo = 'Disponible'");
+                            $resul_cupos = $cupos_libres->num_rows;
+                            
                             echo "
                                 <div class='darosZonas'>
                                     <h2>ZONA $resul2[id_zona]</h2>
                                     <h3>$resul2[nom_tip_zona]</h3>
-                                    <label>Cupos Disponibles: $resul2[cupos_live]</label>
+                                    <label>Cupos Disponibles: $resul_cupos</label>
                                 </div>
                                     
                                 ";
