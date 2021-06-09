@@ -11,7 +11,7 @@ body {
 }
 
 #form{
-    width: 830px;
+    width: 600px;
     background-color: white;
     margin: 50px auto;
     border-radius: 10px;
@@ -29,7 +29,7 @@ body {
 
 .crear_zona{
     position: absolute;
-    margin: -10px -698px;
+    margin: -10px -465px;
     /* background-color: red; */
     text-decoration: none;
     color: #2a3f54;

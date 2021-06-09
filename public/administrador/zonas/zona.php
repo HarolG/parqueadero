@@ -131,8 +131,7 @@
                             }
                         ?>
             </select>
-            <input type="text" name="cupos_zona" id="inputcupos" placeholder="Ingrese la cantidad de cupos"
-                autocomplete="off">
+            <!-- <input type="text" name="cupos_zona" id="inputcupos" placeholder="Ingrese la cantidad de cupos" autocomplete="off"> -->
             <select name="cupozona" id="cupozona">
                 <option value="">Seleccione un estado</option>
                 <?php
@@ -156,7 +155,7 @@
                 <tr>
                     <td class="head_table">ID ZONA</td>
                     <td class="head_table">TIPO DE ZONA</td>
-                    <td class="head_table">CANTIDAD DE CUPOS</td>
+                    <!-- <td class="head_table">CANTIDAD DE CUPOS</td> -->
                     <td class="head_table">ESTADO</td>
                     <td class="head_table">OPERACIONES</td>
                 </tr>
@@ -171,7 +170,7 @@
                 <tr>
                     <td class="body_table"><b><?php echo $row['id_zona'] ?></b></td>
                     <td class="body_table"><b><?php echo $row['nom_tip_zona'] ?></b></td>
-                    <td class="body_table"><b><?php echo $row['cupos'] ?></b></td>
+                    <!-- <td class="body_table"><b>cupos</b></td> -->
                     <td class="body_table"><b><?php echo $row['nom_estado']; ?></b></td>
                     <td class="body_table">
                         <a href="php/editar.php?id_zona=<?php echo $row['id_zona']?>" class="eliminarlink2">
@@ -273,7 +272,9 @@
 
 </body>
     <!-- Scripts cambiables -->
-    <script src="js/validar.js"></script>
+    <!-- <script src="js/validar.js"></script> -->
+	<script src="js/confirmacion.js"></script>
+	<script src="js/validar.js"></script>
     <script src="../../../library/jquery-3.6.0.min.js"></script>
 
     <!--====== Scripts pagina ¡¡NO CAMBIAR!! -->

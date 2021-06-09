@@ -13,7 +13,7 @@ if(isset($_SESSION['tipo']) && isset($_SESSION['nom']) && isset($_SESSION['ape']
         $row = mysqli_fetch_array($result);
         // $cantidad = $row['title'];
         $estado = $row['nom_estado'];
-        $cantidad = $row['cupos'];
+        // $cantidad = $row['cupos'];
     }
     }
 
@@ -21,10 +21,10 @@ if(isset($_SESSION['tipo']) && isset($_SESSION['nom']) && isset($_SESSION['ape']
     $id = $_GET['id_zona'];
     //   $title= $_POST['title'];
     $estado = $_POST['cambiar_estado'];
-    $cantidadcupos = $_POST['cant_cupos'];
+    // $cantidadcupos = $_POST['cant_cupos'];
     
 
-    $query = "UPDATE zona_parqueo SET id_estado = '$estado', cupos = '$cantidadcupos', cupos_live = '$cantidadcupos' WHERE id_zona = $id";
+    $query = "UPDATE zona_parqueo SET id_estado = '$estado' WHERE id_zona = $id";
     mysqli_query($mysqli, $query);
 
     if ($query) {
@@ -153,8 +153,8 @@ if(isset($_SESSION['tipo']) && isset($_SESSION['nom']) && isset($_SESSION['ape']
            <form action="editar.php?id_zona=<?php echo $_GET['id_zona']; ?>" method="POST" id="formu" onsubmit="return valid();">
             <h2 class="titulo">EDITAR ESTADO</h2>
             <!-- <input type="text" name="idzona" id="inputzona" placeholder="Ingrese el id de la zona" autocomplete="off" required> -->
-            <label for="cant_cupos" class="label" style="background:none; color:black; font-size:15px; margin-left:-5px;">Cantidad de cupos</label>
-            <input type="text" name="cant_cupos" id="cant_cupos" placeholder="Cupos: <?php echo $row['cupos'];?>">
+            <!-- <label for="cant_cupos" class="label" style="background:none; color:black; font-size:15px; margin-left:-5px;">Cantidad de cupos</label>
+            <input type="text" name="cant_cupos" id="cant_cupos" placeholder="Cupos:cupos"> -->
             <select name="cambiar_estado" id="cambiar">
                 <option value=""><?php echo $row['nom_estado'];?></option>
                 <?php
