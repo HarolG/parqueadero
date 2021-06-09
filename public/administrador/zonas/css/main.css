@@ -1,6 +1,7 @@
 *{
     padding: 0;
     margin: 0;
+    /* margin-bottom: 30px; */
 }
 
 /* body{
@@ -8,6 +9,11 @@
 } */
 body {
     font-family: 'Roboto', sans-serif;
+}
+
+.cont{
+    border: 1px solid gray;
+    border-radius: 10px;
 }
 
 #form{
@@ -108,6 +114,7 @@ body {
     /* background-color: white; */
     margin: 45px auto;
     border-collapse: collapse;
+    box-shadow: 2px 2px 2px 1px rgba(100, 98, 98, 0.2);
 }
 
 .head_table{
@@ -202,4 +209,71 @@ ul, ol {
 
 #trash{
     color: red;
+}
+
+#formulario{
+    width: 830px;
+    background-color: white;
+    margin: 50px auto;
+    border-radius: 10px;
+    border: 1px solid gray;
+    padding: 7px;
+}
+
+.crear_cupo{
+    font-size: 15px;
+    width: 125px;
+    margin: 15px auto;
+    background-color: white;
+}
+
+#id_zona{
+    width: 230px;
+    margin: 10px auto;
+    border-radius: 10px;
+    background-color: white;
+    font-size: 15px;
+    text-align: center;
+    padding: 3px;
+    border: 2px solid #2a3f54;
+}
+
+#nombre_cupo{
+    width: 230px;
+    margin: 10px auto;
+    border-radius: 10px;
+    background-color: white;
+    border: 2px solid #2a3f54;
+    font-size: 15px;
+    text-align: center;
+    padding: 2.5px;
+}
+
+#estado_cupo{
+    width: 230px;
+    margin: 10px auto;
+    border-radius: 10px;
+    background-color: white;
+    font-size: 15px;
+    text-align: center;
+    padding: 3px;
+    border: 2px solid #2a3f54;
+}
+
+#enviar_cupo{
+    background-color: #2a3f54;
+    color: white;
+    border-radius: 10px;
+    border: 1px solid gray;
+    width: 110px;
+    font-size: 15px;
+    padding: 5px;
+    border: 1px solid #2a3f54;
+    margin: 2px;
+}
+
+#enviar_cupo:hover{
+    background-color: white;
+    color: black;
+    border: 1px solid #2a3f54;
 }
