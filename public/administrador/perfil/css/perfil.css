@@ -1,0 +1,77 @@
+.zonas_registradas {
+    width: 900px;
+    /* background-color: white; */
+    margin: 45px auto;
+    border-collapse: collapse;
+    box-shadow: 2px 2px 2px 1px rgba(100, 98, 98, 0.2);
+}
+
+.head_table {
+    text-align: center;
+    font-size: 15px;
+    background-color: #2a3f54;
+    color: white;
+    padding: 5px;
+}
+
+.body_table {
+    text-align: center;
+    font-size: 15px;
+    background-color: rgb(255, 255, 255);
+    color: black;
+    padding: 5px;
+}
+
+.body_table:hover {
+    background-color: gray;
+}
+
+#formu {
+    margin: 20px;
+}
+
+#formu input {
+    margin: 5px;
+    width: 250px;
+    border-radius: 5px;
+    border: 1px solid #39c;
+    border-radius: 10px;
+}
+
+#formu label {
+    display: inline-block;
+    width: 80px;
+    color: black;
+}
+
+.contenido {
+    /* border: 2px solid black; */
+    text-align: center;
+}
+
+#formu button {
+    margin: 10px;
+    border: none;
+    background-color: rgb(36, 204, 36);
+    color: white;
+    padding: 10px;
+}
+
+#formu button:hover {
+    background-color: rgb(33, 136, 33);
+    ;
+}
+
+.imagen {
+    width: 120px;
+    height: 120px;
+    border-radius: 50px;
+}
+
+.btn-actualiza{
+    margin: 5px;
+    border: none;
+    background-color: rgb(20, 114, 238);
+    color: white;
+    padding: 10px;
+}
