@@ -4,6 +4,7 @@
 
 .contenedor_general {
     margin-top: 30px;
+    margin-bottom: 30px;
 }
 
 select {
@@ -32,6 +33,7 @@ select {
     height: 50px;
     margin: 10px;
     border-radius: 10px;
+    cursor: pointer;
 
     display: flex;
     justify-content: center;
@@ -44,12 +46,12 @@ select {
     font-size: 30px;
 }
 
-.cupo_disponible {
+.cupo_Disponible {
     background-color: #4BB831;
 }
 
 
-.cupo_ocupado {
+.cupo_Ocupado {
     background-color: #FF0000;
 }
 
