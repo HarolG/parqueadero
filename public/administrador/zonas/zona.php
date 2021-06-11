@@ -32,7 +32,17 @@ if (isset($_SESSION['tipo']) && isset($_SESSION['nom']) && isset($_SESSION['ape'
 				<!-- SideBar User info -->
 				<div class="full-box dashboard-sideBar-UserInfo">
 					<figure class="full-box">
-						<img src="../../../img/foto_perfil.png" alt="UserIcon">
+						<?php
+
+						$sql = "SELECT * FROM usuario WHERE id_tip_usu = 1";
+						$result = mysqli_query($mysqli, $sql);
+						while ($row2 = mysqli_fetch_array($result)) {
+							/*almacenamos el nombre de la ruta en la variable $ruta_img*/
+							$ruta_img = $row2["foto"];
+						}
+						?>
+						<img src="../perfil/fotos/<?php echo $ruta_img; ?>" class="imagen" alt="">
+						<!-- <img src="../../../img/foto_perfil.png" alt="UserIcon"> -->
 						<div class="text-center text-titles">
 							<p class="profile_welcome">Bienvenido,</p>
 							<p class="profile_name">
@@ -200,10 +210,10 @@ if (isset($_SESSION['tipo']) && isset($_SESSION['nom']) && isset($_SESSION['ape'
 						<?php
 						$sql = "SELECT * FROM zona_parqueo, tipo_zona WHERE zona_parqueo.id_tip_zona = tipo_zona.id_tip_zona";
 						$query = mysqli_query($mysqli, $sql);
-	
+
 						while ($row = mysqli_fetch_array($query)) {
 						?>
-							<option value="<?php echo $row['id_zona']; ?>"><?php echo $row['nom_tip_zona']; ?></option>
+							<option value="<?php echo $row['id_zona']; ?>"><?php echo $row['id_zona']; ?>. <?php echo $row['nom_tip_zona']; ?></option>
 						<?php
 						}
 						?>
@@ -214,7 +224,7 @@ if (isset($_SESSION['tipo']) && isset($_SESSION['nom']) && isset($_SESSION['ape'
 						<?php
 						$sql = "SELECT * FROM estado_cupo";
 						$query = mysqli_query($mysqli, $sql);
-	
+
 						while ($row = mysqli_fetch_array($query)) {
 						?>
 							<option value="<?php echo $row['id_estado_cupo']; ?>"><?php echo $row['nom_estado_cupo']; ?></option>
@@ -240,7 +250,7 @@ if (isset($_SESSION['tipo']) && isset($_SESSION['nom']) && isset($_SESSION['ape'
 						$query = "SELECT * FROM detalle_cupos, zona_parqueo, estado_cupo 
 								WHERE detalle_cupos.id_zona = zona_parqueo.id_zona AND detalle_cupos.id_estado_cupo = estado_cupo.id_estado_cupo";
 						$result_tasks = mysqli_query($mysqli, $query);
-	
+
 						while ($row = mysqli_fetch_assoc($result_tasks)) { ?>
 							<tr>
 								<td class="body_table"><b><?php echo $row['id_deta_cupos'] ?></b></td>
@@ -285,7 +295,7 @@ if (isset($_SESSION['tipo']) && isset($_SESSION['nom']) && isset($_SESSION['ape'
 							<p class="list-group-item-text">Donec id elit non mi porta gravida at eget metus.</p>
 						</div>
 					</div>
-					<div class="list-group-separator"></div>
+					<div 2 class="list-group-separator"></div>
 					<div class="list-group-item">
 						<div class="row-action-primary">
 							<i class="zmdi zmdi-help"></i>

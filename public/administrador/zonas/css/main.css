@@ -133,6 +133,10 @@ body {
     padding: 5px;
 }
 
+.body_table:hover{
+    background-color: gray;
+}
+
 ul, ol {
     list-style:none;
 }
