@@ -85,6 +85,8 @@ if (isset($_SESSION['tipo']) && isset($_SESSION['nom']) && isset($_SESSION['ape'
                         while ($row2 = mysqli_fetch_array($result)) {
                             /*almacenamos el nombre de la ruta en la variable $ruta_img*/
                             $ruta_img = $row2["foto"];
+                            $nombr = $row2['nombre'];
+                            $apelli = $row2['apellido'];
                         }
                         ?>
                         <img src="../fotos/<?php echo $ruta_img; ?>" class="imagen" alt="">
@@ -176,7 +178,7 @@ if (isset($_SESSION['tipo']) && isset($_SESSION['nom']) && isset($_SESSION['ape'
             <div class="contenido">
 
                 <form action="editar.php?documento=<?php echo $_GET['documento']; ?>" method="POST" id="formu" enctype="multipart/form-data">
-                    <h2 class="titulo">EDITAR ESTADO</h2>
+                    <h2 class="titulo">ACTUALIZAR INFORMACION DE USUARIO</h2>
                     <div class="foto_perfil">
                         <?php
                         $sql = "SELECT * FROM usuario WHERE documento = $id";
@@ -186,8 +188,13 @@ if (isset($_SESSION['tipo']) && isset($_SESSION['nom']) && isset($_SESSION['ape'
                             $ruta_img = $row2["foto"];
                         }
                         ?>
-                        <img src="../fotos/<?php echo $ruta_img; ?>" class="imagen" alt="">
-                        <input type="file" name="foto" id="foto">
+                        <label for="foto">
+                            <img src="../fotos/<?php echo $ruta_img; ?>" class="imagen" alt="">
+
+                        </label>
+                        <div class="input_file col-md-6 col-sm-6 col-xs-6">
+                            <input type="file" name="foto" id="foto" class="fotito">
+                        </div>
                     </div>
                     <br>
                     <!-- <input type="text" name="idzona" id="inputzona" placeholder="Ingrese el id de la zona" autocomplete="off" required> -->
