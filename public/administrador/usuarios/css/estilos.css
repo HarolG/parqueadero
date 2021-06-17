@@ -1,0 +1,30 @@
+.fondo{
+	background: rgba(51, 122, 183, 0.8);
+	color: #ffffff;
+}
+
+.linea-izquierda{
+	border-left: solid 3px #d9534f;	
+}
+
+.ocultar{
+	display: none;
+}
+
+.eliminar{
+	padding: 5px 7px;
+}
+.editar{
+	padding: 5px 7px;	
+}
+
+.registro a{
+	left: 12px;
+}
+
+.but i{
+	font-size: 15px;
+}
+.tipos{
+	margin-top: 50px;
+}

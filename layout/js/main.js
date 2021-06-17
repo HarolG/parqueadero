@@ -13,7 +13,7 @@ $(document).ready(function(){
 	$('.btn-exit-system').on('click', function(){
 		swal({
 		  	title: 'Estas seguro?',
-		  	text: "seguro que quiere cerrar la sesion?",
+		  	text: "seguro que quieres cerrar la sesion?",
 		  	type: 'warning',
 		  	showCancelButton: true,
 		  	confirmButtonColor: '#03A9F4',
@@ -50,12 +50,6 @@ $(document).ready(function(){
 });
 (function($){
     $(window).on("load",function(){
-        $(".dashboard-sideBar-ct").mCustomScrollbar({
-        	theme:"light-thin",
-        	scrollbarPosition: "inside",
-        	autoHideScrollbar: true,
-        	scrollButtons: {enable: true}
-        });
         $(".dashboard-contentPage, .Notifications-body").mCustomScrollbar({
         	theme:"dark-thin",
         	scrollbarPosition: "inside",
