@@ -130,7 +130,7 @@ Favor revisar los direccionamientos
 		</div>
 	</div>
 	<!-- BOTONOES DE REGISTRO -->
-	<div class="registro btn-group" role="group" aria-label="Basic example" style="aling-items:center;">
+	<div class="registro btn-group" role="group" aria-label="Basic example" style="align-items:center;">
 		<a onclick="bajar();" class="but btn btn-primary" type="submit"><i class="fas fa-user-plus"> Registrar</i></a>
 		<a onclick="bajar_ventana2();" class="but btn btn-primary" type="submit"><i class="fas fa-plus-circle"> Resgistrar tipos</i></a>
 		
