@@ -54,7 +54,7 @@ if (isset($_SESSION['tipo']) && isset($_SESSION['nom']) && isset($_SESSION['ape'
 
 					<ul class="full-box list-unstyled text-center">
 						<li>
-							<a href="#!">
+							<a href="../perfil/perfil.php">
 								<i class="fas fa-cogs"></i>
 							</a>
 						</li>

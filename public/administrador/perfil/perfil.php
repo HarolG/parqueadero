@@ -79,7 +79,7 @@ if (isset($_SESSION['tipo']) && isset($_SESSION['nom']) && isset($_SESSION['ape'
 
                     </li>
                     <li>
-                        <a href="zona.php" class="btn-sideBar-SubMenu">
+                        <a href="../zonas/zona.php" class="btn-sideBar-SubMenu">
                             <i class="fa fa-plus" aria-hidden="true"></i> Crear zonas
                         </a>
 
