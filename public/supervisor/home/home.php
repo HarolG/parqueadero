@@ -12,34 +12,31 @@
         $vehiculos_parqueados = $query->num_rows;
 
         #Consulta para obtener los cupos de los vehiculos 
-        $sql2 = "SELECT * FROM zona_parqueo WHERE id_tip_zona = '1'";
-        $query2 = mysqli_query($mysqli, $sql2);
+        $sql2 = "SELECT * FROM zona_parqueo, detalle_cupos WHERE zona_parqueo.id_zona = detalle_cupos.id_zona AND zona_parqueo.id_tip_zona = '1' AND detalle_cupos.id_estado_cupo = '1'";
+        $query_carros = mysqli_query($mysqli, $sql2);
 
         #Defino la variable para los cupos
         $cupos_carros = 0;
         $cupos_motos = 0;
         $cupos_ciclas = 0;
     
-        #En este ciclo cuento los cupos que existen en cada zona de parqueo de carros
-        while ($row = mysqli_fetch_array($query2)) {
-            $cupos_carros = $cupos_carros + $row['cupos_live'];
-        }
+        #En esta linea cuento el número de cupos disponibles para los carros
+        $cupos_carros = mysqli_num_rows($query_carros);
 
-        #En este ciclo cuento los cupos que existen en cada zona de parqueo de motos
-        $sql3 = "SELECT * FROM zona_parqueo WHERE id_tip_zona = '2'";
-        $query3 = mysqli_query($mysqli, $sql3);
+        #Consulta para obtener los cupos de las motos
+        $sql3 = "SELECT * FROM zona_parqueo, detalle_cupos WHERE zona_parqueo.id_zona = detalle_cupos.id_zona AND zona_parqueo.id_tip_zona = '2' AND detalle_cupos.id_estado_cupo = '1'";
+        $query_motos = mysqli_query($mysqli, $sql3);
     
-        while ($row2 = mysqli_fetch_array($query3)) {
-            $cupos_motos = $cupos_motos + $row2['cupos_live'];
-        }
+        #En esta linea cuento el número de cupos disponibles para las motos
+        $cupos_motos = mysqli_num_rows($query_motos);
 
-        #En este ciclo cuento los cupos que existen en cada zona de ciclas
-        $sql4 = "SELECT * FROM zona_parqueo WHERE id_tip_zona = '3'";
-        $query4 = mysqli_query($mysqli, $sql4);
+        #Consulta para obtener los cupos de las ciclas
+        $sql4 = "SELECT * FROM zona_parqueo, detalle_cupos WHERE zona_parqueo.id_zona = detalle_cupos.id_zona AND zona_parqueo.id_tip_zona = '3' AND detalle_cupos.id_estado_cupo = '1'";
+        $query_ciclas = mysqli_query($mysqli, $sql4);
+
+		#En esta linea cuento el número de cupos disponibles para las motos
+        $cupos_ciclas = mysqli_num_rows($query_ciclas);
     
-        while ($row3 = mysqli_fetch_array($query4)) {
-            $cupos_ciclas = $cupos_ciclas + $row3['cupos_live'];
-        }
 
 ?>
 
@@ -75,7 +72,18 @@
 			<!-- SideBar User info -->
 			<div class="full-box dashboard-sideBar-UserInfo">
 				<figure class="full-box">
-					<img src="../../../img/foto_perfil.png" alt="UserIcon">
+						<?php
+
+                            $sql = "SELECT * FROM usuario WHERE id_tip_usu = 1";
+                            $result = mysqli_query($mysqli,$sql);
+                            while ($row2=mysqli_fetch_array($result))
+                            {
+                                /*almacenamos el nombre de la ruta en la variable $ruta_img*/
+                                $ruta_img = $row2["foto"];
+                            }
+                        ?>
+                        <img src="../perfil/fotos/<?php echo $ruta_img; ?>" class="imagen" alt="">
+					<!-- <img src="../../../img/foto_perfil.png" alt="UserIcon"> -->
 					<div class="text-center text-titles">
 						<p class="profile_welcome">Bienvenido,</p>
 						<p class="profile_name">
@@ -87,7 +95,7 @@
 
 				<ul class="full-box list-unstyled text-center">
 					<li>
-						<a href="#!">
+						<a href="../perfil/perfil.php">
 							<i class="fas fa-cogs"></i>
 						</a>
 					</li>
@@ -112,7 +120,12 @@
 				</li>
 				<li>
 					<a href="../gestion/index.php">
-						<i class="fa fa-sign-in-alt"></i> Gestión de Usuarios
+						<i class="fas fa-home"></i> Gestión de Usuarios
+					</a>
+				</li>
+				<li>
+					<a href="../gestion_parqueadero/home.php">
+						<i class="fas fa-home"></i> Gestión del Parqueadero
 					</a>
 				</li>
 			</ul>
