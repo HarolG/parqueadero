@@ -29,7 +29,7 @@
                     $sqli = "INSERT INTO informe_celadores (documento, nombre, apellido, id_tip_usu, fecha_inicio) VALUES ('$user', '$nom', '$ape', '$tip', now())";
                     $quer = mysqli_query($mysqli, $sqli);
     
-                    header("Location: ../../celador/parqueo.php");
+                    header("Location: ../../celador/home/home.php");
                 } else if ($_SESSION['tipo'] == 2 && $estadousu == 2) {
                     echo '<script type="text/javascript">
                             alert("Este usuario esta inhabilitado");

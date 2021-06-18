@@ -35,7 +35,18 @@ include("../../../php/conexion.php");
 			<!-- SideBar User info -->
 			<div class="full-box dashboard-sideBar-UserInfo">
 				<figure class="full-box">
-					<img src="../../../img/foto_perfil.png" alt="UserIcon">
+				<?php
+
+                $sql = "SELECT * FROM usuario WHERE id_tip_usu = 3";
+                $result = mysqli_query($mysqli,$sql);
+                while ($row2=mysqli_fetch_array($result))
+                {
+                    /*almacenamos el nombre de la ruta en la variable $ruta_img*/
+                    $ruta_img = $row2["foto"];
+                }
+                ?>
+				<img src="../perfil/fotos/<?php echo $ruta_img; ?>" class="imagen" alt="">
+					<!-- <img src="../../../img/foto_perfil.png" alt="UserIcon"> -->
 					<div class="text-center text-titles">
 						<p class="profile_welcome">Bienvenido,</p>
 						<p class="profile_name">
@@ -47,7 +58,7 @@ include("../../../php/conexion.php");
 
 				<ul class="full-box list-unstyled text-center">
 					<li>
-						<a href="#!">
+						<a href="../perfil/perfil.php">
 							<i class="fas fa-cogs"></i>
 						</a>
 					</li>
@@ -73,6 +84,11 @@ include("../../../php/conexion.php");
 				<li>
 					<a href="../gestion/index.php">
 						<i class="fa fa-sign-in-alt"></i> Gestión de Usuarios
+					</a>
+				</li>
+				<li>
+					<a href="../gestion_parqueadero/home.php">
+						<i class="fa fa-sign-in-alt"></i> Gestion del Parqueadero
 					</a>
 				</li>
 			</ul>
