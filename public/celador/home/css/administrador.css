@@ -1,0 +1,96 @@
+body {
+    background-color: rgb(247, 247, 247);
+    
+}
+
+.contenido {
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+}
+
+.datos_parqueo-container {
+    width: 100%;
+    height: 125px;
+    background-color: rgb(247, 247, 247);
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.datos_parqueo-container .dato_container {
+    width: 200px;
+    height: 95px;
+    padding-right: 2px;
+}
+
+.datos_parqueo-container .dato_container small {
+    color: #5E6974;
+}
+
+.datos_parqueo-container .dato_container .container_conteo {
+    width: 210px;
+    height: 76px;
+    border-right: 3px solid rgb(115, 135, 156);
+}
+
+.datos_parqueo-container .dato_container .container_conteo p {
+    color: #5E6974;
+    font-size: 45px;
+    font-weight: bold;
+
+}
+
+.graficas {
+    display: flex;
+}
+
+.graficas .grafica_container {
+    margin-top: 20px;
+    width: 50%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.graficas .info_zonas {
+    width: 50%;
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+
+}
+
+.graficas .info_zonas .informacion_zona {
+    margin-top: 30px;
+    color: black;
+}
+
+.graficas .info_zonas .informacion_zona p {
+    margin: 15px 0;
+}
+
+.grafica_historia_parqueo {
+    margin-left: 27px;
+    width: 95%;
+    background-color:white;
+}
+
+.grafica_container input{
+    padding: 3px 7px;
+    background-color:white ;
+    border: 1px solid black;
+    margin-left: 8px;
+    /* border-radius: 8px; */
+    color: black;
+    margin-top: 6px;
+}
+
+.grafica_container input:hover{
+    background-color: #959ea7de;
+}
+

@@ -74,7 +74,7 @@
 				<figure class="full-box">
 						<?php
 
-                            $sql = "SELECT * FROM usuario WHERE id_tip_usu = 3";
+                            $sql = "SELECT * FROM usuario WHERE id_tip_usu = 2";
                             $result = mysqli_query($mysqli,$sql);
                             while ($row2=mysqli_fetch_array($result))
                             {
@@ -111,16 +111,6 @@
 				<li>
 					<a href="home.php">
 						<i class="fas fa-home"></i> Inicio
-					</a>
-				</li>
-				<li>
-					<a href="../celadores/index.php">
-						<i class="fas fa-home"></i> Informe Inicio de Sesión
-					</a>
-				</li>
-				<li>
-					<a href="../gestion/index.php">
-						<i class="fas fa-home"></i> Gestión de Usuarios
 					</a>
 				</li>
 				<li>
