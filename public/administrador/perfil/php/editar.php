@@ -177,7 +177,7 @@ if (isset($_SESSION['tipo']) && isset($_SESSION['nom']) && isset($_SESSION['ape'
             <!-- Aquí va el contenido -->
             <div class="contenido">
 
-                <form action="editar.php?documento=<?php echo $_GET['documento']; ?>" method="POST" id="formu" enctype="multipart/form-data">
+                <form action="editar.php?documento=<?php echo $_GET['documento']; ?>" method="POST" id="formu" enctype="multipart/form-data" onsubmit="return validarformulario();">
                     <h2 class="titulo">ACTUALIZAR INFORMACION DE USUARIO</h2>
                     <div class="foto_perfil">
                         <?php
@@ -323,6 +323,7 @@ if (isset($_SESSION['tipo']) && isset($_SESSION['nom']) && isset($_SESSION['ape'
     <!-- Scripts cambiables -->
     <script src="../../../library/jquery-3.6.0.min.js"></script>
     <script src="../js/main.js"></script>
+    <script src="../js/validarform.js"></script>
 
 
     <!--====== Scripts pagina ¡¡NO CAMBIAR!! -->
