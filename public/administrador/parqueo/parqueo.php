@@ -135,7 +135,7 @@
                 <div class="infoZonas">
                     <?php
                         while ($resul2 = mysqli_fetch_array($zonas)) {
-                            $cupos_libres = $mysqli -> query ("SELECT * FROM detalle_cupos WHERE id_zona = '$resul2[id_zona]' AND estado_cupo = 'Disponible'");
+                            $cupos_libres = $mysqli -> query ("SELECT * FROM detalle_cupos WHERE id_zona = '$resul2[id_zona]' AND id_estado_cupo = '1'");
                             $resul_cupos = $cupos_libres->num_rows;
                             
                             echo "
