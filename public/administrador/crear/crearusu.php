@@ -137,22 +137,14 @@
                             <div class="column_container">
                                 <div class="column_form">
 
-                                    <!-- Número de placa del vehiculo -->
-                                    <div class="grupo_formulario grupo_formulario-noPlaca">
-                                        <label for="placa">No. Placa</label>
-                                        <input type="text" class="placa" name="placa"
-                                            placeholder="Ingrese Numero de la placa" autocomplete="off">
-                                    </div>
-
-                                    <!-- Número de documento del propietario -->
-                                    <div class="grupo_formulario grupo_formulario-documento">
+                                     <!-- Número de documento del propietario -->
+                                     <div class="grupo_formulario grupo_formulario-documento">
                                         <label for="placa">Documento</label>
                                         <input type="number" class="doc" name="doc" placeholder="Numero de Documento"
                                             autocomplete="off">
                                     </div>
-
-                                    <!--    Tipo de Vehiculo-->
-                                    <div class="grupo_formulario grupo_formulario-tipoVehiculo">
+                                     <!--    Tipo de Vehiculo-->
+                                     <div class="grupo_formulario grupo_formulario-tipoVehiculo">
                                         <label class="vehiculo" for="placa">Tipo de Vehiculo</label>
                                         <select class="vehiculo" name="vehiculo" id="sele" autocomplete="off">
 
@@ -169,12 +161,9 @@
                                                 ?>
                                         </select>
                                     </div>
-
-                                </div>
-                                <div class="column_form">
-
-                                    <!--    Modelo-->
-                                    <div class="grupo_formulario grupo_formulario-modelo">
+                                    
+                                     <!--    Modelo-->
+                                     <div class="grupo_formulario grupo_formulario-modelo">
                                         <label class="placa" for="placa">Modelo</label>
                                         <select class="placa" name="modelo" id="sele" autocomplete="off">
                                             <option value="0">Modelo del Vehiculo</option>
@@ -190,6 +179,22 @@
                                                     ?>
                                         </select>
                                     </div>
+                        
+
+                                </div>
+                                <div class="column_form">
+
+
+
+                                 <!-- Número de placa del vehiculo -->
+                                 <div class="grupo_formulario grupo_formulario-noPlaca">
+                                        <label for="placa">No. Placa</label>
+                                        <input type="text" class="placa" name="placa"
+                                            placeholder="Ingrese Numero de la placa" autocomplete="off">
+                                    </div>
+
+
+                                   
 
                                     <!--   Tipo de Marca-->
                                     <div class="grupo_formulario grupo_formulario-marca">
