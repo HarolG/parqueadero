@@ -140,13 +140,13 @@
                                      <!-- Número de documento del propietario -->
                                      <div class="grupo_formulario grupo_formulario-documento">
                                         <label for="placa">Documento</label>
-                                        <input type="number" class="doc" name="doc" placeholder="Numero de Documento"
+                                        <input type="text" class="doc" name="doc" id="documento" placeholder="Numero de Documento"
                                             autocomplete="off">
                                     </div>
                                      <!--    Tipo de Vehiculo-->
                                      <div class="grupo_formulario grupo_formulario-tipoVehiculo">
                                         <label class="vehiculo" for="placa">Tipo de Vehiculo</label>
-                                        <select class="vehiculo" name="vehiculo" id="sele" autocomplete="off">
+                                        <select class="vehiculo" name="vehiculo" id="vehiculo" autocomplete="off">
 
                                             <option value="0">Tipo de Vehiculo</option>
                                             <?php
@@ -165,7 +165,7 @@
                                      <!--    Modelo-->
                                      <div class="grupo_formulario grupo_formulario-modelo">
                                         <label class="placa" for="placa">Modelo</label>
-                                        <select class="placa" name="modelo" id="sele" autocomplete="off">
+                                        <select class="placa" name="modelo" id="modelo" autocomplete="off">
                                             <option value="0">Modelo del Vehiculo</option>
                                             <?php
                                                         $tipo = "SELECT * FROM modelo";
@@ -189,7 +189,7 @@
                                  <!-- Número de placa del vehiculo -->
                                  <div class="grupo_formulario grupo_formulario-noPlaca">
                                         <label for="placa">No. Placa</label>
-                                        <input type="text" class="placa" name="placa"
+                                        <input type="text" onkeyup= "this.value=this.value.toUpperCase()" class="placa" name="placa" id="placa"
                                             placeholder="Ingrese Numero de la placa" autocomplete="off">
                                     </div>
 
@@ -199,7 +199,7 @@
                                     <!--   Tipo de Marca-->
                                     <div class="grupo_formulario grupo_formulario-marca">
                                         <label class="marca" for="placa">Marca</label>
-                                        <select class="marca" name="marca" id="sele" autocomplete="off">
+                                        <select class="marca" name="marca" id="marca" autocomplete="off">
                                             <option value="0">Tipo de Marca</option>
                                             <?php
                                                         $tipo = "SELECT * FROM marca";
@@ -217,7 +217,7 @@
                                     <!--    Tipo de color-->
                                     <div class="grupo_formulario grupo_formulario-color">
                                         <label class="color" for="placa">Color del Vehiculo</label>
-                                        <select class="color" name="color" id="sele" autocomplete="off">
+                                        <select class="color" name="color" id="color" autocomplete="off">
 
                                             <option value="0">Color de Vehiculo</option>
                                             <?php
@@ -246,30 +246,30 @@
                                 <div class="cargue_main">
                                     <div class="grupo_cargue">
                                         <!-- MAX_FILE_SIZE debe preceder al campo de entrada del fichero -->
-                                        <input type="hidden" name="sooat" value="30000" />
+                                        <input type="hidden" name="sooat" id="soat" value="30000" />
                                         <!-- El nombre del elemento de entrada determina el nombre en el array $_FILES -->
-                                        Subir SOAT: <input name="sooat" type="file" />
+                                        Subir SOAT: <input name="sooat" id="soat" type="file" />
                                     </div>
 
 
                                     <div class="grupo_cargue">
                                         <!-- MAX_FILE_SIZE debe preceder al campo de entrada del fichero -->
-                                        <input type="hidden" name="tecno" value="30000" />
+                                        <input type="hidden" name="tecno" id="tecno" value="30000" />
                                         <!-- El nombre del elemento de entrada determina el nombre en el array $_FILES -->
-                                        Archivo de la Tecnomecanica: <input name="tecno" type="file" />
+                                        Archivo de la Tecnomecanica: <input id="tecno" name="tecno" type="file" />
                                     </div>
 
 
                                     <div class="grupo_cargue">
                                         <!-- MAX_FILE_SIZE debe preceder al campo de entrada del fichero -->
-                                        <input type="hidden" name="vehic" value="30000" />
+                                        <input type="hidden" id="imagen" name="vehic" value="30000" />
                                         <!-- El nombre del elemento de entrada determina el nombre en el array $_FILES -->
-                                        Imagen del Vehiculo: <input name="vehic" type="file" />
+                                        Imagen del Vehiculo: <input id="imagen" name="vehic" type="file" />
                                     </div>
                                 </div>
                             </div>
                             <div class="boton_container">
-                                <input type="submit" value="CREAR" name="registro">
+                                <input type="submit" value="CREAR" onclick ="return enviarFormulario();" name="registro" value='Enviar'>
                             </div>
                         </form>
                     </div>
@@ -391,6 +391,7 @@
     <script src="../../../layout/js/bootstrap.min.js"></script>
     <script src="../../../layout/js/material.min.js"></script>
     <script src="../../../layout/js/ripples.min.js"></script>
+    <script src="js/validacion.js"></script>
     <script src="../../../layout/js/jquery.mCustomScrollbar.concat.min.js"></script>
     <script src="../../../layout/js/main.js"></script>
     <script>
