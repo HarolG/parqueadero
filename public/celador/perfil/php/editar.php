@@ -184,11 +184,11 @@ if (isset($_SESSION['tipo']) && isset($_SESSION['nom']) && isset($_SESSION['ape'
                     <div>
 
                         <label for="nombre">Nombre</label>
-                        <input type="text" name="nombre" class="nombre" id="nombre" placeholder="<?php echo $row['nombre'] ?>">
+                        <input type="text" name="nombre" class="nombre" onkeyup = "this.value=this.value.toUpperCase()" id="nombre" placeholder="<?php echo $row['nombre'] ?>">
                     </div>
                     <div>
                         <label for="apellido">Apellido</label>
-                        <input type="text" name="apellido" class="apellido" id="apellido" placeholder="<?php echo $row['apellido'] ?>">
+                        <input type="text" name="apellido" class="apellido" onkeyup = "this.value=this.value.toUpperCase()" id="apellido" placeholder="<?php echo $row['apellido'] ?>">
 
                     </div>
                     <div>
@@ -203,12 +203,12 @@ if (isset($_SESSION['tipo']) && isset($_SESSION['nom']) && isset($_SESSION['ape'
                     </div>
                     <div>
                         <label for="direccion">Direccion</label>
-                        <input type="text" name="direccion" class="direccion" id="direccion" placeholder="<?php echo $row['direccion'] ?>">
+                        <input type="text" name="direccion" class="direccion" onkeyup = "this.value=this.value.toUpperCase()" id="direccion" placeholder="<?php echo $row['direccion'] ?>">
 
                     </div>
                     <div>
                         <label for="correo">Correo Electronico</label>
-                        <input type="email" name="correo" class="correo" id="correo" placeholder="<?php echo $row['correo'] ?>">
+                        <input type="email" name="correo" class="correo" onkeyup = "this.value=this.value.toUpperCase()" id="correo" placeholder="<?php echo $row['correo'] ?>">
 
                     </div>
                     <button class="btn-actualizar" name="update">
