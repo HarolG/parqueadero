@@ -218,7 +218,7 @@ if (isset($_SESSION['tipo']) && isset($_SESSION['nom']) && isset($_SESSION['ape'
 						}
 						?>
 					</select>
-					<input type="number" name="nombre_cupo" id="nombre_cupo" class="nombre_cupo" placeholder="Numero del cupo">
+					<input type="number" name="cantidad_cupos" id="nombre_cupo" class="nombre_cupo" placeholder="Cantidad Cupos">
 					<select name="estado_cupo" id="estado_cupo">
 						<option value="" selected>Seleccione el estado del cupo</option>
 						<?php
@@ -234,35 +234,6 @@ if (isset($_SESSION['tipo']) && isset($_SESSION['nom']) && isset($_SESSION['ape'
 						<input type="submit" name="enviar_cupo" id="enviar_cupo" class="enviar_cupo" value="CREAR CUPO">
 					</select>
 				</form>
-				<table class="zonas_registradas">
-					<thead>
-						<tr>
-							<td class="head_table">ID</td>
-							<td class="head_table">ID ZONA</td>
-							<!-- <td class="head_table">CANTIDAD DE CUPOS</td> -->
-							<!-- <td class="head_table">PLACA</td> -->
-							<td class="head_table">CUPO</td>
-							<td class="head_table">ESTADO CUPO</td>
-						</tr>
-					</thead>
-					<tbody>
-						<?php
-						$query = "SELECT * FROM detalle_cupos, zona_parqueo, estado_cupo 
-								WHERE detalle_cupos.id_zona = zona_parqueo.id_zona AND detalle_cupos.id_estado_cupo = estado_cupo.id_estado_cupo";
-						$result_tasks = mysqli_query($mysqli, $query);
-
-						while ($row = mysqli_fetch_assoc($result_tasks)) { ?>
-							<tr>
-								<td class="body_table"><b><?php echo $row['id_deta_cupos'] ?></b></td>
-								<td class="body_table"><b><?php echo $row['id_zona'] ?></b></td>
-								<!-- <td class="body_table"><b>cupos</b></td> -->
-								<td class="body_table"><b><?php echo $row['nombre_cupo'] ?></b></td>
-								<td class="body_table"><b><?php echo $row['nom_estado_cupo'] ?></b></td>
-							</tr>
-						<?php } ?>
-					</tbody>
-			</div>
-			</table>
 		</section>
 
 		<!-- Notifications area -->
