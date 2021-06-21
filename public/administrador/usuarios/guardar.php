@@ -9,9 +9,6 @@
     $celular = $_POST["celular"];
     $direccion = $_POST["direccion"];
     $correo = $_POST["correo"];
-    $tipdoc=$_POST["tipdoc"];
-    $tipusu=$_POST["tipusu"];
-    $estausu=$_POST["estausu"];
     $opcion =$_POST["opcion"];
     $informacion = [];
 
