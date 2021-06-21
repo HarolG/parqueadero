@@ -27,4 +27,17 @@
 }
 .tipos{
 	margin-top: 50px;
+	text-align: center;
+}
+
+.formu{
+	margin-top: 30px;
+}
+
+.tipos a{
+	left: 0px;
+}
+
+.tabla th{
+	text-align: center;
 }

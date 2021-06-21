@@ -43,10 +43,12 @@ body, html{
 	top: 0;
 	height: 100%;
 	transition: all .3s ease-in-out;
+	
 }
 /*sideBar*/
 .dashboard-sideBar,
 .dashboard-sideBar-ct{
+	
 	width: 270px;
 	font-weight: bold;
 }
@@ -55,6 +57,7 @@ body, html{
 	z-index: 2;
 	border-right: 1px solid rgba(255, 255, 255, .4);
 	overflow: hidden;
+	background: url(../../img/index.jpg);
 }
 .dashboard-sideBar-ct{
 	position: relative;
@@ -151,7 +154,7 @@ body, html{
 	outline: none;
 }
 .dashboard-sideBar-Menu > li > a:hover{
-	background-color: rgba(255, 255, 255, .1);
+	background-color: rgba(2, 119, 123, 0.124);
 }
 .dashboard-sideBar-Menu > li > ul{
 	position: relative;
