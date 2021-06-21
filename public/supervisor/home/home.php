@@ -128,6 +128,11 @@
 						<i class="fa fa-sign-in-alt"></i> Gestión del Parqueadero
 					</a>
 				</li>
+				<li>
+					<a href="../mensajeria/buzon.php">
+						<i class="far fa-envelope"></i>  Buzon de mensajeria
+					</a>
+				</li>
 			</ul>
 		</div>
 	</section>

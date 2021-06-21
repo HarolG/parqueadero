@@ -73,30 +73,32 @@ if (isset($_SESSION['tipo']) && isset($_SESSION['nom']) && isset($_SESSION['ape'
                         </a>
                     </li>
                     <li>
-                        <a href="../celadores/index.php" class="btn-sideBar-SubMenu">
-                            <i class="fa fa-sign-in-alt" aria-hidden="true"></i> Informe Inicio de Sesión
+                        <a href="../celadores/index.php">
+                            <i class="fas fa-chart-line"></i> Informe Inicio de Sesión
                         </a>
-
                     </li>
                     <li>
-                        <a href="../gestion/index.php" class="btn-sideBar-SubMenu">
-                            <i class="fa fa-plus" aria-hidden="true"></i> Gestion de Usuarios
+                        <a href="../gestion/index.php">
+                            <i class="fas fa-users-cog"></i> Gestión de Usuarios
                         </a>
-
                     </li>
                     <li>
-                        <a href="../gestion_parqueadero/home.php" class="btn-sideBar-SubMenu">
-                            <i class="fa fa-users" aria-hidden="true"></i> Gestion del Parqueadero
+                        <a href="../gestion_parqueadero/home.php">
+                            <i class="fa fa-sign-in-alt"></i> Gestión del Parqueadero
                         </a>
-
+                    </li>
+                    <li>
+                        <a href="../mensajeria/buzon.php">
+                            <i class="far fa-envelope"></i>  Buzon de mensajeria
+                        </a>
                     </li>
                     <!-- <li>
-                        <a href="../crear/crearusu.php" class="btn-sideBar-SubMenu">
-                            <i class="fa fa-car" aria-hidden="true"></i> Registro de vehiculos
-                        </a>
+                            <a href="../crear/crearusu.php" class="btn-sideBar-SubMenu">
+                                <i class="fa fa-car" aria-hidden="true"></i> Registro de vehiculos
+                            </a>
 
                     </li> -->
-                </ul>
+			    </ul>
             </div>
         </section>
 

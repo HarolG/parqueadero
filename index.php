@@ -1,3 +1,7 @@
+<?php
+include_once("php/conexion.php");
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,7 +10,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/index.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link rel="icon" href="img/logo.ico"/>
+    <link rel="icon" href="img/logo.ico" />
     <!-- Font awesome -->
     <script src="https://kit.fontawesome.com/a90c49b6b2.js" crossorigin="anonymous"></script>
     <title>Parking System</title>
@@ -14,11 +18,12 @@
 <body>
     <div class="contenedor-portada">
         <div class="capa-gris">
-            <a href="public/login/login.html"><strong>Inicio de Sesión&nbsp;&nbsp;<i class="fas fa-sign-in-alt"></i></strong></a>
+            <a href="public/login/login.html"><strong>Inicio de Sesión&nbsp;&nbsp;<i
+                        class="fas fa-sign-in-alt"></i></strong></a>
             <div class="info">
                 <div class="portada">
                     <img src="img/logo_sena.png" class="logo_sena" alt="">
-                    <img src="img/Logo_parking_2.0.png"  class="logo_ps" alt="">
+                    <img src="img/Logo_parking_2.0.png" class="logo_ps" alt="">
                 </div>
 
                 <h1>Sistema Informático para el Control de Entradas y Salidas de Vehículos </h1>
@@ -34,16 +39,22 @@
             </video>
         </div>
         <div class="vista">
-            <p>PARKING SYSTEM es el Sistema Informático diseñado para el Control de Entradas y Salidas del Parqueadero Automotor del Centro de Industria y Construcción SENA, Ibagué – Tolima. <br><br>
+            <p>PARKING SYSTEM es el Sistema Informático diseñado para el Control de Entradas y Salidas del Parqueadero
+                Automotor del Centro de Industria y Construcción SENA, Ibagué – Tolima. <br><br>
 
-            Nació como propuesta de proyecto formativo en el año 2020 por los aprendices del Tecnólogo en Análisis y Desarrollo en Sistemas de Información N° Ficha 2060060, y su principal objetivo es agilizar el proceso de ingreso de vehículos automotores y no automotores, realizado por los agentes de vigilancia del centro de formación.
+                Nació como propuesta de proyecto formativo en el año 2020 por los aprendices del Tecnólogo en Análisis y
+                Desarrollo en Sistemas de Información N° Ficha 2060060, y su principal objetivo es agilizar el proceso
+                de ingreso de vehículos automotores y no automotores, realizado por los agentes de vigilancia del centro
+                de formación.
             </p>
         </div>
     </div>
-    
+
     <div class="contenedor-servicios">
         <div class="servicios">
-            <strong><--  SERVICIOS --></strong>
+            <strong>
+                <-- SERVICIOS -->
+            </strong>
         </div>
         <div class="entry_exit">
             <i class="fas fa-door-open"></i><br>
@@ -64,8 +75,7 @@
         </div>
     </div>
     <div class="about">
-        
-        <div class="text">
+         <div class="text">
             <video autoplay muted loop>
                 <source src="img/videos/diagrama.mp4" type="video/mp4">
             </video>
@@ -76,7 +86,48 @@
             </div>
         </div>
     </div>
+    <div class="about2">
+        <div class="cajita">
+            <h2>C O N T A C T E N O S</h2>
+            <form method="post" action="">
+                <label for="" class="labels">Correo Electronico:</label>
+                <input type="text" name="de" class="inputs" autocomplete="off">
+                <label for="" class="labels">Asunto:</label>
+                <input type="text" name="titulo" class="inputs" autocomplete="off">
+                <label for="" class="labels" class="inputs">Mensaje:</label>
+                <textarea name="mensaje" class="textarea"></textarea>
+                <input type="hidden" name="guardar" value="Enviar Mensaje">
+                <input type="submit" value="Enviar Mensaje" class="boton">
+            </form>
+        </div>
+        <?php
+  
+         if(isset($_POST['guardar'])) {
 
+            $de = $_POST['de'];
+            $titulo = $_POST['titulo'];
+            $mensaje = $_POST['mensaje'];
+
+            $sql="INSERT INTO mensajes (titulo,mensaje,de,id_tip_usu,fecha,leido,estado) VALUES ('$titulo','$mensaje','$de','3',NOW(),'1','normal')";
+                            
+            $resul=mysqli_query($mysqli,$sql);
+		    if ($resul) {
+			    echo "<script language='JavaScript'>
+						alert('Se envio el mensaje correctamente');
+					</script>";  
+		    }else{  
+                echo "<script language='JavaScript'>
+                    alert('El mensaje no fue enviado');
+                </script>"; 
+            }
+        }else {     
+            mysqli_close($mysqli);
+            ?>
+        <?php
+        }
+            ?>
+
+    </div>
     <footer>
         <h2>D E S A R R O L L A D O R E S</h2><br>
         <div class="contenedor-footer">
@@ -104,4 +155,5 @@
         <h2 class="titulo-final">&copy; Servicio Nacional de Aprendizaje SENA | Centro de Industria y Construcción</h2>
     </footer>
 </body>
+
 </html>
