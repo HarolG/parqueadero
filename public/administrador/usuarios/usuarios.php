@@ -102,6 +102,12 @@ Favor revisar los direccionamientos
 					</a>
 					
 				</li>
+				<li>
+					<a href="../reporte_vehiculo/reporte.php" class="btn-sideBar-SubMenu">
+						<i class="fa fa-car" aria-hidden="true"></i> Reporte vehiculos
+					</a>
+					
+				</li>
 			</ul>
 		</div>
 	</section>

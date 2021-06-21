@@ -14,7 +14,7 @@ if (isset($_SESSION['tipo']) && isset($_SESSION['nom']) && isset($_SESSION['ape'
         <link rel="icon" href="../../../img/logo.ico" />
         <!-- estilos generales -->
         <link rel="stylesheet" href="../../../layout/css/main.css">
-        <link rel="stylesheet" href="css/perfil.css">
+        <link rel="stylesheet" href="css/reporte.css">
         <!-- Tipo de letra -->
         <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;1,100;1,300;1,400&display=swap" rel="stylesheet">
         <script src="https://kit.fontawesome.com/a90c49b6b2.js" crossorigin="anonymous"></script>
@@ -54,7 +54,7 @@ if (isset($_SESSION['tipo']) && isset($_SESSION['nom']) && isset($_SESSION['ape'
 
                     <ul class="full-box list-unstyled text-center">
                         <li>
-                            <a href="#!">
+                            <a href="../perfil/perfil.php">
                                 <i class="fas fa-cogs"></i>
                             </a>
                         </li>
@@ -79,7 +79,7 @@ if (isset($_SESSION['tipo']) && isset($_SESSION['nom']) && isset($_SESSION['ape'
 
                     </li>
                     <li>
-                        <a href="../zonas/zona.php" class="btn-sideBar-SubMenu">
+                        <a href="zona.php" class="btn-sideBar-SubMenu">
                             <i class="fa fa-plus" aria-hidden="true"></i> Crear zonas
                         </a>
 
@@ -97,7 +97,7 @@ if (isset($_SESSION['tipo']) && isset($_SESSION['nom']) && isset($_SESSION['ape'
 
                     </li>
                     <li>
-                        <a href="../reporte_vehiculo/reporte.php" class="btn-sideBar-SubMenu">
+                        <a href="reporte.php" class="btn-sideBar-SubMenu">
                             <i class="fa fa-car" aria-hidden="true"></i> Reporte vehiculos
                         </a>
 
@@ -131,48 +131,38 @@ if (isset($_SESSION['tipo']) && isset($_SESSION['nom']) && isset($_SESSION['ape'
                 </ul>
             </nav>
             <!-- Aquí va el contenido -->
-            <div class="cont">
+            <div class="contenedor_informe">
+                
+
                 <table class="zonas_registradas">
                     <thead>
-                        <tr>
-                            <td class="head_table">DOCUMENTO</td>
-                            <td class="head_table">NOMBRE</td>
-                            <td class="head_table">APELLIDO</td>
-                            <td class="head_table">CELULAR</td>
-                            <td class="head_table">DIRECCION</td>
-                            <td class="head_table">CORREO</td>
-                            <td class="head_table">OPERACIONES</td>
-                        </tr>
+                        <th class="head_table">Placa</th>
+                        <th class="head_table">Marca</th>
+                        <th class="head_table">Modelo</th>
+                        <th class="head_table">Tipo Vehiculo</th>
+                        <th class="head_table">Dueño</th>
+                        <th class="head_table">Color</th>
                     </thead>
-                    <tbody>
-                        <?php
-                        $query = "SELECT * FROM usuario WHERE id_tip_usu = 1";
-                        $result_tasks = mysqli_query($mysqli, $query);
 
-                        while ($row = mysqli_fetch_assoc($result_tasks)) { ?>
-                            <tr>
-                                <td class="body_table"><b><?php echo $row['documento'] ?></b></td>
-                                <td class="body_table"><b><?php echo $row['nombre'] ?></b></td>
-                                <!-- <td class="body_table"><b>cupos</b></td> -->
-                                <td class="body_table"><b><?php echo $row['apellido']; ?></b></td>
-                                <td class="body_table"><b><?php echo $row['celular']; ?></b></td>
-                                <td class="body_table"><b><?php echo $row['direccion']; ?></b></td>
-                                <td class="body_table"><b><?php echo $row['correo']; ?></b></td>
-                                <td class="body_table">
-                                    <a href="php/editar.php?documento=<?php echo $row['documento'] ?>" class="eliminarlink2">
-                                        <!-- <i id="marker" class="fas fa-marker"></i> -->
-                                        <i class="fas fa-marker"></i>
-                                    </a>
-                                </td>
-                            </tr>
-                        <?php } ?>
+                    <tbody>
+                    <?php
+						$query = "SELECT * FROM vehiculo, modelo, marca, tipo_vehiculo, color, usuario WHERE vehiculo.id_modelo = modelo.id_modelo AND vehiculo.id_marca = marca.id_marca AND vehiculo.id_tip_vehiculo = tipo_vehiculo.id_tipo_vehiculo AND vehiculo.id_color = color.id_color AND vehiculo.documento = usuario.documento";
+						$result_tasks = mysqli_query($mysqli, $query);
+
+						while ($row = mysqli_fetch_assoc($result_tasks)) { ?>
+							<tr>
+								<td class="body_table"><b><?php echo $row['placa'] ?></b></td>
+								<td class="body_table"><b><?php echo $row['nom_marca'] ?></b></td>
+								<!-- <td class="body_table"><b>cupos</b></td> -->
+								<td class="body_table"><b><?php echo $row['nom_modelo']; ?></b></td>
+                                <td class="body_table"><b><?php echo $row['nom_tipo_vehiculo']; ?></b></td>
+                                <td class="body_table"><b><?php echo $row['nombre'] ?> <?php echo $row['apellido'] ?> <?php echo $row['documento']; ?></b></td>
+                                <td class="body_table"><b><?php echo $row['nom_color']; ?></b></td>
+							</tr>
+						<?php } ?>
                     </tbody>
                 </table>
             </div>
-            </div>
-            </div>
-            </div>
-
         </section>
 
         <!-- Notifications area -->
@@ -254,10 +244,7 @@ if (isset($_SESSION['tipo']) && isset($_SESSION['nom']) && isset($_SESSION['ape'
 
     </body>
     <!-- Scripts cambiables -->
-    <!-- <script src="js/validar.js"></script> -->
-    <script src="js/confirmacion.js"></script>
-    <script src="js/validar.js"></script>
-    <script src="../../../library/jquery-3.6.0.min.js"></script>
+    <script src="js/peticion.js"></script>                    
 
     <!--====== Scripts pagina ¡¡NO CAMBIAR!! -->
     <script src="../../../layout/js/jquery-3.1.1.min.js"></script>
