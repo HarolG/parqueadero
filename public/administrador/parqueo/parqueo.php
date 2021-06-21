@@ -105,6 +105,10 @@
 					</a>
 					
 				</li>
+                <li class="btn-group ventana">
+                    <a><button type="button" class="open-modal" data-open="modal1"><i class="fas fa-eye" aria-hidden="true"></i>Ver Cupos disponibles</button></a>
+                </li>
+                
 			</ul>
 		</div>
         
@@ -133,33 +137,45 @@
                 <a class="pull-left links" style="width: 250px;" href="http://centrodeindustria.blogspot.com">Centro de Industria y Construcción</a>   
                
                 <a class="pull-left links" style="width: 170px;"  href="http://oferta.senasofiaplus.edu.co/sofia-oferta/">Portal de Sofia Plus</a>
-			</ul>    
+
+            </ul>    
 		</nav>
             <!-- Aquí va el contenido -->
     
             <div class="ingreso">
-                <div class="infoZonas">
-                    <?php
-                        while ($resul2 = mysqli_fetch_array($zonas)) {
-                            $cupos_libres = $mysqli -> query ("SELECT * FROM detalle_cupos WHERE id_zona = '$resul2[id_zona]' AND id_estado_cupo = '1'");
-                            $resul_cupos = $cupos_libres->num_rows;
-                            
-                            echo "
-                                <div class='darosZonas'>
-                                    <h2>ZONA $resul2[id_zona]</h2>
-                                    <h3>$resul2[nom_tip_zona]</h3>
-                                    <label>Cupos Disponibles: $resul_cupos</label>
-                                </div>
-                                    
-                                ";
-                            }
+               <hr style="background-color:#73879C;">
+                <div class="modal" id="modal1" data-animation="slideInOutLeft">
+                    <div class="modal-dialog">
+                    <header class="modal-header">
+                        <button class="close-modal" aria-label="close modal" data-close>
+                            ✕  
+                        </button>
+                        <div class="infoZonas">
+                        <?php
+                            while ($resul2 = mysqli_fetch_array($zonas)) {
+                                $cupos_libres = $mysqli -> query ("SELECT * FROM detalle_cupos WHERE id_zona = '$resul2[id_zona]' AND id_estado_cupo = '1'");
+                                $resul_cupos = $cupos_libres->num_rows;
+                                
+                                echo "
+                                    <div class='darosZonas'>
+                                        <h2>ZONA $resul2[id_zona]</h2>
+                                        <h3>$resul2[nom_tip_zona]</h3>
+                                        <label>Cupos Disponibles: $resul_cupos</label>
+                                    </div>
+                                        
+                                    ";
+                                }
                         ?>
-                    </div><hr style="background-color:#73879C;">
+                    </header>
+
+                </div>
+          </div>
+    
                 <div class="filtro">
                     <form method="post" class = "formFiltro">
                         <h2>REPORTES</h2>
                         <strong style="color:black;">Zona de Parqueo:</strong>
-                        <select class = "tipoZona" id="tipoZona" name="tipoZona">
+                        <select class = "tipoZona" id="tipoZona" name="tipoZona" required>
                             <option selected>Seleccione una opción </option>
                             <option value="0">Todas</option>
                                     <?php
@@ -167,18 +183,23 @@
                                         { echo "<option value=$resul[id_zona]>$resul[nom_tip_zona]</option>";}
                                     
                                     ?>
-                        </select>
+                        </select>&nbsp;
 
-                        <strong style="color:black;">Reporte de: </strong>
-                        <select id='reporte' class='reporte' name='reporte'>
+                        <strong style="color:black;">Desde: </strong>
+                        <input type="date" name="desde" required>&nbsp;
+                        <strong style="color:black;">Hasta: </strong>
+                        <input type="date" name="hasta" required>
+                        <!-- 
+                            <strong style="color:black;">Reporte de: </strong>
+                            <select id='reporte' class='reporte' name='reporte'>
                             <option value="0" selected>Seleccione una opción </option>
                             <option value='1'>Hoy</option>
                             <option value='2'>Ayer</option>
                             <option value='3'>Hace una semana</option>
                             <option value='4'>Hace un mes</option>
-                        </select>
+                        </select> -->
 
-                        <input type="submit" name="buscar" style="color: black;"  class="btn btn-primary btnReporte" value="Generar">
+                        <input type="submit" name="buscar" id="buscar" style="color: black;"  class="btn btn-primary btnReporte" value="Generar">
                     </form>
                 </div>
                 <div class="lugar">
@@ -188,43 +209,20 @@
                     date_default_timezone_set('America/Bogota');
 
                     $tip_zona = $_POST['tipoZona'];
-                    $tip_repo = $_POST['reporte'];
-
-                  
-                  
-                    //REPORTES
-                    $fecha_actual = date("Y-m-d");
-                    //resto 1 día
-                    $reDia = date("Y-m-d",strtotime($fecha_actual."- 1 days")); 
-                    //resto 7 día
-                    $reWeek = date("Y-m-d",strtotime($fecha_actual."- 7 days")); 
-                    //resto 30 día
-                    $reMes = date("Y-m-d",strtotime($fecha_actual."- 30 days")); 
-
-                    if ($tip_repo == 1){
-                        $tip_repo = $fecha_actual;
-                    }
-                    elseif($tip_repo == 2){
-                        $tip_repo = $reDia;
-                        $fecha_actual = $reDia;
-                    }
-                    elseif($tip_repo == 3){
-                        $tip_repo = $reWeek;
-                    }else{
-                        $tip_repo = $reMes;
-                    }
+                    $desde = $_POST['desde'];
+                    $hasta = $_POST['hasta'];
 
                     //tipo de zona que desea ver
                     if($tip_zona == 0){
                     //ver todas las zonas
-                        $entradas = $mysqli -> query ("SELECT vehiculo.placa, usuario.documento, usuario.nombre, usuario.apellido,usuario.celular, registro_parqueadero.hora, registro_parqueadero.fecha 
+                        $entradas = $mysqli -> query ("SELECT vehiculo.placa, usuario.documento, usuario.nombre, usuario.apellido,usuario.celular, registro_parqueadero.hora,   registro_parqueadero.hora_salida, registro_parqueadero.fecha 
                                                     FROM usuario, vehiculo, registro_parqueadero 
-                                                    WHERE usuario.documento = vehiculo.documento AND vehiculo.placa = registro_parqueadero.placa AND registro_parqueadero.fecha Between '$tip_repo' And '$fecha_actual'");
+                                                    WHERE usuario.documento = vehiculo.documento AND vehiculo.placa = registro_parqueadero.placa AND registro_parqueadero.fecha Between '$desde' And '$hasta'");
                                             
                     }else {
-                        $entradas = $mysqli -> query ("SELECT vehiculo.placa, usuario.documento, usuario.nombre, usuario.apellido,usuario.celular, registro_parqueadero.hora, registro_parqueadero.fecha
+                        $entradas = $mysqli -> query ("SELECT vehiculo.placa, usuario.documento, usuario.nombre, usuario.apellido,usuario.celular, registro_parqueadero.hora,registro_parqueadero.hora_salida, registro_parqueadero.fecha
                                                     FROM usuario, vehiculo, registro_parqueadero 
-                                                    WHERE usuario.documento = vehiculo.documento AND vehiculo.placa = registro_parqueadero.placa AND registro_parqueadero.id_zona = '$tip_zona' and registro_parqueadero.fecha Between '$tip_repo' And '$fecha_actual'");
+                                                    WHERE usuario.documento = vehiculo.documento AND vehiculo.placa = registro_parqueadero.placa AND registro_parqueadero.id_zona = '$tip_zona' and registro_parqueadero.fecha Between '$desde' And '$hasta'");
                     }
 
                    
@@ -263,25 +261,13 @@
                                     <td>".$fila['hora']."</td>";
 
                                     // Validar si el vehiculo ya salio del parqueadero
-                                    $salida = $mysqli -> query ("SELECT * FROM registro_parqueadero WHERE placa = '$placa' and id_tip_entrada = 2");
+                                    $salida = $mysqli -> query ("SELECT * FROM detalle_cupos WHERE placa = '$placa'");
                                    
                                     // Variable para hora de entrada del vehiculo
                                     $h_entrada = $fila['hora'];
                                     $resu = $salida->num_rows;
                                     if ($resu == 1){
-                                        $infoSalida = mysqli_fetch_array($salida);
-                                        $h_salida = $infoSalida['hora'];
-                    
-                                        $hora1 = new DateTime($h_entrada);//Hora de entrada
-                                        $hora2 = new DateTime($h_salida);//Hora de salida
-                    
-                                        //rango de horas dentro del parqueadero
-                                        $intervalo = $hora2->diff($hora1);
-                                        $tiempoR = $intervalo->format('%H:%i:%s');
-                                        $tabla.= "<td>$infoSalida[4]</td>
-                                                <td>$tiempoR</td>";
-                                        
-                                    }else{
+
                                         $hora1 = new DateTime($h_entrada);//Hora de entrada
                                         $hora2 = new DateTime(date("H:i:s"));//Hora de actual
                                         
@@ -290,6 +276,21 @@
                                         $tiempoR = $intervalo->format('%H:%i:%s');
                                         $tabla.= "<td>En el Parqueadero</td>
                                                 <td>$tiempoR</td>";
+
+                                        
+                                    }else{
+                                        
+                                        $h_salida = $fila['hora_salida'];
+                    
+                                        $hora1 = new DateTime($h_entrada);//Hora de entrada
+                                        $hora2 = new DateTime($h_salida);//Hora de salida
+                    
+                                        //rango de horas dentro del parqueadero
+                                        $intervalo = $hora2->diff($hora1);
+                                        $tiempoR = $intervalo->format('%H:%i:%s');
+                                        $tabla.= "<td>$h_salida</td>
+                                                <td>$tiempoR</td>";
+                                        
                                     }
                         $tabla.='</tr>
                                 </tbody>
@@ -328,7 +329,7 @@
                     }
                 ?>
                 
-                <div class="btn-group acciones">
+                <div class="btn-group acciones" id="acciones">
                     <div class="btn btn-outline-danger btnImprimir" onclick="imprimir()">
                     <i class="fas fa-file-pdf"></i>
                     </div>
@@ -445,3 +446,4 @@
                 </script>';
     }
 ?>
+
