@@ -5,7 +5,7 @@
 
     session_destroy();
     session_write_close();
-    header("location: ../index.html");
+    header("location: ../index.php");
 
 
 ?>

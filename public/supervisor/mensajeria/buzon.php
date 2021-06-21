@@ -1,8 +1,8 @@
 <?php
-include("../../../php/conexion.php");
+include_once("../../../php/conexion.php");
 
+    if(isset($_SESSION['tipo']) && isset($_SESSION['nom']) && isset($_SESSION['ape']) && isset($_SESSION['pass']) ) {
 ?>
-
 <!DOCTYPE html>
 <html lang="es">
 
@@ -14,7 +14,7 @@ include("../../../php/conexion.php");
 	<link rel="icon" href="../../../img/logo.ico" />
 	<!-- estilos generales -->
 	<link rel="stylesheet" href="../../../layout/css/main.css">
-	<link rel="stylesheet" href="css/celador.css">
+	<link rel="stylesheet" href="css/administrador.css">
 	<!-- Tipo de letra -->
 	<link
 		href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;1,100;1,300;1,400&display=swap"
@@ -35,17 +35,17 @@ include("../../../php/conexion.php");
 			<!-- SideBar User info -->
 			<div class="full-box dashboard-sideBar-UserInfo">
 				<figure class="full-box">
-				<?php
+						<?php
 
-                $sql = "SELECT * FROM usuario WHERE id_tip_usu = 3";
-                $result = mysqli_query($mysqli,$sql);
-                while ($row2=mysqli_fetch_array($result))
-                {
-                    /*almacenamos el nombre de la ruta en la variable $ruta_img*/
-                    $ruta_img = $row2["foto"];
-                }
-                ?>
-				<img src="../perfil/fotos/<?php echo $ruta_img; ?>" class="imagen" alt="">
+                            $sql = "SELECT * FROM usuario WHERE id_tip_usu = 3";
+                            $result = mysqli_query($mysqli,$sql);
+                            while ($row2=mysqli_fetch_array($result))
+                            {
+                                /*almacenamos el nombre de la ruta en la variable $ruta_img*/
+                                $ruta_img = $row2["foto"];
+                            }
+                        ?>
+                        <img src="../../perfil/fotos/<?php echo $ruta_img; ?>" class="imagen" alt="">
 					<!-- <img src="../../../img/foto_perfil.png" alt="UserIcon"> -->
 					<div class="text-center text-titles">
 						<p class="profile_welcome">Bienvenido,</p>
@@ -70,6 +70,7 @@ include("../../../php/conexion.php");
 				</ul>
 			</div>
 			<!-- SideBar Menu -->
+			<!-- SideBar Menu -->
 			<ul class="list-unstyled full-box dashboard-sideBar-Menu">
 				<li>
 					<a href="../home/home.php">
@@ -92,8 +93,8 @@ include("../../../php/conexion.php");
 					</a>
 				</li>
 				<li>
-					<a href="../mensajeria/buzon.php">
-						<i class="far fa-envelope"></i>  Buzon de mensajeria
+					<a href="buzon.php">
+						<i class="far fa-envelope"></i> Buzon de mensajeria
 					</a>
 				</li>
 			</ul>
@@ -128,66 +129,51 @@ include("../../../php/conexion.php");
 
 			</ul>
 		</nav>
-		<!-- Aquí va el contenido -->
-		<h2 class="titulo_informe"><b>GESTION DE USUARIOS</b></h2>
-        <table class="celadores_login">
-            <thead>
-                <tr>
-                    <td class="head_table">DOCUMENTO</td>
-                    <td class="head_table">NOMBRE</td>
-                    <td class="head_table">APELLIDO</td>
-                    <td class="head_table">TIPO DE USUARIO</td>
-                    <td class="head_table">ESTADO</td>
-                    <td class="head_table">OPERACIONES</td>
-                </tr>
-            </thead>
-            <tbody>
-                <?php
-                $query = "SELECT * FROM usuario, estado_usuario, tipo_usuario 
-                            WHERE usuario.id_tip_usu = tipo_usuario.id_tip_usu AND usuario.id_estado_usu = estado_usuario.id_estado_usu AND usuario.id_tip_usu = 2";
-                $result_tasks = mysqli_query($mysqli, $query);
+        <!-- aqui va el contenido -->
+             <!-- Codigo para ver los mensajes que han enviado usuarios -->
+      <h2 style="padding: 20px; text-align:center">BUZON DE MENSAJERIA</h2>
+                <div style="padding: 20px" class="table-responsive col-sm-12">
+                    <table id="poper" class="table table-bordered table-hover" cellspacing="8" width="100%">
+                        <tr> 
+                            <th style="align-items:center" width="20">Leido</th> 
+                            <th style="text-align:center" width="150">De</th> 
+                            <th style="text-align:center">Asunto</th> 
+                            <th style="text-align:center">Fecha</th>
+                            <th style="text-align:center">Acción</th> 
+                        </tr>
 
-                while ($row = mysqli_fetch_assoc($result_tasks)) { ?>
-                    <tr>
-                        <td class="body_table"><?php echo $row['documento'] ?></td>
-                        <td class="body_table"><?php echo $row['nombre'] ?></td>
-                        <td class="body_table"><?php echo $row['apellido'] ?></td>
-                        <td class="body_table"><?php echo $row['nom_tip_usu'] ?></td>
                         <?php
-                        if ($row['id_estado_usu'] == 1) {
-                        ?>
-                            <td class="body_table2" id="estado"><b><?php echo $row['nom_estado_usu'] ?></b></td>
-                        <?php
-                        } else if ($row['id_estado_usu'] == 2) {
-                        ?>
-                            <td class="body_table3" id="estado"><b><?php echo $row['nom_estado_usu'] ?></b></td>
-                        <?php
-                        } else {
-                        ?>
-                            <td class="body_table4" id="estado"><b><?php echo $row['nom_estado_usu'] ?></b></td>
-                        <?php
-                        }
+                            $s ="SELECT * FROM mensajes WHERE id_tip_usu = 1 AND estado != 'eliminado' ORDER BY id desc";
+                            $resul=mysqli_query($mysqli,$s);
+                            
+                            while($row = mysqli_fetch_array($resul)) {
+
+                            if ($row['leido'] == 1) { 
+                                
+                                $leido = "<img src='img/read.png'>";
+                                
+                            }else{
+                                $leido = "<img src='img/unread.png'>"; 
+                                
+                            }
                         ?>
 
-                        <td class="body_table">
-                            <a href="php/habilitar.php?documento=<?php echo $row['documento'] ?>" title="Habilitar" class="eliminarlink">
-                                <!-- HABILITAR -->
-                                <i class="fas fa-user-check"></i>
-                            </a>
-                            <a href="php/inhabilitar.php?documento=<?php echo $row['documento'] ?>" title="Inhabilitar" class="eliminarlink2">
-                                <!-- INHABILITAR -->
-                                <i class="fas fa-user-times"></i>
-                            </a>
-                            <a href="php/incapacidad.php?documento=<?php echo $row['documento'] ?>" title="Incapacidad" class="eliminarlink3">
-                                <i class="fas fa-hand-holding-medical"></i>
-                            </a>
-                        </td>
-                    </tr>
-                <?php } ?>
+                            <tr> 
+                                <td ><?php echo $leido; ?></td> 
+                                <td style="text-align:left"><?php echo $row['de']; ?></td> 
+                                <td style="text-align:center"><a href="php/mensaje.php?id=<?php echo $row['id']; ?>"> <?php echo $row['titulo']; ?></a></td> 
+                                <td style="text-align:center"><?php echo $row['fecha']; ?></td>
+                                <td style="text-align:center"><a class="btn btn-danger" href="actualizar.php?id=<?php echo $row['id']; ?>"><i class="fas fa-trash-alt"></i></a></td> 
+                            </tr>
 
-            </tbody>
-        </table>
-	</section>
+                        <?php 
+                        } 
+                        ?>
+
+                    </table>
+    </div>               
+
+        </section>
 
 	<!-- Notifications area -->
 
@@ -274,16 +260,6 @@ include("../../../php/conexion.php");
 
 </body>
 <!-- Scripts cambiables -->
-<script src="js/main.js"></script>
-<!-- Libreria para crear gráficas -->
-<script src="../../../library/plotly-latest.min.js"></script>
-
-<!-- Librería que voy a quitar -->
-<script src="../../../library/jquery-3.6.0.min.js"></script>
-
-<!-- Javascript general -->
-<script src="js/graficas.js"></script>
-
 
 <!--====== Scripts pagina ¡¡NO CAMBIAR!! -->
 <script src="../../../layout/js/jquery-3.1.1.min.js"></script>
@@ -298,3 +274,11 @@ include("../../../php/conexion.php");
 </script>
 
 </html>
+
+<?php
+    } else {
+        echo '<script type="text/javascript">
+                    window.location.href="../../login/login.html";
+                </script>';
+    }
+?>
