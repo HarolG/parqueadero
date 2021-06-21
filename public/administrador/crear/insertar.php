@@ -21,10 +21,10 @@
              echo '<pre>';
              if (move_uploaded_file($_FILES['vehic']['tmp_name'], $fichero_subido_foto)) {
                  //echo "El fichero es válido y se subió con éxito.\n";
-                 //echo '<script> window.location="crearusu.php" </script>';
+                 echo '<script> window.location="crearusu.php" </script>';
              } else {
                  //echo "¡Posible ataque de subida de ficheros!\n";
-                 //echo '<script> window.location="crearusu.php" </script>';
+                 echo '<script> window.location="crearusu.php" </script>';
              }
      
              echo 'Más información de depuración:';
@@ -35,7 +35,7 @@
      
              echo '<pre>';
              if (move_uploaded_file($_FILES['tecno']['tmp_name'], $fichero_subido_tecno)) {
-                 echo "El fichero es válido y se subió con éxito.\n";
+                 //echo "El fichero es válido y se subió con éxito.\n";
                  echo '<script> window.location="crearusu.php" </script>';
              } else {
                  //echo "¡Posible ataque de subida de ficheros!\n";
