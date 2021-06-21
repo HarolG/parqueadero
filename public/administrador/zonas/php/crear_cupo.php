@@ -8,22 +8,17 @@
         $nom_cupo = $_POST['cantidad_cupos'];
         $est_cupo = $_POST['estado_cupo'];
 
-        // $sqll = "SELECT SUM(nombre_cupo) AS cantidad_cupos 
-        //          FROM detalle_cupos 
-        //          WHERE id_zona = $zona";
-        // $resultado = mysqli_query($mysqli,$sqll);
-		// $fila = mysqli_fetch_assoc($resultado);
+        $sql = "SELECT count(nombre_cupo) AS cantidad_cupos_bd FROM detalle_cupos WHERE id_zona = '$zona'";
+        $query = mysqli_query($mysqli, $sql);
+        $resultado = mysqli_fetch_assoc($query);
 
-        // if ($fila['cantidad_cupos'] == 0) {
-        //     $fila['cantidad_cupos'] = 1;
-        // }
+        $resultado['cantidad_cupos_bd'] = $resultado['cantidad_cupos_bd'] + 1;
 
-        // $suma = ($fila['cantidad_cupos'] + $nom_cupo);
-        // echo $suma;
+        $suma = $resultado['cantidad_cupos_bd'] + $nom_cupo;
 
-        for ($i = 1; $i <= $nom_cupo; $i++){
+        for ($i = $resultado['cantidad_cupos_bd']; $i < $suma; $i++){
             $sqli = "INSERT INTO detalle_cupos (id_deta_cupos, id_zona, placa, nombre_cupo, id_estado_cupo) 
-                     VALUES (NULL, '$zona', NULL, '$nom_cupo', '$est_cupo')";
+                     VALUES (NULL, '$zona', NULL, '$i', '$est_cupo')";
             $query = mysqli_query($mysqli, $sqli);
 
             if ($query) {

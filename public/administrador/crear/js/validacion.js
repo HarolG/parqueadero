@@ -1,3 +1,56 @@
+$(document).ready(function () {
+
+    // Ventana Modal Tipo de vehiculo
+
+    $('#ventana1').click(function (e) { 
+        e.preventDefault();
+        $('#ventana-modal1').css('display', 'flex');
+    });
+
+    $('#cerrar_modal1').click(function (e) { 
+        e.preventDefault();
+        $('#ventana-modal1').css('display', 'none');
+    });
+
+    // Ventana Modal Marca
+
+    $('#ventana2').click(function (e) { 
+        e.preventDefault();
+        $('#ventana-modal2').css('display', 'flex');
+    });
+
+    $('#cerrar_modal2').click(function (e) { 
+        e.preventDefault();
+        $('#ventana-modal2').css('display', 'none');
+    });
+
+    // Ventana Modal Tipo de Modelo
+
+    $('#ventana3').click(function (e) { 
+        e.preventDefault();
+        $('#ventana-modal3').css('display', 'flex');
+    });
+
+    $('#cerrar_modal3').click(function (e) { 
+        e.preventDefault();
+        $('#ventana-modal3').css('display', 'none');
+    });
+
+    // Ventana Modal Tipo de color
+
+    $('#ventana4').click(function (e) { 
+        e.preventDefault();
+        $('#ventana-modal4').css('display', 'flex');
+    });
+
+    $('#cerrar_modal4').click(function (e) { 
+        e.preventDefault();
+        $('#ventana-modal4').css('display', 'none');
+    });
+});
+
+
+
 function enviarFormulario(){
     
     let placa, documento, vehiculo, marca, modelo, color, soat, tecno, imagen;

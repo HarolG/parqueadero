@@ -96,6 +96,12 @@
 					</a>
 					
 				</li>
+                <li>
+					<a href="../reporte_vehiculo/reporte.php" class="btn-sideBar-SubMenu">
+						<i class="fa fa-car" aria-hidden="true"></i> Reporte vehiculos
+					</a>
+					
+				</li>
 			</ul>
 		</div>
 	</section>
@@ -126,6 +132,93 @@
               
 			</ul>    
 		</nav>
+
+        <!-- Ventana Modal Tipo de Vehiculo -->
+        <div class="ventana-modal" id="ventana-modal1">
+            
+            <form class="formu" action="insertar.php" method="POST">
+                <a id="cerrar_modal1" class="cerrar" ><i class="fas fa-times-circle" ></i></a>
+                <h2 class="title" id="title">Nuevo Tipo de Vehiculo</h2>
+                <div class="contenedor">
+                    <div class="form-group">
+                        <label class="dig-user" for="nom_tipo_vehiculo">Digite el Tipo de Vehiculo</label>
+                        <input type="text" class="form-control" name="nom_tipo_vehiculo" id="nom_tipo_vehiculo" placeholder="Vehiculo" autocomplete="off" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" name="enviar-vehi" class="btn btn-primary btn-block" value="AÑADIR">
+                    </div>
+                </div>
+            </form>
+            
+        </div>
+
+        <!-- Ventana Marca-->
+        <div class="ventana-modal" id="ventana-modal2">
+            
+            <form class="formu" action="insertar.php" method="POST">
+                <a id="cerrar_modal2" class="cerrar" ><i class="fas fa-times-circle" ></i></a>
+                <h2 class="title" id="title">Nuevo Marca de Vehiculo</h2>
+
+                <div class="contenedor">
+                    <div class="form-group">
+                        <label class="dig-user" for="">Digite la nueva Marca del Vehiculo</label>
+                        <input type="text" class="form-control" name="nom_marca"
+                            placeholder="Marca del Vehiculo" autocomplete="off" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" name="enviar-marca" class="btn btn-primary btn-block" value="AÑADIR">
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <!-- Ventana Modal Modelo Vehiculo-->
+        <div class="ventana-modal" id="ventana-modal3">
+            
+            <form class="formu" action="insertar.php" method="POST">
+                <a id="cerrar_modal3" class="cerrar" ><i class="fas fa-times-circle" ></i></a>
+                <h2 class="title" id="title">Nuevo Modelo de Vehiculo</h2>
+
+                <div class="contenedor">
+                    <div class="form-group">
+                        <label class="dig-user" for="">Digite el nuevo modelo del vehiculo</label>
+                        <input type="text" class="form-control" name="nom_modelo"
+                            placeholder="Modelo del vehiculo" autocomplete="off" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" name="enviar-modelo" class="btn btn-primary btn-block" value="AÑADIR">
+                    </div>
+                </div>
+
+            </form>
+        </div>
+
+         <!-- Ventana Modal Color Vehiculo-->
+         <div class="ventana-modal" id="ventana-modal4">
+            
+            <form class="formu" action="insertar.php" method="POST">
+                <a id="cerrar_modal4" class="cerrar" ><i class="fas fa-times-circle" ></i></a>
+                <h2 class="title" id="title">Nuevo Color de Vehiculo</h2>
+
+                <div class="contenedor">
+                    <div class="form-group">
+                        <label class="dig-user" for="">Digite el nuevo color del vehiculo</label>
+                        <input type="text" class="form-control" name="nom_color"
+                            placeholder="Color del vehiculo" autocomplete="off" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <input type="submit" name="enviar-color" class="btn btn-primary btn-block" value="AÑADIR">
+                    </div>
+                </div>
+
+            </form>
+        </div>
+
+
+
+
+
             <!-- Aquí va el contenido -->
             <main class="main">
                 <div class="form_container">
@@ -145,10 +238,10 @@
                                     </div>
                                      <!--    Tipo de Vehiculo-->
                                      <div class="grupo_formulario grupo_formulario-tipoVehiculo">
-                                        <label class="vehiculo" for="placa">Tipo de Vehiculo</label>
+                                        <label class="vehiculo" for="placa" style="cursor: pointer;"><a id="ventana1">Tipo de Vehiculo<i class="fas fa-plus"></i></a></label>
                                         <select class="vehiculo" name="vehiculo" id="vehiculo" autocomplete="off">
 
-                                            <option value="0">Tipo de Vehiculo</option>
+                                            <option value="0">Tipo de Vehiculo</option> 
                                             <?php
                                                     $tip = "SELECT * FROM tipo_vehiculo";
                                                     $inser = mysqli_query($mysqli,$tip);
@@ -160,11 +253,15 @@
                                                 }
                                                 ?>
                                         </select>
+
+                                        
                                     </div>
                                     
                                      <!--    Modelo-->
-                                     <div class="grupo_formulario grupo_formulario-modelo">
-                                        <label class="placa" for="placa">Modelo</label>
+                                    <div class="grupo_formulario grupo_formulario-modelo">
+                                        
+                                       <label class="placa" for="placa" style="cursor: pointer;"><a id="ventana3">Modelo<i class="fas fa-plus"></i></a></label>
+                                        
                                         <select class="placa" name="modelo" id="modelo" autocomplete="off">
                                             <option value="0">Modelo del Vehiculo</option>
                                             <?php
@@ -188,17 +285,15 @@
 
                                  <!-- Número de placa del vehiculo -->
                                  <div class="grupo_formulario grupo_formulario-noPlaca">
-                                        <label for="placa">No. Placa</label>
+                                        <label for="placa">Placa</label>
                                         <input type="text" onkeyup= "this.value=this.value.toUpperCase()" class="placa" name="placa" id="placa"
                                             placeholder="Ingrese Numero de la placa" autocomplete="off">
                                     </div>
 
 
-                                   
-
                                     <!--   Tipo de Marca-->
                                     <div class="grupo_formulario grupo_formulario-marca">
-                                        <label class="marca" for="placa">Marca</label>
+                                        <label class="marca" for="placa" style="cursor: pointer;"><a id="ventana2">Marca<i class="fas fa-plus"></i></a></label>
                                         <select class="marca" name="marca" id="marca" autocomplete="off">
                                             <option value="0">Tipo de Marca</option>
                                             <?php
@@ -216,7 +311,7 @@
 
                                     <!--    Tipo de color-->
                                     <div class="grupo_formulario grupo_formulario-color">
-                                        <label class="color" for="placa">Color del Vehiculo</label>
+                                        <label class="color" for="placa" style="cursor: pointer;"><a id="ventana4">Color del vehiculo<i class="fas fa-plus"></i></a></label>
                                         <select class="color" name="color" id="color" autocomplete="off">
 
                                             <option value="0">Color de Vehiculo</option>

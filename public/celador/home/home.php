@@ -115,7 +115,7 @@
 				</li>
 				<li>
 					<a href="../gestion_parqueadero/home.php">
-						<i class="fas fa-home"></i> Gestión del Parqueadero
+						<i class="fa fa-sign-in-alt"></i> Gestión del Parqueadero
 					</a>
 				</li>
 			</ul>

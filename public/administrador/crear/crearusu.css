@@ -128,8 +128,8 @@ body {
     height: 40px;
     margin-top: 20px;
     border: none;
-    background-color: royalblue;
-    border-radius: 4px;
+    background-color: rgba(11, 129, 133, 0.933);
+    border-radius: 7px;
     color: white;
     cursor: pointer
 }
@@ -400,4 +400,46 @@ body {
 
     display: flex;
     align-items: center;
+}
+
+.ventana-modal{
+    z-index: 2000;
+
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+
+    background-color: rgba(0, 0, 0, 0.5);
+    left: -170px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    display: none;
+}
+
+.formu{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+    width: 400px;
+    background-color: rgba(255, 255, 255, 0.933); 
+    border-radius: 10px;
+
+    padding: 30px 20px;
+}
+
+.contenedor {
+    padding: 10px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.cerrar {
+    width: 100%;
 }
