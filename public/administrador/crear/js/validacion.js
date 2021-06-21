@@ -44,3 +44,57 @@ function enviarFormulario(){
         return false;
     };       
 }
+
+
+
+
+
+//ventana modal de tipo de vehiculo
+
+window.addEventListener("click",e => {
+    if (e.target.matches("#ventana1")){
+        e.preventDefault();
+        document.querySelector(".ventana-modal1").classList.add("aparecer")
+    }
+    if(e.target.matches(".close") || e.target.matches(`.close *`)){
+        e.preventDefault();
+        document.querySelector(".ventana-modal1").classList.remove("aparecer")
+    }
+})
+
+//ventana modal de Marca
+window.addEventListener("click",e => {
+    if (e.target.matches("#ventana2")){
+        e.preventDefault();
+        document.querySelector(".ventana-modal2").classList.add("aparecer2")
+    }
+    if(e.target.matches(".cerrar") || e.target.matches(`.cerrar *`)){
+        e.preventDefault();
+        document.querySelector(".ventana-modal2").classList.remove("aparecer2")
+    }
+})
+
+//ventana modal de Modelo
+
+window.addEventListener("click",e => {
+    if (e.target.matches("#ventana3")){
+        e.preventDefault();
+        document.querySelector(".ventana-modal3").classList.add("aparecer3")
+    }
+    if(e.target.matches(".x") || e.target.matches(`.x *`)){
+        e.preventDefault();
+        document.querySelector(".ventana-modal3").classList.remove("aparecer3")
+    }
+})
+
+//ventana modal de Color
+window.addEventListener("click",e => {
+    if (e.target.matches("#ventana4")){
+        e.preventDefault();
+        document.querySelector(".ventana-modal4").classList.add("aparecer4")
+    }
+    if(e.target.matches(".x") || e.target.matches(`.x *`)){
+        e.preventDefault();
+        document.querySelector(".ventana-modal4").classList.remove("aparecer4")
+    }
+})
