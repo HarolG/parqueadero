@@ -17,8 +17,8 @@ $(document).ready(function () {
 
         $.post("include/form_registro.php", postData,
             function (response) {
-                getCupo()
                 alert(response)
+                window.location.href="home.php";
             }
         );
 
@@ -42,6 +42,7 @@ $(document).ready(function () {
             $.post("include/form_salida.php", postData,
                 function (response) {
                     alert(response)
+                    window.location.href="home.php";
                 }
             );
         }

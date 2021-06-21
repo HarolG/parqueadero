@@ -132,6 +132,75 @@
               
 			</ul>    
 		</nav>
+
+        <!-- Ventana Modal Tipo de Vehiculo -->
+        <div class="ventana-modal1" id="ventana-modal1">
+            
+            <form class="formu" action="insertar.php" method="POST">
+                <a id="close" class="close" ><i class="fas fa-times-circle" ></i></a>
+                <h2 class="title" id="title">Nuevo Tipo de Vehiculo</h2>
+
+                <label class="dig-user" for="">Digite el Tipo de Vehiculo</label><br><br>
+                <input type="text" class="user" name="nom_tipo_vehiculo"
+                    placeholder="Vehiculo" autocomplete="off" required><br><br>
+
+                <input type="submit" name="enviar-vehi" class="añadir" value="AÑADIR">
+
+            </form>
+        </div>
+
+        <!-- Ventana Marca-->
+        <div class="ventana-modal2" id="ventana-modal2">
+            
+            <form class="formu2" action="insertar.php" method="POST">
+                <a id="cerrar" class="cerrar" ><i class="fas fa-times-circle" ></i></a>
+                <h2 class="title" id="title">Nuevo Marca de Vehiculo</h2>
+
+                <label class="dig-user" for="">Digite la nueva Marca del Vehiculo</label><br><br>
+                <input type="text" class="user" name="nom_marca"
+                    placeholder="Marca del Vehiculo" autocomplete="off" required><br><br>
+
+                <input type="submit" name="enviar-marca" class="añadir" value="AÑADIR">
+
+            </form>
+        </div>
+
+        <!-- Ventana Modal Modelo Vehiculo-->
+        <div class="ventana-modal3" id="ventana-modal3">
+            
+            <form class="formu3" action="insertar.php" method="POST">
+                <a id="x" class="x" ><i class="fas fa-times-circle" ></i></a>
+                <h2 class="title" id="title">Nuevo Modelo de Vehiculo</h2>
+
+                <label class="dig-user" for="">Digite el nuevo modelo del vehiculo</label><br><br>
+                <input type="text" class="user" name="nom_modelo"
+                    placeholder="Modelo del vehiculo" autocomplete="off" required><br><br>
+
+                <input type="submit" name="enviar-modelo" class="añadir" value="AÑADIR">
+
+            </form>
+        </div>
+
+         <!-- Ventana Modal Color Vehiculo-->
+         <div class="ventana-modal4" id="ventana-modal4">
+            
+            <form class="formu4" action="insertar.php" method="POST">
+                <a id="x" class="x" ><i class="fas fa-times-circle" ></i></a>
+                <h2 class="title" id="title">Nuevo Color de Vehiculo</h2>
+
+                <label class="dig-user" for="">Digite el nuevo color del vehiculo</label><br><br>
+                <input type="text" class="user" name="nom_color"
+                    placeholder="Color del vehiculo" autocomplete="off" required><br><br>
+
+                <input type="submit" name="enviar-color" class="añadir" value="AÑADIR">
+
+            </form>
+        </div>
+
+
+
+
+
             <!-- Aquí va el contenido -->
             <main class="main">
                 <div class="form_container">
@@ -151,10 +220,10 @@
                                     </div>
                                      <!--    Tipo de Vehiculo-->
                                      <div class="grupo_formulario grupo_formulario-tipoVehiculo">
-                                        <label class="vehiculo" for="placa">Tipo de Vehiculo</label>
+                                        <label class="vehiculo" for="placa" style="cursor: pointer;"><a id="ventana1">Tipo de Vehiculo<i class="fas fa-plus"></i></a></label>
                                         <select class="vehiculo" name="vehiculo" id="vehiculo" autocomplete="off">
 
-                                            <option value="0">Tipo de Vehiculo</option>
+                                            <option value="0">Tipo de Vehiculo</option> 
                                             <?php
                                                     $tip = "SELECT * FROM tipo_vehiculo";
                                                     $inser = mysqli_query($mysqli,$tip);
@@ -166,11 +235,15 @@
                                                 }
                                                 ?>
                                         </select>
+
+                                        
                                     </div>
                                     
                                      <!--    Modelo-->
-                                     <div class="grupo_formulario grupo_formulario-modelo">
-                                        <label class="placa" for="placa">Modelo</label>
+                                    <div class="grupo_formulario grupo_formulario-modelo">
+                                        
+                                       <label class="placa" for="placa" style="cursor: pointer;"><a id="ventana3">Modelo<i class="fas fa-plus"></i></a></label>
+                                        
                                         <select class="placa" name="modelo" id="modelo" autocomplete="off">
                                             <option value="0">Modelo del Vehiculo</option>
                                             <?php
@@ -194,17 +267,15 @@
 
                                  <!-- Número de placa del vehiculo -->
                                  <div class="grupo_formulario grupo_formulario-noPlaca">
-                                        <label for="placa">No. Placa</label>
+                                        <label for="placa">Placa</label>
                                         <input type="text" onkeyup= "this.value=this.value.toUpperCase()" class="placa" name="placa" id="placa"
                                             placeholder="Ingrese Numero de la placa" autocomplete="off">
                                     </div>
 
 
-                                   
-
                                     <!--   Tipo de Marca-->
                                     <div class="grupo_formulario grupo_formulario-marca">
-                                        <label class="marca" for="placa">Marca</label>
+                                        <label class="marca" for="placa" style="cursor: pointer;"><a id="ventana2">Marca<i class="fas fa-plus"></i></a></label>
                                         <select class="marca" name="marca" id="marca" autocomplete="off">
                                             <option value="0">Tipo de Marca</option>
                                             <?php
@@ -222,7 +293,7 @@
 
                                     <!--    Tipo de color-->
                                     <div class="grupo_formulario grupo_formulario-color">
-                                        <label class="color" for="placa">Color del Vehiculo</label>
+                                        <label class="color" for="placa" style="cursor: pointer;"><a id="ventana4">Color del vehiculo<i class="fas fa-plus"></i></a></label>
                                         <select class="color" name="color" id="color" autocomplete="off">
 
                                             <option value="0">Color de Vehiculo</option>

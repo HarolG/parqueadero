@@ -148,87 +148,9 @@ Favor revisar los direccionamientos
 	<!-- BOTONOES DE REGISTRO -->
 	<div class="registro btn-group" role="group" aria-label="Basic example" style="align-items:center;">
 		<a onclick="bajar();" class="but btn btn-primary" type="submit"><i class="fas fa-user-plus"> Registrar</i></a>
-		<a href="php/registrar_tipdoc.php" class="but btn btn-primary" type="submit"><i class="fas fa-plus-circle"> Resgistrar tipos de documento</i></a>
+		<a href="php/registrar_tipdoc.php" class="but btn btn-primary" type="submit"><i class="fas fa-plus-circle"> Resgistrar tipos de Documento</i></a>
+		<a href="php/registrar_tipusu.php" class="but btn btn-primary" type="submit"><i class="fas fa-plus-circle"> Resgistrar tipos de Usuario</i></a>
 		
-	</div>
-<!-- registrar tipos  -->
-	<div class=" tipos container">
-		<div id="tipos" class="col-sm-12 col-md-12 col-lg-12 ocultar">
-			<!-- codigo para registrar un tipo de usuario nuevo -->
-				<form class="form-horizontal" action="" method="POST">
-					<div class="form-group">
-						<label class="col-sm-2 control-label">Tipo de usuario</label>
-						<div class="col-sm-8"><input id="restipusu" name="restipusu" type="text" class="form-control" autocomplete="off" placeholder="Nuevo Tipo De Usuario"></div>	
-						<input type="submit" value="Registrar" class="btn btn-primary">
-						<input type="hidden" name="regisusu">
-					</div>  
-					 
-				</form>
-				<?php
-						
-						if(isset($_POST['regisusu'])){
-							$tipusu1=$_POST['restipusu'];
-						
-							
-							$sql="INSERT INTO `tipo_usuario` (nom_tip_usu) VALUES ('$tipusu1')";
-								
-							$resul=mysqli_query($mysqli,$sql);
-								
-							if($resul){  
-								echo "<script language='JavaScript'>
-								alert('Se ha creado el tipo de usuario correctamente');
-								window.location.href='usuarios.php';
-								</script>";  
-							}else{
-								echo "<script language='JavaScript'>
-								alert('el tipo de usuario no fue creado');
-								</script>";
-							}
-							mysqli_close($mysqli);
-						}else{          
-					?>
-					<?php
-						}
-				?>
-				<!-- codigo para registrar un tipo de documento nuevo -->
-				<form class="form-horizontal" action="" method="POST">
-					<div class="form-group">
-						<label class="col-sm-2 control-label">Tipo de Documento</label>
-						<div class="col-sm-8"><input id="restipdoc" name="restipdoc" type="text" class="form-control" autocomplete="off" placeholder="Nuevo Tipo De Documento"></div>	
-						<input type="submit" value="Registrar" style="align-items:center" class="btn btn-primary">
-						<input type="hidden" name="regisdoc">	
-					</div>  
-				</form>
-				<?php
-						
-						if(isset($_POST['regisdoc'])){
-							$tipdoc1=$_POST['restipdoc'];
-						
-							
-							$sql="INSERT INTO `tipo_documento` (nom_tip_doc) VALUES ('$tipdoc1')";
-								
-							$resul=mysqli_query($mysqli,$sql);
-								
-							if($resul){  
-								echo "<script language='JavaScript'>
-								alert('Se ha creado el tipo de documento correctamente');
-								window.location.href='usuarios.php';
-								</script>";  
-							}else{
-								echo "<script language='JavaScript'>
-								alert('el tipo de documento no fue creado');
-								</script>";
-							}
-							mysqli_close($mysqli);
-						}else{          
-					?>
-					<?php
-						}
-				?>
-				<div class="form-group">
-			
-				</div>
-		</div>
 	</div>
 
 	<div class="container">
