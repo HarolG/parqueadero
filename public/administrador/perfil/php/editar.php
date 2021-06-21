@@ -32,12 +32,8 @@ if (isset($_SESSION['tipo']) && isset($_SESSION['nom']) && isset($_SESSION['ape'
         $cel = $_POST['celular'];
         $dir = $_POST['direccion'];
         $cor = $_POST['correo'];
-        $foto = $_FILES["foto"]["name"];
-        $ruta = $_FILES["foto"]["tmp_name"];
-        $destino = "../fotos/" . $foto;
-        copy($ruta, $destino);
 
-        $query = "UPDATE usuario SET nombre = '$nombre', apellido = '$apellido', edad = '$ed', celular = '$cel', direccion = '$dir', correo = '$cor', foto = '$foto' WHERE documento = $id";
+        $query = "UPDATE usuario SET nombre = '$nombre', apellido = '$apellido', edad = '$ed', celular = '$cel', direccion = '$dir', correo = '$cor' WHERE documento = $id";
         mysqli_query($mysqli, $query);
 
         if ($query) {
@@ -144,6 +140,12 @@ if (isset($_SESSION['tipo']) && isset($_SESSION['nom']) && isset($_SESSION['ape'
                         </a>
 
                     </li>
+                    <li>
+                        <a href="../../reporte_vehiculo/reporte.php" class="btn-sideBar-SubMenu">
+                            <i class="fa fa-car" aria-hidden="true"></i> Reporte vehiculos
+                        </a>
+
+                    </li>
                 </ul>
             </div>
         </section>
@@ -192,8 +194,8 @@ if (isset($_SESSION['tipo']) && isset($_SESSION['nom']) && isset($_SESSION['ape'
                             <img src="../fotos/<?php echo $ruta_img; ?>" class="imagen" alt="">
 
                         </label>
-                        <div class="input_file col-md-6 col-sm-6 col-xs-6">
-                            <input type="file" name="foto" id="foto" class="fotito">
+                        <div class="input_file">
+                            <a href="cambiarfoto.php">EDITAR AVATAR</a>
                         </div>
                     </div>
                     <br>

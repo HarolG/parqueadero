@@ -32,12 +32,12 @@ if (isset($_SESSION['tipo']) && isset($_SESSION['nom']) && isset($_SESSION['ape'
         $cel = $_POST['celular'];
         $dir = $_POST['direccion'];
         $cor = $_POST['correo'];
-        $foto = $_FILES["foto"]["name"];
-        $ruta = $_FILES["foto"]["tmp_name"];
-        $destino = "../fotos/" . $foto;
-        copy($ruta, $destino);
+        // $foto = $_FILES["foto"]["name"];
+        // $ruta = $_FILES["foto"]["tmp_name"];
+        // $destino = "../fotos/" . $foto;
+        // copy($ruta, $destino);
 
-        $query = "UPDATE usuario SET nombre = '$nombre', apellido = '$apellido', edad = '$ed', celular = '$cel', direccion = '$dir', correo = '$cor', foto = '$foto' WHERE documento = $id";
+        $query = "UPDATE usuario SET nombre = '$nombre', apellido = '$apellido', edad = '$ed', celular = '$cel', direccion = '$dir', correo = '$cor' WHERE documento = $id";
         mysqli_query($mysqli, $query);
 
         if ($query) {
@@ -102,7 +102,7 @@ if (isset($_SESSION['tipo']) && isset($_SESSION['nom']) && isset($_SESSION['ape'
 
                     <ul class="full-box list-unstyled text-center">
                         <li>
-                            <a href="#!">
+                            <a href="../perfil.php">
                                 <i class="fas fa-cogs"></i>
                             </a>
                         </li>
@@ -173,8 +173,8 @@ if (isset($_SESSION['tipo']) && isset($_SESSION['nom']) && isset($_SESSION['ape'
                             <img src="../fotos/<?php echo $ruta_img; ?>" class="imagen" alt="">
 
                         </label>
-                        <div class="input_file col-md-6 col-sm-6 col-xs-6">
-                            <input type="file" name="foto" id="foto" class="fotito">
+                        <div class="input_f">
+                            <a href="cambiarfoto.php">CAMBIAR AVATAR</a>
                         </div>
                     </div>
                     <br>
@@ -184,11 +184,11 @@ if (isset($_SESSION['tipo']) && isset($_SESSION['nom']) && isset($_SESSION['ape'
                     <div>
 
                         <label for="nombre">Nombre</label>
-                        <input type="text" name="nombre" class="nombre" onkeyup = "this.value=this.value.toUpperCase()" id="nombre" placeholder="<?php echo $row['nombre'] ?>">
+                        <input type="text" name="nombre" class="nombre" onkeyup="this.value=this.value.toUpperCase()" id="nombre" placeholder="<?php echo $row['nombre'] ?>">
                     </div>
                     <div>
                         <label for="apellido">Apellido</label>
-                        <input type="text" name="apellido" class="apellido" onkeyup = "this.value=this.value.toUpperCase()" id="apellido" placeholder="<?php echo $row['apellido'] ?>">
+                        <input type="text" name="apellido" class="apellido" onkeyup="this.value=this.value.toUpperCase()" id="apellido" placeholder="<?php echo $row['apellido'] ?>">
 
                     </div>
                     <div>
@@ -203,12 +203,12 @@ if (isset($_SESSION['tipo']) && isset($_SESSION['nom']) && isset($_SESSION['ape'
                     </div>
                     <div>
                         <label for="direccion">Direccion</label>
-                        <input type="text" name="direccion" class="direccion" onkeyup = "this.value=this.value.toUpperCase()" id="direccion" placeholder="<?php echo $row['direccion'] ?>">
+                        <input type="text" name="direccion" class="direccion" onkeyup="this.value=this.value.toUpperCase()" id="direccion" placeholder="<?php echo $row['direccion'] ?>">
 
                     </div>
                     <div>
                         <label for="correo">Correo Electronico</label>
-                        <input type="email" name="correo" class="correo" onkeyup = "this.value=this.value.toUpperCase()" id="correo" placeholder="<?php echo $row['correo'] ?>">
+                        <input type="email" name="correo" class="correo" onkeyup="this.value=this.value.toUpperCase()" id="correo" placeholder="<?php echo $row['correo'] ?>">
 
                     </div>
                     <button class="btn-actualizar" name="update">

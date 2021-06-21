@@ -26,6 +26,36 @@
     background-color: gray;
 }
 
+.input_file{
+    margin: 15px 457px;
+    /* border: 2px solid black; */
+    background-color: cornflowerblue;
+    border-radius: 10px;
+    padding: 5px;
+    width: 200px;
+}
+
+.file{
+    background-color: teal;
+    padding: 7px;
+    color: whitesmoke;
+    border-radius: 7px;
+    border: none;
+}
+
+.file:hover{
+    background-color: rgb(21, 97, 97);
+}
+
+.input_file3{
+    /* border: 2px solid black; */
+    width: 380px;
+    padding: 10px;
+    margin: auto;
+    background-color: white;
+    box-shadow: 2px 2px 2px 1px rgba(100, 98, 98, 0.2);
+}
+
 #formu {
     margin: 20px;
 }
