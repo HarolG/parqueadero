@@ -125,27 +125,32 @@
             </div>
             <!-- SideBar Menu -->
             <ul class="list-unstyled full-box dashboard-sideBar-Menu">
-                <li>
-                    <a href="../home/home.php">
-                        <i class="fas fa-home"></i> Inicio
-                    </a>
-                </li>
-                <li>
-                    <a href="../celadores/index.php">
-                        <i class="fas fa-chart-line"></i> Informe Inicio de Sesión
-                    </a>
-                </li>
-                <li>
-                    <a href="../gestion/index.php">
-                        <i class="fas fa-users-cog"></i> Gestión de Usuarios
-                    </a>
-                </li>
-                <li>
-                    <a href="home.php">
-                        <i class="fa fa-sign-in-alt"></i> Gestión del Parqueadero
-                    </a>
-                </li>
-            </ul>
+				<li>
+					<a href="../home/home.php">
+						<i class="fas fa-home"></i> Inicio
+					</a>
+				</li>
+				<li>
+					<a href="../celadores/index.php">
+						<i class="fas fa-chart-line"></i> Informe Inicio de Sesión
+					</a>
+				</li>
+				<li>
+					<a href="../gestion/index.php">
+						<i class="fas fa-users-cog"></i> Gestión de Usuarios
+					</a>
+				</li>
+				<li>
+					<a href="../gestion_parqueadero/home.php">
+						<i class="fa fa-sign-in-alt"></i> Gestión del Parqueadero
+					</a>
+				</li>
+				<li>
+					<a href="../mensajeria/buzon.php">
+						<i class="far fa-envelope"></i>  Buzon de mensajeria
+					</a>
+				</li>
+			</ul>
         </div>
     </section>
 

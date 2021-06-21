@@ -70,6 +70,7 @@ include("../../../php/conexion.php");
 				</ul>
 			</div>
 			<!-- SideBar Menu -->
+			<!-- SideBar Menu -->
 			<ul class="list-unstyled full-box dashboard-sideBar-Menu">
 				<li>
 					<a href="../home/home.php">
@@ -77,7 +78,7 @@ include("../../../php/conexion.php");
 					</a>
 				</li>
 				<li>
-					<a href="index.php">
+					<a href="../celadores/index.php">
 						<i class="fas fa-chart-line"></i> Informe Inicio de Sesión
 					</a>
 				</li>
@@ -89,6 +90,11 @@ include("../../../php/conexion.php");
 				<li>
 					<a href="../gestion_parqueadero/home.php">
 						<i class="fa fa-sign-in-alt"></i> Gestión del Parqueadero
+					</a>
+				</li>
+				<li>
+					<a href="../mensajeria/buzon.php">
+						<i class="far fa-envelope"></i> Buzon de mensajeria
 					</a>
 				</li>
 			</ul>

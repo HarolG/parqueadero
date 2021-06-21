@@ -87,6 +87,76 @@ body {
     display: grid;
     grid-template-columns: 1fr 1fr;
 }
+.about2{
+    width: 100%;
+    height: 600px;
+    background: #07073f;
+    margin-top: 120px;
+    position: relative;
+    padding: 20px 0px;
+}
+.about2 h2{
+    text-align: center;
+    color: white;
+    font-weight: 700;
+    font-size: 30px;
+    padding: 20px 0px; 
+}
+
+.cajita{
+    border: 3px solid rgb(63, 155, 11);
+    margin-left: 370px;
+    margin-top: 40px;
+    width: 40%;
+    height: 90%;
+    padding: 5px 35px;
+    border-radius: 3px;
+    margin-top: 30px;
+    padding-bottom: 30px;    
+}
+
+.cajita .labels{
+    display: block;
+    color: #eb7222;
+    font-weight: 600;
+    font-size: 16px;
+    position: relative;
+    padding: 5px;
+}
+
+.cajita .inputs, .textarea{
+    background: rgba(0, 0, 0, 0.556);
+    border: none;
+    outline: none;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #837f7c67;
+    width: 94%;
+    padding: 16px;
+    border-radius: 4px;
+    font-size: 14px;
+    color: white;
+}
+.cajita .textarea{
+    resize: vertical;
+    height: 128px;
+    min-height: 90px;
+    max-height: 150px;
+}
+
+.cajita .boton{
+    width: 100%;
+    outline: none;
+    background: #e65b24;
+    font-size: 20px;
+    border: none;
+    padding: 15px 0px;
+    cursor: pointer;
+}
+
+.cajita .boton:hover{
+    background:rgba(95, 255, 2, 0.604) ;
+}
+
 .text video{
     width: 100%;
 }
@@ -155,7 +225,7 @@ footer{
     padding: 60px 0 30px 0;
     margin: auto;
     position: relative;
-    margin-top: 8%;
+
 }
 
 footer h2{
