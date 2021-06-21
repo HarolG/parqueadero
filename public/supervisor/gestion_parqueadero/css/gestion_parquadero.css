@@ -2,6 +2,45 @@
     width: 100%;
 }
 
+.card {
+    box-shadow: 0px 0px 8px 5px rgba(0, 0, 0, 0.2);
+    padding: 25px;
+}
+
+.prueba3 {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.205);
+
+    z-index: 3;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.prueba4 {
+    width: 600px;
+    background-color: white;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    padding: 20px 0;
+}
+
+.prueba4 form h4 {
+    text-align: center;
+}
+
+.wrapper {
+    margin-top: 15px;
+    width: 80%;
+}
+
 .contenedor_general {
     margin-top: 30px;
     margin-bottom: 30px;
@@ -13,6 +52,15 @@ select {
     color: #bdbdc3;
     font-weight: 400;
     padding-bottom: 5px;
+}
+
+.form-control {
+    border: none !important;
+    border-bottom: 1px solid #bdbdc3 !important;
+    box-shadow: none !important;
+    border-radius: 0% !important;
+    padding: 6px !important;
+    color: #bdbdc3 !important;
 }
 
 .cine_container {
