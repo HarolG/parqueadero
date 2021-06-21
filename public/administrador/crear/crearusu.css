@@ -345,11 +345,8 @@ body {
 
 .container_modal .container_propietario {
     width: 600px;
-    height: 300px;
-    background-color: #ededed;
-    border-radius: 15px;
-    border: 1px solid;
-    padding: 10px 15px;
+    background-color: white;
+    padding: 20px 10px;
 }
 
 .container_modal .container_propietario .btn_cerrar {
@@ -400,6 +397,10 @@ body {
 
     display: flex;
     align-items: center;
+}
+
+.form_datos_propietario {
+    width: 100%;
 }
 
 .ventana-modal{
