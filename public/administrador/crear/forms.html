@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formularios</title>
+    <link rel="stylesheet" href="crearusu.css"> 
+</head>
+<body>
+
+    <div class="form1">
+        <div class="ventana-modal1" id="ventana-modal1">
+            
+            <h2 class="reg-user" id="reg-user">Nuevo Tipo de Vehiculo</h2>
+
+            <form class="formul" action="../../php/usuario/registro_users_doc.php" method="POST">
+
+                <label class="dig-user" for="">Digite el Tipo de Vehiculo</label><br><br>
+                <input type="text" class="ti-user" name="vehiculo"
+                    placeholder="Vehiculo" autocomplete="off" required><br><br>
+
+                <input type="submit" name="env-user" class="env-user" value="AÑADIR">
+
+            </form>
+        </div>
+    </div>
+
+</body>
+
+
+    <script src="js/validacion.js"></script>
+    
+</html>
