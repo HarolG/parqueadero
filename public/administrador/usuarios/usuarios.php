@@ -259,8 +259,7 @@ Favor revisar los direccionamientos
 				</form>
 			</div>
 			<!-- CODIGO PHP PARA REGISTRAR USUARIOS -->
-                <?php
-                    
+                <?php   
                     if(isset($_POST['registrar'])){
                         $documento=$_POST['doc'];
                         $nombre=$_POST['nom'];
@@ -485,7 +484,7 @@ Favor revisar los direccionamientos
 		});
 
 		var guardar = function(){
-			$("form").on("submit", function(e){
+			$("#form").on("submit", function(e){
 				e.preventDefault();
 				var frm = $(this).serialize();
 				$.ajax({
