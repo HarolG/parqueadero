@@ -142,7 +142,7 @@ Favor revisar los direccionamientos
 	<!-- BOTONOES DE REGISTRO -->
 	<div class="registro btn-group" role="group" aria-label="Basic example" style="align-items:center;">
 		<a onclick="bajar();" class="but btn btn-primary" type="submit"><i class="fas fa-user-plus"> Registrar</i></a>
-		<a onclick="bajar_ventana2();" class="but btn btn-primary" type="submit"><i class="fas fa-plus-circle"> Resgistrar tipos</i></a>
+		<a href="php/registrar_tipdoc.php" class="but btn btn-primary" type="submit"><i class="fas fa-plus-circle"> Resgistrar tipos de documento</i></a>
 		
 	</div>
 <!-- registrar tipos  -->
@@ -220,7 +220,7 @@ Favor revisar los direccionamientos
 						}
 				?>
 				<div class="form-group">
-					<input id="btn_listar" type="button" class="btn btn-success" value="Listar">
+			
 				</div>
 		</div>
 	</div>
@@ -389,11 +389,11 @@ Favor revisar los direccionamientos
 				</div>
 				<div class="form-group">
 					<label for="nombre" class="col-sm-2 control-label">Nombres</label>
-					<div class="col-sm-8"><input id="nombre" name="nombre" type="text" class="form-control" disabled></div>				
+					<div class="col-sm-8"><input id="nombre" name="nombre" type="text" class="form-control"></div>				
 				</div>
 				<div class="form-group">
 					<label for="apellidos" class="col-sm-2 control-label">Apellidos</label>
-					<div class="col-sm-8"><input id="apellido" name="apellido" type="text" class="form-control" disabled></div>
+					<div class="col-sm-8"><input id="apellido" name="apellido" type="text" class="form-control"></div>
 				</div>
 				<div class="form-group">
 					<label for="edad" class="col-sm-2 control-label">Edad</label>
@@ -414,7 +414,7 @@ Favor revisar los direccionamientos
 				<div class="form-group">
 					<div class="col-sm-offset-2 col-sm-8">
 						<input id="" type="submit" class="btn btn-primary" value="Guardar">
-						<input id="btn_listar" type="button" class="btn btn-success" value="Listar">
+						<input onclick="listar();" id="btn_listar" type="button" class="btn btn-success" value="Listar">
 					</div>
 				</div>
 			</form>
@@ -536,7 +536,7 @@ Favor revisar los direccionamientos
 </div>
 <!--====== Scripts pagina cambiables -->
 
-<script src="js/jquery-1.12.3.js"></script>
+	<script src="js/jquery-1.12.3.js"></script>
 	<script src="js/bootstrap.min.js"></script>
 	<script src="js/jquery.dataTables.min.js"></script>
 	<script src="js/dataTables.bootstrap.js"></script>
@@ -563,7 +563,7 @@ Favor revisar los direccionamientos
 		});
 
 		var guardar = function(){
-			$("#form").on("submit", function(e){
+			$("form").on("submit", function(e){
 				e.preventDefault();
 				var frm = $(this).serialize();
 				$.ajax({
@@ -640,10 +640,9 @@ Favor revisar los direccionamientos
 		}
 
 		var listar = function(){
-			$("#tipos").slideUp("slow");
-			$("#cuadro2").slideUp("slow");
 			$("#cuadro1").slideDown("slow");
 			$("#registro").slideUp("slow");
+			$("#cuadro2").slideUp("slow");
 			var table = $("#dt_cliente").DataTable({
 				"destroy":true,
 				"ajax":{
@@ -661,7 +660,7 @@ Favor revisar los direccionamientos
 					{ "data": "nom_tip_doc" },
 					{ "data": "nom_tip_usu" },
 					{ "data": "nom_estado_usu" },
-					{"defaultContent": "<button type='button' class='editar btn btn-primary'><i class='fa fa-pencil-square-o'></i></button><button type='button' id='eliminar' class='eliminar btn btn-danger' data-toggle='modal' data-target='#modalEliminar' ><i class='fa fa-trash-o'></i></button>"}	
+					{"defaultContent": "<button type='button' class='editar btn btn-primary'><i class='fa fa-pencil-square-o'></i></button><button type='button' id='eliminar' class='eliminar btn btn-danger'><i class='fa fa-trash-o'></i></button>"}	
 				],
 				"language": idioma_espanol,
 				"lengthMenu":[[2,5,10,50,-1],[2,5,10,50,"Todos los"]],
@@ -698,15 +697,12 @@ Favor revisar los direccionamientos
 			$("#cuadro1").slideUp("slow");
 			
 		}
-
-		var bajar_ventana2 = function(){
+		var bajar_edicion = function(){
 			limpiar_datos();
-			$("#tipos").slideDown("slow");
+			$("#cuadro2").slideDown("slow");
 			$("#cuadro1").slideUp("slow");
 			
 		}
-
-		
 
 
 		var obtener_data_editar = function(tbody, table){

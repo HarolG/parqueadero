@@ -757,7 +757,7 @@ yx-axis
 	/* theme "rounded-dots-dark" */
 	
 	.mCS-rounded-dots-dark.mCSB_scrollTools .mCSB_draggerRail{
-		background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAICAYAAADED76LAAAALElEQVQYV2NkIAAYSVFgDFR8BqrBBEifBbGRTfiPZhpYjiQFBK3A6l6CvgAAE9kGCd1mvgEAAAAASUVORK5CYII=");
+	
 	}
 	
 	.mCS-rounded-dots-dark.mCSB_scrollTools .mCSB_buttonUp{ background-position: -96px -72px; }

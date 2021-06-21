@@ -37,7 +37,7 @@ body {
 }
 
 .datos_parqueo-container .dato_container .container_conteo p {
-    color: #5E6974;
+    color: #516172;
     font-size: 45px;
     font-weight: bold;
 
@@ -93,4 +93,3 @@ body {
 .grafica_container input:hover{
     background-color: #959ea7de;
 }
-
