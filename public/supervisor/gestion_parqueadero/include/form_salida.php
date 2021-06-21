@@ -10,7 +10,7 @@
         $nom_tip_zona = $_POST['nom_tip_zona'];
         $salida_deta_cupos = $_POST['salida_deta_cupos'];
 
-        $sql = "UPDATE detalle_cupos SET placa = NULL, id_estado_cupo = '2' WHERE detalle_cupos.id_deta_cupos = $salida_deta_cupos";
+        $sql = "UPDATE detalle_cupos SET placa = NULL, id_estado_cupo = '1' WHERE detalle_cupos.id_deta_cupos = $salida_deta_cupos";
         $query = mysqli_query($mysqli, $sql);
          
         $sql2 = "SELECT * FROM registro_parqueadero WHERE placa = '$placa' AND id_estado_registro = 1";
