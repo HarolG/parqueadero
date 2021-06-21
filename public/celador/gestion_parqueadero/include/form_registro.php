@@ -14,7 +14,7 @@
             $sql = "INSERT INTO registro_parqueadero (id_registro, id_tip_entrada, placa, fecha, hora, id_zona, id_estado_registro) VALUES (NULL, '1', '$placa', CURRENT_DATE(), CURRENT_TIME(), '$select_zona', '1')";
             $query = mysqli_query($mysqli, $sql);
 
-            $sql2 = "UPDATE detalle_cupos SET placa = '$placa', id_estado_cupo = '2' WHERE  id_zona = '$select_zona' AND nombre_cupo = '$select_cupo'";
+            $sql2 = "UPDATE detalle_cupos SET placa = '$placa', id_estado_cupo = '2' WHERE  id_zona = '$select_zona' AND id_deta_cupos = '$select_cupo'";
             $query2 = mysqli_query($mysqli, $sql2);
 
             if($query2) {
