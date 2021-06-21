@@ -134,65 +134,83 @@
 		</nav>
 
         <!-- Ventana Modal Tipo de Vehiculo -->
-        <div class="ventana-modal1" id="ventana-modal1">
+        <div class="ventana-modal" id="ventana-modal1">
             
             <form class="formu" action="insertar.php" method="POST">
-                <a id="close" class="close" ><i class="fas fa-times-circle" ></i></a>
+                <a id="cerrar_modal1" class="cerrar" ><i class="fas fa-times-circle" ></i></a>
                 <h2 class="title" id="title">Nuevo Tipo de Vehiculo</h2>
-
-                <label class="dig-user" for="">Digite el Tipo de Vehiculo</label><br><br>
-                <input type="text" class="user" name="nom_tipo_vehiculo"
-                    placeholder="Vehiculo" autocomplete="off" required><br><br>
-
-                <input type="submit" name="enviar-vehi" class="añadir" value="AÑADIR">
-
+                <div class="contenedor">
+                    <div class="form-group">
+                        <label class="dig-user" for="nom_tipo_vehiculo">Digite el Tipo de Vehiculo</label>
+                        <input type="text" class="form-control" name="nom_tipo_vehiculo" id="nom_tipo_vehiculo" placeholder="Vehiculo" autocomplete="off" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" name="enviar-vehi" class="btn btn-primary btn-block" value="AÑADIR">
+                    </div>
+                </div>
             </form>
+            
         </div>
 
         <!-- Ventana Marca-->
-        <div class="ventana-modal2" id="ventana-modal2">
+        <div class="ventana-modal" id="ventana-modal2">
             
-            <form class="formu2" action="insertar.php" method="POST">
-                <a id="cerrar" class="cerrar" ><i class="fas fa-times-circle" ></i></a>
+            <form class="formu" action="insertar.php" method="POST">
+                <a id="cerrar_modal2" class="cerrar" ><i class="fas fa-times-circle" ></i></a>
                 <h2 class="title" id="title">Nuevo Marca de Vehiculo</h2>
 
-                <label class="dig-user" for="">Digite la nueva Marca del Vehiculo</label><br><br>
-                <input type="text" class="user" name="nom_marca"
-                    placeholder="Marca del Vehiculo" autocomplete="off" required><br><br>
-
-                <input type="submit" name="enviar-marca" class="añadir" value="AÑADIR">
-
+                <div class="contenedor">
+                    <div class="form-group">
+                        <label class="dig-user" for="">Digite la nueva Marca del Vehiculo</label>
+                        <input type="text" class="form-control" name="nom_marca"
+                            placeholder="Marca del Vehiculo" autocomplete="off" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" name="enviar-marca" class="btn btn-primary btn-block" value="AÑADIR">
+                    </div>
+                </div>
             </form>
         </div>
 
         <!-- Ventana Modal Modelo Vehiculo-->
-        <div class="ventana-modal3" id="ventana-modal3">
+        <div class="ventana-modal" id="ventana-modal3">
             
-            <form class="formu3" action="insertar.php" method="POST">
-                <a id="x" class="x" ><i class="fas fa-times-circle" ></i></a>
+            <form class="formu" action="insertar.php" method="POST">
+                <a id="cerrar_modal3" class="cerrar" ><i class="fas fa-times-circle" ></i></a>
                 <h2 class="title" id="title">Nuevo Modelo de Vehiculo</h2>
 
-                <label class="dig-user" for="">Digite el nuevo modelo del vehiculo</label><br><br>
-                <input type="text" class="user" name="nom_modelo"
-                    placeholder="Modelo del vehiculo" autocomplete="off" required><br><br>
-
-                <input type="submit" name="enviar-modelo" class="añadir" value="AÑADIR">
+                <div class="contenedor">
+                    <div class="form-group">
+                        <label class="dig-user" for="">Digite el nuevo modelo del vehiculo</label>
+                        <input type="text" class="form-control" name="nom_modelo"
+                            placeholder="Modelo del vehiculo" autocomplete="off" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" name="enviar-modelo" class="btn btn-primary btn-block" value="AÑADIR">
+                    </div>
+                </div>
 
             </form>
         </div>
 
          <!-- Ventana Modal Color Vehiculo-->
-         <div class="ventana-modal4" id="ventana-modal4">
+         <div class="ventana-modal" id="ventana-modal4">
             
-            <form class="formu4" action="insertar.php" method="POST">
-                <a id="x" class="x" ><i class="fas fa-times-circle" ></i></a>
+            <form class="formu" action="insertar.php" method="POST">
+                <a id="cerrar_modal4" class="cerrar" ><i class="fas fa-times-circle" ></i></a>
                 <h2 class="title" id="title">Nuevo Color de Vehiculo</h2>
 
-                <label class="dig-user" for="">Digite el nuevo color del vehiculo</label><br><br>
-                <input type="text" class="user" name="nom_color"
-                    placeholder="Color del vehiculo" autocomplete="off" required><br><br>
-
-                <input type="submit" name="enviar-color" class="añadir" value="AÑADIR">
+                <div class="contenedor">
+                    <div class="form-group">
+                        <label class="dig-user" for="">Digite el nuevo color del vehiculo</label>
+                        <input type="text" class="form-control" name="nom_color"
+                            placeholder="Color del vehiculo" autocomplete="off" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <input type="submit" name="enviar-color" class="btn btn-primary btn-block" value="AÑADIR">
+                    </div>
+                </div>
 
             </form>
         </div>
