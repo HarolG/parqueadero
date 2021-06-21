@@ -78,17 +78,17 @@ include("../../../php/conexion.php");
 				</li>
 				<li>
 					<a href="index.php">
-						<i class="fas fa-home"></i> Informe Inicio de Sesión
+						<i class="fas fa-chart-line"></i> Informe Inicio de Sesión
 					</a>
 				</li>
 				<li>
 					<a href="../gestion/index.php">
-						<i class="fa fa-sign-in-alt"></i> Gestión de Usuarios
+						<i class="fas fa-users-cog"></i> Gestión de Usuarios
 					</a>
 				</li>
 				<li>
 					<a href="../gestion_parqueadero/home.php">
-						<i class="fa fa-sign-in-alt"></i> Gestion del Parqueadero
+						<i class="fa fa-sign-in-alt"></i> Gestión del Parqueadero
 					</a>
 				</li>
 			</ul>
