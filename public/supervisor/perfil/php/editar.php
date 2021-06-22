@@ -116,7 +116,7 @@ if (isset($_SESSION['tipo']) && isset($_SESSION['nom']) && isset($_SESSION['ape'
                 <!-- SideBar Menu -->
                 <ul class="list-unstyled full-box dashboard-sideBar-Menu">
                     <li>
-                        <a href="../../home/administrador.php">
+                        <a href="../../home/home.php">
                             <i class="fas fa-home"></i> Inicio
                         </a>
                     </li>
@@ -135,6 +135,12 @@ if (isset($_SESSION['tipo']) && isset($_SESSION['nom']) && isset($_SESSION['ape'
                     <li>
                         <a href="../../gestion_parqueadero/home.php" class="btn-sideBar-SubMenu">
                             <i class="fa fa-users" aria-hidden="true"></i> Gestion del Parqueadero
+                        </a>
+
+                    </li>
+                    <li>
+                        <a href="../../mensajeria/buzon.php" class="btn-sideBar-SubMenu">
+                            <i class="fa fa-users" aria-hidden="true"></i> Buzon de mensajeria
                         </a>
 
                     </li>
