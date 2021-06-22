@@ -225,6 +225,7 @@
 											<input class="btn btn-secondary" type="submit" value="Generar">
 										</select>
 									</form>
+									<!-- En este div se genera la gráfica -->
 									<div id="graficaHistoria" class="graficaHistoria"></div>
 								</div>
 							</div>
