@@ -45,7 +45,7 @@ include_once("../../../php/conexion.php");
                                 $ruta_img = $row2["foto"];
                             }
                         ?>
-                        <img src="../../perfil/fotos/<?php echo $ruta_img; ?>" class="imagen" alt="">
+                        <img src="../perfil/fotos/<?php echo $ruta_img; ?>" class="imagen" alt="">
 					<!-- <img src="../../../img/foto_perfil.png" alt="UserIcon"> -->
 					<div class="text-center text-titles">
 						<p class="profile_welcome">Bienvenido,</p>
@@ -104,6 +104,13 @@ include_once("../../../php/conexion.php");
 	<!-- barra de menus-->
 	<section class="full-box dashboard-contentPage">
 		<!-- NavBar -->
+		<!-- NavBar -->
+		<?php
+		$s2 = "SELECT * FROM mensajes WHERE leido = 1";
+		$resul2=mysqli_query($mysqli,$s2);
+		$row2=mysqli_num_rows($resul2);
+
+		?>
 		<nav class="full-box dashboard-Navbar">
 			<ul class="full-box list-unstyled text-right">
 				<li class="pull-left">
@@ -112,7 +119,7 @@ include_once("../../../php/conexion.php");
 				<li>
 					<a href="#!" class="btn-Notifications-area">
 						<i class="far fa-envelope"></i>
-						<span class="badge">7</span>
+						<span class="badge"><?php echo $row2; ?></span>
 					</a>
 				</li>
 				<li>
@@ -135,7 +142,7 @@ include_once("../../../php/conexion.php");
                 <div style="padding: 20px" class="table-responsive col-sm-12">
                     <table id="poper" class="table table-bordered table-hover" cellspacing="8" width="100%">
                         <tr> 
-                            <th style="align-items:center" width="20">Leido</th> 
+                            <th style="text-align:center">Leido</th> 
                             <th style="text-align:center" width="150">De</th> 
                             <th style="text-align:center">Asunto</th> 
                             <th style="text-align:center">Fecha</th>
@@ -143,7 +150,7 @@ include_once("../../../php/conexion.php");
                         </tr>
 
                         <?php
-                            $s ="SELECT * FROM mensajes WHERE id_tip_usu = 1 AND estado != 'eliminado' ORDER BY id desc";
+                            $s ="SELECT * FROM mensajes WHERE id_tip_usu = 3 AND estado != 'eliminado' ORDER BY id desc";
                             $resul=mysqli_query($mysqli,$s);
                             
                             while($row = mysqli_fetch_array($resul)) {
@@ -159,7 +166,7 @@ include_once("../../../php/conexion.php");
                         ?>
 
                             <tr> 
-                                <td ><?php echo $leido; ?></td> 
+                                <td style="text-align:center"><?php echo $leido; ?></td> 
                                 <td style="text-align:left"><?php echo $row['de']; ?></td> 
                                 <td style="text-align:center"><a href="php/mensaje.php?id=<?php echo $row['id']; ?>"> <?php echo $row['titulo']; ?></a></td> 
                                 <td style="text-align:center"><?php echo $row['fecha']; ?></td>
@@ -176,58 +183,45 @@ include_once("../../../php/conexion.php");
         </section>
 
 	<!-- Notifications area -->
-
+				
 	<section class="full-box Notifications-area">
 		<div class="full-box Notifications-bg btn-Notifications-area">
-
 		</div>
 		<div class="full-box Notifications-body">
 			<div class="Notifications-body-title text-titles text-center">
 				Notifications <i class="fas fa-times-circle btn-Notifications-area"></i>
-			</div>
+			</div>	
 			<div class="list-group">
 				<div class="list-group-item">
 					<div class="row-action-primary">
 						<i class="zmdi zmdi-alert-triangle"></i>
 					</div>
-					<div class="row-content">
-						<div class="least-content">17m</div>
-						<h4 class="list-group-item-heading">Tile with a label</h4>
-						<p class="list-group-item-text">Donec id elit non mi porta gravida at eget metus.</p>
-					</div>
-				</div>
-				<div class="list-group-separator"></div>
-				<div class="list-group-item">
-					<div class="row-action-primary">
-						<i class="zmdi zmdi-alert-octagon"></i>
-					</div>
-					<div class="row-content">
-						<div class="least-content">15m</div>
-						<h4 class="list-group-item-heading">Tile with a label</h4>
-						<p class="list-group-item-text">Donec id elit non mi porta gravida at eget metus.</p>
-					</div>
-				</div>
-				<div class="list-group-separator"></div>
-				<div class="list-group-item">
-					<div class="row-action-primary">
-						<i class="zmdi zmdi-help"></i>
-					</div>
-					<div class="row-content">
-						<div class="least-content">10m</div>
-						<h4 class="list-group-item-heading">Tile with a label</h4>
-						<p class="list-group-item-text">Maecenas sed diam eget risus varius blandit.</p>
-					</div>
-				</div>
-				<div class="list-group-separator"></div>
-				<div class="list-group-item">
-					<div class="row-action-primary">
-						<i class="zmdi zmdi-info"></i>
-					</div>
-					<div class="row-content">
-						<div class="least-content">8m</div>
-						<h4 class="list-group-item-heading">Tile with a label</h4>
-						<p class="list-group-item-text">Maecenas sed diam eget risus varius blandit.</p>
-					</div>
+					<?php
+						$notificacion ="SELECT * FROM mensajes WHERE leido = 1";
+						$resultado=mysqli_query($mysqli,$notificacion);
+                            
+                        while($row2 = mysqli_fetch_array($resultado)) {
+							
+					?>
+						
+						<div class="list-group-separator"></div>
+						<div class="list-group-item">
+							<div class="row-action-primary">
+							 <i class="btn btn-primary fas fa-envelope-open"></i>
+							</div>
+							<div class="row-content">
+								<p style="font-weight:600" class="list-group-item-text">Tienes notificacion de: <?php echo $row2['de'];?></p>
+								<p style="font-weight:600" class="list-group-item-text">A la hora: <?php echo $row2['fecha'];?></p>
+							</div>
+						</div>
+						
+						
+					<?php
+						}
+					?>
+
+
+
 				</div>
 			</div>
 

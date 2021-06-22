@@ -164,7 +164,7 @@ include("../../../php/conexion.php");
 				<?php } ?>
 			</tbody>
 		</table>
-		<button class="imprimir" onclick="window.print()"><i class="fa-solid fa-file-pdf"></i>Imprimir</button>
+		<button class="imprimir" onclick="window.print()"><i class="fas fa-file-pdf"></i> Imprimir</button>
 	</section>
 
 	<!-- Notifications area -->

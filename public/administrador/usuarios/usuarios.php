@@ -577,7 +577,7 @@ Favor revisar los direccionamientos
 					"url": "listar.php"
 				},
 				"columns":[
-					{ "data": "documento" },
+					{"data": "documento" },
 					{"data":"nombre"},
 					{"data":"apellido"},
 					{"data":"edad"},
@@ -607,7 +607,7 @@ Favor revisar los direccionamientos
 					{
 						extend: 'pdf',
 						footer: true,
-						title: 'Archivo PDF',
+						title: 'Archivo',
 						filename: 'Usuarios Parqueadero',
 						text: '<button class="botones btn btn-danger">Exportar a PDF <i class="far fa-file-pdf"></i></button>'
 					}
@@ -636,18 +636,18 @@ Favor revisar los direccionamientos
 			$(tbody).on("click", "button.editar", function(){
 				var data = table.row( $(this).parents("tr") ).data();
 				var documento = $("#documento").val( data.documento ),
-						nombre = $("#nombre").val( data.nombre ),
-						apellidos = $("#apellido").val( data.apellido ),
-						edad = $("#edad").val( data.edad ),
-						celular = $("#celular").val(data.celular),
-						direccion = $("#direccion").val(data.direccion),
-						correo = $("#correo").val(data.correo),
-						nom_tip_doc = $("#tipdoc").val(data.nom_tip_doc),
-						nom_tip_usu = $("#tipusu").val(data.nom_tip_usu),
-						nom_estado_usu = $("#estausu").val(data.nom_estado_usu),
-						opcion = $("#opcion").val("modificar");
-						$("#cuadro2").slideDown("slow");
-						$("#cuadro1").slideUp("slow");
+					nombre = $("#nombre").val( data.nombre ),
+					apellidos = $("#apellido").val( data.apellido ),
+					edad = $("#edad").val( data.edad ),
+					celular = $("#celular").val(data.celular),
+					direccion = $("#direccion").val(data.direccion),
+					correo = $("#correo").val(data.correo),
+					nom_tip_doc = $("#tipdoc").val(data.nom_tip_doc),
+					nom_tip_usu = $("#tipusu").val(data.nom_tip_usu),
+					nom_estado_usu = $("#estausu").val(data.nom_estado_usu),
+					opcion = $("#opcion").val("modificar");
+					$("#cuadro2").slideDown("slow");
+					$("#cuadro1").slideUp("slow");
 			});
 		}
 
