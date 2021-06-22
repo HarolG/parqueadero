@@ -225,6 +225,28 @@ $(document).ready(function () {
 
                         });
 
+                        $('#form_cambiarImagen').submit(function (e) {
+                            e.preventDefault();
+                            let placaVehiculo_ = $('#placaVehiculo').text();
+                            actualizarImagen("imagenVehiculo", "form_cambiarImagen", placaVehiculo_)
+                            buscarVehiculo(placaVehiculo)
+                        });
+        
+                        $('#form_soat').submit(function (e) { 
+                            e.preventDefault();
+                            let placaVehiculo_ = $('#placaVehiculo').text();
+                            actualizarImagen("foto_soat", "form_soat", placaVehiculo_)
+                            buscarVehiculo(placaVehiculo)
+                        });
+        
+                        $('#form_tecno').submit(function (e) { 
+                            e.preventDefault();
+                            let placaVehiculo_ = $('#placaVehiculo').text();
+                            actualizarImagen("foto_tecno", "form_tecno", placaVehiculo_)
+                            buscarVehiculo(placaVehiculo)
+                        });
+
+
                         $('#edit_veh').click(function (e) { 
                             e.preventDefault();
 
@@ -359,6 +381,30 @@ $(document).ready(function () {
 
             }
         );
+    }
+
+    function actualizarImagen(file1, form, placaVeh) {
+
+        let file = $(`#${file1}`)
+        var archivo = file[0].files;
+        let placa = placaVeh
+        var form_data = new FormData(document.getElementById(`${form}`))
+        form_data.append('archivo[]', archivo);
+        form_data.append('placa', placa)
+
+        jQuery.ajax({
+            url: 'php/actualizar.php',
+            data: form_data,
+            cache: false,
+            contentType: false,
+            processData: false,
+            type: 'POST',
+            success: function (data) {
+                alert(data);
+                datosVehiculo()
+            }
+        });
+
     }
 
 });
