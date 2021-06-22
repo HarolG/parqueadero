@@ -5,7 +5,7 @@ require '../../../../php/conexion.php';
 if(isset($_POST['documento'])) {
     $documento = $_POST['documento'];
     
-    $sql = "SELECT * FROM usuario WHERE documento = '1234'";
+    $sql = "SELECT * FROM usuario WHERE documento = '$documento'";
     $query = mysqli_query($mysqli, $sql);
 
     while($row = mysqli_fetch_array($query)) {

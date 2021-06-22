@@ -46,7 +46,7 @@
                     $ruta_img = $row2["foto"];
                 }
                 ?>
-                <img src="../../perfil/fotos/<?php echo $ruta_img; ?>" class="imagen" alt="">
+                <img src="../perfil/fotos/<?php echo $ruta_img; ?>" class="imagen" alt="">
 					<!-- <img src="../../../img/foto_perfil.png" alt="UserIcon"> -->
 					<div class="text-center text-titles">
 						<p class="profile_welcome">Bienvenido,</p>

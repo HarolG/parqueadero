@@ -4,8 +4,69 @@ $(document).ready(function () {
 
     $(formSearch).submit(function (e) {
         e.preventDefault();
+        let placa = $('#search_vehiculo')
 
-        const placaVehiculo = $('#search_vehiculo')
+        buscarVehiculo(placa)
+    });
+
+    function datosPropietario() {
+        $('#container_modal').css({
+            'display': 'flex'
+        })
+        let documento = $('#documentoPropietario').text();
+
+        $.post("php/datos_propietario.php", {
+                documento
+            },
+            function (data) {
+                let respuesta = JSON.parse(data)
+
+                let template = `
+                                    <form method="post" class="form_datos_propietario">
+                                        <h3 style="text-align: center;">Datos del Propietario</h3>
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label for="">Documento</label>
+                                                <input type="text" class="form-control" value="${respuesta[0]['documento']}" disabled>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="">Apellido</label>
+                                                <input type="text" class="form-control" value="${respuesta[0]['apellido']}" disabled>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="">Celular</label>
+                                                <input type="text" class="form-control" value="${respuesta[0]['celular']}" disabled>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="">Correo</label>
+                                                <input type="text" class="form-control" value="${respuesta[0]['correo']}" disabled>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label for="">Nombre</label>
+                                                <input type="text" class="form-control" value="${respuesta[0]['nombre']}" disabled>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="">Edad</label>
+                                                <input type="text" class="form-control" value="${respuesta[0]['edad']}" disabled>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="">Dirección</label>
+                                                <input type="text" class="form-control" value="${respuesta[0]['direccion']}" disabled>
+                                            </div>
+                                        </div>
+                                    </form>
+                                    
+                                `
+
+                $('#container_gruposModales').html(template);
+            }
+        );
+    }
+
+    function buscarVehiculo(placa) {
+        const placaVehiculo = placa
 
         $.ajax({
                 method: "POST",
@@ -91,7 +152,7 @@ $(document).ready(function () {
                                         </td>
                                         <td>${respuesta.color}</td>
                                         <td>
-                                            <a href="#" class="edit">Editar</a>
+                                            <a href="#" class="edit" id="edit_veh">Editar</a>
                                             <a href="#" class="delete" id="btn_delete">Eliminar</a>
                                         </td>
                                     </tr>
@@ -143,14 +204,128 @@ $(document).ready(function () {
 
                         $('#cerrarModal').click(function (e) { 
                             e.preventDefault();
-                            $('html, body').css({
-                                'overflow': 'auto',
-                                'height': 'auto'
-                            });
                     
                             $('#container_modal').css({
                                 'display': 'none'
                             })
+                        });
+
+                        $('#btn_delete').click(function (e) { 
+                            e.preventDefault();
+                            let placaVehiculo = $('#placaVehiculo').text();
+
+                            if(confirm("¿Estás seguro de eliminar este vehiculo?")) {
+                                $.post("php/eliminarveh.php", {placaVehiculo},
+                                    function (response) {
+                                        alert(response)
+                                        window.location.reload(); 
+                                    }
+                                );
+                            }
+
+                        });
+
+                        $('#form_cambiarImagen').submit(function (e) {
+                            e.preventDefault();
+                            let placaVehiculo_ = $('#placaVehiculo').text();
+                            actualizarImagen("imagenVehiculo", "form_cambiarImagen", placaVehiculo_)
+                            buscarVehiculo(placaVehiculo)
+                        });
+        
+                        $('#form_soat').submit(function (e) { 
+                            e.preventDefault();
+                            let placaVehiculo_ = $('#placaVehiculo').text();
+                            actualizarImagen("foto_soat", "form_soat", placaVehiculo_)
+                            buscarVehiculo(placaVehiculo)
+                        });
+        
+                        $('#form_tecno').submit(function (e) { 
+                            e.preventDefault();
+                            let placaVehiculo_ = $('#placaVehiculo').text();
+                            actualizarImagen("foto_tecno", "form_tecno", placaVehiculo_)
+                            buscarVehiculo(placaVehiculo)
+                        });
+
+
+                        $('#edit_veh').click(function (e) { 
+                            e.preventDefault();
+
+                            $('#container_modal').css({
+                                'display': 'flex'
+                            })
+
+                            let placa = $('#placaVehiculo').text();
+
+                            $.post("php/editar_veh.php", {placa},
+                                function (response) {
+                                    let respuesta = JSON.parse(response)
+
+                                    let template = `
+                                                    <form method="post" class="form_datos_propietario" id="form_datos_propietario">
+                                                        <h3 style="text-align: center;">Editar el vehiculo</h3>
+                                                        <div class="col-sm-6">
+                                                            <div class="form-group">
+                                                                <label for="">Placa</label>
+                                                                <input type="text" class="form-control" value="${respuesta[0]["placa"]}" id="editar_placa" disabled>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label for="">Elija el modelo</label>
+                                                                <select class="form-control" name="" id="select_modelo">
+                                                                    ${selectModelo("modelo")}
+                                                                </select>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label for="">Elija la marca</label>
+                                                                <select class="form-control" name="" id="select_marca">
+                                                                    ${selectModelo("marca")}
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-sm-6">
+                                                            <div class="form-group">
+                                                                <label for="">Elija el tipo de vehiculo</label>
+                                                                <select class="form-control" name="" id="select_tipo_vehiculo">
+                                                                    ${selectModelo("tipo_vehiculo")}
+                                                                </select>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label for="">Elija el color</label>
+                                                                <select class="form-control" name="" id="select_color">
+                                                                    ${selectModelo("color")}
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <input type="submit" value="Editar" class="btn btn-primary btn-block">
+                                                        </div>
+                                                    </form>
+                                                    `
+
+                                    $('#container_gruposModales').html(template);
+
+                                    $('#form_datos_propietario').submit(function (e) { 
+                                        e.preventDefault();
+                                        
+                                        const postData = {
+                                            editar_placa: $('#editar_placa').val(),
+                                            select_modelo: $('#select_modelo').val(),
+                                            select_marca: $('#select_marca').val(),
+                                            select_tipo_vehiculo: $('#select_tipo_vehiculo').val(),
+                                            select_color: $('#select_color').val(),
+                                        }
+
+                                        $.post("php/editar_veh.php", postData,
+                                            function (response) {
+                                                alert(response)
+                                            }
+                                        );
+
+                                    });
+                                }
+                                
+                            );
+
+
                         });
 
                     }
@@ -160,60 +335,76 @@ $(document).ready(function () {
             .fail(function () {
                 alert("Ups, algo ha fallado!")
             })
-    });
+    }
 
-    function datosPropietario() {
-        $('html, body').css({
-            'overflow': 'hidden',
-            'height': '100%'
-        });
+    function selectModelo(data) {
+        let tipoDeSelect = data
 
-        $('#container_modal').css({
-            'display': 'flex'
-        })
-        let documento = $('#documentoPropietario').text();
+        $.post("php/getselect.php", {tipoDeSelect},
+            function (response) {
+                const respuesta = JSON.parse(response)
+                let template = '<option value="0" selected>Abra el menú</option>'
 
-        $.post("php/datos_propietario.php", {
-                documento
-            },
-            function (data) {
-                let respuesta = JSON.parse(data)
+                switch(tipoDeSelect){
+                    case "modelo": 
 
-                let template = `
-                                    <div class="grupoModal">
-                                        <div>
-                                            <p>Documento:</p>
-                                            <div>${respuesta[0]['documento']}</div>
-                                        </div>
-                                        <div>
-                                            <p>Nombre y Apellido:</p>
-                                            <div>${respuesta[0]['nombre']} ${respuesta[0]['apellido']}</div>
-                                        </div>
-                                        <div>
-                                            <p>Edad:</p>
-                                            <div>${respuesta[0]['edad']} años</div>
-                                        </div>
-                                    </div>
-                                    <div class="grupoModal">
-                                        <div>
-                                            <p>Celular:</p>
-                                            <div>${respuesta[0]['celular']}</div>
-                                        </div>
-                                        <div>
-                                            <p>Dirección:</p>
-                                            <div>${respuesta[0]['direccion']}</div>
-                                        </div>
-                                        <div>
-                                            <p>Correo:</p>
-                                            <div>${respuesta[0]['correo']}</div>
-                                        </div>
-                                    </div>
-                                    
-                                `
+                        respuesta.forEach(element => {
+                            template += `<option value="${element.id_modelo}">${element.nom_modelo}</option>`
+                        });
 
-                $('#container_gruposModales').html(template);
+                        $('#select_modelo').html(template);
+                        break
+                    case "marca":
+
+                        respuesta.forEach(element => {
+                            template += `<option value="${element.id_marca}">${element.nom_marca}</option>`
+                        });
+
+                        $('#select_marca').html(template);
+                        break
+                    case "tipo_vehiculo":
+                        respuesta.forEach(element => {
+                            template += `<option value="${element.id_tipo_vehiculo}">${element.nom_tipo_vehiculo}</option>`
+                        });
+
+                        $('#select_tipo_vehiculo').html(template);
+                        break
+                    case "color":
+                        respuesta.forEach(element => {
+                            template += `<option value="${element.id_color}">${element.nom_color}</option>`
+                        });
+    
+                        $('#select_color').html(template);
+                        break
+                    
+                }
+
             }
         );
+    }
+
+    function actualizarImagen(file1, form, placaVeh) {
+
+        let file = $(`#${file1}`)
+        var archivo = file[0].files;
+        let placa = placaVeh
+        var form_data = new FormData(document.getElementById(`${form}`))
+        form_data.append('archivo[]', archivo);
+        form_data.append('placa', placa)
+
+        jQuery.ajax({
+            url: 'php/actualizar.php',
+            data: form_data,
+            cache: false,
+            contentType: false,
+            processData: false,
+            type: 'POST',
+            success: function (data) {
+                alert(data);
+                datosVehiculo()
+            }
+        });
+
     }
 
 });
