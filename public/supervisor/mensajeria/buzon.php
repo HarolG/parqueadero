@@ -7,7 +7,7 @@ include_once("../../../php/conexion.php");
 <html lang="es">
 
 <head>
-	<title>Inicio</title>
+	<title>MENSAJERIA</title>
 	<meta charset="UTF-8">
 	<meta name="viewport"
 		content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
@@ -45,7 +45,7 @@ include_once("../../../php/conexion.php");
                                 $ruta_img = $row2["foto"];
                             }
                         ?>
-                        <img src="../../perfil/fotos/<?php echo $ruta_img; ?>" class="imagen" alt="">
+                        <img src="../perfil/fotos/<?php echo $ruta_img; ?>" class="imagen" alt="">
 					<!-- <img src="../../../img/foto_perfil.png" alt="UserIcon"> -->
 					<div class="text-center text-titles">
 						<p class="profile_welcome">Bienvenido,</p>
@@ -104,6 +104,12 @@ include_once("../../../php/conexion.php");
 	<!-- barra de menus-->
 	<section class="full-box dashboard-contentPage">
 		<!-- NavBar -->
+    <?php
+      $s2 = "SELECT * FROM mensajes WHERE leido = 1";
+      $resul2=mysqli_query($mysqli,$s2);
+      $row2=mysqli_num_rows($resul2);
+
+    ?>
 		<nav class="full-box dashboard-Navbar">
 			<ul class="full-box list-unstyled text-right">
 				<li class="pull-left">
@@ -112,7 +118,7 @@ include_once("../../../php/conexion.php");
 				<li>
 					<a href="#!" class="btn-Notifications-area">
 						<i class="far fa-envelope"></i>
-						<span class="badge">7</span>
+						<span class="badge"><?php echo $row2; ?></span>
 					</a>
 				</li>
 				<li>
@@ -131,132 +137,120 @@ include_once("../../../php/conexion.php");
 		</nav>
         <!-- aqui va el contenido -->
              <!-- Codigo para ver los mensajes que han enviado usuarios -->
-      <h2 style="padding: 20px; text-align:center">BUZON DE MENSAJERIA</h2>
-                <div style="padding: 20px" class="table-responsive col-sm-12">
-                    <table id="poper" class="table table-bordered table-hover" cellspacing="8" width="100%">
-                        <tr> 
-                            <th style="align-items:center" width="20">Leido</th> 
-                            <th style="text-align:center" width="150">De</th> 
-                            <th style="text-align:center">Asunto</th> 
-                            <th style="text-align:center">Fecha</th>
-                            <th style="text-align:center">Acción</th> 
-                        </tr>
-
-                        <?php
-                            $s ="SELECT * FROM mensajes WHERE id_tip_usu = 1 AND estado != 'eliminado' ORDER BY id desc";
-                            $resul=mysqli_query($mysqli,$s);
-                            
-                            while($row = mysqli_fetch_array($resul)) {
-
-                            if ($row['leido'] == 1) { 
-                                
-                                $leido = "<img src='img/read.png'>";
-                                
-                            }else{
-                                $leido = "<img src='img/unread.png'>"; 
-                                
-                            }
-                        ?>
-
-                            <tr> 
-                                <td ><?php echo $leido; ?></td> 
-                                <td style="text-align:left"><?php echo $row['de']; ?></td> 
-                                <td style="text-align:center"><a href="php/mensaje.php?id=<?php echo $row['id']; ?>"> <?php echo $row['titulo']; ?></a></td> 
-                                <td style="text-align:center"><?php echo $row['fecha']; ?></td>
-                                <td style="text-align:center"><a class="btn btn-danger" href="actualizar.php?id=<?php echo $row['id']; ?>"><i class="fas fa-trash-alt"></i></a></td> 
-                            </tr>
-
-                        <?php 
-                        } 
-                        ?>
-
-                    </table>
-    </div>               
+     	 <h2 style="padding: 20px; text-align:center">BUZON DE MENSAJERIA</h2>
+		  <a style="margin-left:20px; padding:14px 10px;" class="btn btn-success" href=""><i style="font-size: 16px;" class="fas fa-sync-alt"></i></a>
+		  <a style=" padding: 14px 14px;" class="btn btn-danger" href="php/mostrareliminados.php">VER PAPELERA <i style="font-size: 16px;" class="far fa-trash-alt"></i></a>
+                <div class="row">
+					<div style="padding: 20px" class="table-responsive col-sm-12">
+						<table id="poper" class="table table-bordered table-hover" cellspacing="8" width="100%">
+							<tr>
+								<th style="text-align:center">Leido</th>
+								<th style="text-align:center" width="150">De</th>
+								<th style="text-align:center">Asunto</th>
+								<th style="text-align:center">Fecha</th>
+								<th style="text-align:center">Acción</th>
+							</tr>
+							<?php
+								$s ="SELECT * FROM mensajes WHERE id_tip_usu = 3 AND estado != 'eliminado' ORDER BY id desc";
+								$resul=mysqli_query($mysqli,$s);
+					
+								while($row = mysqli_fetch_array($resul)) {
+								if ($row['leido'] == 1) {
+					
+									$leido = "<img src='img/read.png'>";
+					
+								}else{
+									$leido = "<img src='img/unread.png'>";
+					
+								}
+							?>
+								<tr>
+									<td style="text-align:center"><?php echo $leido; ?></td>
+									<td style="text-align:left"><?php echo $row['de']; ?></td>
+									<td style="text-align:center"><a href="php/mensaje.php?id=<?php echo $row['id']; ?>"> <?php echo $row['titulo']; ?></a></td>
+									<td style="text-align:center"><?php echo $row['fecha']; ?></td>
+									<td style="text-align:center"><a class="btn btn-danger" href="php/actualizar.php?id=<?php echo $row['id']; ?>"><i class="fas fa-trash-alt"></i></a></td>
+								</tr>
+							<?php
+							}
+							?>
+						</table>
+						</div>
+				</div>
 
         </section>
 
 	<!-- Notifications area -->
-
+				
 	<section class="full-box Notifications-area">
 		<div class="full-box Notifications-bg btn-Notifications-area">
-
 		</div>
 		<div class="full-box Notifications-body">
 			<div class="Notifications-body-title text-titles text-center">
-				Notifications <i class="fas fa-times-circle btn-Notifications-area"></i>
-			</div>
+				Notificaciones <i class="fas fa-times-circle btn-Notifications-area"></i>
+			</div>	
 			<div class="list-group">
 				<div class="list-group-item">
 					<div class="row-action-primary">
 						<i class="zmdi zmdi-alert-triangle"></i>
 					</div>
-					<div class="row-content">
-						<div class="least-content">17m</div>
-						<h4 class="list-group-item-heading">Tile with a label</h4>
-						<p class="list-group-item-text">Donec id elit non mi porta gravida at eget metus.</p>
-					</div>
-				</div>
-				<div class="list-group-separator"></div>
-				<div class="list-group-item">
-					<div class="row-action-primary">
-						<i class="zmdi zmdi-alert-octagon"></i>
-					</div>
-					<div class="row-content">
-						<div class="least-content">15m</div>
-						<h4 class="list-group-item-heading">Tile with a label</h4>
-						<p class="list-group-item-text">Donec id elit non mi porta gravida at eget metus.</p>
-					</div>
-				</div>
-				<div class="list-group-separator"></div>
-				<div class="list-group-item">
-					<div class="row-action-primary">
-						<i class="zmdi zmdi-help"></i>
-					</div>
-					<div class="row-content">
-						<div class="least-content">10m</div>
-						<h4 class="list-group-item-heading">Tile with a label</h4>
-						<p class="list-group-item-text">Maecenas sed diam eget risus varius blandit.</p>
-					</div>
-				</div>
-				<div class="list-group-separator"></div>
-				<div class="list-group-item">
-					<div class="row-action-primary">
-						<i class="zmdi zmdi-info"></i>
-					</div>
-					<div class="row-content">
-						<div class="least-content">8m</div>
-						<h4 class="list-group-item-heading">Tile with a label</h4>
-						<p class="list-group-item-text">Maecenas sed diam eget risus varius blandit.</p>
-					</div>
+					<?php
+						$notificacion ="SELECT * FROM mensajes WHERE leido = 1";
+						$resultado=mysqli_query($mysqli,$notificacion);
+                            
+                        while($row2 = mysqli_fetch_array($resultado)) {
+							
+					?>
+						
+						<div class="list-group-separator"></div>
+						<div class="list-group-item">
+							<div class="row-content">
+								<p style="font-weight:600" class="list-group-item-text"><i style="color:#FF5722; font-size: 20px;" class="fas fa-envelope-square"></i> Tienes nueva notificacion de: <?php echo $row2['de'];?></p>
+								<p style="font-weight:600" class="list-group-item-text">A la hora: <?php echo $row2['fecha'];?></p>
+							</div>
+						</div>
+						
+						
+					<?php
+
+						}
+					?>
+					<div class="list-group-item">
+					<a style="margin-left:40%" href="buzon.php">VER MAS</a>
+					</div>	
+
 				</div>
 			</div>
 
 		</div>
 	</section>
 
-	<!-- Dialog help -->
-	<div class="modal fade" tabindex="-1" role="dialog" id="Dialog-Help">
-		<div class="modal-dialog" role="document">
-			<div class="modal-content">
-				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-							aria-hidden="true">&times;</span></button>
-					<h4 class="modal-title">Help!!</h4>
-				</div>
-				<div class="modal-body">
-					<p>
-						Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt beatae esse velit ipsa sunt
-						incidunt aut voluptas, nihil reiciendis maiores eaque hic vitae saepe voluptatibus. Ratione
-						veritatis a unde autem!
-					</p>
-				</div>
-				<div class="modal-footer">
-					<button type="button" class="btn btn-primary btn-raised" data-dismiss="modal">Ok <i
-							class="fas fa-exclamation"></i> </button>
-				</div>
-			</div>
-		</div>
-	</div>
+		<!-- Dialog help -->
+    <div class="modal fade" tabindex="-1" role="dialog" id="Dialog-Help">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">Ayuda!!</h4>
+                </div>
+                <div class="modal-body">
+                    <p>
+                       Hola querido usuario, Bienvenido!! <br>
+                       Aqui encontraras los manuales que te podran ayudar a saber el funcionamiento de nuestra pagina y el manual es el siguiente: <br>
+
+                       
+                       <a href="https://drive.google.com/file/d/1dfh-e8XFyhJfa4qRkmCpH0x2e9evBs34/view?usp=sharing">Manual tecnico</a>
+                    </p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary btn-raised" data-dismiss="modal">Ok <i
+                            class="fas fa-exclamation"></i> </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
 
 </body>
 <!-- Scripts cambiables -->

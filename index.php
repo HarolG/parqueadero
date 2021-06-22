@@ -91,11 +91,11 @@ include_once("php/conexion.php");
             <h2>C O N T A C T E N O S</h2>
             <form method="post" action="">
                 <label for="" class="labels">Correo Electronico:</label>
-                <input type="text" name="de" class="inputs" autocomplete="off">
+                <input type="email" name="de" class="inputs" required autocomplete="off">
                 <label for="" class="labels">Asunto:</label>
-                <input type="text" name="titulo" class="inputs" autocomplete="off">
+                <input type="text" name="titulo" class="inputs" required autocomplete="off">
                 <label for="" class="labels" class="inputs">Mensaje:</label>
-                <textarea name="mensaje" class="textarea"></textarea>
+                <textarea name="mensaje" class="textarea" required></textarea>
                 <input type="hidden" name="guardar" value="Enviar Mensaje">
                 <input type="submit" value="Enviar Mensaje" class="boton">
             </form>
@@ -108,7 +108,7 @@ include_once("php/conexion.php");
             $titulo = $_POST['titulo'];
             $mensaje = $_POST['mensaje'];
 
-            $sql="INSERT INTO mensajes (titulo,mensaje,de,id_tip_usu,fecha,leido,estado) VALUES ('$titulo','$mensaje','$de','3',NOW(),'1','normal')";
+            $sql="INSERT INTO mensajes (titulo , mensaje , de , id_tip_usu , fecha , leido , estado) VALUES ('$titulo' , '$mensaje' , '$de' , 3 , NOW() , 1 ,'normal')";
                             
             $resul=mysqli_query($mysqli,$sql);
 		    if ($resul) {

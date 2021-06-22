@@ -155,33 +155,39 @@
     </section>
 
     <!-- barra de menus-->
-    <section class="full-box dashboard-contentPage">
-        <!-- NavBar -->
-        <nav class="full-box dashboard-Navbar">
-            <ul class="full-box list-unstyled text-right">
-                <li class="pull-left">
-                    <a href="#!" class="btn-menu-dashboard"><i class="fa fa-bars" aria-hidden="true"></i></a>
-                </li>
-                <li>
-                    <a href="#!" class="btn-Notifications-area">
-                        <i class="far fa-envelope"></i>
-                        <span class="badge">7</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="#!" class="btn-modal-help">
-                        <i class="far fa-question-circle"></i>
-                    </a>
-                </li>
+	<section class="full-box dashboard-contentPage">
+		<!-- NavBar -->
+    <?php
+      $s2 = "SELECT * FROM mensajes WHERE leido = 1";
+      $resul2=mysqli_query($mysqli,$s2);
+      $row2=mysqli_num_rows($resul2);
 
-                <a class="pull-left links" style="width: 250px;" href="http://centrodeindustria.blogspot.com">Centro de
-                    Industria y Construcción</a>
+    ?>
+		<nav class="full-box dashboard-Navbar">
+			<ul class="full-box list-unstyled text-right">
+				<li class="pull-left">
+					<a href="#!" class="btn-menu-dashboard"><i class="fa fa-bars" aria-hidden="true"></i></a>
+				</li>
+				<li>
+					<a href="#!" class="btn-Notifications-area">
+						<i class="far fa-envelope"></i>
+						<span class="badge"><?php echo $row2; ?></span>
+					</a>
+				</li>
+				<li>
+					<a href="#!" class="btn-modal-help">
+						<i class="far fa-question-circle"></i>
+					</a>
+				</li>
 
-                <a class="pull-left links" style="width: 170px;"
-                    href="http://oferta.senasofiaplus.edu.co/sofia-oferta/">Portal de Sofia Plus</a>
+				<a class="pull-left links" style="width: 250px;" href="http://centrodeindustria.blogspot.com">Centro de
+					Industria y Construcción</a>
 
-            </ul>
-        </nav>
+				<a class="pull-left links" style="width: 170px;"
+					href="http://oferta.senasofiaplus.edu.co/sofia-oferta/">Portal de Sofia Plus</a>
+
+			</ul>
+		</nav>
         <!-- Aquí va el contenido -->
         <div class="gestion_container container">
             <div class="row contenedor_general">
@@ -309,79 +315,67 @@
         </div>
     </section>
 
-    <!-- Notifications area -->
+  <!-- Notifications area -->
+				
+	<section class="full-box Notifications-area">
+		<div class="full-box Notifications-bg btn-Notifications-area">
+		</div>
+		<div class="full-box Notifications-body">
+			<div class="Notifications-body-title text-titles text-center">
+				Notificaciones <i class="fas fa-times-circle btn-Notifications-area"></i>
+			</div>	
+			<div class="list-group">
+				<div class="list-group-item">
+					<div class="row-action-primary">
+						<i class="zmdi zmdi-alert-triangle"></i>
+					</div>
+					<?php
+						$notificacion ="SELECT * FROM mensajes WHERE leido = 1";
+						$resultado=mysqli_query($mysqli,$notificacion);
+                            
+                        while($row2 = mysqli_fetch_array($resultado)) {
+							
+					?>
+						
+						<div class="list-group-separator"></div>
+						<div class="list-group-item">
+							<div class="row-content">
+								<p style="font-weight:600" class="list-group-item-text"><i style="color:#FF5722; font-size: 20px;" class="fas fa-envelope-square"></i> Tienes nueva notificacion de: <?php echo $row2['de'];?></p>
+								<p style="font-weight:600" class="list-group-item-text">A la hora: <?php echo $row2['fecha'];?></p>
+							</div>
+						</div>
+						
+						
+					<?php
+						}
+					?>
 
-    <section class="full-box Notifications-area">
-        <div class="full-box Notifications-bg btn-Notifications-area">
+                    <div class="list-group-item">
+					    <a style="margin-left:40%" href="../buzon.php">VER MAS</a>
+					</div>	
 
-        </div>
-        <div class="full-box Notifications-body">
-            <div class="Notifications-body-title text-titles text-center">
-                Notifications <i class="fas fa-times-circle btn-Notifications-area"></i>
-            </div>
-            <div class="list-group">
-                <div class="list-group-item">
-                    <div class="row-action-primary">
-                        <i class="zmdi zmdi-alert-triangle"></i>
-                    </div>
-                    <div class="row-content">
-                        <div class="least-content">17m</div>
-                        <h4 class="list-group-item-heading">Tile with a label</h4>
-                        <p class="list-group-item-text">Donec id elit non mi porta gravida at eget metus.</p>
-                    </div>
-                </div>
-                <div class="list-group-separator"></div>
-                <div class="list-group-item">
-                    <div class="row-action-primary">
-                        <i class="zmdi zmdi-alert-octagon"></i>
-                    </div>
-                    <div class="row-content">
-                        <div class="least-content">15m</div>
-                        <h4 class="list-group-item-heading">Tile with a label</h4>
-                        <p class="list-group-item-text">Donec id elit non mi porta gravida at eget metus.</p>
-                    </div>
-                </div>
-                <div class="list-group-separator"></div>
-                <div class="list-group-item">
-                    <div class="row-action-primary">
-                        <i class="zmdi zmdi-help"></i>
-                    </div>
-                    <div class="row-content">
-                        <div class="least-content">10m</div>
-                        <h4 class="list-group-item-heading">Tile with a label</h4>
-                        <p class="list-group-item-text">Maecenas sed diam eget risus varius blandit.</p>
-                    </div>
-                </div>
-                <div class="list-group-separator"></div>
-                <div class="list-group-item">
-                    <div class="row-action-primary">
-                        <i class="zmdi zmdi-info"></i>
-                    </div>
-                    <div class="row-content">
-                        <div class="least-content">8m</div>
-                        <h4 class="list-group-item-heading">Tile with a label</h4>
-                        <p class="list-group-item-text">Maecenas sed diam eget risus varius blandit.</p>
-                    </div>
-                </div>
-            </div>
+				</div>
+			</div>
 
-        </div>
-    </section>
+		</div>
+	</section>
 
-    <!-- Dialog help -->
+    	<!-- Dialog help -->
     <div class="modal fade" tabindex="-1" role="dialog" id="Dialog-Help">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
                             aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title">Help!!</h4>
+                    <h4 class="modal-title">Ayuda!!</h4>
                 </div>
                 <div class="modal-body">
                     <p>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt beatae esse velit ipsa sunt
-                        incidunt aut voluptas, nihil reiciendis maiores eaque hic vitae saepe voluptatibus. Ratione
-                        veritatis a unde autem!
+                       Hola querido usuario, Bienvenido!! <br>
+                       Aqui encontraras los manuales que te podran ayudar a saber el funcionamiento de nuestra pagina y el manual es el siguiente: <br>
+
+                       
+                       <a href="https://drive.google.com/file/d/1dfh-e8XFyhJfa4qRkmCpH0x2e9evBs34/view?usp=sharing">Manual tecnico</a>
                     </p>
                 </div>
                 <div class="modal-footer">
