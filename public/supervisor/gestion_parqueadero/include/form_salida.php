@@ -19,7 +19,7 @@
 
         $id_registro = $resultado2['id_registro'];
 
-        $sql3 = "UPDATE registro_parqueadero SET placa = '$placa', id_estado_registro = '2' WHERE registro_parqueadero.id_registro = '$id_registro'";
+        $sql3 = "UPDATE registro_parqueadero SET placa = '$placa', id_estado_registro = '2', hora_salida = CURRENT_TIME() WHERE registro_parqueadero.id_registro = '$id_registro'";
         $query3 = mysqli_query($mysqli, $sql3);
 
         if($query) {
