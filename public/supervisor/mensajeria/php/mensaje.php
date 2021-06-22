@@ -7,14 +7,14 @@ include_once("../../../../php/conexion.php");
 <html lang="es">
 
 <head>
-	<title>Inicio</title>
+	<title>MENSAJE</title>
 	<meta charset="UTF-8">
 	<meta name="viewport"
 		content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-	<link rel="icon" href="../../../img/logo.ico" />
+	<link rel="icon" href="../../../../img/logo.ico" />
 	<!-- estilos generales -->
 	<link rel="stylesheet" href="../../../../layout/css/main.css">
-	<link rel="stylesheet" href="">
+	<link rel="stylesheet" href="../css/mensaje.css">
 	<!-- Tipo de letra -->
 	<link
 		href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;1,100;1,300;1,400&display=swap"
@@ -73,27 +73,27 @@ include_once("../../../../php/conexion.php");
 			<!-- SideBar Menu -->
 			<ul class="list-unstyled full-box dashboard-sideBar-Menu">
 				<li>
-					<a href="../home/home.php">
+					<a href="../../home/home.php">
 						<i class="fas fa-home"></i> Inicio
 					</a>
 				</li>
 				<li>
-					<a href="../celadores/index.php">
+					<a href="../../celadores/index.php">
 						<i class="fas fa-chart-line"></i> Informe Inicio de Sesión
 					</a>
 				</li>
 				<li>
-					<a href="../gestion/index.php">
+					<a href="../../gestion/index.php">
 						<i class="fas fa-users-cog"></i> Gestión de Usuarios
 					</a>
 				</li>
 				<li>
-					<a href="../gestion_parqueadero/home.php">
+					<a href="../../gestion_parqueadero/home.php">
 						<i class="fa fa-sign-in-alt"></i> Gestión del Parqueadero
 					</a>
 				</li>
 				<li>
-					<a href="buzon.php">
+					<a href="../buzon.php">
 						<i class="far fa-envelope"></i> Buzon de mensajeria
 					</a>
 				</li>
@@ -146,6 +146,9 @@ include_once("../../../../php/conexion.php");
 
               $actualizar = "UPDATE mensajes SET leido = 0 WHERE id= '".$_GET['id']."'";
               $res=mysqli_query($mysqli,$actualizar);
+
+			  $actualizar2 = "UPDATE mensajes SET leido = 1 WHERE id= '".$_GET['id']."' AND estado = 'eliminado'";
+              $res2=mysqli_query($mysqli,$actualizar2);
             ?>
 
             De: <?php echo $row['de']; ?>
@@ -164,59 +167,79 @@ include_once("../../../../php/conexion.php");
         </section>
 
 	<!-- Notifications area -->
-
+				
 	<section class="full-box Notifications-area">
 		<div class="full-box Notifications-bg btn-Notifications-area">
 		</div>
 		<div class="full-box Notifications-body">
 			<div class="Notifications-body-title text-titles text-center">
 				Notificaciones <i class="fas fa-times-circle btn-Notifications-area"></i>
-			</div>
+			</div>	
 			<div class="list-group">
-				<?php
+				<div class="list-group-item">
+					<div class="row-action-primary">
+						<i class="zmdi zmdi-alert-triangle"></i>
+					</div>
+					<?php
 						$notificacion ="SELECT * FROM mensajes WHERE leido = 1";
 						$resultado=mysqli_query($mysqli,$notificacion);
                             
                         while($row2 = mysqli_fetch_array($resultado)) {
-
+							
 					?>
-						<a class="least-content">Tienes <?php echo $row2['leido']; ?> notificaciones no leidas </a>
-						<li class="row-content">
-							<a class="list-group-item-heading"><?php echo $row2['de'];?></a>
-							<a class="list-group-item-text"><?php echo $row2['fecha'];?></a>
-						</li>
+						
+						<div class="list-group-separator"></div>
+						<div class="list-group-item">
+							<div class="row-action-primary">
+							 <i class="btn btn-primary fas fa-envelope-open"></i>
+							</div>
+							<div class="row-content">
+								<p style="font-weight:600" class="list-group-item-text"><i style="color:#FF5722; font-size: 20px;" class="fas fa-envelope-square"></i> Tienes nueva notificacion de: <?php echo $row2['de'];?></p>
+								<p style="font-weight:600" class="list-group-item-text">A la hora: <?php echo $row2['fecha'];?></p>
+							</div>
+						</div>
+						
 						
 					<?php
 						}
 					?>
+
+					<div class="list-group-item">
+					<a style="margin-left:40%" href="../buzon.php">VER MAS</a>
+					</div>	
+
+
+				</div>
 			</div>
 
 		</div>
 	</section>
 
-	<!-- Dialog help -->
-	<div class="modal fade" tabindex="-1" role="dialog" id="Dialog-Help">
-		<div class="modal-dialog" role="document">
-			<div class="modal-content">
-				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-							aria-hidden="true">&times;</span></button>
-					<h4 class="modal-title">Help!!</h4>
-				</div>
-				<div class="modal-body">
-					<p>
-						Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt beatae esse velit ipsa sunt
-						incidunt aut voluptas, nihil reiciendis maiores eaque hic vitae saepe voluptatibus. Ratione
-						veritatis a unde autem!
-					</p>
-				</div>
-				<div class="modal-footer">
-					<button type="button" class="btn btn-primary btn-raised" data-dismiss="modal">Ok <i
-							class="fas fa-exclamation"></i> </button>
-				</div>
-			</div>
-		</div>
-	</div>
+		<!-- Dialog help -->
+    <div class="modal fade" tabindex="-1" role="dialog" id="Dialog-Help">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">Ayuda!!</h4>
+                </div>
+                <div class="modal-body">
+                    <p>
+                       Hola querido usuario, Bienvenido!! <br>
+                       Aqui encontraras los manuales que te podran ayudar a saber el funcionamiento de nuestra pagina y el manual es el siguiente: <br>
+
+                       
+                       <a href="https://drive.google.com/file/d/1dfh-e8XFyhJfa4qRkmCpH0x2e9evBs34/view?usp=sharing">Manual tecnico</a>
+                    </p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary btn-raised" data-dismiss="modal">Ok <i
+                            class="fas fa-exclamation"></i> </button>
+                </div>
+            </div>
+        </div>
+    </div>
 
 </body>
 <!-- Scripts cambiables -->
