@@ -4,7 +4,7 @@
     if(isset($_SESSION['tipo']) && isset($_SESSION['nom']) && isset($_SESSION['ape']) && isset($_SESSION['pass']) ) {
 
         #Consulta para obtener todos los datos de los vehiculos ingresados el día hoy
-        $sql = "SELECT * FROM registro_parqueadero WHERE fecha = CURDATE() AND id_tip_entrada = '1' ORDER BY hora ASC";
+        $sql = "SELECT * FROM registro_parqueadero WHERE fecha = CURDATE() ORDER BY hora ASC";
         $query = mysqli_query($mysqli, $sql);
         $result = mysqli_fetch_array($query);
 
@@ -12,7 +12,7 @@
         $vehiculos_parqueados = $query->num_rows;
 
         #Consulta para obtener los cupos de los vehiculos 
-        $sql2 = "SELECT * FROM zona_parqueo, detalle_cupos WHERE zona_parqueo.id_zona = detalle_cupos.id_zona AND zona_parqueo.id_tip_zona = '1' AND detalle_cupos.id_estado_cupo = '1'";
+        $sql2 = "SELECT * FROM zona_parqueo, detalle_cupos WHERE zona_parqueo.id_zona = detalle_cupos.id_zona AND zona_parqueo.id_tip_zona = '1' AND detalle_cupos.id_estado = '4'";
         $query_carros = mysqli_query($mysqli, $sql2);
 
         #Defino la variable para los cupos
@@ -24,14 +24,14 @@
         $cupos_carros = mysqli_num_rows($query_carros);
 
         #Consulta para obtener los cupos de las motos
-        $sql3 = "SELECT * FROM zona_parqueo, detalle_cupos WHERE zona_parqueo.id_zona = detalle_cupos.id_zona AND zona_parqueo.id_tip_zona = '2' AND detalle_cupos.id_estado_cupo = '1'";
+        $sql3 = "SELECT * FROM zona_parqueo, detalle_cupos WHERE zona_parqueo.id_zona = detalle_cupos.id_zona AND zona_parqueo.id_tip_zona = '2' AND detalle_cupos.id_estado = '4'";
         $query_motos = mysqli_query($mysqli, $sql3);
     
         #En esta linea cuento el número de cupos disponibles para las motos
         $cupos_motos = mysqli_num_rows($query_motos);
 
         #Consulta para obtener los cupos de las ciclas
-        $sql4 = "SELECT * FROM zona_parqueo, detalle_cupos WHERE zona_parqueo.id_zona = detalle_cupos.id_zona AND zona_parqueo.id_tip_zona = '3' AND detalle_cupos.id_estado_cupo = '1'";
+        $sql4 = "SELECT * FROM zona_parqueo, detalle_cupos WHERE zona_parqueo.id_zona = detalle_cupos.id_zona AND zona_parqueo.id_tip_zona = '3' AND detalle_cupos.id_estado = '4'";
         $query_ciclas = mysqli_query($mysqli, $sql4);
 
 		#En esta linea cuento el número de cupos disponibles para las motos
