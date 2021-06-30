@@ -146,7 +146,7 @@ if (isset($_SESSION['tipo']) && isset($_SESSION['nom']) && isset($_SESSION['ape'
 					<select name="cupozona" id="cupozona">
 						<option value="">Seleccione un estado</option>
 						<?php
-						$sql = "SELECT * FROM estado";
+						$sql = "SELECT * FROM estado WHERE id_categoria = 1";
 						$query = mysqli_query($mysqli, $sql);
 
 						while ($row = mysqli_fetch_array($query)) {
@@ -197,10 +197,6 @@ if (isset($_SESSION['tipo']) && isset($_SESSION['nom']) && isset($_SESSION['ape'
 						<?php } ?>
 					</tbody>
 				</table>
-			</div>
-			</div>
-			</div>
-			</div>
 			<div class="cont">
 
 				<form action="php/crear_cupo.php" id="formulario" method="POST">
@@ -222,12 +218,12 @@ if (isset($_SESSION['tipo']) && isset($_SESSION['nom']) && isset($_SESSION['ape'
 					<select name="estado_cupo" id="estado_cupo">
 						<option value="" selected>Seleccione el estado del cupo</option>
 						<?php
-						$sql = "SELECT * FROM estado_cupo";
+						$sql = "SELECT * FROM estado WHERE id_categoria = 2";
 						$query = mysqli_query($mysqli, $sql);
 
 						while ($row = mysqli_fetch_array($query)) {
 						?>
-							<option value="<?php echo $row['id_estado_cupo']; ?>"><?php echo $row['nom_estado_cupo']; ?></option>
+							<option value="<?php echo $row['id_estado']; ?>"><?php echo $row['nom_estado']; ?></option>
 						<?php
 						}
 						?>
