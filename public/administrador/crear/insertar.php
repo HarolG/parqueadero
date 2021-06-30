@@ -79,7 +79,7 @@
         }
     }
     else{
-        echo '<script> alert ("Ups algo fallo, intentalo de nuevo");</script>';
+        echo '<script> alert ("El formulario ha sido registrado correctamente");</script>';
         echo '<script> window.location="crearusu.php" </script>';
     }
 
