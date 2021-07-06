@@ -1,4 +1,4 @@
-<?php
+ñ<?php
 include("../../../php/conexion.php");
 
 if (isset($_SESSION['tipo']) && isset($_SESSION['nom']) && isset($_SESSION['ape']) && isset($_SESSION['pass'])) {
