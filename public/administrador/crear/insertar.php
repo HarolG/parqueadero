@@ -11,62 +11,36 @@
         $doc = $_POST['doc'];
         $color = $_POST['color'];
         $anota = $_POST['anotaciones'];
-        $soat = $_POST["sooat"];
-        $tecno = $_POST["tecno"];
-        $foto = $_POST["vehic"];
 
 
-        $fichero_subido_foto = $dir_subida . basename($_FILES['vehic']['name']);
-     
-             echo '<pre>';
-             if (move_uploaded_file($_FILES['vehic']['tmp_name'], $fichero_subido_foto)) {
-                 //echo "El fichero es válido y se subió con éxito.\n";
-                 echo '<script> window.location="crearusu.php" </script>';
-             } else {
-                 //echo "¡Posible ataque de subida de ficheros!\n";
-                 echo '<script> window.location="crearusu.php" </script>';
-             }
-     
-             echo 'Más información de depuración:';
-             print_r($_FILES);
-             print "</pre>";
+        if(isset($_FILES['file'])) { 
+            $directorio = "image/";
         
-        $fichero_subido_tecno = $dir_subida . basename($_FILES['tecno']['name']);
-     
-             echo '<pre>';
-             if (move_uploaded_file($_FILES['tecno']['tmp_name'], $fichero_subido_tecno)) {
-                 //echo "El fichero es válido y se subió con éxito.\n";
-                 echo '<script> window.location="crearusu.php" </script>';
-             } else {
-                 //echo "¡Posible ataque de subida de ficheros!\n";
-                 //echo '<script> window.location="crearusu.php" </script>';
-             }
-     
-             echo 'Más información de depuración:';
-             print_r($_FILES);
-             print "</pre>";
-
-        $fichero_subido_soat = $dir_subida . basename($_FILES['sooat']['name']);
-     
-             echo '<pre>';
-             if (move_uploaded_file($_FILES['sooat']['tmp_name'], $fichero_subido_soat)) {
-                 echo "El fichero es válido y se subió con éxito.\n";
-                 echo '<script> window.location="crearusu.php" </script>';
-             } else {
-                 echo "¡Posible ataque de subida de ficheros!\n";
-                 //echo '<script> window.location="crearusu.php" </script>';
-             }
-     
-             echo 'Más información de depuración:';
-             print_r($_FILES);
-             print "</pre>";
-     
-
-     
+            $tarjeta = $directorio . basename($_FILES["file"]["name"]); // uploads/carta.pdf
+            $nombreArchivo = $_FILES["file"]["name"];
+            $tipoArchivo = strtolower(pathinfo($tarjeta, PATHINFO_EXTENSION));
+            $tamañoArchivo = $_FILES["file"]["size"];
+            if($tipoArchivo === "png" || $tipoArchivo === "jpg" || $tipoArchivo === "jpeg") {
+                if ($tamañoArchivo <= 209715200) {
+        
+                    if(move_uploaded_file($_FILES["file"]["tmp_name"], $tarjeta)){
+                        $consulta = "INSERT INTO vehiculo(Tarjeta_Prop) VALUES ('$tarjeta')";
+                        $query = mysqli_query($mysqli, $consulta);
+                    } else {
+                        echo "<script>alert('Ha ocurrido un error al subir el archivo')</script>";
+                    }
+        
+                } else {
+                    echo "<script>alert('El peso del archivo es superior a 200MB')</script>";
+                }   
+            } else {
+                echo "<script>alert('El tipo de archivo subido no es admitido, solo se admite imágenes (jpg, png, jpeg)')</script>";
+            }
+        }
         
         //Hacemos la consulta para que me seleccione los datos en la BD y valide
-        $consul = "INSERT INTO vehiculo (placa, id_modelo, id_marca, id_tip_vehiculo, documento, id_color, anotaciones, soat, tecnomecanica, foto) 
-        VALUES ('$placa', '$modelo', '$marca', '$vehiculo', '$doc', '$color', '$anota', '$fichero_subido_soat', '$fichero_subido_tecno', '$fichero_subido_foto')";
+        $consul = "INSERT INTO vehiculo (placa, id_modelo, id_marca, id_tip_vehiculo, documento, id_color, anotaciones) 
+        VALUES ('$placa', '$modelo', '$marca', '$vehiculo', '$doc', '$color', '$anota')";
         $query = mysqli_query($mysqli, $consul);
 
         if(!$query){
@@ -78,6 +52,8 @@
             echo '<script> window.location="crearusu.php" </script>';
         }
     }
+<<<<<<< HEAD
+=======
     else{
         echo '<script> alert ("El formulario ha sido registrado correctamente");</script>';
         echo '<script> window.location="crearusu.php" </script>';
@@ -184,4 +160,5 @@ require '../../../php/conexion.php';
             echo '<script> alert ("Ups algo fallo, intentalo de nuevo");</script>';
             echo '<script> window.location="crearusu.php" </script>';
         }
+>>>>>>> 3967f975a1eb99c81d5ce98f0371fe9cbf2f05bc
 ?>
