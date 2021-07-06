@@ -4,7 +4,7 @@
     if(isset($_SESSION['tipo']) && isset($_SESSION['nom']) && isset($_SESSION['ape']) && isset($_SESSION['pass']) ) {
 
         #Consulta para obtener todos los datos de los vehiculos ingresados el día hoy
-        $sql = "SELECT * FROM registro_parqueadero WHERE fecha = CURDATE() AND id_tip_entrada = '1' ORDER BY hora ASC";
+        $sql = "SELECT * FROM registro_parqueadero WHERE fecha = CURDATE() ORDER BY hora ASC";
         $query = mysqli_query($mysqli, $sql);
         $result = mysqli_fetch_array($query);
 
@@ -12,7 +12,7 @@
         $vehiculos_parqueados = $query->num_rows;
 
         #Consulta para obtener los cupos de los vehiculos 
-        $sql2 = "SELECT * FROM zona_parqueo, detalle_cupos WHERE zona_parqueo.id_zona = detalle_cupos.id_zona AND zona_parqueo.id_tip_zona = '1' AND detalle_cupos.id_estado_cupo = '1'";
+        $sql2 = "SELECT * FROM zona_parqueo, detalle_cupos WHERE zona_parqueo.id_zona = detalle_cupos.id_zona AND zona_parqueo.id_tip_zona = '1' AND detalle_cupos.id_estado = '4'";
         $query_carros = mysqli_query($mysqli, $sql2);
 
         #Defino la variable para los cupos
@@ -24,14 +24,14 @@
         $cupos_carros = mysqli_num_rows($query_carros);
 
         #Consulta para obtener los cupos de las motos
-        $sql3 = "SELECT * FROM zona_parqueo, detalle_cupos WHERE zona_parqueo.id_zona = detalle_cupos.id_zona AND zona_parqueo.id_tip_zona = '2' AND detalle_cupos.id_estado_cupo = '1'";
+        $sql3 = "SELECT * FROM zona_parqueo, detalle_cupos WHERE zona_parqueo.id_zona = detalle_cupos.id_zona AND zona_parqueo.id_tip_zona = '2' AND detalle_cupos.id_estado = '4'";
         $query_motos = mysqli_query($mysqli, $sql3);
     
         #En esta linea cuento el número de cupos disponibles para las motos
         $cupos_motos = mysqli_num_rows($query_motos);
 
         #Consulta para obtener los cupos de las ciclas
-        $sql4 = "SELECT * FROM zona_parqueo, detalle_cupos WHERE zona_parqueo.id_zona = detalle_cupos.id_zona AND zona_parqueo.id_tip_zona = '3' AND detalle_cupos.id_estado_cupo = '1'";
+        $sql4 = "SELECT * FROM zona_parqueo, detalle_cupos WHERE zona_parqueo.id_zona = detalle_cupos.id_zona AND zona_parqueo.id_tip_zona = '3' AND detalle_cupos.id_estado = '4'";
         $query_ciclas = mysqli_query($mysqli, $sql4);
 
 		#En esta linea cuento el número de cupos disponibles para las motos
@@ -140,6 +140,12 @@
 	<!-- barra de menus-->
 	<section class="full-box dashboard-contentPage">
 		<!-- NavBar -->
+    <?php
+      $s2 = "SELECT * FROM mensajes WHERE leido = 1";
+      $resul2=mysqli_query($mysqli,$s2);
+      $row2=mysqli_num_rows($resul2);
+
+    ?>
 		<nav class="full-box dashboard-Navbar">
 			<ul class="full-box list-unstyled text-right">
 				<li class="pull-left">
@@ -148,7 +154,7 @@
 				<li>
 					<a href="#!" class="btn-Notifications-area">
 						<i class="far fa-envelope"></i>
-						<span class="badge">7</span>
+						<span class="badge"><?php echo $row2; ?></span>
 					</a>
 				</li>
 				<li>
@@ -236,88 +242,74 @@
 	</section>
 
 	<!-- Notifications area -->
-
+				
 	<section class="full-box Notifications-area">
 		<div class="full-box Notifications-bg btn-Notifications-area">
-
 		</div>
 		<div class="full-box Notifications-body">
 			<div class="Notifications-body-title text-titles text-center">
-				Notifications <i class="fas fa-times-circle btn-Notifications-area"></i>
-			</div>
+				Notificaciones <i class="fas fa-times-circle btn-Notifications-area"></i>
+			</div>	
 			<div class="list-group">
 				<div class="list-group-item">
 					<div class="row-action-primary">
 						<i class="zmdi zmdi-alert-triangle"></i>
 					</div>
-					<div class="row-content">
-						<div class="least-content">17m</div>
-						<h4 class="list-group-item-heading">Tile with a label</h4>
-						<p class="list-group-item-text">Donec id elit non mi porta gravida at eget metus.</p>
-					</div>
-				</div>
-				<div class="list-group-separator"></div>
-				<div class="list-group-item">
-					<div class="row-action-primary">
-						<i class="zmdi zmdi-alert-octagon"></i>
-					</div>
-					<div class="row-content">
-						<div class="least-content">15m</div>
-						<h4 class="list-group-item-heading">Tile with a label</h4>
-						<p class="list-group-item-text">Donec id elit non mi porta gravida at eget metus.</p>
-					</div>
-				</div>
-				<div class="list-group-separator"></div>
-				<div class="list-group-item">
-					<div class="row-action-primary">
-						<i class="zmdi zmdi-help"></i>
-					</div>
-					<div class="row-content">
-						<div class="least-content">10m</div>
-						<h4 class="list-group-item-heading">Tile with a label</h4>
-						<p class="list-group-item-text">Maecenas sed diam eget risus varius blandit.</p>
-					</div>
-				</div>
-				<div class="list-group-separator"></div>
-				<div class="list-group-item">
-					<div class="row-action-primary">
-						<i class="zmdi zmdi-info"></i>
-					</div>
-					<div class="row-content">
-						<div class="least-content">8m</div>
-						<h4 class="list-group-item-heading">Tile with a label</h4>
-						<p class="list-group-item-text">Maecenas sed diam eget risus varius blandit.</p>
-					</div>
+					<?php
+						$notificacion ="SELECT * FROM mensajes WHERE leido = 1";
+						$resultado=mysqli_query($mysqli,$notificacion);
+                            
+                        while($row2 = mysqli_fetch_array($resultado)) {
+							
+					?>
+						
+						<div class="list-group-separator"></div>
+						<div class="list-group-item">
+							<div class="row-content">
+								<p style="font-weight:600" class="list-group-item-text"><i style="color:#FF5722; font-size: 20px;" class="fas fa-envelope-square"></i> Tienes nueva notificacion de: <?php echo $row2['de'];?></p>
+								<p style="font-weight:600" class="list-group-item-text">A la hora: <?php echo $row2['fecha'];?></p>
+							</div>
+						</div>
+						
+						
+					<?php
+						}
+					?>
+
+					<div class="list-group-item">
+						<a style="margin-left:40%" href="../buzon.php">VER MAS</a>
+					</div>	
+
 				</div>
 			</div>
 
 		</div>
 	</section>
+		<!-- Dialog help -->
+    <div class="modal fade" tabindex="-1" role="dialog" id="Dialog-Help">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">Ayuda!!</h4>
+                </div>
+                <div class="modal-body">
+                    <p>
+                       Hola querido usuario, Bienvenido!! <br>
+                       Aqui encontraras los manuales que te podran ayudar a saber el funcionamiento de nuestra pagina y el manual es el siguiente: <br>
 
-	<!-- Dialog help -->
-	<div class="modal fade" tabindex="-1" role="dialog" id="Dialog-Help">
-		<div class="modal-dialog" role="document">
-			<div class="modal-content">
-				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-							aria-hidden="true">&times;</span></button>
-					<h4 class="modal-title">Help!!</h4>
-				</div>
-				<div class="modal-body">
-					<p>
-						Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt beatae esse velit ipsa sunt
-						incidunt aut voluptas, nihil reiciendis maiores eaque hic vitae saepe voluptatibus. Ratione
-						veritatis a unde autem!
-					</p>
-				</div>
-				<div class="modal-footer">
-					<button type="button" class="btn btn-primary btn-raised" data-dismiss="modal">Ok <i
-							class="fas fa-exclamation"></i> </button>
-				</div>
-			</div>
-		</div>
-	</div>
-
+                       
+                       <a href="https://drive.google.com/file/d/1dfh-e8XFyhJfa4qRkmCpH0x2e9evBs34/view?usp=sharing">Manual tecnico</a>
+                    </p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary btn-raised" data-dismiss="modal">Ok <i
+                            class="fas fa-exclamation"></i> </button>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 <!-- Scripts cambiables -->
 <!-- Libreria para crear gráficas -->

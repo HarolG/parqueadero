@@ -4,7 +4,7 @@
     if(isset($_SESSION['tipo']) && isset($_SESSION['nom']) && isset($_SESSION['ape']) && isset($_SESSION['pass']) ) {
 
         #Consulta para obtener todos los datos de los vehiculos ingresados el día hoy
-        $sql = "SELECT * FROM registro_parqueadero WHERE fecha = CURDATE() AND id_tip_entrada = '1' ORDER BY hora ASC";
+        $sql = "SELECT * FROM registro_parqueadero WHERE fecha = CURDATE() ORDER BY hora ASC";
         $query = mysqli_query($mysqli, $sql);
         $result = mysqli_fetch_array($query);
 
@@ -12,7 +12,7 @@
         $vehiculos_parqueados = $query->num_rows;
 
         #Consulta para obtener los cupos de los vehiculos 
-        $sql2 = "SELECT * FROM zona_parqueo, detalle_cupos WHERE zona_parqueo.id_zona = detalle_cupos.id_zona AND zona_parqueo.id_tip_zona = '1' AND detalle_cupos.id_estado_cupo = '1'";
+        $sql2 = "SELECT * FROM zona_parqueo, detalle_cupos WHERE zona_parqueo.id_zona = detalle_cupos.id_zona AND zona_parqueo.id_tip_zona = '1' AND detalle_cupos.id_estado = '4'";
         $query_carros = mysqli_query($mysqli, $sql2);
 
         #Defino la variable para los cupos
@@ -24,14 +24,14 @@
         $cupos_carros = mysqli_num_rows($query_carros);
 
         #Consulta para obtener los cupos de las motos
-        $sql3 = "SELECT * FROM zona_parqueo, detalle_cupos WHERE zona_parqueo.id_zona = detalle_cupos.id_zona AND zona_parqueo.id_tip_zona = '2' AND detalle_cupos.id_estado_cupo = '1'";
+        $sql3 = "SELECT * FROM zona_parqueo, detalle_cupos WHERE zona_parqueo.id_zona = detalle_cupos.id_zona AND zona_parqueo.id_tip_zona = '2' AND detalle_cupos.id_estado = '4'";
         $query_motos = mysqli_query($mysqli, $sql3);
     
         #En esta linea cuento el número de cupos disponibles para las motos
         $cupos_motos = mysqli_num_rows($query_motos);
 
         #Consulta para obtener los cupos de las ciclas
-        $sql4 = "SELECT * FROM zona_parqueo, detalle_cupos WHERE zona_parqueo.id_zona = detalle_cupos.id_zona AND zona_parqueo.id_tip_zona = '3' AND detalle_cupos.id_estado_cupo = '1'";
+        $sql4 = "SELECT * FROM zona_parqueo, detalle_cupos WHERE zona_parqueo.id_zona = detalle_cupos.id_zona AND zona_parqueo.id_tip_zona = '3' AND detalle_cupos.id_estado = '4'";
         $query_ciclas = mysqli_query($mysqli, $sql4);
 
 		#En esta linea cuento el número de cupos disponibles para las motos
@@ -156,12 +156,6 @@
 					<a href="#!" class="btn-menu-dashboard"><i class="fa fa-bars" aria-hidden="true"></i></a>
 				</li>
 				<li>
-					<a href="#!" class="btn-Notifications-area">
-						<i class="far fa-envelope"></i>
-						<span class="badge">7</span>
-					</a>
-				</li>
-				<li>
 					<a href="#!" class="btn-modal-help">
 						<i class="far fa-question-circle"></i>
 					</a>
@@ -225,6 +219,7 @@
 											<input class="btn btn-secondary" type="submit" value="Generar">
 										</select>
 									</form>
+									<!-- En este div se genera la gráfica -->
 									<div id="graficaHistoria" class="graficaHistoria"></div>
 								</div>
 							</div>
@@ -305,28 +300,30 @@
 	</section>
 
 	<!-- Dialog help -->
-	<div class="modal fade" tabindex="-1" role="dialog" id="Dialog-Help">
-		<div class="modal-dialog" role="document">
-			<div class="modal-content">
-				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-							aria-hidden="true">&times;</span></button>
-					<h4 class="modal-title">Help!!</h4>
-				</div>
-				<div class="modal-body">
-					<p>
-						Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt beatae esse velit ipsa sunt
-						incidunt aut voluptas, nihil reiciendis maiores eaque hic vitae saepe voluptatibus. Ratione
-						veritatis a unde autem!
-					</p>
-				</div>
-				<div class="modal-footer">
-					<button type="button" class="btn btn-primary btn-raised" data-dismiss="modal">Ok <i
-							class="fas fa-exclamation"></i> </button>
-				</div>
-			</div>
-		</div>
-	</div>
+    <div class="modal fade" tabindex="-1" role="dialog" id="Dialog-Help">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">Ayuda!!</h4>
+                </div>
+                <div class="modal-body">
+                    <p>
+                       Hola querido usuario, Bienvenido!! <br>
+                       Aqui encontraras los manuales que te podran ayudar a saber el funcionamiento de nuestra pagina y los manuales son los siguientes: <br>
+
+                       <a href="https://drive.google.com/file/d/1H_dSFSHAyf4bWmgumzvoaixI6uW7P6A3/view?usp=sharing">Manual de Usuarios</a> <br>
+                       <a href="https://drive.google.com/file/d/1dfh-e8XFyhJfa4qRkmCpH0x2e9evBs34/view?usp=sharing">Manual tecnico</a>
+                    </p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary btn-raised" data-dismiss="modal">Ok <i
+                            class="fas fa-exclamation"></i> </button>
+                </div>
+            </div>
+        </div>
+    </div>
 
 </body>
 <!-- Scripts cambiables -->

@@ -63,7 +63,6 @@ $(document).ready(function () {
                 if (response != "La zona no tiene cupos creados") {
                     const respuesta = JSON.parse(response)
                     let template = ''
-                    let template2 = ''
 
                     respuesta.forEach(element => {
                         template += `

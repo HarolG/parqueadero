@@ -121,12 +121,6 @@ Favor revisar los direccionamientos
 					<a href="#!" class="btn-menu-dashboard"><i class="fa fa-bars" aria-hidden="true"></i></a>
 				</li>
 				<li>
-					<a href="#!" class="btn-Notifications-area">
-						<i class="far fa-envelope"></i>
-						<span class="badge">7</span>
-					</a>
-				</li>
-				<li>
 					<a href="#!" class="btn-modal-help">
 						<i class="far fa-question-circle"></i>
 					</a>
@@ -162,35 +156,35 @@ Favor revisar los direccionamientos
 					</div>
 					<div class="form-group">
 						<label for="doc" class="col-sm-2 control-label">Documento</label>
-						<div class="col-sm-8"><input id="doc" name="doc" type="text" class="form-control" maxlength="11" autocomplete="off" autofocus></div>
+						<div class="col-sm-8"><input id="doc" name="doc" type="number" class="form-control" required maxlength="11" autocomplete="off" autofocus></div>
 					</div>
 					<div class="form-group">
 						<label for="nom" class="col-sm-2 control-label">Nombres</label>
-						<div class="col-sm-8"><input id="nom" name="nom" type="text" class="form-control" autocomplete="off"></div>				
+						<div class="col-sm-8"><input id="nom" name="nom" type="text" class="form-control" required autocomplete="off"></div>				
 					</div>
 					<div class="form-group">
 						<label for="ape" class="col-sm-2 control-label">Apellidos</label>
-						<div class="col-sm-8"><input id="ape" name="ape" type="text" class="form-control"  autocomplete="off"></div>
+						<div class="col-sm-8"><input id="ape" name="ape" type="text" class="form-control" required autocomplete="off"></div>
 					</div>
 					<div class="form-group">
 						<label for="ed" class="col-sm-2 control-label">Edad</label>
-						<div class="col-sm-8"><input id="ed" name="ed" type="text" class="form-control" maxlength="2" autocomplete="off"></div>
+						<div class="col-sm-8"><input id="ed" name="ed" type="number" class="form-control" required maxlength="2" autocomplete="off"></div>
 					</div>
 					<div class="form-group">
 						<label for="celu" class="col-sm-2 control-label">Celular</label>
-						<div class="col-sm-8"><input id="celu" name="celu" type="text" class="form-control" maxlength="10"  autocomplete="off"></div>
+						<div class="col-sm-8"><input id="celu" name="celu" type="number" class="form-control" required maxlength="10"  autocomplete="off"></div>
 					</div>
 					<div class="form-group">
 						<label for="direc" class="col-sm-2 control-label">Direccion</label>
-						<div class="col-sm-8"><input id="direc" name="direc" type="text" class="form-control" maxlength="50"  autocomplete="off"></div>
+						<div class="col-sm-8"><input id="direc" name="direc" type="text" class="form-control" required maxlength="50"  autocomplete="off"></div>
 					</div>
 					<div class="form-group">
 						<label for="cor" class="col-sm-2 control-label">Correo</label>
-						<div class="col-sm-8"><input id="cor" name="cor" type="text" class="form-control" maxlength="50"  autocomplete="off"></div>
+						<div class="col-sm-8"><input id="cor" name="cor" type="email" class="form-control" required maxlength="50"  autocomplete="off"></div>
 					</div>
 					<div class="form-group">
 						<label for="clave" class="col-sm-2 control-label">Contraseña</label>
-						<div class="col-sm-8"><input id="clave" name="clave" type="text" class="form-control" autocomplete="off"></div>
+						<div class="col-sm-8"><input id="clave" name="clave" type="text" class="form-control" required autocomplete="off"></div>
 					</div>
 					<!-- tipo de documento -->
 					<div class="form-group">
@@ -198,6 +192,7 @@ Favor revisar los direccionamientos
 						<div class="col-sm-8">
 								<select id="" name="tipo_documento" class="form-control">
 								<!-- consultas y codigo para validar que los registros esten el la bd y guardarlos en una lista -->
+									<option value="">Seleccione</option>
 											<?php
 												$sql="SELECT*FROM tipo_documento";
 												$query=mysqli_query($mysqli,$sql);
@@ -219,6 +214,7 @@ Favor revisar los direccionamientos
 							<div class="col-sm-8">
 								<select id="" name="tipo_usuario" class="form-control">
 								<!-- consultas y codigo para validar que los registros esten el la bd y guardarlos en una lista -->
+											<option value="">Seleccione</option>
 											<?php
 												$sql="SELECT*FROM tipo_usuario";
 												$query=mysqli_query($mysqli,$sql);
@@ -239,6 +235,7 @@ Favor revisar los direccionamientos
 						<div class="col-sm-8">
 								<select id="" name="tipo_estado" class="form-control">
 								<!-- consultas y codigo para validar que los registros esten el la bd y guardarlos en una lista -->
+											<option value="">Seleccione</option>
 											<?php
 												$sql="SELECT*FROM estado_usuario";
 												$query=mysqli_query($mysqli,$sql);
@@ -379,88 +376,31 @@ Favor revisar los direccionamientos
 		
 </section>
 
-<!-- Notifications area -->
-
-<section class="full-box Notifications-area">
-	<div class="full-box Notifications-bg btn-Notifications-area">
-
-	</div>
-	<div class="full-box Notifications-body">
-		<div class="Notifications-body-title text-titles text-center">
-			Notifications <i class="fas fa-times-circle btn-Notifications-area"></i>
-		</div>
-		<div class="list-group">
-			<div class="list-group-item">
-				<div class="row-action-primary">
-					<i class="zmdi zmdi-alert-triangle"></i>
-				</div>
-				<div class="row-content">
-					<div class="least-content">17m</div>
-					<h4 class="list-group-item-heading">Tile with a label</h4>
-					<p class="list-group-item-text">Donec id elit non mi porta gravida at eget metus.</p>
-				</div>
-			</div>
-			<div class="list-group-separator"></div>
-			<div class="list-group-item">
-				<div class="row-action-primary">
-					<i class="zmdi zmdi-alert-octagon"></i>
-				</div>
-				<div class="row-content">
-					<div class="least-content">15m</div>
-					<h4 class="list-group-item-heading">Tile with a label</h4>
-					<p class="list-group-item-text">Donec id elit non mi porta gravida at eget metus.</p>
-				</div>
-			</div>
-			<div class="list-group-separator"></div>
-			<div class="list-group-item">
-				<div class="row-action-primary">
-					<i class="zmdi zmdi-help"></i>
-				</div>
-				<div class="row-content">
-					<div class="least-content">10m</div>
-					<h4 class="list-group-item-heading">Tile with a label</h4>
-					<p class="list-group-item-text">Maecenas sed diam eget risus varius blandit.</p>
-				</div>
-			</div>
-			<div class="list-group-separator"></div>
-			<div class="list-group-item">
-				<div class="row-action-primary">
-					<i class="zmdi zmdi-info"></i>
-				</div>
-				<div class="row-content">
-					<div class="least-content">8m</div>
-					<h4 class="list-group-item-heading">Tile with a label</h4>
-					<p class="list-group-item-text">Maecenas sed diam eget risus varius blandit.</p>
-				</div>
-			</div>
-		</div>
-
-	</div>
-</section>
-
 <!-- Dialog help -->
-<div class="modal fade" tabindex="-1" role="dialog" id="Dialog-Help">
-	<div class="modal-dialog" role="document">
-		<div class="modal-content">
-			<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-						aria-hidden="true">&times;</span></button>
-				<h4 class="modal-title">Help!!</h4>
-			</div>
-			<div class="modal-body">
-				<p>
-					Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt beatae esse velit ipsa sunt
-					incidunt aut voluptas, nihil reiciendis maiores eaque hic vitae saepe voluptatibus. Ratione
-					veritatis a unde autem!
-				</p>
-			</div>
-			<div class="modal-footer">
-				<button type="button" class="btn btn-primary btn-raised" data-dismiss="modal">Ok <i
-						class="fas fa-exclamation"></i> </button>
-			</div>
-		</div>
-	</div>
-</div>
+    <div class="modal fade" tabindex="-1" role="dialog" id="Dialog-Help">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">Ayuda!!</h4>
+                </div>
+                <div class="modal-body">
+                    <p>
+                       Hola querido usuario, Bienvenido!! <br>
+                       Aqui encontraras los manuales que te podran ayudar a saber el funcionamiento de nuestra pagina y los manuales son los siguientes: <br>
+
+                       <a href="https://drive.google.com/file/d/1H_dSFSHAyf4bWmgumzvoaixI6uW7P6A3/view?usp=sharing">Manual de Usuarios</a> <br>
+                       <a href="https://drive.google.com/file/d/1dfh-e8XFyhJfa4qRkmCpH0x2e9evBs34/view?usp=sharing">Manual tecnico</a>
+                    </p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary btn-raised" data-dismiss="modal">Ok <i
+                            class="fas fa-exclamation"></i> </button>
+                </div>
+            </div>
+        </div>
+    </div>
 <!--====== Scripts pagina cambiables -->
 
 	<script src="js/jquery-1.12.3.js"></script>
@@ -577,7 +517,7 @@ Favor revisar los direccionamientos
 					"url": "listar.php"
 				},
 				"columns":[
-					{ "data": "documento" },
+					{"data": "documento" },
 					{"data":"nombre"},
 					{"data":"apellido"},
 					{"data":"edad"},
@@ -607,7 +547,7 @@ Favor revisar los direccionamientos
 					{
 						extend: 'pdf',
 						footer: true,
-						title: 'Archivo PDF',
+						title: 'Archivo',
 						filename: 'Usuarios Parqueadero',
 						text: '<button class="botones btn btn-danger">Exportar a PDF <i class="far fa-file-pdf"></i></button>'
 					}
@@ -636,18 +576,18 @@ Favor revisar los direccionamientos
 			$(tbody).on("click", "button.editar", function(){
 				var data = table.row( $(this).parents("tr") ).data();
 				var documento = $("#documento").val( data.documento ),
-						nombre = $("#nombre").val( data.nombre ),
-						apellidos = $("#apellido").val( data.apellido ),
-						edad = $("#edad").val( data.edad ),
-						celular = $("#celular").val(data.celular),
-						direccion = $("#direccion").val(data.direccion),
-						correo = $("#correo").val(data.correo),
-						nom_tip_doc = $("#tipdoc").val(data.nom_tip_doc),
-						nom_tip_usu = $("#tipusu").val(data.nom_tip_usu),
-						nom_estado_usu = $("#estausu").val(data.nom_estado_usu),
-						opcion = $("#opcion").val("modificar");
-						$("#cuadro2").slideDown("slow");
-						$("#cuadro1").slideUp("slow");
+					nombre = $("#nombre").val( data.nombre ),
+					apellidos = $("#apellido").val( data.apellido ),
+					edad = $("#edad").val( data.edad ),
+					celular = $("#celular").val(data.celular),
+					direccion = $("#direccion").val(data.direccion),
+					correo = $("#correo").val(data.correo),
+					nom_tip_doc = $("#tipdoc").val(data.nom_tip_doc),
+					nom_tip_usu = $("#tipusu").val(data.nom_tip_usu),
+					nom_estado_usu = $("#estausu").val(data.nom_estado_usu),
+					opcion = $("#opcion").val("modificar");
+					$("#cuadro2").slideDown("slow");
+					$("#cuadro1").slideUp("slow");
 			});
 		}
 

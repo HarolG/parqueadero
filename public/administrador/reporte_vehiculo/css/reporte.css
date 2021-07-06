@@ -1,5 +1,5 @@
 .contenedor_informe{
-    border: 1px solid black;
+    /* border: 1px solid black; */
     height: 600px;
 }
 
@@ -14,7 +14,7 @@
 .head_table{
     text-align: center;
     font-size: 15px;
-    background-color: #2a3f54;
+    background-color: teal;
     color: white;
     padding: 5px;
 }
