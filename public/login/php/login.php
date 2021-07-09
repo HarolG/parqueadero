@@ -18,13 +18,13 @@
             $nom = $fila['nombre'];
             $ape = $fila['apellido'];
             $tip = $fila['id_tip_usu'];
-            $estadousu = $fila['id_estado_usu'];
+            $estadousu = $fila['id_estado'];
 
             if ($_SESSION['tipo'] == 1) {
                 header("Location: ../../administrador/home/administrador.php");
             } elseif ($_SESSION['tipo'] == 2) {
 
-                if ($_SESSION['tipo'] == 2 && $estadousu == 1) {
+                if ($_SESSION['tipo'] == 2 && $estadousu == 6) {
                     
                     $sqli = "INSERT INTO informe_celadores (documento, nombre, apellido, id_tip_usu, fecha_inicio) VALUES ('$user', '$nom', '$ape', '$tip', now())";
                     $quer = mysqli_query($mysqli, $sqli);

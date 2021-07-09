@@ -10,6 +10,7 @@ $(document).ready(function () {
 
         const postData = {
             placa: $('#form_placa').val().toUpperCase(),
+            documento: $('#select_documento').val(),
             select_tipo_zona: $('#select_tipo_zona').val(),
             select_zona: $('#select_zona').val(),
             select_cupo: $('#select_cupo').val()
