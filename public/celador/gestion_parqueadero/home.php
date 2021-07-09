@@ -30,14 +30,14 @@
         if(isset($_POST['inputDetaCupos'])) {
             $id_deta_cupos = $_POST['inputDetaCupos'];
 
-            $sql = "SELECT detalle_cupos.id_deta_cupos, zona_parqueo.id_zona, detalle_cupos.placa, detalle_cupos.nombre_cupo, estado_cupo.nom_estado_cupo, tipo_zona.nom_tip_zona FROM detalle_cupos, zona_parqueo, estado_cupo, tipo_zona WHERE detalle_cupos.id_zona = zona_parqueo.id_zona  AND detalle_cupos.id_estado_cupo = estado_cupo.id_estado_cupo AND zona_parqueo.id_tip_zona = tipo_zona.id_tip_zona AND id_deta_cupos = '$id_deta_cupos'";
+            $sql = "SELECT detalle_cupos.id_deta_cupos, zona_parqueo.id_zona, detalle_cupos.placa, detalle_cupos.nombre_cupo, estado.nom_estado, tipo_zona.nom_tip_zona FROM detalle_cupos, zona_parqueo, estado, tipo_zona  WHERE detalle_cupos.id_zona = zona_parqueo.id_zona AND detalle_cupos.id_estado = estado.id_estado AND zona_parqueo.id_tip_zona = tipo_zona.id_tip_zona AND id_deta_cupos = '$id_deta_cupos'";
             $query = mysqli_query($mysqli, $sql);
             $resultado = mysqli_fetch_assoc($query);
 
             $id_zona = $resultado['id_zona'];
             $placa = $resultado['placa'];
             $nombre_cupo = $resultado['nombre_cupo'];
-            $nom_estado_cupo = $resultado['nom_estado_cupo'];
+            $nom_estado_cupo = $resultado['nom_estado'];
             $nom_tip_zona = $resultado['nom_tip_zona'];
 
     ?>
@@ -172,6 +172,12 @@
                                 <div class="form-group">
                                     <input type="text" id="form_placa" placeholder="Ingrese la placa del vehiculo"
                                         class="form-control" style="text-transform:uppercase">
+                                </div>
+                                <div class="form-group">
+                                    <select class="form-select btn-block" aria-label="Default select example"
+                                        id="select_documento">
+                                        <option selected>Seleccione el documento</option>
+                                    </select>
                                 </div>
                                 <div class="form-group">
                                     <select class="form-select btn-block" id="select_tipo_zona">
