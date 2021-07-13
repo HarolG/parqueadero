@@ -237,12 +237,12 @@ Favor revisar los direccionamientos
 								<!-- consultas y codigo para validar que los registros esten el la bd y guardarlos en una lista -->
 											<option value="">Seleccione</option>
 											<?php
-												$sql="SELECT*FROM estado_usuario";
+												$sql="SELECT*FROM estado";
 												$query=mysqli_query($mysqli,$sql);
 												while($row=mysqli_fetch_array($query)){
 											?>
-												<option value="<?php echo $row['id_estado_usu']?>">
-													<?php echo $row['nom_estado_usu']?>
+												<option value="<?php echo $row['id_estado']?>">
+													<?php echo $row['nom_estado']?>
 												</option>
 								
 											<?php
@@ -276,7 +276,7 @@ Favor revisar los direccionamientos
                         $tip_docu=$_POST['tipo_documento'];
 						$tip_estado=$_POST['tipo_estado'];
                         
-                        $sql="INSERT INTO `usuario` (`documento`, `nombre`, `apellido`, `edad`, `celular`, `direccion`,`correo`, `clave`, `id_tip_usu`,`id_tip_doc`,`id_estado_usu`) VALUES ('$documento','$nombre','$apellido','$edad','$celular','$direccion','$correo','$clave','$tip_usu','$tip_docu','$tip_estado')";
+                        $sql="INSERT INTO `usuario` (`documento`, `nombre`, `apellido`, `edad`, `celular`, `direccion`,`correo`, `clave`, `id_tip_usu`,`id_tip_doc`,`id_estado`) VALUES ('$documento','$nombre','$apellido','$edad','$celular','$direccion','$correo','$clave','$tip_usu','$tip_docu','$tip_estado')";
                             
                         $resul=mysqli_query($mysqli,$sql);
                             
@@ -526,7 +526,7 @@ Favor revisar los direccionamientos
 					{"data":"correo"},
 					{ "data": "nom_tip_doc" },
 					{ "data": "nom_tip_usu" },
-					{ "data": "nom_estado_usu" },
+					{ "data": "nom_estado" },
 					{"defaultContent": "<button type='button' class='editar btn btn-primary'><i class='fa fa-pencil-square-o'></i></button><button type='button' id='eliminar' class='eliminar btn btn-danger'><i class='fa fa-trash-o'></i></button>"}	
 				],
 				"language": idioma_espanol,

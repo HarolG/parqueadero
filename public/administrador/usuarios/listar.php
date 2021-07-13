@@ -2,7 +2,10 @@
 
 	include ("../../../php/conexion.php");
 
-	$query = "SELECT * FROM usuario INNER JOIN tipo_usuario ON usuario.id_tip_usu = tipo_usuario.id_tip_usu INNER JOIN tipo_documento ON usuario.id_tip_doc= tipo_documento.id_tip_doc INNER JOIN estado_usuario ON usuario.id_estado_usu= estado_usuario.id_estado_usu";
+	$query = "SELECT * FROM usuario 
+				INNER JOIN tipo_usuario ON usuario.id_tip_usu = tipo_usuario.id_tip_usu 
+				INNER JOIN tipo_documento ON usuario.id_tip_doc= tipo_documento.id_tip_doc 
+				INNER JOIN estado ON usuario.id_estado= estado.id_estado";
 	$resultado = mysqli_query($conexion, $query);
 
 	if(!$resultado){
