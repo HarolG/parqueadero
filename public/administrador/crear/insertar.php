@@ -11,36 +11,15 @@
         $doc = $_POST['doc'];
         $color = $_POST['color'];
         $anota = $_POST['anotaciones'];
-
-
-        if(isset($_FILES['file'])) { 
-            $directorio = "image/";
+        $tarjeta = $_POST["tarjeta"];
+        $foto = $_POST["vehic"];
         
-            $tarjeta = $directorio . basename($_FILES["file"]["name"]); // uploads/carta.pdf
-            $nombreArchivo = $_FILES["file"]["name"];
-            $tipoArchivo = strtolower(pathinfo($tarjeta, PATHINFO_EXTENSION));
-            $tamañoArchivo = $_FILES["file"]["size"];
-            if($tipoArchivo === "png" || $tipoArchivo === "jpg" || $tipoArchivo === "jpeg") {
-                if ($tamañoArchivo <= 209715200) {
-        
-                    if(move_uploaded_file($_FILES["file"]["tmp_name"], $tarjeta)){
-                        $consulta = "INSERT INTO vehiculo(Tarjeta_Prop) VALUES ('$tarjeta')";
-                        $query = mysqli_query($mysqli, $consulta);
-                    } else {
-                        echo "<script>alert('Ha ocurrido un error al subir el archivo')</script>";
-                    }
-        
-                } else {
-                    echo "<script>alert('El peso del archivo es superior a 200MB')</script>";
-                }   
-            } else {
-                echo "<script>alert('El tipo de archivo subido no es admitido, solo se admite imágenes (jpg, png, jpeg)')</script>";
-            }
-        }
+        $fichero_subido = $dir_subida . basename($_FILES['tarjeta']['name']);
+        $fichero_subido = $dir_subida . basename($_FILES['vehic']['name']);
         
         //Hacemos la consulta para que me seleccione los datos en la BD y valide
-        $consul = "INSERT INTO vehiculo (placa, id_modelo, id_marca, id_tip_vehiculo, documento, id_color, anotaciones) 
-        VALUES ('$placa', '$modelo', '$marca', '$vehiculo', '$doc', '$color', '$anota')";
+        $consul = "INSERT INTO vehiculo (placa, id_modelo, id_marca, id_tip_vehiculo, documento, id_color, anotaciones, foto, Tarjeta_Prop) 
+        VALUES ('$placa', '$modelo', '$marca', '$vehiculo', '$doc', '$color', '$anota', '$foto', '$tarjeta')";
         $query = mysqli_query($mysqli, $consul);
 
         if(!$query){
@@ -52,8 +31,6 @@
             echo '<script> window.location="crearusu.php" </script>';
         }
     }
-<<<<<<< HEAD
-=======
     else{
         echo '<script> alert ("El formulario ha sido registrado correctamente");</script>';
         echo '<script> window.location="crearusu.php" </script>';
@@ -160,5 +137,4 @@ require '../../../php/conexion.php';
             echo '<script> alert ("Ups algo fallo, intentalo de nuevo");</script>';
             echo '<script> window.location="crearusu.php" </script>';
         }
->>>>>>> 3967f975a1eb99c81d5ce98f0371fe9cbf2f05bc
 ?>

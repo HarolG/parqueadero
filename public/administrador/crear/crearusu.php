@@ -347,16 +347,16 @@
                             <div class="cargue_main">
                                 <div class="grupo_cargue">
                                     <!-- MAX_FILE_SIZE debe preceder al campo de entrada del fichero -->
-                                    <input type="hidden" name="tarjeta" id="tarjeta" value="30000" />
+                                    <input type="hidden" name="tarjeta" id="tarjet" value="30000" />
                                     <!-- El nombre del elemento de entrada determina el nombre en el array $_FILES -->
-                                    Subir Tarjeta de Propiedad: <input name="tarjeta" id="tarjeta" type="file" required/>
+                                    Subir Tarjeta de Propiedad: <input name="tarjeta" id="tarjeta" type="file" required onchange="return fileValidation()"/>
                                 </div>
 
                                 <div class="grupo_cargue" id="imagePreview">
                                     <!-- MAX_FILE_SIZE debe preceder al campo de entrada del fichero -->
-                                    <input type="hidden" id="imagen" name="vehic" value="30000" />
+                                    <input type="hidden" id="vehic" name="vehic" value="30000" />
                                     <!-- El nombre del elemento de entrada determina el nombre en el array $_FILES -->
-                                    Imagen del Vehiculo: <input id="imagen" name="vehic" type="file" required/>
+                                    Imagen del Vehiculo: <input id="imagen" name="vehic" type="file" required onchange="return fileValidation()"/>
                                 </div>
                             </div>
                         </div>
