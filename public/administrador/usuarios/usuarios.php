@@ -309,13 +309,13 @@ Favor revisar los direccionamientos
 								$mail->isSMTP();                                            //Send using SMTP
 								$mail->Host       = 'smtp.gmail.com';                     //Set the SMTP server to send through
 								$mail->SMTPAuth   = true;                                   //Enable SMTP authentication
-								$mail->Username   = 'danisalazar1478@gmail.com';                     //SMTP username
-								$mail->Password   = 'batman1234567';                               //SMTP password
+								$mail->Username   = 'parkin.system.adsi@gmail.com';                     //SMTP username
+								$mail->Password   = 'ADSI2060060';                               //SMTP password
 								$mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;         //Enable TLS encryption; `PHPMailer::ENCRYPTION_SMTPS` encouraged
 								$mail->Port       = 587;                                    //TCP port to connect to, use 465 for `PHPMailer::ENCRYPTION_SMTPS` above
 
 								//Recipients
-								$mail->setFrom('danisalazar1478@gmail.com', 'Codigo de barras - Parking System');
+								$mail->setFrom('parkin.system.adsi@gmail.com', 'Codigo de barras - Parking System');
 								$mail->addAddress($correo, 'prueba');     //Add a recipient
 
 								//Content
@@ -331,11 +331,11 @@ Favor revisar los direccionamientos
 									<link rel="stylesheet" href="barcode.php">
 									<style>
 									.carnet{
-									width: 60%;
-									height: 80%;
-									margin: 50px;
-									padding: 20px 30px;
-									background-color: #F8F8F8;
+										width: 60%;
+										height: 80%;
+										margin: 50px;
+										padding: 20px 30px;
+										background-color: #F8F8F8;
 									}
 									.margen{
 										padding: 50px;
@@ -363,7 +363,7 @@ Favor revisar los direccionamientos
 										color: black;
 									}
 
-									input{
+									.descarga{
 										width: 50%;
 										cursor: pointer;
 										display: block;
@@ -373,14 +373,14 @@ Favor revisar los direccionamientos
 										background-image: linear-gradient(to right, #325ebe, #3dd338, #e7eb26);
 										background-size: 200%;
 										font-size: 1rem;
-										color: #fff;
 										transition: .5s;
 										font-family: "Poppins", sans-serif;
 										padding: 12px;
-										margin: 50px 110px 10px 130px;
+										margin: 50px 100px 10px 130px;
+										text-align: center;
 									}
-									
-									input:hover{
+
+									.descarga:hover{
 										background-position: right;
 									}
 
@@ -389,52 +389,34 @@ Favor revisar los direccionamientos
 								</head>
 								<body>
 								<div class="carnet">
-								<div class="margen" id="codigo">
-									<img class ="logo" src="https://i.ibb.co/7vwFLtz/Logo-negro.png" alt="Logo-negro">
+									<div class="margen" id="codigo">
+										<img class ="logo" src="https://i.ibb.co/7vwFLtz/Logo-negro.png" alt="Logo-negro">
+										<div class="mensaje">
+											<h2>¡Bienvenido '.$nombre.'!</h2>
+											<p>Ahora formas parte del Sistema Informático para el Control de Entradas y Salidas de Vehículos - Parqueadero SENA.</p><br>
+											<p>Con el siguiente código de barras podrás ingresar tu vehículo automotor o no automotor al parqueadero del Centro de Industria y la Construcción, Regional Tolima, pero recuerda cumplir con todos los requisitos y documentos para el registro de tu vehículo.</p>
 
-									<div class="mensaje">
-										<h2>¡ Bienvenido '.$nombre.'!</h2>
-										<p>Ahora formas parte del Sistema Informático para el Control de Entradas y Salidas de Vehículos - Parqueadero SENA.</p><br>
-										<p>Con el siguiente código de barras podrás ingresar tu vehículo automotor o no automotor al parqueadero del Centro de Industria y la Construcción, Regional Tolima, pero recuerda cumplir con todos los requisitos y documentos para el registro de tu vehículo.</p>
+											<img  alt="Barcode Generator TEC-IT" src="https://barcode.tec-it.com/barcode.ashx?data='.$documento.'"/>
 
-										<img  alt="Barcode Generator TEC-IT" src="https://barcode.tec-it.com/barcode.ashx?data='.$documento.'"/>
+											<div class="info_registro">
+												<h4>Requisitos Necesarios: </h4>
+												<ol>
+													<li>Tener algún cargo en dicha institución (aprendiz, instructor, administrativo, etc.) y en estado activo.</li>
+												</ol>
+												<h4>Documentos:</h4>
+												<ol>
+													<li>Tarjeta de propiedad del vehículo a registrar (Formato PDF)</li>
+													<li>Imagen del vehículo a registrar. (Formato .jpeg/.jpg/.png/)</li>
+												</ol>
+											</div>
 
-										<div class="info_registro">
-											<h4>Requisitos Necesarios: </h4>
-											<ol>
-												<li>Tener algun cargo en dicha institución(aprendiz, instuctor, administrativo, ets)</li>
-												<li>Portar carnet institucional.</li>
-											</ol>
-											<h4>Documentos:</h4>
-											<ol>
-												<li>Tarjeta de propiedad del vehiculo a registrar (Formato PDF)</li>
-												<li>Imagen del vehiculo a registrar. (Formato JPG)</li>
-											</ol>
-										</div>
-
-										<div class="descarga">
-											<input type="button" value="Descargar Código de Barras" class="fas fa-file-pdf" onclick="imprimir()">
+											<div class="descarga">
+												<a style="color: white; text-decoration: none;" download href="https://barcode.tec-it.com/barcode.ashx?data='.$documento.'">Descargar Código de Barras</a>
+											</div>
 										</div>
 									</div>
-									
-								</div>
-								
 								</div>
 
-								<script>
-									function imprimir(){
-										var mywindow = window.open("", "PRINT", "height=1000,width=900", );
-										mywindow.document.write("<html><head>");
-										mywindow.document.write("</head><body>");
-										mywindow.document.write(document.querySelector("#codigo").innerHTML);
-										mywindow.document.write("</body></html>");
-										mywindow.document.close(); 
-										mywindow.focus(); 
-										mywindow.print();
-										mywindow.close();
-										return true;
-									}
-								</script>
 								</body>
 								</html>';
 
