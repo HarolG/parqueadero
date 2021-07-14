@@ -128,9 +128,9 @@
 						<i class="far fa-question-circle"></i>
 					</a>
 				</li>
-                <a class="pull-left links" style="width: 250px;" href="http://centrodeindustria.blogspot.com">Centro de Industria y Construcción</a>   
+                <a class="pull-left links" style="width: 250px;" target="_blanck" href="http://centrodeindustria.blogspot.com">Centro de Industria y Construcción</a>   
                
-                <a class="pull-left links" style="width: 170px;"  href="http://oferta.senasofiaplus.edu.co/sofia-oferta/">Portal de Sofia Plus</a>
+                <a class="pull-left links" style="width: 170px;" target="_blanck" href="http://oferta.senasofiaplus.edu.co/sofia-oferta/">Portal de Sofia Plus</a>
 
             </ul>    
 		</nav>
@@ -147,7 +147,7 @@
                         <div class="infoZonas">
                         <?php
                             while ($resul2 = mysqli_fetch_array($zonas)) {
-                                $cupos_libres = $mysqli -> query ("SELECT * FROM detalle_cupos WHERE id_zona = '$resul2[id_zona]' AND id_estado_cupo = '1'");
+                                $cupos_libres = $mysqli -> query ("SELECT * FROM detalle_cupos WHERE id_zona = '$resul2[id_zona]' AND id_estado = '1'");
                                 $resul_cupos = $cupos_libres->num_rows;
                                 
                                 echo "
@@ -180,9 +180,9 @@
                         </select>&nbsp;
 
                         <strong style="color:black;">Desde: </strong>
-                        <input type="date" name="desde" required>&nbsp;
+                        <input type="date" name="desde" id="fechaIni" required>&nbsp;
                         <strong style="color:black;">Hasta: </strong>
-                        <input type="date" name="hasta" required>
+                        <input type="date" name="hasta" id="fechaFin" required>
                         <!-- 
                             <strong style="color:black;">Reporte de: </strong>
                             <select id='reporte' class='reporte' name='reporte'>
@@ -205,123 +205,131 @@
                     $tip_zona = $_POST['tipoZona'];
                     $desde = $_POST['desde'];
                     $hasta = $_POST['hasta'];
-
-                    //tipo de zona que desea ver
-                    if($tip_zona == 0){
-                    //ver todas las zonas
-                        $entradas = $mysqli -> query ("SELECT vehiculo.placa, usuario.documento, usuario.nombre, usuario.apellido,usuario.celular, registro_parqueadero.hora,   registro_parqueadero.hora_salida, registro_parqueadero.fecha 
-                                                    FROM usuario, vehiculo, registro_parqueadero 
-                                                    WHERE usuario.documento = vehiculo.documento AND vehiculo.placa = registro_parqueadero.placa AND registro_parqueadero.fecha Between '$desde' And '$hasta'");
-                                            
-                    }else {
-                        $entradas = $mysqli -> query ("SELECT vehiculo.placa, usuario.documento, usuario.nombre, usuario.apellido,usuario.celular, registro_parqueadero.hora,registro_parqueadero.hora_salida, registro_parqueadero.fecha
-                                                    FROM usuario, vehiculo, registro_parqueadero 
-                                                    WHERE usuario.documento = vehiculo.documento AND vehiculo.placa = registro_parqueadero.placa AND registro_parqueadero.id_zona = '$tip_zona' and registro_parqueadero.fecha Between '$desde' And '$hasta'");
+                    
+                    /* Validar campos tipo date */
+                    if ($hasta <= $desde){
+                        echo '<script type="text/javascript">
+                                alert("La fecha final debe ser mayor a la fecha inicial, por favor verifique las fechas");
+                            </script>';
                     }
-
-                   
-                    $resul = $entradas->num_rows;
-                    if ($resul > 0)
-                    {
-                        $tabla= 
-                        '<div class="repo" >
-                            <div class="tabla" id ="tabla">
-                            <table>
-                            <thead>
-                                <tr>
-                                    <th>Placa</th>
-                                    <th>Doc. Propietario</th>
-                                    <th>Nom. Propietario</th>
-                                    <th>Tel</th>
-                                    <th>Fecha</th>
-                                    <th>H. Ingreso</th>
-                                    <th>H. Salida</th>
-                                    <th>H. Estadia</th>
-                                </tr>
-                            </thead>';
-                    
-                        while($fila = mysqli_fetch_array($entradas))
-                        {
-                        $placa = $fila['placa'];
-                        
-                        $tabla.=
-                            " <tbody>
-                                <tr>
-                                    <td>$placa</td>
-                                    <td>".$fila['documento']."</td>
-                                    <td>".$fila['nombre']." ".$fila['apellido']." </td>
-                                    <td>".$fila['celular']."</td>
-                                    <td>".$fila['fecha']."</td>
-                                    <td>".$fila['hora']."</td>";
-
-                                    // Validar si el vehiculo ya salio del parqueadero
-                                    $salida = $mysqli -> query ("SELECT * FROM detalle_cupos WHERE placa = '$placa'");
-                                   
-                                    // Variable para hora de entrada del vehiculo
-                                    $h_entrada = $fila['hora'];
-                                    $resu = $salida->num_rows;
-                                    if ($resu == 1){
-
-                                        $hora1 = new DateTime($h_entrada);//Hora de entrada
-                                        $hora2 = new DateTime(date("H:i:s"));//Hora de actual
-                                        
-                                        //rango de horas dentro del parqueadero
-                                        $intervalo = $hora1->diff($hora2);
-                                        $tiempoR = $intervalo->format('%H:%i:%s');
-                                        $tabla.= "<td>En el Parqueadero</td>
-                                                <td>$tiempoR</td>";
-
-                                        
-                                    }else{
-                                        
-                                        $h_salida = $fila['hora_salida'];
-                    
-                                        $hora1 = new DateTime($h_entrada);//Hora de entrada
-                                        $hora2 = new DateTime($h_salida);//Hora de salida
-                    
-                                        //rango de horas dentro del parqueadero
-                                        $intervalo = $hora2->diff($hora1);
-                                        $tiempoR = $intervalo->format('%H:%i:%s');
-                                        $tabla.= "<td>$h_salida</td>
-                                                <td>$tiempoR</td>";
-                                        
-                                    }
-                        $tabla.='</tr>
-                                </tbody>
-                                        ';
-                    
+                    else{
+                        //tipo de zona que desea ver
+                        if($tip_zona == 0){
+                        //ver todas las zonas
+                            $entradas = $mysqli -> query ("SELECT vehiculo.placa, usuario.documento, usuario.nombre, usuario.apellido,usuario.celular, registro_parqueadero.hora,   registro_parqueadero.hora_salida, registro_parqueadero.fecha 
+                                                        FROM usuario, vehiculo, registro_parqueadero, detalle_vehiculo 
+                                                        WHERE usuario.documento = detalle_vehiculo.documento AND vehiculo.placa = detalle_vehiculo.placa AND detalle_vehiculo.id_deta_vehiculo = registro_parqueadero.id_deta_vehiculo AND registro_parqueadero.fecha Between '$desde' AND '$hasta'");
+                                                
+                        }else {
+                            $entradas = $mysqli -> query ("SELECT vehiculo.placa, usuario.documento, usuario.nombre, usuario.apellido,usuario.celular, registro_parqueadero.hora,   registro_parqueadero.hora_salida, registro_parqueadero.fecha 
+                            FROM usuario, vehiculo, registro_parqueadero, detalle_vehiculo 
+                            WHERE usuario.documento = detalle_vehiculo.documento AND vehiculo.placa = detalle_vehiculo.placa AND detalle_vehiculo.id_deta_vehiculo = registro_parqueadero.id_deta_vehiculo AND registro_parqueadero.id_zona = '$tip_zona' AND registro_parqueadero.fecha Between '$desde' AND '$hasta'");
                         }
 
-                    //Contenedor para mostrar la cantidad de registros de la consulta entradas linea 194 
-                        $tabla.="   </table></div>
-                                </div>
-                                
-                                <div class='numVehi' id= 'numVehi'>
-                                    <h2>N° DE VEHICULOS INGRESADOS</h2>";
-                                    if($tip_zona == 0){
-                                        $tabla.="<strong class='num'>$resul</strong><img src='../../../img/logo.png' class='logo2'>";
-                                    }
-                                    elseif($tip_zona == 1){
-                                        $tabla.="<i class='fas fa-car' style='font-size:65px;'><strong>$resul</strong></i>";
-                                    }
-                                    elseif($tip_zona == 2){
-                                        $tabla.="<i class='fas fa-motorcycle' style='font-size:65px;'><strong>$resul</strong></i>";
-                                    }else{
-                                        $tabla.="<i class='fas fa-biking' style='font-size:65px;'><strong>$resul</strong></i>";
-                                    }
-                                     
-                                $tabla.="</div> ";
-                                } 
-                                // Si la consulta entradas (linea 194) no arrojó ningun resultado
-                                else
-                                    {
-                                        $tabla="<i id='error' class='fas fa-exclamation-triangle'  style='font-size:65px;'></i>
-                                        <h3 class='sinDatos'>No se encontraron coincidencias con sus criterios de búsqueda.</h3>
-                                        ";
-                                    }
-                        echo $tabla;
+                    
+                        $resul = $entradas->num_rows;
+                        if ($resul > 0)
+                        {
+                            $tabla= 
+                            '<div class="repo" >
+                                <div class="tabla" id ="tabla">
+                                <table>
+                                <thead>
+                                    <tr>
+                                        <th>Placa</th>
+                                        <th>Doc. Propietario</th>
+                                        <th>Nom. Propietario</th>
+                                        <th>Tel</th>
+                                        <th>Fecha</th>
+                                        <th>H. Ingreso</th>
+                                        <th>H. Salida</th>
+                                        <th>H. Estadia</th>
+                                    </tr>
+                                </thead>';
+                        
+                            while($fila = mysqli_fetch_array($entradas))
+                            {
+                            $placa = $fila['placa'];
+                            
+                            $tabla.=
+                                " <tbody>
+                                    <tr>
+                                        <td>$placa</td>
+                                        <td>".$fila['documento']."</td>
+                                        <td>".$fila['nombre']." ".$fila['apellido']." </td>
+                                        <td>".$fila['celular']."</td>
+                                        <td>".$fila['fecha']."</td>
+                                        <td>".$fila['hora']."</td>";
+
+                                        // Validar si el vehiculo ya salio del parqueadero
+                                        $salida = $mysqli -> query ("SELECT * FROM detalle_cupos WHERE placa = '$placa'");
+                                    
+                                        // Variable para hora de entrada del vehiculo
+                                        $h_entrada = $fila['hora'];
+                                        $resu = $salida->num_rows;
+                                        if ($resu == 1){
+
+                                            $hora1 = new DateTime($h_entrada);//Hora de entrada
+                                            $hora2 = new DateTime(date("H:i:s"));//Hora de actual
+                                            
+                                            //rango de horas dentro del parqueadero
+                                            $intervalo = $hora1->diff($hora2);
+                                            $tiempoR = $intervalo->format('%H:%i:%s');
+                                            $tabla.= "<td>En el Parqueadero</td>
+                                                    <td>$tiempoR</td>";
+
+                                            
+                                        }else{
+                                            
+                                            $h_salida = $fila['hora_salida'];
+                        
+                                            $hora1 = new DateTime($h_entrada);//Hora de entrada
+                                            $hora2 = new DateTime($h_salida);//Hora de salida
+                        
+                                            //rango de horas dentro del parqueadero
+                                            $intervalo = $hora2->diff($hora1);
+                                            $tiempoR = $intervalo->format('%H:%i:%s');
+                                            $tabla.= "<td>$h_salida</td>
+                                                    <td>$tiempoR</td>";
+                                            
+                                        }
+                            $tabla.='</tr>
+                                    </tbody>
+                                            ';
+                        
+                            }
+
+                        //Contenedor para mostrar la cantidad de registros de la consulta entradas linea 194 
+                            $tabla.="   </table></div>
+                                    </div>
+                                    
+                                    <div class='numVehi' id= 'numVehi'>
+                                        <h2>N° DE VEHICULOS INGRESADOS</h2>";
+                                        if($tip_zona == 0){
+                                            $tabla.="<strong class='num'>$resul</strong><img src='../../../img/logo.png' class='logo2'>";
+                                        }
+                                        elseif($tip_zona == 1){
+                                            $tabla.="<i class='fas fa-car' style='font-size:65px;'><strong>$resul</strong></i>";
+                                        }
+                                        elseif($tip_zona == 2){
+                                            $tabla.="<i class='fas fa-motorcycle' style='font-size:65px;'><strong>$resul</strong></i>";
+                                        }else{
+                                            $tabla.="<i class='fas fa-biking' style='font-size:65px;'><strong>$resul</strong></i>";
+                                        }
+                                        
+                                    $tabla.="</div> ";
+                                    } 
+                                    // Si la consulta entradas (linea 194) no arrojó ningun resultado
+                                    else
+                                        {
+                                            $tabla="<i id='error' class='fas fa-exclamation-triangle'  style='font-size:65px;'></i>
+                                            <h3 class='sinDatos'>No se encontraron coincidencias con sus criterios de búsqueda.</h3>
+                                            ";
+                                        }
+                            echo $tabla;
+                        }
                     }
-                ?>
+                    ?>
                 
                 <div class="btn-group acciones" id="acciones">
                     <div class="btn btn-outline-danger btnImprimir" onclick="imprimir()">
