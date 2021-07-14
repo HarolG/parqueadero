@@ -17,15 +17,16 @@
         $suma = $resultado['cantidad_cupos_bd'] + $nom_cupo;
 
         for ($i = $resultado['cantidad_cupos_bd']; $i < $suma; $i++){
-            $sqli = "INSERT INTO detalle_cupos (id_deta_cupos, id_zona, placa, nombre_cupo, id_estado_cupo) 
+            $sqli = "INSERT INTO detalle_cupos (id_deta_cupos, id_zona, placa, nombre_cupo, id_estado) 
                      VALUES (NULL, '$zona', NULL, '$i', '$est_cupo')";
             $query = mysqli_query($mysqli, $sqli);
 
             if ($query) {
                 echo'<script type="text/javascript">
-                        alert("Se creo el cupo correctamente");
-                        window.location.href="../zona.php";
+                    alert("Se ha creado el cupo");
+                    window.location.href="../zona.php";
                     </script>';
+                    // header("Location: ../zona.php");
             } else {
                 echo '<script type="text/javascript">
                         alert("No se creo el cupo");
