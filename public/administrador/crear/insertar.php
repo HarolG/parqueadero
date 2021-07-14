@@ -8,19 +8,22 @@
         $modelo = $_POST['modelo'];
         $marca = $_POST['marca'];
         $vehiculo = $_POST['vehiculo'];
-        $doc = $_POST['doc'];
         $color = $_POST['color'];
         $anota = $_POST['anotaciones'];
         $tarjeta = $_POST["tarjeta"];
         $foto = $_POST["vehic"];
+        $doc = $_POST['doc'];
         
         $fichero_subido = $dir_subida . basename($_FILES['tarjeta']['name']);
         $fichero_subido = $dir_subida . basename($_FILES['vehic']['name']);
         
         //Hacemos la consulta para que me seleccione los datos en la BD y valide
-        $consul = "INSERT INTO vehiculo (placa, id_modelo, id_marca, id_tip_vehiculo, documento, id_color, anotaciones, foto, Tarjeta_Prop) 
-        VALUES ('$placa', '$modelo', '$marca', '$vehiculo', '$doc', '$color', '$anota', '$foto', '$tarjeta')";
+        $consul = "INSERT INTO vehiculo (placa, id_modelo, id_marca, id_tip_vehiculo, id_color, anotaciones, foto, Tarjeta_Prop) 
+        VALUES ('$placa', '$modelo', '$marca', '$vehiculo', '$color', '$anota', '$foto', '$tarjeta')";
+        $consulta = "INSERT INTO detalle_vehiculo (placa, documento) 
+        VALUES ('$placa', '$doc')";
         $query = mysqli_query($mysqli, $consul);
+        $query = mysqli_query($mysqli,$consulta);
 
         if(!$query){
             echo '<script> alert ("Error al registrarlo");</script>';
@@ -138,3 +141,6 @@ require '../../../php/conexion.php';
             echo '<script> window.location="crearusu.php" </script>';
         }
 ?>
+
+
+        

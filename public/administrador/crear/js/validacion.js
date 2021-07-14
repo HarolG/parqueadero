@@ -81,7 +81,7 @@ function enviarFormulario(){
         alert("Por favor, Seleccione el Color del Vehiculo");
         return false;    
     };       
-}
+};
 
 
 function fileValidation(){
@@ -105,21 +105,21 @@ function fileValidation(){
 }
 
 function fileValidation(){
-    var fileInput = document.getElementById('imagen');
-    var filePath = fileInput.value;
-    var allowedExtensions = /(.jpg|.jpeg|.png|.gif)$/i;
-    if(!allowedExtensions.exec(filePath)){
+    var fileinput = document.getElementById('imagen');
+    var filepath = fileinput.value;
+    var Extensions = /(.jpg|.jpeg|.png|.gif)$/i;
+    if(!Extensions.exec(filepath)){
         alert('Por favor, seleccione archivos .jpeg/.jpg/.png/.gif only.');
-        fileInput.value = '';
+        fileinput.value = '';
         return false;
     }else{
         //Image preview
-        if (fileInput.files && fileInput.files[0]) {
+        if (fileinput.files && fileinput.files[0]) {
             var reader = new FileReader();
             reader.onload = function(e) {
                 document.getElementById('vehic').innerHTML = '<img src="'+e.target.result+'"/>';
             };
-            reader.readAsDataURL(fileInput.files[0]);
+            reader.readAsDataURL(fileinput.files[0]);
         }
     }
 }
