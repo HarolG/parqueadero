@@ -31,6 +31,7 @@ $(document).ready(function () {
         const postData = {
             id_zona: $("#salida_idZona").val(),
             placa: $('#salida_placa').val(),
+            documento: $('#salida_documento').val(),
             nombre_cupo: $('#salida_cupo').val(),
             nom_estado_cupo: $('#salida_nomEstadoCupo').val(),
             nom_tip_zona: $('#salida_nomTipZona').val(),

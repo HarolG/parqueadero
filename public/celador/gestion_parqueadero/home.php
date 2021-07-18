@@ -30,11 +30,12 @@
         if(isset($_POST['inputDetaCupos'])) {
             $id_deta_cupos = $_POST['inputDetaCupos'];
 
-            $sql = "SELECT detalle_cupos.id_deta_cupos, zona_parqueo.id_zona, detalle_cupos.placa, detalle_cupos.nombre_cupo, estado.nom_estado, tipo_zona.nom_tip_zona FROM detalle_cupos, zona_parqueo, estado, tipo_zona  WHERE detalle_cupos.id_zona = zona_parqueo.id_zona AND detalle_cupos.id_estado = estado.id_estado AND zona_parqueo.id_tip_zona = tipo_zona.id_tip_zona AND id_deta_cupos = '$id_deta_cupos'";
+            $sql = "SELECT detalle_cupos.id_deta_cupos, zona_parqueo.id_zona, detalle_cupos.id_deta_vehiculo, detalle_cupos.nombre_cupo, estado.nom_estado, tipo_zona.nom_tip_zona, detalle_vehiculo.documento, detalle_vehiculo.placa FROM detalle_cupos LEFT JOIN zona_parqueo ON detalle_cupos.id_zona = zona_parqueo.id_zona LEFT JOIN estado ON estado.id_estado = detalle_cupos.id_estado LEFT JOIN tipo_zona ON tipo_zona.id_tip_zona = zona_parqueo.id_tip_zona LEFT JOIN detalle_vehiculo ON detalle_vehiculo.id_deta_vehiculo = detalle_cupos.id_deta_vehiculo WHERE detalle_cupos.id_deta_cupos = '$id_deta_cupos'";
             $query = mysqli_query($mysqli, $sql);
             $resultado = mysqli_fetch_assoc($query);
 
             $id_zona = $resultado['id_zona'];
+            $documento = $resultado['documento'];
             $placa = $resultado['placa'];
             $nombre_cupo = $resultado['nombre_cupo'];
             $nom_estado_cupo = $resultado['nom_estado'];
@@ -57,6 +58,10 @@
                     <div class="form-group">
                         <label for="salida_placa">Placa del vehiculo:</label>
                         <input type="text" id="salida_placa" class="form-control" value="<?php echo $placa?>" disabled>
+                    </div>
+                    <div class="form-group">
+                        <label for="salida_placa">Documento del propietario:</label>
+                        <input type="text" id="salida_documento" class="form-control" value="<?php echo $documento?>" disabled>
                     </div>
                     <div class="form-group">
                         <label for="salida_cupo">El vehiculo está parqueado en el cupo:</label>
