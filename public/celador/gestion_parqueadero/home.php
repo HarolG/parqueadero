@@ -42,46 +42,78 @@
             $nom_tip_zona = $resultado['nom_tip_zona'];
 
     ?>
-        <div class="prueba3">
-            <div class="prueba4">
-                <form method="POST" class="card wrapper" id="formSalida">
-                    <h4>Formulario de Salida</h4>
-                    <div class="form-group">
-                        <label for="salida_idZona">Vehiculo parqueado en la zona:</label>
-                        <input type="text" id="salida_idZona" class="form-control" value="Zona <?php echo $id_zona?>" disabled>
-                        <input type="hidden" id="salida_deta_cupos" value="<?php echo $id_deta_cupos; ?>">
-                    </div>
-                    <div class="form-group">
-                        <label for="salida_nomTipZona">Tipo de zona:</label>
-                        <input type="text" id="salida_nomTipZona" class="form-control" value="<?php echo $nom_tip_zona?>" disabled>
-                    </div>
-                    <div class="form-group">
-                        <label for="salida_placa">Placa del vehiculo:</label>
-                        <input type="text" id="salida_placa" class="form-control" value="<?php echo $placa?>" disabled>
-                    </div>
-                    <div class="form-group">
-                        <label for="salida_placa">Documento del propietario:</label>
-                        <input type="text" id="salida_documento" class="form-control" value="<?php echo $documento?>" disabled>
-                    </div>
-                    <div class="form-group">
-                        <label for="salida_cupo">El vehiculo está parqueado en el cupo:</label>
-                        <input type="text" id="salida_cupo" class="form-control" value="Cupo <?php echo $nombre_cupo?>" disabled>
-                    </div>
-                    <div class="form-group">
-                        <label for="salida_nomEstadoCupo">Estado del cupo:</label>
-                        <input type="text" id="salida_nomEstadoCupo" class="form-control" value="<?php echo $nom_estado_cupo?>" disabled>
-                    </div>
-                    <div class="form-group">
-                        <button type="submit" class="btn btn-block btn-primary">Salvar Salida</button>
-                        <a href="home.php" type="submit" class="btn btn-block btn-danger">Cancelar</a>
-                    </div>
-                </form>
-            </div>
+    <div class="prueba3">
+        <div class="prueba4">
+            <form method="POST" class="card wrapper" id="formSalida">
+                <h4>Formulario de Salida</h4>
+                <div class="form-group">
+                    <label for="salida_idZona">Vehiculo parqueado en la zona:</label>
+                    <input type="text" id="salida_idZona" class="form-control" value="Zona <?php echo $id_zona?>"
+                        disabled>
+                    <input type="hidden" id="salida_deta_cupos" value="<?php echo $id_deta_cupos; ?>">
+                </div>
+                <div class="form-group">
+                    <label for="salida_nomTipZona">Tipo de zona:</label>
+                    <input type="text" id="salida_nomTipZona" class="form-control" value="<?php echo $nom_tip_zona?>"
+                        disabled>
+                </div>
+                <div class="form-group">
+                    <label for="salida_placa">Placa del vehiculo:</label>
+                    <input type="text" id="salida_placa" class="form-control" value="<?php echo $placa?>" disabled>
+                </div>
+                <div class="form-group">
+                    <label for="salida_placa">Documento del propietario:</label>
+                    <input type="text" id="salida_documento" class="form-control" value="<?php echo $documento?>"
+                        disabled>
+                </div>
+                <div class="form-group">
+                    <label for="salida_cupo">El vehiculo está parqueado en el cupo:</label>
+                    <input type="text" id="salida_cupo" class="form-control" value="Cupo <?php echo $nombre_cupo?>"
+                        disabled>
+                </div>
+                <div class="form-group">
+                    <label for="salida_nomEstadoCupo">Estado del cupo:</label>
+                    <input type="text" id="salida_nomEstadoCupo" class="form-control"
+                        value="<?php echo $nom_estado_cupo?>" disabled>
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-block btn-primary">Salvar Salida</button>
+                    <a href="home.php" type="submit" class="btn btn-block btn-danger">Cancelar</a>
+                </div>
+            </form>
         </div>
+    </div>
     <?php
         }
     ?>
-    
+
+<div class="prueba3">
+        <div class="prueba4">
+            <form method="POST" class="card wrapper" id="formSalida">
+                <h4>Formulario de Salida</h4>
+                <div class="form-group">
+                    <label for="salida_idZona">Vehiculo parqueado en la zona:</label>
+                    <input type="text" id="salida_idZona" class="form-control" value="Zona <?php echo $id_zona?>"
+                        disabled>
+                    <input type="hidden" id="salida_deta_cupos" value="<?php echo $id_deta_cupos; ?>">
+                </div>
+                <div class="form-group">
+                    <label for="salida_nomTipZona">Tipo de zona:</label>
+                    <input type="text" id="salida_nomTipZona" class="form-control" value="<?php echo $nom_tip_zona?>"
+                        disabled>
+                </div>
+                <div class="form-group">
+                    <label for="salida_placa">Placa del vehiculo:</label>
+                    <input type="text" id="salida_placa" class="form-control" value="<?php echo $placa?>" disabled>
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-block btn-primary">Salvar Salida</button>
+                    <a href="home.php" type="submit" class="btn btn-block btn-danger">Cancelar</a>
+                </div>
+            </form>
+        </div>
+    </div>
+
     <!-- SideBar -->
     <section class="full-box cover dashboard-sideBar">
         <div class="full-box dashboard-sideBar-bg btn-menu-dashboard"></div>
@@ -94,7 +126,7 @@
             <!-- SideBar User info -->
             <div class="full-box dashboard-sideBar-UserInfo">
                 <figure class="full-box">
-                <?php
+                    <?php
 
                 $sql = "SELECT * FROM usuario WHERE id_tip_usu = 3";
                 $result = mysqli_query($mysqli,$sql);
@@ -104,7 +136,7 @@
                     $ruta_img = $row2["foto"];
                 }
                 ?>
-                <img src="../perfil/fotos/<?php echo $ruta_img; ?>" class="imagen" alt="">
+                    <img src="../perfil/fotos/<?php echo $ruta_img; ?>" class="imagen" alt="">
                     <!-- <img src="../../../img/foto_perfil.png" alt="UserIcon"> -->
                     <div class="text-center text-titles">
                         <p class="profile_welcome">Bienvenido,</p>
@@ -214,9 +246,18 @@
                                         <option selected>Seleccione el cupo</option>
                                     </select>
                                 </div>
-                                <button type="submit" class="btn btn-primary btn-block text-center boton">salvar
+                                <button type="submit" class="btn btn-primary btn-block text-center boton">Salvar
                                     registro</button>
                             </form>
+                        </div>
+                    </div>
+                    <div class="card" style="margin-top: 20px">
+                        <div class="card-body">
+                            <h5 class="card-title">Escanee la entrada o salida del parqueadero</h5>
+                            <div class="container-qr">
+                                <i class="fa fa-qrcode" aria-hidden="true"></i>
+                                <button type="submit" class="btn btn-primary btn-block text-center boton">Escanear Código</button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -292,14 +333,14 @@
                     </div>
 
                     <!-- Button trigger modal -->
-            
+
 
                 </div>
             </div>
         </div>
     </section>
 
-	<!-- Dialog help -->
+    <!-- Dialog help -->
     <div class="modal fade" tabindex="-1" role="dialog" id="Dialog-Help">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -310,11 +351,13 @@
                 </div>
                 <div class="modal-body">
                     <p>
-                       Hola querido usuario, Bienvenido!! <br>
-                       Aqui encontraras los manuales que te podran ayudar a saber el funcionamiento de nuestra pagina y el manual es el siguiente: <br>
+                        Hola querido usuario, Bienvenido!! <br>
+                        Aqui encontraras los manuales que te podran ayudar a saber el funcionamiento de nuestra pagina y
+                        el manual es el siguiente: <br>
 
-                       
-                       <a href="https://drive.google.com/file/d/1dfh-e8XFyhJfa4qRkmCpH0x2e9evBs34/view?usp=sharing">Manual tecnico</a>
+
+                        <a href="https://drive.google.com/file/d/1dfh-e8XFyhJfa4qRkmCpH0x2e9evBs34/view?usp=sharing">Manual
+                            tecnico</a>
                     </p>
                 </div>
                 <div class="modal-footer">

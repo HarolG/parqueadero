@@ -15,6 +15,7 @@
             $_SESSION['nom'] = $fila['nombre'];
             $_SESSION['ape'] = $fila['apellido'];
             $_SESSION['pass'] = $fila['clave'];
+            $_SESSION['doc'] = $fila['documento'];
             $nom = $fila['nombre'];
             $ape = $fila['apellido'];
             $tip = $fila['id_tip_usu'];

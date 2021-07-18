@@ -309,6 +309,7 @@
                     <h4 class="modal-title">Ayuda!!</h4>
                 </div>
                 <div class="modal-body">
+					<p>Documento del que ingresó: <?php echo $_SESSION['doc']; ?></p>
                     <p>
                        Hola querido usuario, Bienvenido!! <br>
                        Aqui encontraras los manuales que te podran ayudar a saber el funcionamiento de nuestra pagina y los manuales son los siguientes: <br>
