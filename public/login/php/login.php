@@ -30,9 +30,14 @@
                     $quer = mysqli_query($mysqli, $sqli);
     
                     header("Location: ../../celador/home/home.php");
-                } else if ($_SESSION['tipo'] == 2 && $estadousu == 2) {
+                } else if ($_SESSION['tipo'] == 2 && $estadousu == 7) {
                     echo '<script type="text/javascript">
                             alert("Este usuario esta inhabilitado");
+                            window.location.href="../login.html";
+                        </script>';
+                } else if ($_SESSION['tipo'] == 2 && $estadousu == 8) {
+                    echo '<script type="text/javascript">
+                            alert("Este usuario esta con una incapacidad");
                             window.location.href="../login.html";
                         </script>';
                 }

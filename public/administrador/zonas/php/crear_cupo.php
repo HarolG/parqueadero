@@ -17,7 +17,7 @@
         $suma = $resultado['cantidad_cupos_bd'] + $nom_cupo;
 
         for ($i = $resultado['cantidad_cupos_bd']; $i < $suma; $i++){
-            $sqli = "INSERT INTO detalle_cupos (id_deta_cupos, id_zona, placa, nombre_cupo, id_estado) 
+            $sqli = "INSERT INTO detalle_cupos (id_deta_cupos, id_zona, id_deta_vehiculo, nombre_cupo, id_estado) 
                      VALUES (NULL, '$zona', NULL, '$i', '$est_cupo')";
             $query = mysqli_query($mysqli, $sqli);
 
