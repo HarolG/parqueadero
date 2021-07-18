@@ -20,7 +20,7 @@
                     'id_zona' => $row['id_zona'],
                     'nombre_cupo' => $row['nombre_cupo'],
                     'estado_cupo' => $row['nom_estado'],
-                    'placa' => $row['placa']
+                    'placa' => $row['id_deta_vehiculo']
                 );
             }
     
