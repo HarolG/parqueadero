@@ -149,8 +149,8 @@ include("../../../php/conexion.php");
             </thead>
             <tbody>
                 <?php
-                $query = "SELECT * FROM usuario, estado_usuario, tipo_usuario 
-                            WHERE usuario.id_tip_usu = tipo_usuario.id_tip_usu AND usuario.id_estado_usu = estado_usuario.id_estado_usu AND usuario.id_tip_usu = 2";
+                $query = "SELECT * FROM usuario, estado, tipo_usuario 
+                          WHERE usuario.id_tip_usu = tipo_usuario.id_tip_usu AND usuario.id_estado = estado.id_estado AND usuario.id_tip_usu = 2";
                 $result_tasks = mysqli_query($mysqli, $query);
 
                 while ($row = mysqli_fetch_assoc($result_tasks)) { ?>
@@ -160,17 +160,17 @@ include("../../../php/conexion.php");
                         <td class="body_table"><?php echo $row['apellido'] ?></td>
                         <td class="body_table"><?php echo $row['nom_tip_usu'] ?></td>
                         <?php
-                        if ($row['id_estado_usu'] == 1) {
+                        if ($row['id_estado'] == 1) {
                         ?>
-                            <td class="body_table2" id="estado"><b><?php echo $row['nom_estado_usu'] ?></b></td>
+                            <td class="body_table2" id="estado"><b><?php echo $row['nom_estado'] ?></b></td>
                         <?php
-                        } else if ($row['id_estado_usu'] == 2) {
+                        } else if ($row['id_estado'] == 2) {
                         ?>
-                            <td class="body_table3" id="estado"><b><?php echo $row['nom_estado_usu'] ?></b></td>
+                            <td class="body_table3" id="estado"><b><?php echo $row['nom_estado'] ?></b></td>
                         <?php
                         } else {
                         ?>
-                            <td class="body_table4" id="estado"><b><?php echo $row['nom_estado_usu'] ?></b></td>
+                            <td class="body_table4" id="estado"><b><?php echo $row['nom_estado'] ?></b></td>
                         <?php
                         }
                         ?>

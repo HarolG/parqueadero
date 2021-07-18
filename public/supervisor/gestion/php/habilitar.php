@@ -12,16 +12,16 @@ if(isset($_SESSION['tipo']) && isset($_SESSION['nom']) && isset($_SESSION['ape']
     $fila = mysqli_fetch_assoc($resu);
 
     if ($fila) {
-        $_SESSION['estado_usu'] = $fila['id_estado_usu'];
+        $_SESSION['estado'] = $fila['id_estado'];
 
-        if ($_SESSION['estado_usu'] == 1) {
+        if ($_SESSION['estado_usu'] == 6) {
            echo '<script type="text/javascript">
                     alert("Este usuario ya se encuentra en estado habilitado");
                     window.location.href="../index.php";
                 </script>';
         } else {
             
-            $query = "UPDATE usuario SET id_estado_usu = 1 WHERE documento = $id";
+            $query = "UPDATE usuario SET id_estado = 6 WHERE documento = $id";
             $result = mysqli_query($mysqli, $query);
             
             if ($result) {
