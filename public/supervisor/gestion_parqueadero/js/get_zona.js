@@ -1,5 +1,26 @@
 $(document).ready(function () {
 
+    $('#form_placa').blur(function (e) { 
+        $('#select_documento').html('<option selected>Seleccione el documento</option>');
+
+        let placa = $(this).val()
+
+        $.post("include/getzona.php", {placa: placa},
+            function (data) {
+                const respuesta = JSON.parse(data)
+                let template = '<option selected>Seleccione el documento</option>'
+
+                respuesta.forEach(element => {
+                    template += `
+                                    <option value="${element.id_deta_vehiculo}">${element.documento}</option>
+                                `
+                });
+
+                $('#select_documento').html(template);
+            }
+        );
+    });
+
     $('#select_tipo_zona').change(function (e) {
         $('#select_zona').html('<option selected>Seleccione la zona</option>');
         $('#select_cupo').html('<option selected>Seleccione el cupo</option>');

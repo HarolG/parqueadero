@@ -2,6 +2,24 @@
 
     include("../../../../php/conexion.php");
 
+    if(isset($_POST['placa'])) {
+        $placa = $_POST['placa'];
+        
+        $sql = "SELECT * FROM `detalle_vehiculo` WHERE `placa` = '$placa'";
+        $query = mysqli_query($mysqli, $sql);
+
+        while($row = mysqli_fetch_array($query)) {
+            $json[] = array(
+                'documento' => $row['documento'],
+                'id_deta_vehiculo' => $row['id_deta_vehiculo']
+            );
+        }
+
+        $jsonstring = json_encode($json);
+        echo $jsonstring;
+
+    }
+
     if(isset($_POST['id_tipo_zona'])) {
         $id_tipo_zona = $_POST['id_tipo_zona'];
 
@@ -22,7 +40,7 @@
     if(isset($_POST['id_zona'])) {
         $id_zona = $_POST['id_zona'];
 
-        $sql = "SELECT * FROM detalle_cupos, estado_cupo WHERE detalle_cupos.id_estado_cupo = estado_cupo.id_estado_cupo AND id_zona = '$id_zona' AND estado_cupo.nom_estado_cupo = 'Disponible'";
+        $sql = "SELECT * FROM detalle_cupos, estado WHERE detalle_cupos.id_estado = estado.id_estado AND id_zona = '$id_zona' AND estado.nom_estado = 'Disponible'";
         $query = mysqli_query($mysqli, $sql);
 
         while($row = mysqli_fetch_array($query)) {

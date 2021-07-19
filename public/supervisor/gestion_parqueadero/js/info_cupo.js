@@ -10,6 +10,7 @@ $(document).ready(function () {
 
         const postData = {
             placa: $('#form_placa').val().toUpperCase(),
+            documento: $('#select_documento').val(),
             select_tipo_zona: $('#select_tipo_zona').val(),
             select_zona: $('#select_zona').val(),
             select_cupo: $('#select_cupo').val()
@@ -30,6 +31,7 @@ $(document).ready(function () {
         const postData = {
             id_zona: $("#salida_idZona").val(),
             placa: $('#salida_placa').val(),
+            documento: $('#salida_documento').val(),
             nombre_cupo: $('#salida_cupo').val(),
             nom_estado_cupo: $('#salida_nomEstadoCupo').val(),
             nom_tip_zona: $('#salida_nomTipZona').val(),
@@ -63,7 +65,6 @@ $(document).ready(function () {
                 if (response != "La zona no tiene cupos creados") {
                     const respuesta = JSON.parse(response)
                     let template = ''
-                    let template2 = ''
 
                     respuesta.forEach(element => {
                         template += `
