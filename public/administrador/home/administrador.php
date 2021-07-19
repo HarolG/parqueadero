@@ -2,6 +2,16 @@
     include_once("../../../php/conexion.php");
 
     if(isset($_SESSION['tipo']) && isset($_SESSION['nom']) && isset($_SESSION['ape']) && isset($_SESSION['pass']) ) {
+		
+		$docu = $_SESSION['doc'];
+		$datos_usu = $mysqli -> query ("SELECT * FROM usuario WHERE documento = '$docu'");
+		$registro = mysqli_fetch_array($datos_usu);
+
+		$id_estado_pass = $registro['id_estado_pass'];
+
+		if($id_estado_pass == 10){
+			echo '<script type="text/javascript">window.location.href="php/cambioPass.php";</script>';
+		}
 
         #Consulta para obtener todos los datos de los vehiculos ingresados el día hoy
         $sql = "SELECT * FROM registro_parqueadero WHERE fecha = CURDATE() ORDER BY hora ASC";
@@ -309,7 +319,7 @@
                     <h4 class="modal-title">Ayuda!!</h4>
                 </div>
                 <div class="modal-body">
-					<p>Documento del que ingresó: <?php echo $_SESSION['doc']; ?></p>
+					<p>Documento del que ingresó: <?php echo ($docu);?></p>
                     <p>
                        Hola querido usuario, Bienvenido!! <br>
                        Aqui encontraras los manuales que te podran ayudar a saber el funcionamiento de nuestra pagina y los manuales son los siguientes: <br>

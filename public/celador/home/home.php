@@ -36,7 +36,6 @@
 
 		#En esta linea cuento el número de cupos disponibles para las motos
         $cupos_ciclas = mysqli_num_rows($query_ciclas);
-    
 
 ?>
 
@@ -116,6 +115,11 @@
 				<li>
 					<a href="../gestion_parqueadero/home.php">
 						<i class="fa fa-sign-in-alt"></i> Gestión del Parqueadero
+					</a>
+				</li>
+				<li>
+					<a href="../reportes_entradas/reportes.php">
+						<i class="fa fa-sign-in-alt"></i> Reportes de Entradas
 					</a>
 				</li>
 			</ul>

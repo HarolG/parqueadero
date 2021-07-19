@@ -286,7 +286,13 @@ Favor revisar los direccionamientos
                         $tip_docu=$_POST['tipo_documento'];
 						$tip_estado=$_POST['tipo_estado'];
                         
-                        $sql="INSERT INTO `usuario` (`documento`, `nombre`, `apellido`, `edad`, `celular`, `direccion`,`correo`, `clave`, `id_tip_usu`,`id_tip_doc`,`id_estado`) VALUES ('$documento','$nombre','$apellido','$edad','$celular','$direccion','$correo','$clave','$tip_usu','$tip_docu','$tip_estado')";
+						if($tip_usu == 1){
+							$sql="INSERT INTO `usuario` (`documento`, `codigo`, `nombre`, `apellido`, `edad`, `celular`, `direccion`,`correo`, `clave`, `id_tip_usu`,`id_tip_doc`,`id_estado`,'id_estado_pass') VALUES ('$documento', null,'$nombre','$apellido','$edad','$celular','$direccion','$correo','$clave','$tip_usu','$tip_docu','$tip_estado', 10)";
+							
+						}else{
+							$sql="INSERT INTO `usuario` (`documento`, `codigo`, `nombre`, `apellido`, `edad`, `celular`, `direccion`,`correo`, `clave`, `id_tip_usu`,`id_tip_doc`,`id_estado`,'id_estado_pass') VALUES ('$documento', NULL ,'$nombre','$apellido','$edad','$celular','$direccion','$correo','$clave','$tip_usu','$tip_docu','$tip_estado', NULL)";
+						}
+                        
                             
                         $resul=mysqli_query($mysqli,$sql);
                             
