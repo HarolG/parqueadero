@@ -30,53 +30,80 @@
         if(isset($_POST['inputDetaCupos'])) {
             $id_deta_cupos = $_POST['inputDetaCupos'];
 
-            $sql = "SELECT detalle_cupos.id_deta_cupos, zona_parqueo.id_zona, detalle_cupos.placa, detalle_cupos.nombre_cupo, estado_cupo.nom_estado_cupo, tipo_zona.nom_tip_zona FROM detalle_cupos, zona_parqueo, estado_cupo, tipo_zona WHERE detalle_cupos.id_zona = zona_parqueo.id_zona  AND detalle_cupos.id_estado_cupo = estado_cupo.id_estado_cupo AND zona_parqueo.id_tip_zona = tipo_zona.id_tip_zona AND id_deta_cupos = '$id_deta_cupos'";
+            $sql = "SELECT detalle_cupos.id_deta_cupos, zona_parqueo.id_zona, detalle_cupos.id_deta_vehiculo, detalle_cupos.nombre_cupo, estado.nom_estado, tipo_zona.nom_tip_zona, detalle_vehiculo.documento, detalle_vehiculo.placa FROM detalle_cupos LEFT JOIN zona_parqueo ON detalle_cupos.id_zona = zona_parqueo.id_zona LEFT JOIN estado ON estado.id_estado = detalle_cupos.id_estado LEFT JOIN tipo_zona ON tipo_zona.id_tip_zona = zona_parqueo.id_tip_zona LEFT JOIN detalle_vehiculo ON detalle_vehiculo.id_deta_vehiculo = detalle_cupos.id_deta_vehiculo WHERE detalle_cupos.id_deta_cupos = '$id_deta_cupos'";
             $query = mysqli_query($mysqli, $sql);
             $resultado = mysqli_fetch_assoc($query);
 
             $id_zona = $resultado['id_zona'];
+            $documento = $resultado['documento'];
             $placa = $resultado['placa'];
             $nombre_cupo = $resultado['nombre_cupo'];
-            $nom_estado_cupo = $resultado['nom_estado_cupo'];
+            $nom_estado_cupo = $resultado['nom_estado'];
             $nom_tip_zona = $resultado['nom_tip_zona'];
 
     ?>
-        <div class="prueba3">
-            <div class="prueba4">
-                <form method="POST" class="card wrapper" id="formSalida">
-                    <h4>Formulario de Salida</h4>
-                    <div class="form-group">
-                        <label for="salida_idZona">Vehiculo parqueado en la zona:</label>
-                        <input type="text" id="salida_idZona" class="form-control" value="Zona <?php echo $id_zona?>" disabled>
-                        <input type="hidden" id="salida_deta_cupos" value="<?php echo $id_deta_cupos; ?>">
-                    </div>
-                    <div class="form-group">
-                        <label for="salida_nomTipZona">Tipo de zona:</label>
-                        <input type="text" id="salida_nomTipZona" class="form-control" value="<?php echo $nom_tip_zona?>" disabled>
-                    </div>
-                    <div class="form-group">
-                        <label for="salida_placa">Placa del vehiculo:</label>
-                        <input type="text" id="salida_placa" class="form-control" value="<?php echo $placa?>" disabled>
-                    </div>
-                    <div class="form-group">
-                        <label for="salida_cupo">El vehiculo está parqueado en el cupo:</label>
-                        <input type="text" id="salida_cupo" class="form-control" value="Cupo <?php echo $nombre_cupo?>" disabled>
-                    </div>
-                    <div class="form-group">
-                        <label for="salida_nomEstadoCupo">Estado del cupo:</label>
-                        <input type="text" id="salida_nomEstadoCupo" class="form-control" value="<?php echo $nom_estado_cupo?>" disabled>
-                    </div>
-                    <div class="form-group">
-                        <button type="submit" class="btn btn-block btn-primary">Salvar Salida</button>
-                        <a href="home.php" type="submit" class="btn btn-block btn-danger">Cancelar</a>
-                    </div>
-                </form>
-            </div>
+    <div class="prueba3">
+        <div class="prueba4">
+            <form method="POST" class="card wrapper" id="formSalida">
+                <h4>Formulario de Salida</h4>
+                <div class="form-group">
+                    <label for="salida_idZona">Vehiculo parqueado en la zona:</label>
+                    <input type="text" id="salida_idZona" class="form-control" value="Zona <?php echo $id_zona?>"
+                        disabled>
+                    <input type="hidden" id="salida_deta_cupos" value="<?php echo $id_deta_cupos; ?>">
+                </div>
+                <div class="form-group">
+                    <label for="salida_nomTipZona">Tipo de zona:</label>
+                    <input type="text" id="salida_nomTipZona" class="form-control" value="<?php echo $nom_tip_zona?>"
+                        disabled>
+                </div>
+                <div class="form-group">
+                    <label for="salida_placa">Placa del vehiculo:</label>
+                    <input type="text" id="salida_placa" class="form-control" value="<?php echo $placa?>" disabled>
+                </div>
+                <div class="form-group">
+                    <label for="salida_placa">Documento del propietario:</label>
+                    <input type="text" id="salida_documento" class="form-control" value="<?php echo $documento?>"
+                        disabled>
+                </div>
+                <div class="form-group">
+                    <label for="salida_cupo">El vehiculo está parqueado en el cupo:</label>
+                    <input type="text" id="salida_cupo" class="form-control" value="Cupo <?php echo $nombre_cupo?>"
+                        disabled>
+                </div>
+                <div class="form-group">
+                    <label for="salida_nomEstadoCupo">Estado del cupo:</label>
+                    <input type="text" id="salida_nomEstadoCupo" class="form-control"
+                        value="<?php echo $nom_estado_cupo?>" disabled>
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-block btn-primary">Salvar Salida</button>
+                    <a href="home.php" type="submit" class="btn btn-block btn-danger">Cancelar</a>
+                </div>
+            </form>
         </div>
+    </div>
     <?php
         }
     ?>
-    
+
+    <div class="codigo_container-general" id="codigo_container-general">
+        <div class="codigo_container-qr">
+            <h3>Escanee el código de Barras</h3>
+            <div class="row container_qr">
+                <div id="reader" class="col-md-6"></div>
+                <div class="col-md-6">
+                    <select class="form-select btn-block" name="" id="select_codigo_vehiculo">
+                        <option value="0" selected>Seleccione el vehiculo</option>
+                    </select>
+                </div>
+            </div>
+            <div class="group-form boton_qr">
+                <div id="boton_codigo-cancelar" class="btn btn-danger btn-block">Cancelar</div>
+            </div>
+        </div>
+    </div>
+
     <!-- SideBar -->
     <section class="full-box cover dashboard-sideBar">
         <div class="full-box dashboard-sideBar-bg btn-menu-dashboard"></div>
@@ -89,7 +116,7 @@
             <!-- SideBar User info -->
             <div class="full-box dashboard-sideBar-UserInfo">
                 <figure class="full-box">
-                <?php
+                    <?php
 
                 $sql = "SELECT * FROM usuario WHERE id_tip_usu = 3";
                 $result = mysqli_query($mysqli,$sql);
@@ -99,7 +126,7 @@
                     $ruta_img = $row2["foto"];
                 }
                 ?>
-                <img src="../perfil/fotos/<?php echo $ruta_img; ?>" class="imagen" alt="">
+                    <img src="../perfil/fotos/<?php echo $ruta_img; ?>" class="imagen" alt="">
                     <!-- <img src="../../../img/foto_perfil.png" alt="UserIcon"> -->
                     <div class="text-center text-titles">
                         <p class="profile_welcome">Bienvenido,</p>
@@ -155,39 +182,27 @@
     </section>
 
     <!-- barra de menus-->
-	<section class="full-box dashboard-contentPage">
-		<!-- NavBar -->
-    <?php
-      $s2 = "SELECT * FROM mensajes WHERE leido = 1";
-      $resul2=mysqli_query($mysqli,$s2);
-      $row2=mysqli_num_rows($resul2);
+    <section class="full-box dashboard-contentPage">
+        <!-- NavBar -->
+        <nav class="full-box dashboard-Navbar">
+            <ul class="full-box list-unstyled text-right">
+                <li class="pull-left">
+                    <a href="#!" class="btn-menu-dashboard"><i class="fa fa-bars" aria-hidden="true"></i></a>
+                </li>
+                <li>
+                    <a href="#!" class="btn-modal-help">
+                        <i class="far fa-question-circle"></i>
+                    </a>
+                </li>
 
-    ?>
-		<nav class="full-box dashboard-Navbar">
-			<ul class="full-box list-unstyled text-right">
-				<li class="pull-left">
-					<a href="#!" class="btn-menu-dashboard"><i class="fa fa-bars" aria-hidden="true"></i></a>
-				</li>
-				<li>
-					<a href="#!" class="btn-Notifications-area">
-						<i class="far fa-envelope"></i>
-						<span class="badge"><?php echo $row2; ?></span>
-					</a>
-				</li>
-				<li>
-					<a href="#!" class="btn-modal-help">
-						<i class="far fa-question-circle"></i>
-					</a>
-				</li>
+                <a class="pull-left links" style="width: 250px;" href="http://centrodeindustria.blogspot.com">Centro de
+                    Industria y Construcción</a>
 
-				<a class="pull-left links" style="width: 250px;" href="http://centrodeindustria.blogspot.com">Centro de
-					Industria y Construcción</a>
+                <a class="pull-left links" style="width: 170px;"
+                    href="http://oferta.senasofiaplus.edu.co/sofia-oferta/">Portal de Sofia Plus</a>
 
-				<a class="pull-left links" style="width: 170px;"
-					href="http://oferta.senasofiaplus.edu.co/sofia-oferta/">Portal de Sofia Plus</a>
-
-			</ul>
-		</nav>
+            </ul>
+        </nav>
         <!-- Aquí va el contenido -->
         <div class="gestion_container container">
             <div class="row contenedor_general">
@@ -199,6 +214,12 @@
                                 <div class="form-group">
                                     <input type="text" id="form_placa" placeholder="Ingrese la placa del vehiculo"
                                         class="form-control" style="text-transform:uppercase">
+                                </div>
+                                <div class="form-group">
+                                    <select class="form-select btn-block" aria-label="Default select example"
+                                        id="select_documento">
+                                        <option selected>Seleccione el documento</option>
+                                    </select>
                                 </div>
                                 <div class="form-group">
                                     <select class="form-select btn-block" id="select_tipo_zona">
@@ -230,9 +251,19 @@
                                         <option selected>Seleccione el cupo</option>
                                     </select>
                                 </div>
-                                <button type="submit" class="btn btn-primary btn-block text-center boton">salvar
+                                <button type="submit" class="btn btn-primary btn-block text-center boton">Salvar
                                     registro</button>
                             </form>
+                        </div>
+                    </div>
+                    <div class="card" style="margin-top: 20px">
+                        <div class="card-body">
+                            <h5 class="card-title">Escanee la entrada o salida del parqueadero</h5>
+                            <div class="container-qr">
+                                <i class="fa fa-qrcode" aria-hidden="true"></i>
+                                <button type="submit" id="boton_codigo" class="btn btn-primary btn-block text-center boton">Escanear
+                                    Código</button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -308,59 +339,14 @@
                     </div>
 
                     <!-- Button trigger modal -->
-            
+
 
                 </div>
             </div>
         </div>
     </section>
 
-  <!-- Notifications area -->
-				
-	<section class="full-box Notifications-area">
-		<div class="full-box Notifications-bg btn-Notifications-area">
-		</div>
-		<div class="full-box Notifications-body">
-			<div class="Notifications-body-title text-titles text-center">
-				Notificaciones <i class="fas fa-times-circle btn-Notifications-area"></i>
-			</div>	
-			<div class="list-group">
-				<div class="list-group-item">
-					<div class="row-action-primary">
-						<i class="zmdi zmdi-alert-triangle"></i>
-					</div>
-					<?php
-						$notificacion ="SELECT * FROM mensajes WHERE leido = 1";
-						$resultado=mysqli_query($mysqli,$notificacion);
-                            
-                        while($row2 = mysqli_fetch_array($resultado)) {
-							
-					?>
-						
-						<div class="list-group-separator"></div>
-						<div class="list-group-item">
-							<div class="row-content">
-								<p style="font-weight:600" class="list-group-item-text"><i style="color:#FF5722; font-size: 20px;" class="fas fa-envelope-square"></i> Tienes nueva notificacion de: <?php echo $row2['de'];?></p>
-								<p style="font-weight:600" class="list-group-item-text">A la hora: <?php echo $row2['fecha'];?></p>
-							</div>
-						</div>
-						
-						
-					<?php
-						}
-					?>
-
-                    <div class="list-group-item">
-					    <a style="margin-left:40%" href="../buzon.php">VER MAS</a>
-					</div>	
-
-				</div>
-			</div>
-
-		</div>
-	</section>
-
-    	<!-- Dialog help -->
+    <!-- Dialog help -->
     <div class="modal fade" tabindex="-1" role="dialog" id="Dialog-Help">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -371,11 +357,13 @@
                 </div>
                 <div class="modal-body">
                     <p>
-                       Hola querido usuario, Bienvenido!! <br>
-                       Aqui encontraras los manuales que te podran ayudar a saber el funcionamiento de nuestra pagina y el manual es el siguiente: <br>
+                        Hola querido usuario, Bienvenido!! <br>
+                        Aqui encontraras los manuales que te podran ayudar a saber el funcionamiento de nuestra pagina y
+                        el manual es el siguiente: <br>
 
-                       
-                       <a href="https://drive.google.com/file/d/1dfh-e8XFyhJfa4qRkmCpH0x2e9evBs34/view?usp=sharing">Manual tecnico</a>
+
+                        <a href="https://drive.google.com/file/d/1dfh-e8XFyhJfa4qRkmCpH0x2e9evBs34/view?usp=sharing">Manual
+                            tecnico</a>
                     </p>
                 </div>
                 <div class="modal-footer">
@@ -390,8 +378,11 @@
 <!-- Scripts Generales -->
 
 <script src="../../../library/jquery-3.6.0.min.js"></script>
+<script src="js/html5-qrcode.min.js"></script>
+
 <script src="js/get_zona.js"></script>
 <script src="js/info_cupo.js"></script>
+<script src="js/escaner.js"></script>
 
 
 <!--====== Scripts pagina ¡¡NO CAMBIAR!! -->

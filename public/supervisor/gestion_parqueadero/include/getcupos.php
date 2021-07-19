@@ -7,7 +7,7 @@
         $tipo_zona = $_POST['tipoZona'];
         $zona = $_POST['zona'];
 
-        $sql = "SELECT * FROM detalle_cupos, estado_cupo WHERE detalle_cupos.id_estado_cupo = estado_cupo.id_estado_cupo AND id_zona = '$zona' ORDER BY nombre_cupo ASC";
+        $sql = "SELECT * FROM detalle_cupos, estado WHERE detalle_cupos.id_estado = estado.id_estado AND id_zona = '$zona' ORDER BY nombre_cupo ASC";
         $query = mysqli_query($mysqli, $sql);
         $rowcount= mysqli_num_rows($query);
 
@@ -19,8 +19,8 @@
                     'id_deta_cupos' => $row['id_deta_cupos'],
                     'id_zona' => $row['id_zona'],
                     'nombre_cupo' => $row['nombre_cupo'],
-                    'estado_cupo' => $row['nom_estado_cupo'],
-                    'placa' => $row['placa']
+                    'estado_cupo' => $row['nom_estado'],
+                    'placa' => $row['id_deta_vehiculo']
                 );
             }
     

@@ -52,6 +52,47 @@
     text-align: center;
 }
 
+.codigo_container-general {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.205);
+
+    z-index: 3;
+
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+
+.codigo_container-qr {
+    width: 600px;
+    background-color: white;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    padding: 20px 0;
+}
+
+.codigo_container-qr form h4 {
+    text-align: center;
+}
+
+.container_qr {
+    width: 95%;
+}
+
+#select_codigo_vehiculo {
+    display: none;
+}
+
+.boton_qr {
+    margin-top: 10px;
+}
+
 .wrapper {
     margin-top: 15px;
     width: 80%;

@@ -87,30 +87,20 @@
         }
     ?>
 
-<div class="prueba3">
-        <div class="prueba4">
-            <form method="POST" class="card wrapper" id="formSalida">
-                <h4>Formulario de Salida</h4>
-                <div class="form-group">
-                    <label for="salida_idZona">Vehiculo parqueado en la zona:</label>
-                    <input type="text" id="salida_idZona" class="form-control" value="Zona <?php echo $id_zona?>"
-                        disabled>
-                    <input type="hidden" id="salida_deta_cupos" value="<?php echo $id_deta_cupos; ?>">
+    <div class="codigo_container-general" id="codigo_container-general">
+        <div class="codigo_container-qr">
+            <h3>Escanee el código de Barras</h3>
+            <div class="row container_qr">
+                <div id="reader" class="col-md-6"></div>
+                <div class="col-md-6">
+                    <select class="form-select btn-block" name="" id="select_codigo_vehiculo">
+                        <option value="0" selected>Seleccione el vehiculo</option>
+                    </select>
                 </div>
-                <div class="form-group">
-                    <label for="salida_nomTipZona">Tipo de zona:</label>
-                    <input type="text" id="salida_nomTipZona" class="form-control" value="<?php echo $nom_tip_zona?>"
-                        disabled>
-                </div>
-                <div class="form-group">
-                    <label for="salida_placa">Placa del vehiculo:</label>
-                    <input type="text" id="salida_placa" class="form-control" value="<?php echo $placa?>" disabled>
-                </div>
-                <div class="form-group">
-                    <button type="submit" class="btn btn-block btn-primary">Salvar Salida</button>
-                    <a href="home.php" type="submit" class="btn btn-block btn-danger">Cancelar</a>
-                </div>
-            </form>
+            </div>
+            <div class="group-form boton_qr">
+                <div id="boton_codigo-cancelar" class="btn btn-danger btn-block">Cancelar</div>
+            </div>
         </div>
     </div>
 
@@ -256,7 +246,8 @@
                             <h5 class="card-title">Escanee la entrada o salida del parqueadero</h5>
                             <div class="container-qr">
                                 <i class="fa fa-qrcode" aria-hidden="true"></i>
-                                <button type="submit" class="btn btn-primary btn-block text-center boton">Escanear Código</button>
+                                <button type="submit" id="boton_codigo" class="btn btn-primary btn-block text-center boton">Escanear
+                                    Código</button>
                             </div>
                         </div>
                     </div>
@@ -372,8 +363,11 @@
 <!-- Scripts Generales -->
 
 <script src="../../../library/jquery-3.6.0.min.js"></script>
+<script src="js/html5-qrcode.min.js"></script>
+
 <script src="js/get_zona.js"></script>
 <script src="js/info_cupo.js"></script>
+<script src="js/escaner.js"></script>
 
 
 <!--====== Scripts pagina ¡¡NO CAMBIAR!! -->

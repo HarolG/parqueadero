@@ -12,7 +12,7 @@ $(document).ready(function () {
 
                 respuesta.forEach(element => {
                     template += `
-                                    <option value="${element.documento}">${element.documento}</option>
+                                    <option value="${element.id_deta_vehiculo}">${element.documento}</option>
                                 `
                 });
 
