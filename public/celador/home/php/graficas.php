@@ -12,14 +12,14 @@ if(isset($_POST['idZona'])) {
     $fila_informacion = mysqli_fetch_assoc($query_informacion);
 
     #Esta consulta trae todos los cupos disponibles de la zona
-    $sql2 = "SELECT * FROM detalle_cupos WHERE id_zona = '$id_zona' AND id_estado_cupo = '1'";
+    $sql2 = "SELECT * FROM detalle_cupos WHERE id_zona = '$id_zona' AND id_estado = '1'";
     $query_cupos_disponibles = mysqli_query($mysqli, $sql2);
 
     #Cuento el número de cupos disponibles que hay
     $cupos_disponibles = mysqli_num_rows($query_cupos_disponibles);
 
     #Esta consulta trae todos los cupos ocupados de la zona
-    $sql3 = "SELECT * FROM detalle_cupos WHERE id_zona = '$id_zona' AND id_estado_cupo = '2'";
+    $sql3 = "SELECT * FROM detalle_cupos WHERE id_zona = '$id_zona' AND id_estado = '5'";
     $query_cupos_ocupados = mysqli_query($mysqli, $sql3);
 
     #Cuento el número de cupos ocupados que hay
