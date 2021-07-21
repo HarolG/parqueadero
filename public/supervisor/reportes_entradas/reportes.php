@@ -71,46 +71,72 @@ if (isset($_SESSION['tipo']) && isset($_SESSION['nom']) && isset($_SESSION['ape'
                 <ul class="list-unstyled full-box dashboard-sideBar-Menu">
                     <li>
                         <a href="../home/home.php">
-                            <i class="fas fa-home"></i> Inicio
+                                <i class="fas fa-home"></i> Inicio
                         </a>
                     </li>
-                    <li>
-                        <a href="../gestion_parqueadero/home.php" class="btn-sideBar-SubMenu">
-                            <i class="fa fa-users" aria-hidden="true"></i> Gestion del Parqueadero
-                        </a>
-                    </li>
-
-                    <li>
-					<a href="reportes.php">
-						<i class="fa fa-sign-in-alt"></i> Reportes de Entradas
-					</a>
-                    </li>
-                    
+                        <li>
+                            <a href="../mensajeria/buzon.php">
+                                <i class="far fa-envelope"></i>  Buzón de mensajeria
+                            </a>
+                        </li>
+                        <li>
+                            <a href="../celadores/index.php">
+                                <i class="fas fa-chart-line"></i> Informe Inicio de Sesión
+                            </a>
+                        </li>
+                        <li>
+                            <a href="../gestion/index.php">
+                                <i class="fas fa-users-cog"></i> Gestión de Usuarios
+                            </a>
+                        </li>
+                        <li>
+                            <a href="../gestion_parqueadero/home.php">
+                                <i class="fa fa-sign-in-alt"></i> Gestión del Parqueadero
+                            </a>
+                        </li>
+                        <li>
+                            <a href="reportes.php" class="btn-sideBar-SubMenu">
+                                <i class="fa fa-sign-in-alt" aria-hidden="true"></i> Reporte de entradas
+                            </a>
+                        </li>
                 </ul>
             </div>
         </section>
 
         <!-- barra de menus-->
         <section class="full-box dashboard-contentPage">
+        <?php
+        $s2 = "SELECT * FROM mensajes WHERE leido = 1";
+        $resul2=mysqli_query($mysqli,$s2);
+        $row2=mysqli_num_rows($resul2);
+        ?>
             <!-- NavBar -->
-            <nav class="full-box dashboard-Navbar">
-                <ul class="full-box list-unstyled text-right">
-                    <li class="pull-left">
-                        <a href="#!" class="btn-menu-dashboard"><i class="fa fa-bars" aria-hidden="true"></i></a>
-                    </li>
+        <nav class="full-box dashboard-Navbar">
+			<ul class="full-box list-unstyled text-right">
+				<li class="pull-left">
+					<a href="#!" class="btn-menu-dashboard"><i class="fa fa-bars" aria-hidden="true"></i></a>
+				</li>
+                <a class="btn-group ventana"><button type="button" class="open-modal" data-open="modal1"><i class="fas fa-eye" aria-hidden="true"></i></button></a>
+				<li>
+					<a href="#!" class="btn-Notifications-area">
+						<i class="far fa-envelope"></i>
+						<span class="badge"><?php echo $row2; ?></span>
+					</a>
+				</li>
+				<li>
+					<a href="#!" class="btn-modal-help">
+						<i class="far fa-question-circle"></i>
+					</a>
+				</li>
 
-                    <a class="btn-group ventana"><button type="button" class="open-modal" data-open="modal1"><i class="fas fa-eye" aria-hidden="true"></i></button></a>
+				<a class="pull-left links" style="width: 250px;" href="http://centrodeindustria.blogspot.com">Centro de
+					Industria y Construcción</a>
 
-                    <li>
-                        <a href="#!" class="btn-modal-help">
-                            <i class="far fa-question-circle"></i>
-                        </a>
-                    </li>
-                    <a class="pull-left links" style="width: 250px;" href="http://centrodeindustria.blogspot.com">Centro de Industria y Construcción</a>
+				<a class="pull-left links" style="width: 170px;"
+					href="http://oferta.senasofiaplus.edu.co/sofia-oferta/">Portal de Sofia Plus</a>
 
-                    <a class="pull-left links" style="width: 170px;" href="http://oferta.senasofiaplus.edu.co/sofia-oferta/">Portal de Sofia Plus</a>
-                </ul>
-            </nav>
+			</ul>
+		</nav>
             <!-- Aquí va el contenido -->
             <div class="ingreso">
                <hr style="background-color:#73879C;">
@@ -118,7 +144,7 @@ if (isset($_SESSION['tipo']) && isset($_SESSION['nom']) && isset($_SESSION['ape'
                     <div class="modal-dialog">
                         <h2>Cupos disponibles</h2>
                         <header class="modal-header">
-                            
+
                             <div class="infoZonas">
                             <?php
                                 while ($resul2 = mysqli_fetch_array($zonas)) {
@@ -131,13 +157,14 @@ if (isset($_SESSION['tipo']) && isset($_SESSION['nom']) && isset($_SESSION['ape'
                                             <h3>$resul2[nom_tip_zona]</h3>
                                             <label>Cupos Disponibles: $resul_cupos</label>
                                         </div>
+                                            
                                         ";
                                     }
                             ?>
-                            </div>
+                            </div>                            
                             <button class="close-modal" aria-label="close modal" data-close>✕</button>
                         </header>
-                    </div>
+                </div>
             </div>
             <div class="filtro">
                     <form method="post" class = "formFiltro">
@@ -158,6 +185,7 @@ if (isset($_SESSION['tipo']) && isset($_SESSION['nom']) && isset($_SESSION['ape'
                             <option value='1'>Hoy</option>
                             <option value='2'>Ayer</option>
                             <option value='3'>Hace una semana</option>
+                            <option value='3'>Hace un mes</option>
                         </select> 
 
                         <input type="submit" name="buscar" id="buscar" style="color: black;"  class="btn btn-primary btnReporte" value="Generar">
@@ -177,8 +205,10 @@ if (isset($_SESSION['tipo']) && isset($_SESSION['nom']) && isset($_SESSION['ape'
                     $fecha_actual = date("Y-m-d");
                     //resto 1 día
                     $reDia = date("Y-m-d",strtotime($fecha_actual."- 1 days")); 
-                    //resto 7 día
+                    //resto 7 días
                     $reWee = date("Y-m-d",strtotime($fecha_actual."- 1 days")); 
+                    //resto 30 días
+                    $reMonth = date("Y-m-d",strtotime($fecha_actual."- 30 days")); 
                     
 
                     if ($tip_repo == 1){
@@ -190,6 +220,9 @@ if (isset($_SESSION['tipo']) && isset($_SESSION['nom']) && isset($_SESSION['ape'
 
                     }elseif($tip_repo == 3){
                         $tip_repo = $reWee;
+                        
+                    }elseif($tip_repo == 4){
+                        $tip_repo = $reMonth;
                         
                     }else{
                         echo("No selecciono ninguna opcion");
@@ -309,7 +342,7 @@ if (isset($_SESSION['tipo']) && isset($_SESSION['nom']) && isset($_SESSION['ape'
                     }
                     ?>
                 </div>
-                <div class="btn-group acciones" id="acciones">
+                <div class="acciones" id="acciones">
                     <div class="btn btn-outline-danger btnImprimir" onclick="imprimir()">
                     <i class="fas fa-file-pdf"></i>
                     </div>
@@ -317,6 +350,7 @@ if (isset($_SESSION['tipo']) && isset($_SESSION['nom']) && isset($_SESSION['ape'
                         <i class="fas fa-file-excel"></i>
                     </div>
                 </div>
+                <hr>
             </div>
         </div>
     </div>

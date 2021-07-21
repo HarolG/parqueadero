@@ -141,17 +141,21 @@ body {
 }
 
 .btnCambiarDos{
-    background: rgba(221, 94, 21, 0.864);
-    width: 82px;
+    background: rgba(184, 157, 141, 0.864);
+    width: 90px;
     height: 24px;
     text-align: center;
     padding: 9px 0px 0px 0px;
     font-size: 12px;
     border: none;
     color: rgb(255, 255, 255);
-    text-decoration: none;
     margin-top: 1.9%;
     border-radius: 2px;
+}
+.btnCambiarDos a{
+    text-decoration: none;
+    color: rgb(255, 255, 255);
+    font-size: 10px;
 }
 
 .btnCambiarDos:hover{

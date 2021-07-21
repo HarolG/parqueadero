@@ -38,10 +38,10 @@ select:hover{
   grid-column:1/3;
   overflow-y: scroll;
 }
+
 .infoZonas label{
   color: black;
   font-weight: 400;
-  padding: 1px 25px;
 }
 
 h1{
@@ -56,7 +56,7 @@ h1{
 h2{
   color:#337ab7;
   font-family: "Helvetica Neue", Roboto, Arial, "Droid Sans", sans-serif;
-  font-size: 29px;
+  font-size: 25px;
   font-weight: bold;
   line-height: 1.471;
     
@@ -166,9 +166,9 @@ tbody tr:nth-child(even) {
 .acciones{
   display: grid;
   grid-template-columns: 1fr 1fr ;
-  padding: 0px 38px;
+  padding: 0px 38.5px;
   position: absolute;
-  margin-top: -24.2%;
+  margin-top: -210px;
 }
 
 .btnImprimir{
@@ -227,8 +227,13 @@ tbody tr:nth-child(even) {
   border: none;
   outline: none;
   font-size: inherit;
-  margin-top: -30%;
+  margin-top: -65%;
   color: #337ab7;
+  font-size: 1.5rem;
+  margin-right: -80px;
+}
+.ventana{
+  color: rgb(255, 255, 255);
 }
 
 .modal {
@@ -290,10 +295,6 @@ tbody tr:nth-child(even) {
   justify-content: space-between;
 }
 
-.modal-header .close-modal {
-  font-size: 1.5rem;
-  position: flex;
-}
 
 .modal p + p {
   margin-top: 1rem;
@@ -376,7 +377,10 @@ tbody tr:nth-child(even) {
     transform: rotate(0deg);
   }
 }
-/* 
-.btn-group {
-  display: none;
-} */
+
+@media screen and (max-width:1225px){
+  .acciones{
+    margin-top: -3%;
+    margin-left: -5px;
+  }
+}

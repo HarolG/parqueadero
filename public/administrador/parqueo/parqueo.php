@@ -115,6 +115,9 @@
 				<li class="pull-left">
 					<a href="#!" class="btn-menu-dashboard"><i class="fa fa-bars" aria-hidden="true"></i></a>
 				</li>
+                
+                <a class="btn-group ventana"><button type="button" class="open-modal" data-open="modal1"><i class="fas fa-eye" aria-hidden="true"></i></button></a>
+                
 				<li>
 					<a href="#!" class="btn-modal-help">
 						<i class="far fa-question-circle"></i>
@@ -127,36 +130,37 @@
             </ul>    
 		</nav>
             <!-- Aquí va el contenido -->
-            <a class="btn-group ventana"><button type="button" class="open-modal" data-open="modal1"><i class="fas fa-eye" aria-hidden="true"></i> Ver Cupos disponibles</button></a>
            
             <div class="ingreso">
                <hr style="background-color:#73879C;">
                 <div class="modal" id="modal1" data-animation="slideInOutLeft">
+                
                     <div class="modal-dialog">
-                    <header class="modal-header">
-                        <button class="close-modal" aria-label="close modal" data-close>
-                            ✕  
-                        </button>
-                        <div class="infoZonas">
-                        <?php
-                            while ($resul2 = mysqli_fetch_array($zonas)) {
-                                $cupos_libres = $mysqli -> query ("SELECT * FROM detalle_cupos WHERE id_zona = '$resul2[id_zona]' AND id_estado = '1'");
-                                $resul_cupos = $cupos_libres->num_rows;
-                                
-                                echo "
-                                    <div class='darosZonas'>
-                                        <h2>ZONA $resul2[id_zona]</h2>
-                                        <h3>$resul2[nom_tip_zona]</h3>
-                                        <label>Cupos Disponibles: $resul_cupos</label>
-                                    </div>
-                                        
-                                    ";
-                                }
-                        ?>
-                    </header>
-
+                        <h2>Cupos disponibles</h2>
+                        
+                        <header class="modal-header">
+                            
+                            <div class="infoZonas">
+                            <?php
+                                while ($resul2 = mysqli_fetch_array($zonas)) {
+                                    $cupos_libres = $mysqli -> query ("SELECT * FROM detalle_cupos WHERE id_zona = '$resul2[id_zona]' AND id_estado = '1'");
+                                    $resul_cupos = $cupos_libres->num_rows;
+                                    
+                                    echo "
+                                        <div class='darosZonas'>
+                                            <h2>ZONA $resul2[id_zona]</h2>
+                                            <h3>$resul2[nom_tip_zona]</h3>
+                                            <label>Cupos Disponibles: $resul_cupos</label>
+                                        </div>
+                                            
+                                        ";
+                                    }
+                            ?>
+                            </div>
+                            <button class="close-modal" aria-label="close modal" data-close>✕</button>
+                        </header>
+                    </div>
                 </div>
-            </div>
     
                 <div class="filtro">
                     <form method="post" class = "formFiltro">
@@ -293,34 +297,39 @@
                         
                         }
 
+                      
                         //Contenedor para mostrar la cantidad de registros de la consulta entradas linea 194 
-                        $tabla.="   </table></div></div>
-                                <div class='numVehi' id= 'numVehi'>
-                                    <h5>N° DE VEHICULOS INGRESADOS</h5><strong>$resul</strong>
-                                </div> ";
+                        $tabla.="   </table></div>
+                        </div>
+                        
+                        <div class='numVehi' id= 'numVehi'>
+                            <h5>N° DE VEHICULOS INGRESADOS</h5><strong>$resul</strong>
+                        </div> ";
                         } 
-                        // Si la consulta entradas (linea 194) no arrojó ningun resultado
-                            else
-                                {
-                                    $tabla="<i id='error' class='fas fa-exclamation-triangle'  style='font-size:65px;'></i><h3 class='sinDatos'>No se encontraron coincidencias con sus criterios de búsqueda.</h3>";
-                                }
-                            echo $tabla;
-                        }
+                        
+                else
+                    {
+                        $tabla="<div class='sinDatos'><i id='error' class='fas fa-exclamation-triangle'  style='font-size:65px;'></i>
+                                <h3>No se encontraron coincidencias con sus criterios de búsqueda.</h3></div>
+                                ";
                     }
-                    ?>
-                    
-                </div>
-                <div class="btn-group acciones" id="acciones">
-                    <div class="btn btn-outline-danger btnImprimir" onclick="imprimir()">
-                    <i class="fas fa-file-pdf"></i>
-                    </div>
-                    <div class="btn btn-outline-success btnExcel" onclick="exportTableToExcel('tabla', 'REPORTE_<?php echo date('d_m_Y');?>')" >
-                        <i class="fas fa-file-excel"></i>
-                    </div>
-                </div>
-            </div>
+                echo $tabla;
+        }
+    }
+        ?>
+    </div>
+    <div class="acciones" id="acciones">
+        <div class="btn btn-outline-danger btnImprimir" onclick="imprimir()">
+        <i class="fas fa-file-pdf"></i>
+        </div>
+        <div class="btn btn-outline-success btnExcel" onclick="exportTableToExcel('tabla', 'REPORTES_DE_ENTRADAS_Y_SALIDAS<?php echo date('d_m_Y');?>')" >
+            <i class="fas fa-file-excel"></i>
         </div>
     </div>
+    <hr>
+</div>
+</div>
+</div>
 
 
 </section>

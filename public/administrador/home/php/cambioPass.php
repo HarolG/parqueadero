@@ -57,7 +57,7 @@
                 Swal.fire({
                     icon: "success",
                     title: "Cambio de contraseña exitoso",
-                    footer: '<a class="btnCambiarDos" href="../../../login/login.html">INICIAR SESION</a>',
+                    footer: '<div class="btnCambiarDos"><a href="../../../login/login.html">INICIAR SESION</a></div>',
                     text: "Por favor inicie sesión nuevamente con su contraseña nueva.",
                     showConfirmButton: false
                   })

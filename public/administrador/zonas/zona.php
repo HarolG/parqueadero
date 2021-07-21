@@ -72,12 +72,7 @@ if (isset($_SESSION['tipo']) && isset($_SESSION['nom']) && isset($_SESSION['ape'
 							<i class="fas fa-home"></i> Inicio
 						</a>
 					</li>
-					<li>
-						<a href="../parqueo/parqueo.php" class="btn-sideBar-SubMenu">
-							<i class="fa fa-sign-in-alt" aria-hidden="true"></i> Reporte de entradas
-						</a>
-
-					</li>
+					
 					<li>
 						<a href="zona.php" class="btn-sideBar-SubMenu">
 							<i class="fa fa-plus" aria-hidden="true"></i> Crear zonas
@@ -95,6 +90,11 @@ if (isset($_SESSION['tipo']) && isset($_SESSION['nom']) && isset($_SESSION['ape'
 							<i class="fa fa-car" aria-hidden="true"></i> Registro de vehiculos
 						</a>
 
+					</li>
+					<li>
+						<a href="../parqueo/parqueo.php" class="btn-sideBar-SubMenu">
+							<i class="fa fa-sign-in-alt" aria-hidden="true"></i> Reporte de entradas
+						</a>
 					</li>
 					<li>
 						<a href="../reporte_vehiculo/reporte.php" class="btn-sideBar-SubMenu">
