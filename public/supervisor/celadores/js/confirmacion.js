@@ -1,5 +1,5 @@
 function confirmacion(e) {
-    if (confirm("¿Esta seguro de eliminar esta zona?")) {
+    if (confirm("¿Esta seguro de eliminar este registro?, recuerde que no podra recuperarlo")) {
         return true;
     } else {
         e.preventDefault();

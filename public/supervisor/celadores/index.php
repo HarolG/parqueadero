@@ -150,8 +150,9 @@ include("../../../php/conexion.php");
 			</thead>
 			<tbody>
 				<?php
-				$query = "SELECT * FROM informe_celadores, tipo_usuario 
-                            WHERE informe_celadores.id_tip_usu = tipo_usuario.id_tip_usu";
+				$query = "SELECT * FROM informe_celadores, tipo_usuario, usuario
+                          WHERE informe_celadores.id_tip_usu = tipo_usuario.id_tip_usu
+						  AND informe_celadores.documento = usuario.documento";
 				$result_tasks = mysqli_query($mysqli, $query);
 
 				while ($row = mysqli_fetch_assoc($result_tasks)) { ?>
@@ -162,7 +163,7 @@ include("../../../php/conexion.php");
 						<td class="body_table"><b><?php echo $row['nom_tip_usu'] ?></b></td>
 						<td class="body_table"><b><?php echo $row['fecha_inicio'] ?></b></td>
 						<td class="body_table">
-							<a href="php/eliminar.php?documento=<?php echo $row['documento'] ?>" class="eliminarlink">
+							<a href="php/eliminar.php?id_informe_celador=<?php echo $row['id_informe_celador'] ?>" class="eliminarlink">
 								<i id="trash" class="fas fa-trash"></i>
 							</a>
 						</td>
@@ -170,7 +171,6 @@ include("../../../php/conexion.php");
 				<?php } ?>
 			</tbody>
 		</table>
-		<button class="imprimir" onclick="window.print()"><i class="fas fa-file-pdf"></i> Imprimir</button>
 	</section>
 <!-- Notifications area -->
 				

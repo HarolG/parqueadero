@@ -27,7 +27,7 @@
 
                 if ($_SESSION['tipo'] == 2 && $estadousu == 6) {
                     
-                    $sqli = "INSERT INTO informe_celadores (documento, nombre, apellido, id_tip_usu, fecha_inicio) VALUES ('$user', '$nom', '$ape', '$tip', now())";
+                    $sqli = "INSERT INTO informe_celadores (documento, id_tip_usu, fecha_inicio) VALUES ('$user', '$tip', now())";
                     $quer = mysqli_query($mysqli, $sqli);
     
                     header("Location: ../../celador/home/home.php");
