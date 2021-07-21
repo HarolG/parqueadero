@@ -88,12 +88,7 @@ Favor revisar los direccionamientos
 						<i class="fas fa-home"></i> Inicio 
 					</a>
 				</li>
-				<li>
-					<a href="../parqueo/parqueo.php" class="btn-sideBar-SubMenu">
-						<i class="fa fa-sign-in-alt" aria-hidden="true"></i> Reporte de entradas
-					</a>
-					
-				</li>
+				
 				<li>
 					<a href="../zonas/zona.php" class="btn-sideBar-SubMenu">
 						<i class="fa fa-plus" aria-hidden="true"></i> Crear zonas 
@@ -111,6 +106,11 @@ Favor revisar los direccionamientos
 						<i class="fa fa-car" aria-hidden="true"></i> Registro de vehiculos
 					</a>
 					
+				</li>
+				<li>
+					<a href="../parqueo/parqueo.php" class="btn-sideBar-SubMenu">
+						<i class="fa fa-sign-in-alt" aria-hidden="true"></i> Reporte de entradas
+					</a>
 				</li>
 				<li>
 					<a href="../reporte_vehiculo/reporte.php" class="btn-sideBar-SubMenu">
@@ -287,10 +287,10 @@ Favor revisar los direccionamientos
 						$tip_estado=$_POST['tipo_estado'];
                         
 						if($tip_usu == 1){
-							$sql="INSERT INTO `usuario` (`documento`, `codigo`, `nombre`, `apellido`, `edad`, `celular`, `direccion`,`correo`, `clave`, `id_tip_usu`,`id_tip_doc`,`id_estado`,'id_estado_pass') VALUES ('$documento', null,'$nombre','$apellido','$edad','$celular','$direccion','$correo','$clave','$tip_usu','$tip_docu','$tip_estado', 10)";
+							$sql="INSERT INTO usuario (documento, codigo, nombre, apellido, edad, celular, direccion,correo, clave, id_tip_usu,id_tip_doc,id_estado,'id_estado_pass') VALUES ('$documento', '$documento','$nombre','$apellido','$edad','$celular','$direccion','$correo','$clave','$tip_usu','$tip_docu','$tip_estado', 10)";
 							
 						}else{
-							$sql="INSERT INTO `usuario` (`documento`, `codigo`, `nombre`, `apellido`, `edad`, `celular`, `direccion`,`correo`, `clave`, `id_tip_usu`,`id_tip_doc`,`id_estado`,'id_estado_pass') VALUES ('$documento', NULL ,'$nombre','$apellido','$edad','$celular','$direccion','$correo','$clave','$tip_usu','$tip_docu','$tip_estado', NULL)";
+							$sql="INSERT INTO usuario (documento, codigo, nombre, apellido, edad, celular, direccion,correo, clave, id_tip_usu,id_tip_doc,id_estado,'id_estado_pass') VALUES ('$documento', '$documento' ,'$nombre','$apellido','$edad','$celular','$direccion','$correo','$clave','$tip_usu','$tip_docu','$tip_estado', NULL)";
 						}
                         
                             

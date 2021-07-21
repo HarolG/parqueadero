@@ -119,6 +119,11 @@ if (isset($_SESSION['tipo']) && isset($_SESSION['nom']) && isset($_SESSION['ape'
                         <a href="../../home/home.php">
                             <i class="fas fa-home"></i> Inicio
                         </a>
+                    </li> 
+                    <li>
+                        <a href="../../mensajeria/buzon.php" class="btn-sideBar-SubMenu">
+                            <i class="fa fa-users" aria-hidden="true"></i> Buzón de mensajeria
+                        </a>
                     </li>
                     <li>
                         <a href="../../celadores/index.php" class="btn-sideBar-SubMenu">
@@ -138,12 +143,12 @@ if (isset($_SESSION['tipo']) && isset($_SESSION['nom']) && isset($_SESSION['ape'
                         </a>
 
                     </li>
+                   
                     <li>
-                        <a href="../../mensajeria/buzon.php" class="btn-sideBar-SubMenu">
-                            <i class="fa fa-users" aria-hidden="true"></i> Buzon de mensajeria
+                        <a href="../reportes_entradas/reportes.php" class="btn-sideBar-SubMenu">
+                            <i class="fa fa-sign-in-alt" aria-hidden="true"></i> Reporte de entradas
                         </a>
-
-                    </li>
+				    </li>
                     <!-- <li>
                         <a href="../../crear/crearusu.php" class="btn-sideBar-SubMenu">
                             <i class="fa fa-car" aria-hidden="true"></i> Registro de vehiculos

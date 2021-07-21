@@ -78,12 +78,7 @@ Favor revisar los direccionamientos
 						<i class="fas fa-home"></i> Inicio 
 					</a>
 				</li>
-				<li>
-					<a href="../../parqueo/parqueo.php" class="btn-sideBar-SubMenu">
-						<i class="fa fa-sign-in-alt" aria-hidden="true"></i> Reporte de entradas
-					</a>
-					
-				</li>
+				
 				<li>
 					<a href="../../zonas/zona.php" class="btn-sideBar-SubMenu">
 						<i class="fa fa-plus" aria-hidden="true"></i> Crear zonas 
@@ -95,6 +90,11 @@ Favor revisar los direccionamientos
 						<i class="fa fa-users" aria-hidden="true"></i> Crear usuarios 
 					</a>
 					
+				</li>
+				<li>
+					<a href="../../parqueo/parqueo.php" class="btn-sideBar-SubMenu">
+						<i class="fa fa-sign-in-alt" aria-hidden="true"></i> Reporte de entradas
+					</a>
 				</li>
 				<li>
 					<a href="../../crear/crearusu.php" class="btn-sideBar-SubMenu">
