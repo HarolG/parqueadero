@@ -194,7 +194,7 @@ Favor revisar los direccionamientos
 					</div>
 					<div class="form-group">
 						<label for="clave" class="col-sm-2 control-label">Contraseña</label>
-						<div class="col-sm-8"><input id="clave" name="clave" type="text" class="form-control" required autocomplete="off"></div>
+						<div class="col-sm-8"><input id="clave" name="clave" type="password" class="form-control" required autocomplete="off"></div>
 					</div>
 					<!-- tipo de documento -->
 					<div class="form-group">

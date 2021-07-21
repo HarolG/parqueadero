@@ -162,6 +162,11 @@
                         <i class="fa fa-sign-in-alt"></i> Gestión de Parqueadero
                     </a>
                 </li>
+                <li>
+					<a href="../reportes_entradas/reportes.php">
+						<i class="fa fa-sign-in-alt"></i> Reportes de Entradas
+					</a>
+				</li>
             </ul>
         </div>
     </section>
