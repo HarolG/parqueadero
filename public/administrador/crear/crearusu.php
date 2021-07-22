@@ -345,7 +345,7 @@
                                     <!-- MAX_FILE_SIZE debe preceder al campo de entrada del fichero -->
                                     <input type="hidden" name="tarjeta" id="tarjet" value="30000" />
                                     <!-- El nombre del elemento de entrada determina el nombre en el array $_FILES -->
-                                    Subir Tarjeta de Propiedad: <input name="tarjeta" id="tarjeta" type="file" required onchange="return fileValidation()"/>
+                                    Subir Tarjeta de Propiedad: <input name="tarjeta" id="tarjeta" type="file" required onchange="return fileValidation2()"/>
                                 </div>
 
                                 <div class="grupo_cargue" id="imagePreview">

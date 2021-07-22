@@ -83,27 +83,6 @@ function enviarFormulario(){
     };       
 };
 
-
-function fileValidation(){
-    var fileInput = document.getElementById('tarjeta');
-    var filePath = fileInput.value;
-    var allowedExtensions = /(.jpg|.jpeg|.png|.gif)$/i;
-    if(!allowedExtensions.exec(filePath)){
-        alert('Por favor, seleccione archivos .jpeg/.jpg/.png/.gif only.');
-        fileInput.value = '';
-        return false;
-    }else{
-        //Image preview
-        if (fileInput.files && fileInput.files[0]) {
-            var reader = new FileReader();
-            reader.onload = function(e) {
-                document.getElementById('tarjet').innerHTML = '<img src="'+e.target.result+'"/>';
-            };
-            reader.readAsDataURL(fileInput.files[0]);
-        }
-    }
-}
-
 function fileValidation(){
     var fileinput = document.getElementById('imagen');
     var filepath = fileinput.value;
@@ -123,4 +102,26 @@ function fileValidation(){
         }
     }
 }
+
+
+function fileValidation2(){
+    var fileInput = document.getElementById('tarjeta');
+    var filePath = fileInput.value;
+    var allowedExtensions = /(.jpg|.jpeg|.png|.gif)$/i;
+    if(!allowedExtensions.exec(filePath)){
+        alert('Por favor, seleccione archivos .jpeg/.jpg/.png/.gif only.');
+        fileInput.value = '';
+        return false;
+    }else{
+        //Image preview
+        if (fileInput.files && fileInput.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function(e) {
+                document.getElementById('tarjeta').innerHTML = '<img src="'+e.target.result+'"/>';
+            };
+            reader.readAsDataURL(fileInput.files[0]);
+        }
+    }
+}
+
 
