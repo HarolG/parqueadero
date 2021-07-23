@@ -26,7 +26,6 @@
                     alert("Se ha creado el cupo");
                     window.location.href="../zona.php";
                     </script>';
-                    // header("Location: ../zona.php");
             } else {
                 echo '<script type="text/javascript">
                         alert("No se creo el cupo");
