@@ -1,4 +1,4 @@
-ñ<?php
+<?php
 include("../../../php/conexion.php");
 
 if (isset($_SESSION['tipo']) && isset($_SESSION['nom']) && isset($_SESSION['ape']) && isset($_SESSION['pass'])) {
@@ -72,24 +72,20 @@ if (isset($_SESSION['tipo']) && isset($_SESSION['nom']) && isset($_SESSION['ape'
                             <i class="fas fa-home"></i> Inicio
                         </a>
                     </li>
-                    
                     <li>
                         <a href="../zonas/zona.php" class="btn-sideBar-SubMenu">
                             <i class="fa fa-plus" aria-hidden="true"></i> Crear zonas
                         </a>
-
                     </li>
                     <li>
                         <a href="../usuarios/usuarios.php" class="btn-sideBar-SubMenu">
                             <i class="fa fa-users" aria-hidden="true"></i> Crear usuarios
                         </a>
-
                     </li>
                     <li>
                         <a href="../crear/crearusu.php" class="btn-sideBar-SubMenu">
                             <i class="fa fa-car" aria-hidden="true"></i> Registro de vehiculos
                         </a>
-
                     </li>
                     <li>
                         <a href="../parqueo/parqueo.php" class="btn-sideBar-SubMenu">
@@ -100,7 +96,6 @@ if (isset($_SESSION['tipo']) && isset($_SESSION['nom']) && isset($_SESSION['ape'
                         <a href="../reporte_vehiculo/reporte.php" class="btn-sideBar-SubMenu">
                             <i class="fa fa-car" aria-hidden="true"></i> Reporte vehiculos
                         </a>
-
                     </li>
                 </ul>
             </div>
@@ -147,14 +142,12 @@ if (isset($_SESSION['tipo']) && isset($_SESSION['nom']) && isset($_SESSION['ape'
                             <tr>
                                 <td class="body_table"><b><?php echo $row['documento'] ?></b></td>
                                 <td class="body_table"><b><?php echo $row['nombre'] ?></b></td>
-                                <!-- <td class="body_table"><b>cupos</b></td> -->
                                 <td class="body_table"><b><?php echo $row['apellido']; ?></b></td>
                                 <td class="body_table"><b><?php echo $row['celular']; ?></b></td>
                                 <td class="body_table"><b><?php echo $row['direccion']; ?></b></td>
                                 <td class="body_table"><b><?php echo $row['correo']; ?></b></td>
                                 <td class="body_table">
                                     <a href="php/editar.php?documento=<?php echo $row['documento'] ?>" class="eliminarlink2">
-                                        <!-- <i id="marker" class="fas fa-marker"></i> -->
                                         <i class="fas fa-marker"></i>
                                     </a>
                                 </td>
@@ -196,7 +189,6 @@ if (isset($_SESSION['tipo']) && isset($_SESSION['nom']) && isset($_SESSION['ape'
 
     </body>
     <!-- Scripts cambiables -->
-    <!-- <script src="js/validar.js"></script> -->
     <script src="js/confirmacion.js"></script>
     <script src="js/validar.js"></script>
     <script src="../../../library/jquery-3.6.0.min.js"></script>

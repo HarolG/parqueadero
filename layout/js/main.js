@@ -24,6 +24,22 @@ $(document).ready(function(){
 			window.location.href="../../../php/cerrarsesion.php";
 		});
 	});
+
+	$('.btn-exit-system2').on('click', function(){
+		swal({
+		  	title: 'Estas seguro?',
+		  	text: "seguro que quieres cerrar la sesion?",
+		  	type: 'warning',
+		  	showCancelButton: true,
+		  	confirmButtonColor: '#03A9F4',
+		  	cancelButtonColor: '#F44336',
+			confirmButtonText: '<i class="fas fa-door-open"></i> Si, Salir!',
+			cancelButtonText: '<i class="fas fa-times"></i> No, Cancelar!'
+		}).then(function () {
+			window.location.href="../../../../php/cerrarsesion.php";
+		});
+	});
+
 	$('.btn-menu-dashboard').on('click', function(){
 		var body=$('.dashboard-contentPage');
 		var sidebar=$('.dashboard-sideBar');

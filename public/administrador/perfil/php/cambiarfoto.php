@@ -63,7 +63,7 @@ if (isset($_SESSION['tipo']) && isset($_SESSION['nom']) && isset($_SESSION['ape'
                             </a>
                         </li>
                         <li>
-                            <a href="#" class="btn-exit-system">
+                            <a href="#" class="btn-exit-system2">
                                 <i class="fas fa-power-off"></i>
                             </a>
                         </li>

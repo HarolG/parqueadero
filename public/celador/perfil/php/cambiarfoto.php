@@ -63,7 +63,7 @@ if (isset($_SESSION['tipo']) && isset($_SESSION['nom']) && isset($_SESSION['ape'
                             </a>
                         </li>
                         <li>
-                            <a href="#" class="btn-exit-system">
+                            <a href="#" class="btn-exit-system2">
                                 <i class="fas fa-power-off"></i>
                             </a>
                         </li>
@@ -78,9 +78,13 @@ if (isset($_SESSION['tipo']) && isset($_SESSION['nom']) && isset($_SESSION['ape'
                     </li>
                     <li>
                         <a href="../../gestion_parqueadero/home.php" class="btn-sideBar-SubMenu">
-                            <i class="fa fa-users" aria-hidden="true"></i> Gestion del Parqueadero
+                            <i class="fa fa-car" aria-hidden="true"></i> Gestion del Parqueadero
                         </a>
-
+                    </li>
+                    <li>
+                        <a href="../../reportes_entradas/reportes.php" class="btn-sideBar-SubMenu">
+                            <i class="fa fa-sign-in-alt" aria-hidden="true"></i> Reporte de Entradas
+                        </a>
                     </li>
                 </ul>
             </div>
@@ -118,7 +122,6 @@ if (isset($_SESSION['tipo']) && isset($_SESSION['nom']) && isset($_SESSION['ape'
                             $sql = "SELECT * FROM usuario WHERE id_tip_usu = 2";
                             $result = mysqli_query($mysqli, $sql);
                             while ($row2 = mysqli_fetch_array($result)) {
-                                /*almacenamos el nombre de la ruta en la variable $ruta_img*/
                                 $ruta_img = $row2["foto"];
                             }
                             ?>
