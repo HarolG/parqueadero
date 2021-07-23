@@ -1,9 +1,7 @@
 <?php
-include("../../../../php/conexion.php");
-// $cantidad = '';
+include("../../../php/conexion.php");
 
 if (isset($_SESSION['tipo']) && isset($_SESSION['nom']) && isset($_SESSION['ape']) && isset($_SESSION['pass'])) {
-
 ?>
 
     <!DOCTYPE html>
@@ -13,10 +11,10 @@ if (isset($_SESSION['tipo']) && isset($_SESSION['nom']) && isset($_SESSION['ape'
         <title>Inicio</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-        <link rel="icon" href="../../../../img/logo.ico" />
+        <link rel="icon" href="../../../img/logo.ico" />
         <!-- estilos generales -->
-        <link rel="stylesheet" href="../../../../layout/css/main.css">
-        <link rel="stylesheet" href="../css/perfil.css">
+        <link rel="stylesheet" href="../../../layout/css/main.css">
+        <link rel="stylesheet" href="css/reporte.css">
         <!-- Tipo de letra -->
         <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;1,100;1,300;1,400&display=swap" rel="stylesheet">
         <script src="https://kit.fontawesome.com/a90c49b6b2.js" crossorigin="anonymous"></script>
@@ -29,7 +27,7 @@ if (isset($_SESSION['tipo']) && isset($_SESSION['nom']) && isset($_SESSION['ape'
             <div class="full-box dashboard-sideBar-ct">
                 <!--SideBar Title -->
                 <div class="full-box text-uppercase text-center text-titles dashboard-sideBar-title">
-                    <img src="../../../../img/Logo_parking_2.0.png" alt="logo" class="logo" style="width: 150px; height: 70px; display: flex; justify-content: center; margin-left:40px;">
+                    <img src="../../../img/Logo_parking_2.0.png" alt="logo" class="logo" style="width: 150px; height: 70px; display: flex; justify-content: center; margin-left:40px;">
                 </div>
                 <!-- SideBar User info -->
                 <div class="full-box dashboard-sideBar-UserInfo">
@@ -41,12 +39,9 @@ if (isset($_SESSION['tipo']) && isset($_SESSION['nom']) && isset($_SESSION['ape'
                         while ($row2 = mysqli_fetch_array($result)) {
                             /*almacenamos el nombre de la ruta en la variable $ruta_img*/
                             $ruta_img = $row2["foto"];
-                            $nombr = $row2['nombre'];
-                            $apelli = $row2['apellido'];
                         }
                         ?>
-                        <img src="../fotos/<?php echo $ruta_img; ?>" class="imagen" alt="">
-                        <!-- <img src="../../../../img/foto_perfil.png" alt="UserIcon"> -->
+                        <img src="../perfil/fotos/<?php echo $ruta_img; ?>" class="imagen" alt="">
                         <div class="text-center text-titles">
                             <p class="profile_welcome">Bienvenido,</p>
                             <p class="profile_name">
@@ -58,12 +53,12 @@ if (isset($_SESSION['tipo']) && isset($_SESSION['nom']) && isset($_SESSION['ape'
 
                     <ul class="full-box list-unstyled text-center">
                         <li>
-                            <a href="../perfil.php">
+                            <a href="../perfil/perfil.php">
                                 <i class="fas fa-cogs"></i>
                             </a>
                         </li>
                         <li>
-                            <a href="#" class="btn-exit-system2">
+                            <a href="#" class="btn-exit-system">
                                 <i class="fas fa-power-off"></i>
                             </a>
                         </li>
@@ -72,22 +67,23 @@ if (isset($_SESSION['tipo']) && isset($_SESSION['nom']) && isset($_SESSION['ape'
                 <!-- SideBar Menu -->
                 <ul class="list-unstyled full-box dashboard-sideBar-Menu">
                     <li>
-                        <a href="../../home/home.php">
+                        <a href="../home/administrador.php">
                             <i class="fas fa-home"></i> Inicio
                         </a>
                     </li>
+                    
                     <li>
-                        <a href="../../gestion_parqueadero/home.php" class="btn-sideBar-SubMenu">
-                            <i class="fa fa-car" aria-hidden="true"></i> Gestion del Parqueadero
+                        <a href="../gestion_parqueadero/home.php" class="btn-sideBar-SubMenu">
+                            <i class="fa fa-sign-in-alt" aria-hidden="true"></i> Gestion del Parqueadero
                         </a>
                     </li>
                     <li>
-                        <a href="../../reportes_entradas/reportes.php" class="btn-sideBar-SubMenu">
+                        <a href="../reportes_entradas/reportes.php" class="btn-sideBar-SubMenu">
                             <i class="fa fa-sign-in-alt" aria-hidden="true"></i> Reporte de Entradas
                         </a>
                     </li>
                     <li>
-                        <a href="../../reporte_vehiculo/reporte.php" class="btn-sideBar-SubMenu">
+                        <a href="reporte.php" class="btn-sideBar-SubMenu">
                             <i class="fa fa-car" aria-hidden="true"></i> Reporte vehiculos
                         </a>
                     </li>
@@ -108,51 +104,51 @@ if (isset($_SESSION['tipo']) && isset($_SESSION['nom']) && isset($_SESSION['ape'
                             <i class="far fa-question-circle"></i>
                         </a>
                     </li>
-
                     <a class="pull-left links" style="width: 250px;" href="http://centrodeindustria.blogspot.com">Centro de Industria y Construcción</a>
 
                     <a class="pull-left links" style="width: 170px;" href="http://oferta.senasofiaplus.edu.co/sofia-oferta/">Portal de Sofia Plus</a>
-
                 </ul>
             </nav>
             <!-- Aquí va el contenido -->
-            <div class="contenido">
+            <div class="contenedor_informe">
+                
 
-                <h2 class="titulo">ACTUALIZAR AVATAR DE USUARIO</h2>
-                <div class="foto_perfil">
-                    <div class="input_file4">
-                        <div>
+                <table class="zonas_registradas">
+                    <thead>
+                        <th class="head_table">Dueño</th>
+                        <th class="head_table">Placa</th>
+                        <th class="head_table">Marca</th>
+                        <th class="head_table">Modelo</th>
+                        <th class="head_table">Tipo Vehiculo</th>
+                        <th class="head_table">Color</th>
+                    </thead>
 
-                            <?php
-                            $sql = "SELECT * FROM usuario WHERE id_tip_usu = 2";
-                            $result = mysqli_query($mysqli, $sql);
-                            while ($row2 = mysqli_fetch_array($result)) {
-                                $ruta_img = $row2["foto"];
-                            }
-                            ?>
-                            <br>
-                            <label for="foto">
-                                <img src="../fotos/<?php echo $ruta_img; ?>" class="imagen" alt="">
-                        </div>
+                    <tbody>
+                    <?php
+						$query = "SELECT * FROM detalle_vehiculo, vehiculo, usuario, modelo, color, marca, tipo_vehiculo 
+                                    WHERE detalle_vehiculo.documento = usuario.documento 
+                                    AND detalle_vehiculo.placa = vehiculo.placa 
+                                    AND vehiculo.id_modelo = modelo.id_modelo 
+                                    AND vehiculo.id_marca = marca.id_marca 
+                                    AND vehiculo.id_tip_vehiculo = tipo_vehiculo.id_tipo_vehiculo 
+                                    AND vehiculo.id_color = color.id_color";
+						$result_tasks = mysqli_query($mysqli, $query);
 
-                        <form action="updatefoto.php" method="POST" enctype="multipart/form-data">
-                            <br>
-                            <div>
-                                <input type="file" name="foto" id="foto" class="fotito">
-
-                            </div>
-                            <br>
-                            <div>
-                                <input type="submit" name="update" class="file" value="Actualizar">
-
-                            </div>
-                        </form>
-                    </div>
-                </div>
-                <br>
+						while ($row = mysqli_fetch_assoc($result_tasks)) { ?>
+							<tr>
+                                <td class="body_table"><b><?php echo $row['documento']?>/<?php echo $row['nombre'] ?></b></td>
+								<td class="body_table"><b><?php echo $row['placa'] ?></b></td>
+								<td class="body_table"><b><?php echo $row['nom_marca'] ?></b></td>
+								<td class="body_table"><b><?php echo $row['nom_modelo']; ?></b></td>
+                                <td class="body_table"><b><?php echo $row['nom_tipo_vehiculo']; ?></b></td>
+                                <td class="body_table"><b><?php echo $row['nom_color']; ?></b></td>
+							</tr>
+						<?php } ?>
+                    </tbody>
+                </table>
             </div>
         </section>
-       	<!-- Dialog help -->
+<!-- Dialog help -->
     <div class="modal fade" tabindex="-1" role="dialog" id="Dialog-Help">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -164,9 +160,9 @@ if (isset($_SESSION['tipo']) && isset($_SESSION['nom']) && isset($_SESSION['ape'
                 <div class="modal-body">
                     <p>
                        Hola querido usuario, Bienvenido!! <br>
-                       Aqui encontraras los manuales que te podran ayudar a saber el funcionamiento de nuestra pagina y el manual es el siguiente: <br>
+                       Aqui encontraras los manuales que te podran ayudar a saber el funcionamiento de nuestra pagina y los manuales son los siguientes: <br>
 
-                       
+                       <a href="https://drive.google.com/file/d/1H_dSFSHAyf4bWmgumzvoaixI6uW7P6A3/view?usp=sharing">Manual de Usuarios</a> <br>
                        <a href="https://drive.google.com/file/d/1dfh-e8XFyhJfa4qRkmCpH0x2e9evBs34/view?usp=sharing">Manual tecnico</a>
                     </p>
                 </div>
@@ -177,22 +173,18 @@ if (isset($_SESSION['tipo']) && isset($_SESSION['nom']) && isset($_SESSION['ape'
             </div>
         </div>
     </div>
-
     </body>
     <!-- Scripts cambiables -->
-    <script src="../../../library/jquery-3.6.0.min.js"></script>
-    <script src="../js/main.js"></script>
-    <script src="../js/validarform.js"></script>
-
+    <script src="js/peticion.js"></script>                    
 
     <!--====== Scripts pagina ¡¡NO CAMBIAR!! -->
-    <script src="../../../../layout/js/jquery-3.1.1.min.js"></script>
-    <script src="../../../../layout/js/sweetalert2.min.js"></script>
-    <script src="../../../../layout/js/bootstrap.min.js"></script>
-    <script src="../../../../layout/js/material.min.js"></script>
-    <script src="../../../../layout/js/ripples.min.js"></script>
-    <script src="../../../../layout/js/jquery.mCustomScrollbar.concat.min.js"></script>
-    <script src="../../../../layout/js/main.js"></script>
+    <script src="../../../layout/js/jquery-3.1.1.min.js"></script>
+    <script src="../../../layout/js/sweetalert2.min.js"></script>
+    <script src="../../../layout/js/bootstrap.min.js"></script>
+    <script src="../../../layout/js/material.min.js"></script>
+    <script src="../../../layout/js/ripples.min.js"></script>
+    <script src="../../../layout/js/jquery.mCustomScrollbar.concat.min.js"></script>
+    <script src="../../../layout/js/main.js"></script>
     <script>
         $.material.init();
     </script>

@@ -1,6 +1,6 @@
 <?php
 include("../../../../php/conexion.php");
-// $cantidad = '';
+
 $nombre = '';
 $apellido = '';
 $ed = '';
@@ -32,20 +32,74 @@ if (isset($_SESSION['tipo']) && isset($_SESSION['nom']) && isset($_SESSION['ape'
         $cel = $_POST['celular'];
         $dir = $_POST['direccion'];
         $cor = $_POST['correo'];
-        // $foto = $_FILES["foto"]["name"];
-        // $ruta = $_FILES["foto"]["tmp_name"];
-        // $destino = "../fotos/" . $foto;
-        // copy($ruta, $destino);
 
-        $query = "UPDATE usuario SET nombre = '$nombre', apellido = '$apellido', edad = '$ed', celular = '$cel', direccion = '$dir', correo = '$cor', foto = '$foto' WHERE documento = $id";
-        mysqli_query($mysqli, $query);
+        if ($nombre) {
+            $query = "UPDATE usuario SET nombre = '$nombre' WHERE documento = $id";
+            $resultado = mysqli_query($mysqli,$query);
+            if ($resultado) {
+                echo '<script type="text/javascript">
+                        alert("se actualizaron los datos correctamente");
+                        window.location.href="../perfil.php";
+                      </script>';
+            }
+        } else if ($apellido) {
+            $query2 = "UPDATE usuario SET apellido = '$apellido' WHERE documento = $id";
+            $resultado1 = mysqli_query($mysqli,$query2);
+            if ($resultado1) {
+                echo '<script type="text/javascript">
+                        alert("se actualizaron los datos correctamente");
+                        window.location.href="../perfil.php";
+                      </script>';
+            }
+        } else if ($ed) {
+            $query3 = "UPDATE usuario SET edad = '$ed' WHERE documento = $id";
+            $resultado2 = mysqli_query($mysqli,$query3);
+            if ($resultado2) {
+                echo '<script type="text/javascript">
+                        alert("se actualizaron los datos correctamente");
+                        window.location.href="../perfil.php";
+                      </script>';
+            }
+        } else if ($cel) {
+            $query4 = "UPDATE usuario SET celular = '$cel' WHERE documento = $id";
+            $resultado3 = mysqli_query($mysqli,$query4);
+            if ($resultado3) {
+                echo '<script type="text/javascript">
+                        alert("se actualizaron los datos correctamente");
+                        window.location.href="../perfil.php";
+                      </script>';
+            }
+        } else if ($dir) {
+            $query5 = "UPDATE usuario SET direccion = '$dir' WHERE documento = $id";
+            $resultado4 = mysqli_query($mysqli,$query5);
+            if ($resultado4) {
+                echo '<script type="text/javascript">
+                        alert("se actualizaron los datos correctamente");
+                        window.location.href="../perfil.php";
+                      </script>';
+            }
+        } else if ($cor) {
+            $query6 = "UPDATE usuario SET correo = '$cor' WHERE documento = $id";
+            $resultado5 = mysqli_query($mysqli,$query6);
+            if ($resultado5) {
+                echo '<script type="text/javascript">
+                        alert("se actualizaron los datos correctamente");
+                        window.location.href="../perfil.php";
+                      </script>';
+            }
+        } else {
 
-        if ($query) {
-            echo '<script type="text/javascript">
-                    alert("se actualizaron los datos correctamente");
-                    window.location.href="../perfil.php";
-                </script>';
+            $query = "UPDATE usuario SET nombre = '$nombre', apellido = '$apellido', edad = '$ed', celular = '$cel', direccion = '$dir', correo = '$cor' WHERE documento = $id";
+            $resultado7 = mysqli_query($mysqli, $query);
+    
+            if ($resultado7) {
+                echo '<script type="text/javascript">
+                        alert("se actualizaron los datos correctamente");
+                        window.location.href="../perfil.php";
+                      </script>';
+            }
         }
+
     }
 
 ?>
@@ -90,7 +144,6 @@ if (isset($_SESSION['tipo']) && isset($_SESSION['nom']) && isset($_SESSION['ape'
                         }
                         ?>
                         <img src="../fotos/<?php echo $ruta_img; ?>" class="imagen" alt="">
-                        <!-- <img src="../../../../img/foto_perfil.png" alt="UserIcon"> -->
                         <div class="text-center text-titles">
                             <p class="profile_welcome">Bienvenido,</p>
                             <p class="profile_name">
@@ -107,7 +160,7 @@ if (isset($_SESSION['tipo']) && isset($_SESSION['nom']) && isset($_SESSION['ape'
                             </a>
                         </li>
                         <li>
-                            <a href="#" class="btn-exit-system">
+                            <a href="#" class="btn-exit-system2">
                                 <i class="fas fa-power-off"></i>
                             </a>
                         </li>
@@ -196,14 +249,13 @@ if (isset($_SESSION['tipo']) && isset($_SESSION['nom']) && isset($_SESSION['ape'
             <!-- Aquí va el contenido -->
             <div class="contenido">
 
-                <form action="editar.php?documento=<?php echo $_GET['documento']; ?>" method="POST" id="formu" enctype="multipart/form-data" onsubmit="return validarformulario();">
+                <form action="editar.php?documento=<?php echo $_GET['documento']; ?>" method="POST" id="formu" enctype="multipart/form-data">
                     <h2 class="titulo">ACTUALIZAR INFORMACION DE USUARIO</h2>
                     <div class="foto_perfil">
                         <?php
                         $sql = "SELECT * FROM usuario WHERE id_tip_usu = 3";
                         $result = mysqli_query($mysqli, $sql);
                         while ($row2 = mysqli_fetch_array($result)) {
-                            /*almacenamos el nombre de la ruta en la variable $ruta_img*/
                             $ruta_img = $row2["foto"];
                         }
                         ?>
@@ -216,9 +268,7 @@ if (isset($_SESSION['tipo']) && isset($_SESSION['nom']) && isset($_SESSION['ape'
                         </div>
                     </div>
                     <br>
-                    <!-- <input type="text" name="idzona" id="inputzona" placeholder="Ingrese el id de la zona" autocomplete="off" required> -->
-                    <!-- <label for="cant_cupos" class="label" style="background:none; color:black; font-size:15px; margin-left:-5px;">Cantidad de cupos</label>
-                <input type="text" name="cant_cupos" id="cant_cupos" placeholder="Cupos:cupos"> -->
+
                     <div>
 
                         <label for="nombre">Nombre</label>
