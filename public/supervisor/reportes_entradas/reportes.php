@@ -34,21 +34,22 @@ if (isset($_SESSION['tipo']) && isset($_SESSION['nom']) && isset($_SESSION['ape'
                 <!-- SideBar User info -->
                 <div class="full-box dashboard-sideBar-UserInfo">
                     <figure class="full-box">
-                        <?php
+                            <?php
 
-                        $sql = "SELECT * FROM usuario WHERE id_tip_usu = 2";
-                        $result = mysqli_query($mysqli, $sql);
-                        while ($row2 = mysqli_fetch_array($result)) {
-                            /*almacenamos el nombre de la ruta en la variable $ruta_img*/
-                            $ruta_img = $row2["foto"];
-                        }
-                        ?>
-                        <img src="../perfil/fotos/<?php echo $ruta_img; ?>" class="imagen" alt="">
+                                $sql = "SELECT * FROM usuario WHERE id_tip_usu = 3";
+                                $result = mysqli_query($mysqli,$sql);
+                                while ($row2=mysqli_fetch_array($result))
+                                {
+                                    /*almacenamos el nombre de la ruta en la variable $ruta_img*/
+                                    $ruta_img = $row2["foto"];
+                                }
+                            ?>
+                            <img src="../perfil/fotos/<?php echo $ruta_img; ?>" class="imagen" alt="">
                         <!-- <img src="../../../img/foto_perfil.png" alt="UserIcon"> -->
                         <div class="text-center text-titles">
                             <p class="profile_welcome">Bienvenido,</p>
                             <p class="profile_name">
-                                <?php echo $_SESSION['nom'], " ", $_SESSION['ape'] ?>
+                                <?php echo $_SESSION['nom']," ", $_SESSION['ape']?>
                             </p>
                         </div>
 
@@ -56,7 +57,7 @@ if (isset($_SESSION['tipo']) && isset($_SESSION['nom']) && isset($_SESSION['ape'
 
                     <ul class="full-box list-unstyled text-center">
                         <li>
-                            <a href="perfil.php">
+                            <a href="../perfil/perfil.php">
                                 <i class="fas fa-cogs"></i>
                             </a>
                         </li>
@@ -148,7 +149,7 @@ if (isset($_SESSION['tipo']) && isset($_SESSION['nom']) && isset($_SESSION['ape'
                             <div class="infoZonas">
                             <?php
                                 while ($resul2 = mysqli_fetch_array($zonas)) {
-                                    $cupos_libres = $mysqli -> query ("SELECT * FROM detalle_cupos WHERE id_zona = '$resul2[id_zona]' AND id_estado = '1'");
+                                    $cupos_libres = $mysqli -> query ("SELECT * FROM detalle_cupos WHERE id_zona = '$resul2[id_zona]' AND id_estado = '4'");
                                     $resul_cupos = $cupos_libres->num_rows;
                                     
                                     echo "
