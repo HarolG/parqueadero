@@ -150,7 +150,8 @@ include("../../../php/conexion.php");
 					<td class="head_table">NOMBRE</td>
 					<td class="head_table">APELLIDO</td>
 					<td class="head_table">TIPO DE USUARIO</td>
-					<td class="head_table">FECHA INICIO DE SESION</td>
+					<td class="head_table">FECHA INGRESO</td>
+					<td class="head_table">FECHA SALIDA </td>
 					<td class="head_table">OPERACIONES</td>
 				</tr>
 			</thead>
@@ -168,6 +169,7 @@ include("../../../php/conexion.php");
 						<td class="body_table"><b><?php echo $row['apellido'] ?></b></td>
 						<td class="body_table"><b><?php echo $row['nom_tip_usu'] ?></b></td>
 						<td class="body_table"><b><?php echo $row['fecha_inicio'] ?></b></td>
+						<td class="body_table"><b><?php echo $row['fecha_salida'] ?></b></td>
 						<td class="body_table">
 							<a href="php/eliminar.php?id_informe_celador=<?php echo $row['id_informe_celador'] ?>" class="eliminarlink">
 								<i id="trash" class="fas fa-trash"></i>
