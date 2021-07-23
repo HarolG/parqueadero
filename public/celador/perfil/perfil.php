@@ -1,7 +1,7 @@
 <?php
 include("../../../php/conexion.php");
 
-if (isset($_SESSION['tipo']) && isset($_SESSION['nom']) && isset($_SESSION['ape']) && isset($_SESSION['pass'])) {
+if (isset($_SESSION['tipo']) && isset($_SESSION['nom']) && isset($_SESSION['doc']) && isset($_SESSION['ape']) && isset($_SESSION['pass'])) {
 ?>
 
     <!DOCTYPE html>
@@ -37,12 +37,10 @@ if (isset($_SESSION['tipo']) && isset($_SESSION['nom']) && isset($_SESSION['ape'
                         $sql = "SELECT * FROM usuario WHERE id_tip_usu = 2";
                         $result = mysqli_query($mysqli, $sql);
                         while ($row2 = mysqli_fetch_array($result)) {
-                            /*almacenamos el nombre de la ruta en la variable $ruta_img*/
                             $ruta_img = $row2["foto"];
                         }
                         ?>
                         <img src="../perfil/fotos/<?php echo $ruta_img; ?>" class="imagen" alt="">
-                        <!-- <img src="../../../img/foto_perfil.png" alt="UserIcon"> -->
                         <div class="text-center text-titles">
                             <p class="profile_welcome">Bienvenido,</p>
                             <p class="profile_name">
@@ -74,16 +72,14 @@ if (isset($_SESSION['tipo']) && isset($_SESSION['nom']) && isset($_SESSION['ape'
                     </li>
                     <li>
                         <a href="../gestion_parqueadero/home.php" class="btn-sideBar-SubMenu">
-                            <i class="fa fa-users" aria-hidden="true"></i> Gestion del Parqueadero
+                            <i class="fa fa-car" aria-hidden="true"></i> Gestion del Parqueadero
                         </a>
-
                     </li>
-                    <!-- <li>
-                        <a href="../crear/crearusu.php" class="btn-sideBar-SubMenu">
-                            <i class="fa fa-car" aria-hidden="true"></i> Registro de vehiculos
+                    <li>
+                        <a href="../reportes_entradas/reportes.php" class="btn-sideBar-SubMenu">
+                            <i class="fa fa-sign-in-alt" aria-hidden="true"></i> Reporte de Entradas
                         </a>
-
-                    </li> -->
+                    </li>
                 </ul>
             </div>
         </section>
@@ -122,21 +118,20 @@ if (isset($_SESSION['tipo']) && isset($_SESSION['nom']) && isset($_SESSION['ape'
                     </thead>
                     <tbody>
                         <?php
-                        $query = "SELECT * FROM usuario WHERE id_tip_usu = 2 AND id_estado_usu = 1";
+                        $id = $_SESSION['doc'];
+                        $query = "SELECT * FROM usuario WHERE id_tip_usu = 2 AND id_estado = 6 AND documento = $id";
                         $result_tasks = mysqli_query($mysqli, $query);
 
                         while ($row = mysqli_fetch_assoc($result_tasks)) { ?>
                             <tr>
                                 <td class="body_table"><b><?php echo $row['documento'] ?></b></td>
                                 <td class="body_table"><b><?php echo $row['nombre'] ?></b></td>
-                                <!-- <td class="body_table"><b>cupos</b></td> -->
                                 <td class="body_table"><b><?php echo $row['apellido']; ?></b></td>
                                 <td class="body_table"><b><?php echo $row['celular']; ?></b></td>
                                 <td class="body_table"><b><?php echo $row['direccion']; ?></b></td>
                                 <td class="body_table"><b><?php echo $row['correo']; ?></b></td>
                                 <td class="body_table">
                                     <a href="php/editar.php?documento=<?php echo $row['documento'] ?>" class="eliminarlink2">
-                                        <!-- <i id="marker" class="fas fa-marker"></i> -->
                                         <i class="fas fa-marker"></i>
                                     </a>
                                 </td>

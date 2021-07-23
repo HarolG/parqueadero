@@ -59,7 +59,7 @@ if (isset($_SESSION['tipo']) && isset($_SESSION['nom']) && isset($_SESSION['ape'
 							</a>
 						</li>
 						<li>
-							<a href="#" class="btn-exit-system">
+							<a href="#" class="btn-exit-system2">
 								<i class="fas fa-power-off"></i>
 							</a>
 						</li>
@@ -83,13 +83,13 @@ if (isset($_SESSION['tipo']) && isset($_SESSION['nom']) && isset($_SESSION['ape'
 						</a>
 					</li>
 					<li>
-						<a href="../../parqueo/parqueo.php" class="btn-sideBar-SubMenu">
-							<i class="fa fa-sign-in-alt" aria-hidden="true"></i> Reporte de entradas
+						<a href="../../crear/crearusu.php" class="btn-sideBar-SubMenu">
+							<i class="fa fa-car" aria-hidden="true"></i> Registro de vehiculos
 						</a>
 					</li>
 					<li>
-						<a href="../../crear/crearusu.php" class="btn-sideBar-SubMenu">
-							<i class="fa fa-car" aria-hidden="true"></i> Registro de vehiculos
+						<a href="../../parqueo/parqueo.php" class="btn-sideBar-SubMenu">
+							<i class="fa fa-sign-in-alt" aria-hidden="true"></i> Reporte de entradas
 						</a>
 					</li>
 					<li>
@@ -108,12 +108,6 @@ if (isset($_SESSION['tipo']) && isset($_SESSION['nom']) && isset($_SESSION['ape'
 				<ul class="full-box list-unstyled text-right">
 					<li class="pull-left">
 						<a href="#!" class="btn-menu-dashboard"><i class="fa fa-bars" aria-hidden="true"></i></a>
-					</li>
-					<li>
-						<a href="#!" class="btn-Notifications-area">
-							<i class="far fa-envelope"></i>
-							<span class="badge">7</span>
-						</a>
 					</li>
 					<li>
 						<a href="#!" class="btn-modal-help">
