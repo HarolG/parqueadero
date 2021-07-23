@@ -11,50 +11,63 @@ $(document).ready(function () {
 
   function inicio(activador) {
 
-    if(activador == 'primeraCarga') {
-      var idZona = 1;
+    if (activador == 'primeraCarga') {
+      var idZona = 0;
+
+      $.post("php/class_graficas.php", {
+          idZona
+        },
+        function (response) {
+          graficar(response)
+        }
+      );
     } else {
       var idZona = $('#zona').val()
+      $.post("php/class_graficas.php", {
+          idZona
+        },
+        function (response) {
+          graficar(response);
+        }
+      );
     }
 
-    $.post("php/graficas.php", {
-        idZona
-      },
-      function (response) {
-        const tasks = JSON.parse(response);
-        let template = '';
 
-        tasks.forEach(element => {
+  }
 
-          var data = [{
-            //Esto es para el porcentaje
-            values: [element.cupos_disponibles, element.cupos_ocupados],
-            //Esto es para las categorias de la gráfica
-            labels: ['Disponible', 'Ocupado'],
-            //El tipo de gráfica
-            type: 'pie'
-          }];
+  function graficar(response) {
+    const tasks = JSON.parse(response);
+    let template = '';
 
-          //El Titulo de la gráfica
-          var layout = {
-            title: `Porcentaje de Cupos Disponibles Zona ${element.id_zona}`,
-          };
+    tasks.forEach(element => {
 
-          //Aquí meto la gráfica en el div graficaHistoria
-          Plotly.newPlot('graficaHistoria', data, layout);
+      var data = [{
+        //Esto es para el porcentaje
+        values: [element.cupos_disponibles, element.cupos_ocupados],
+        //Esto es para las categorias de la gráfica
+        labels: ['Disponible', 'Ocupado'],
+        //El tipo de gráfica
+        type: 'pie'
+      }];
 
-          //Esto es lo que sale a la derecha de la gráfica, la otra información
-          template += `
+      //El Titulo de la gráfica
+      var layout = {
+        title: `Porcentaje de Cupos Disponibles Zona ${element.id_zona}`,
+      };
+
+      //Aquí meto la gráfica en el div graficaHistoria
+      Plotly.newPlot('graficaHistoria', data, layout);
+
+      //Esto es lo que sale a la derecha de la gráfica, la otra información
+      template += `
           <p>Tipo de zona: ${element.nom_tip_zona}</p>
           <p>Estado: ${element.nom_estado}</p>
           <p>Cupos Libres: ${element.cupos_disponibles}</p>
           <p>Total Cupos: ${element.cupos_totales}</p>
           `
-        });
+    });
 
-        $('#informacion_zona').html(template);
-      }
-    );
+    $('#informacion_zona').html(template);
   }
 
 });

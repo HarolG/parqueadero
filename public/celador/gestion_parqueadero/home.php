@@ -317,7 +317,7 @@
                             <h5 class="card-title">Interpretación de los colores:</h5>
                             <div class="interpretacion_container">
                                 <div>
-                                    <div class="cupo cupo_Disponible"></div>
+                                    <div class="cupo cupo_Libre"></div>
                                     <p>Zona Disponible</p>
                                 </div>
                                 <div>
