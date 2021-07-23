@@ -56,7 +56,7 @@ if (isset($_SESSION['tipo']) && isset($_SESSION['nom']) && isset($_SESSION['ape'
 
                     <ul class="full-box list-unstyled text-center">
                         <li>
-                            <a href="perfil.php">
+                            <a href="../perfil/perfil.php">
                                 <i class="fas fa-cogs"></i>
                             </a>
                         </li>
@@ -122,7 +122,7 @@ if (isset($_SESSION['tipo']) && isset($_SESSION['nom']) && isset($_SESSION['ape'
                             <div class="infoZonas">
                             <?php
                                 while ($resul2 = mysqli_fetch_array($zonas)) {
-                                    $cupos_libres = $mysqli -> query ("SELECT * FROM detalle_cupos WHERE id_zona = '$resul2[id_zona]' AND id_estado = '1'");
+                                    $cupos_libres = $mysqli -> query ("SELECT * FROM detalle_cupos WHERE id_zona = '$resul2[id_zona]' AND id_estado = '4'");
                                     $resul_cupos = $cupos_libres->num_rows;
                                     
                                     echo "
