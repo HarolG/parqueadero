@@ -37,7 +37,6 @@ if (isset($_SESSION['tipo']) && isset($_SESSION['nom']) && isset($_SESSION['ape'
 						$sql = "SELECT * FROM usuario WHERE id_tip_usu = 1";
 						$result = mysqli_query($mysqli, $sql);
 						while ($row2 = mysqli_fetch_array($result)) {
-							/*almacenamos el nombre de la ruta en la variable $ruta_img*/
 							$ruta_img = $row2["foto"];
 						}
 						?>
@@ -73,18 +72,15 @@ if (isset($_SESSION['tipo']) && isset($_SESSION['nom']) && isset($_SESSION['ape'
 							<i class="fas fa-home"></i> Inicio
 						</a>
 					</li>
-					
 					<li>
 						<a href="../../zonas/zona.php" class="btn-sideBar-SubMenu">
 							<i class="fa fa-plus" aria-hidden="true"></i> Crear zonas
 						</a>
-
 					</li>
 					<li>
 						<a href="../../usuarios/usuarios.php" class="btn-sideBar-SubMenu">
 							<i class="fa fa-users" aria-hidden="true"></i> Crear usuarios
 						</a>
-
 					</li>
 					<li>
 						<a href="../../parqueo/parqueo.php" class="btn-sideBar-SubMenu">
@@ -95,7 +91,11 @@ if (isset($_SESSION['tipo']) && isset($_SESSION['nom']) && isset($_SESSION['ape'
 						<a href="../../crear/crearusu.php" class="btn-sideBar-SubMenu">
 							<i class="fa fa-car" aria-hidden="true"></i> Registro de vehiculos
 						</a>
-
+					</li>
+					<li>
+						<a href="../../reporte_vehiculo/reporte.php" class="btn-sideBar-SubMenu">
+							<i class="fa fa-car" aria-hidden="true"></i> Reporte vehiculos
+						</a>
 					</li>
 				</ul>
 			</div>
@@ -131,9 +131,8 @@ if (isset($_SESSION['tipo']) && isset($_SESSION['nom']) && isset($_SESSION['ape'
 			<!-- Aquí va el contenido -->
 			<form action="../php/tipo_zona.php" id="form" method="POST" onsubmit="return validar();">
 				<h2 class="titulo">CREAR TIPO DE ZONA</h2>
-				<!-- <input type="text" name="idzona" id="inputzona" placeholder="Ingrese el id de la zona" autocomplete="off" required> -->
 				<input type="text" name="zonita" id="inputcupos" placeholder="Ingrese el tipo de zona" autocomplete="off">
-				<input type="submit" name="guardar" id="guardar" value="Crear Estado">
+				<input type="submit" name="guardar" id="guardar" value="Crear">
 			</form>
 
 			<table class="zonas_registradas">
@@ -155,7 +154,6 @@ if (isset($_SESSION['tipo']) && isset($_SESSION['nom']) && isset($_SESSION['ape'
 							<td class="body_table"><b><?php echo $row['nom_tip_zona'] ?></b></td>
 							<td class="body_table">
 								<a href="../php/delete_tipzona.php?id_tip_zona=<?php echo $row['id_tip_zona'] ?>" class="eliminarlink">
-									<!-- <i id="trash" class="fas fa-trash"></i> -->
 									ELIMINAR
 								</a>
 							</td>

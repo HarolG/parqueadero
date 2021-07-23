@@ -1,6 +1,5 @@
 <?php
  include("../../../../php/conexion.php");
-// $cantidad = '';
 $estado= '';
 $cantidad= '';
 if(isset($_SESSION['tipo']) && isset($_SESSION['nom']) && isset($_SESSION['ape']) && isset($_SESSION['pass']) ) {
@@ -11,19 +10,14 @@ if(isset($_SESSION['tipo']) && isset($_SESSION['nom']) && isset($_SESSION['ape']
     $result = mysqli_query($mysqli, $query);
     if (mysqli_num_rows($result) == 1) {
         $row = mysqli_fetch_array($result);
-        // $cantidad = $row['title'];
         $estado = $row['nom_estado'];
-        // $cantidad = $row['cupos'];
     }
     }
 
     if (isset($_POST['update'])) {
     $id = $_GET['id_zona'];
-    //   $title= $_POST['title'];
     $estado = $_POST['cambiar_estado'];
-    // $cantidadcupos = $_POST['cant_cupos'];
     
-
     $query = "UPDATE zona_parqueo SET id_estado = '$estado' WHERE id_zona = $id";
     mysqli_query($mysqli, $query);
 
@@ -65,7 +59,15 @@ if(isset($_SESSION['tipo']) && isset($_SESSION['nom']) && isset($_SESSION['ape']
 			<!-- SideBar User info -->
 			<div class="full-box dashboard-sideBar-UserInfo">
 				<figure class="full-box">
-					<img src="../../../../img/foto_perfil.png" alt="UserIcon">
+                <?php
+
+                    $sql = "SELECT * FROM usuario WHERE id_tip_usu = 1";
+                    $result = mysqli_query($mysqli, $sql);
+                    while ($row2 = mysqli_fetch_array($result)) {
+                    $ruta_img = $row2["foto"];
+                    }
+                ?>
+                    <img src="../../perfil/fotos/<?php echo $ruta_img; ?>" class="imagen" alt="">
 					<div class="text-center text-titles">
 						<p class="profile_welcome">Bienvenido,</p>
 						<p class="profile_name">
@@ -91,33 +93,34 @@ if(isset($_SESSION['tipo']) && isset($_SESSION['nom']) && isset($_SESSION['ape']
 			<!-- SideBar Menu -->
 			<ul class="list-unstyled full-box dashboard-sideBar-Menu">
 				<li>
-					<a href="administrador.php">
+					<a href="../../home/administrador.php">
 						<i class="fas fa-home"></i> Inicio 
 					</a>
 				</li>
-				
 				<li>
-					<a href="../zonas/zona.php" class="btn-sideBar-SubMenu">
+					<a href="../../zonas/zona.php" class="btn-sideBar-SubMenu">
 						<i class="fa fa-plus" aria-hidden="true"></i> Crear zonas 
 					</a>
-					
 				</li>
 				<li>
-					<a href="../usuarios/usuarios.php" class="btn-sideBar-SubMenu">
+					<a href="../../usuarios/usuarios.php" class="btn-sideBar-SubMenu">
 						<i class="fa fa-users" aria-hidden="true"></i> Crear usuarios 
 					</a>
-					
 				</li>
                 <li>
-					<a href="../parqueo/parqueo.php" class="btn-sideBar-SubMenu">
+					<a href="../../parqueo/parqueo.php" class="btn-sideBar-SubMenu">
 						<i class="fa fa-sign-in-alt" aria-hidden="true"></i> Reporte de entradas
 					</a>
 				</li>
 				<li>
-					<a href="../crear/crearusu.php" class="btn-sideBar-SubMenu">
+					<a href="../../crear/crearusu.php" class="btn-sideBar-SubMenu">
 						<i class="fa fa-car" aria-hidden="true"></i> Registro de vehiculos
 					</a>
-					
+				</li>
+                <li>
+					<a href="../../reporte_vehiculo/reporte.php" class="btn-sideBar-SubMenu">
+						<i class="fa fa-car" aria-hidden="true"></i> Reporte vehiculos
+					</a>
 				</li>
 			</ul>
 		</div>
@@ -146,13 +149,10 @@ if(isset($_SESSION['tipo']) && isset($_SESSION['nom']) && isset($_SESSION['ape']
            <!-- Aquí va el contenido -->
            <form action="editar.php?id_zona=<?php echo $_GET['id_zona']; ?>" method="POST" id="formu" onsubmit="return valid();">
             <h2 class="titulo">EDITAR ESTADO</h2>
-            <!-- <input type="text" name="idzona" id="inputzona" placeholder="Ingrese el id de la zona" autocomplete="off" required> -->
-            <!-- <label for="cant_cupos" class="label" style="background:none; color:black; font-size:15px; margin-left:-5px;">Cantidad de cupos</label>
-            <input type="text" name="cant_cupos" id="cant_cupos" placeholder="Cupos:cupos"> -->
             <select name="cambiar_estado" id="cambiar">
                 <option value=""><?php echo $row['nom_estado'];?></option>
                 <?php
-                            $sql = "SELECT * FROM estado";
+                            $sql = "SELECT * FROM estado WHERE id_categoria = 1";
                             $query = mysqli_query($mysqli, $sql);
                 
                             while ($row = mysqli_fetch_array($query)) {
@@ -162,13 +162,12 @@ if(isset($_SESSION['tipo']) && isset($_SESSION['nom']) && isset($_SESSION['ape']
                             }
                         ?>
             </select>
-            <!-- <input type="submit" name="guardar" id="guardar" value="Crear Estado"> -->
             <button class="btn-actualizar" name="update">
-                ACTUALIZAR
+                Actualizar
             </button>
         </form>
         <div class="btn-volver">
-            <a href="../zona.php">REGRESAR</a>
+            <a href="../zona.php">Regresar</a>
         </div>
 </section>
 
