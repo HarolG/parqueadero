@@ -14,7 +14,7 @@ if (isset($_SESSION['tipo']) && isset($_SESSION['nom']) && isset($_SESSION['ape'
         <link rel="icon" href="../../../img/logo.ico" />
         <!-- estilos generales -->
         <link rel="stylesheet" href="../../../layout/css/main.css">
-        <link rel="stylesheet" href="css/perfil.css">
+        <link rel="stylesheet" href="css/reporte.css">
         <!-- Tipo de letra -->
         <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;1,100;1,300;1,400&display=swap" rel="stylesheet">
         <script src="https://kit.fontawesome.com/a90c49b6b2.js" crossorigin="anonymous"></script>
@@ -37,12 +37,10 @@ if (isset($_SESSION['tipo']) && isset($_SESSION['nom']) && isset($_SESSION['ape'
                         $sql = "SELECT * FROM usuario WHERE id_tip_usu = 3";
                         $result = mysqli_query($mysqli, $sql);
                         while ($row2 = mysqli_fetch_array($result)) {
-                            /*almacenamos el nombre de la ruta en la variable $ruta_img*/
                             $ruta_img = $row2["foto"];
                         }
                         ?>
                         <img src="../perfil/fotos/<?php echo $ruta_img; ?>" class="imagen" alt="">
-                        <!-- <img src="../../../img/foto_perfil.png" alt="UserIcon"> -->
                         <div class="text-center text-titles">
                             <p class="profile_welcome">Bienvenido,</p>
                             <p class="profile_name">
@@ -54,7 +52,7 @@ if (isset($_SESSION['tipo']) && isset($_SESSION['nom']) && isset($_SESSION['ape'
 
                     <ul class="full-box list-unstyled text-center">
                         <li>
-                            <a href="#!">
+                            <a href="../perfil/perfil.php">
                                 <i class="fas fa-cogs"></i>
                             </a>
                         </li>
@@ -73,164 +71,97 @@ if (isset($_SESSION['tipo']) && isset($_SESSION['nom']) && isset($_SESSION['ape'
                         </a>
                     </li>
                     <li>
-                        <a href="../mensajeria/buzon.php">
-                            <i class="far fa-envelope"></i>  Buzón de mensajeria
+                        <a href="../mensajeria/buzon.php" class="btn-sideBar-SubMenu">
+                            <i class="far fa-envelope" aria-hidden="true"></i> Buzon de mensajeria
                         </a>
                     </li>
                     <li>
-                        <a href="../celadores/index.php">
-                            <i class="fas fa-chart-line"></i> Informe Inicio de Sesión
+                        <a href="../celadores/index.php" class="btn-sideBar-SubMenu">
+                            <i class="fas fa-chart-line" aria-hidden="true"></i> Informe Inicio de Sesion
                         </a>
                     </li>
                     <li>
-                        <a href="../gestion/index.php">
-                            <i class="fas fa-users-cog"></i> Gestión de Usuarios
+                        <a href="../gestion/index.php" class="btn-sideBar-SubMenu">
+                            <i class="fas fa-users-cog" aria-hidden="true"></i> Gestion de Usuarios
                         </a>
                     </li>
                     <li>
-                        <a href="../gestion_parqueadero/home.php">
-                            <i class="fa fa-sign-in-alt"></i> Gestión del Parqueadero
+                        <a href="../gestion_parqueadero/home.php" class="btn-sideBar-SubMenu">
+                            <i class="fa fa-sign-in-alt" aria-hidden="true"></i> Gestion del Parqueadero
                         </a>
                     </li>
                     <li>
                         <a href="../reportes_entradas/reportes.php" class="btn-sideBar-SubMenu">
                             <i class="fa fa-sign-in-alt" aria-hidden="true"></i> Reporte de entradas
                         </a>
-				    </li>
+                    </li>
                     <li>
-                        <a href="../reporte_vehiculo/reporte.php" class="btn-sideBar-SubMenu">
+                        <a href="reporte.php" class="btn-sideBar-SubMenu">
                             <i class="fa fa-car" aria-hidden="true"></i> Reporte vehiculos
                         </a>
                     </li>
-			    </ul>
+                </ul>
             </div>
         </section>
 
         <!-- barra de menus-->
-	<section class="full-box dashboard-contentPage">
-		<!-- NavBar -->
-    <?php
-      $s2 = "SELECT * FROM mensajes WHERE leido = 1";
-      $resul2=mysqli_query($mysqli,$s2);
-      $row2=mysqli_num_rows($resul2);
+        <section class="full-box dashboard-contentPage">
+            <!-- NavBar -->
+            <nav class="full-box dashboard-Navbar">
+                <ul class="full-box list-unstyled text-right">
+                    <li class="pull-left">
+                        <a href="#!" class="btn-menu-dashboard"><i class="fa fa-bars" aria-hidden="true"></i></a>
+                    </li>
+                    <li>
+                        <a href="#!" class="btn-modal-help">
+                            <i class="far fa-question-circle"></i>
+                        </a>
+                    </li>
+                    <a class="pull-left links" style="width: 250px;" href="http://centrodeindustria.blogspot.com">Centro de Industria y Construcción</a>
 
-    ?>
-		<nav class="full-box dashboard-Navbar">
-			<ul class="full-box list-unstyled text-right">
-				<li class="pull-left">
-					<a href="#!" class="btn-menu-dashboard"><i class="fa fa-bars" aria-hidden="true"></i></a>
-				</li>
-				<li>
-					<a href="#!" class="btn-Notifications-area">
-						<i class="far fa-envelope"></i>
-						<span class="badge"><?php echo $row2; ?></span>
-					</a>
-				</li>
-				<li>
-					<a href="#!" class="btn-modal-help">
-						<i class="far fa-question-circle"></i>
-					</a>
-				</li>
-
-				<a class="pull-left links" style="width: 250px;" href="http://centrodeindustria.blogspot.com">Centro de
-					Industria y Construcción</a>
-
-				<a class="pull-left links" style="width: 170px;"
-					href="http://oferta.senasofiaplus.edu.co/sofia-oferta/">Portal de Sofia Plus</a>
-
-			</ul>
-		</nav>
+                    <a class="pull-left links" style="width: 170px;" href="http://oferta.senasofiaplus.edu.co/sofia-oferta/">Portal de Sofia Plus</a>
+                </ul>
+            </nav>
             <!-- Aquí va el contenido -->
-            <div class="cont">
+            <div class="contenedor_informe">
+
+
                 <table class="zonas_registradas">
                     <thead>
-                        <tr>
-                            <td class="head_table">DOCUMENTO</td>
-                            <td class="head_table">NOMBRE</td>
-                            <td class="head_table">APELLIDO</td>
-                            <td class="head_table">CELULAR</td>
-                            <td class="head_table">DIRECCION</td>
-                            <td class="head_table">CORREO</td>
-                            <td class="head_table">OPERACIONES</td>
-                        </tr>
+                        <th class="head_table">Dueño</th>
+                        <th class="head_table">Placa</th>
+                        <th class="head_table">Marca</th>
+                        <th class="head_table">Modelo</th>
+                        <th class="head_table">Tipo Vehiculo</th>
+                        <th class="head_table">Color</th>
                     </thead>
-                    <tbody>
-                        <?php
-                        $query = "SELECT * FROM usuario WHERE id_tip_usu = 3";
-                        $result_tasks = mysqli_query($mysqli, $query);
 
-                        while ($row = mysqli_fetch_assoc($result_tasks)) { ?>
-                            <tr>
-                                <td class="body_table"><b><?php echo $row['documento'] ?></b></td>
-                                <td class="body_table"><b><?php echo $row['nombre'] ?></b></td>
-                                <!-- <td class="body_table"><b>cupos</b></td> -->
-                                <td class="body_table"><b><?php echo $row['apellido']; ?></b></td>
-                                <td class="body_table"><b><?php echo $row['celular']; ?></b></td>
-                                <td class="body_table"><b><?php echo $row['direccion']; ?></b></td>
-                                <td class="body_table"><b><?php echo $row['correo']; ?></b></td>
-                                <td class="body_table">
-                                    <a href="php/editar.php?documento=<?php echo $row['documento'] ?>" class="eliminarlink2">
-                                        <!-- <i id="marker" class="fas fa-marker"></i> -->
-                                        <i class="fas fa-marker"></i>
-                                    </a>
-                                </td>
-                            </tr>
-                        <?php } ?>
+                    <tbody>
+                    <?php
+						$query = "SELECT * FROM detalle_vehiculo, vehiculo, usuario, modelo, color, marca, tipo_vehiculo 
+                                    WHERE detalle_vehiculo.documento = usuario.documento 
+                                    AND detalle_vehiculo.placa = vehiculo.placa 
+                                    AND vehiculo.id_modelo = modelo.id_modelo 
+                                    AND vehiculo.id_marca = marca.id_marca 
+                                    AND vehiculo.id_tip_vehiculo = tipo_vehiculo.id_tipo_vehiculo 
+                                    AND vehiculo.id_color = color.id_color";
+						$result_tasks = mysqli_query($mysqli, $query);
+
+						while ($row = mysqli_fetch_assoc($result_tasks)) { ?>
+							<tr>
+                                <td class="body_table"><b><?php echo $row['documento']?>/<?php echo $row['nombre'] ?></b></td>
+								<td class="body_table"><b><?php echo $row['placa'] ?></b></td>
+								<td class="body_table"><b><?php echo $row['nom_marca'] ?></b></td>
+								<td class="body_table"><b><?php echo $row['nom_modelo']; ?></b></td>
+                                <td class="body_table"><b><?php echo $row['nom_tipo_vehiculo']; ?></b></td>
+                                <td class="body_table"><b><?php echo $row['nom_color']; ?></b></td>
+							</tr>
+						<?php } ?>
                     </tbody>
                 </table>
             </div>
-            </div>
-            </div>
-            </div>
-
         </section>
-
-      <!-- Notifications area -->
-
-	<section class="full-box Notifications-area">
-		<div class="full-box Notifications-bg btn-Notifications-area">
-		</div>
-		<div class="full-box Notifications-body">
-			<div class="Notifications-body-title text-titles text-center">
-				Notificaciones <i class="fas fa-times-circle btn-Notifications-area"></i>
-			</div>	
-			<div class="list-group">
-				<div class="list-group-item">
-					<div class="row-action-primary">
-						<i class="zmdi zmdi-alert-triangle"></i>
-					</div>
-					<?php
-						$notificacion ="SELECT * FROM mensajes WHERE leido = 1";
-						$resultado=mysqli_query($mysqli,$notificacion);
-                            
-                        while($row2 = mysqli_fetch_array($resultado)) {
-							
-					?>
-						
-						<div class="list-group-separator"></div>
-						<div class="list-group-item">
-							<div class="row-content">
-								<p style="font-weight:600" class="list-group-item-text"><i style="color:#FF5722; font-size: 20px;" class="fas fa-envelope-square"></i> Tienes nueva notificacion de: <?php echo $row2['de'];?></p>
-								<p style="font-weight:600" class="list-group-item-text">A la hora: <?php echo $row2['fecha'];?></p>
-							</div>
-						</div>
-						
-						
-					<?php
-						}
-					?>
-
-					<div class="list-group-item">
-						<a style="margin-left:40%" href="../buzon.php">VER MAS</a>
-					</div>	
-
-				</div>
-			</div>
-
-		</div>
-	</section>
-
-        	<!-- Dialog help -->
+<!-- Dialog help -->
     <div class="modal fade" tabindex="-1" role="dialog" id="Dialog-Help">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -242,9 +173,9 @@ if (isset($_SESSION['tipo']) && isset($_SESSION['nom']) && isset($_SESSION['ape'
                 <div class="modal-body">
                     <p>
                        Hola querido usuario, Bienvenido!! <br>
-                       Aqui encontraras los manuales que te podran ayudar a saber el funcionamiento de nuestra pagina y el manual es el siguiente: <br>
+                       Aqui encontraras los manuales que te podran ayudar a saber el funcionamiento de nuestra pagina y los manuales son los siguientes: <br>
 
-                       
+                       <a href="https://drive.google.com/file/d/1H_dSFSHAyf4bWmgumzvoaixI6uW7P6A3/view?usp=sharing">Manual de Usuarios</a> <br>
                        <a href="https://drive.google.com/file/d/1dfh-e8XFyhJfa4qRkmCpH0x2e9evBs34/view?usp=sharing">Manual tecnico</a>
                     </p>
                 </div>
@@ -255,13 +186,9 @@ if (isset($_SESSION['tipo']) && isset($_SESSION['nom']) && isset($_SESSION['ape'
             </div>
         </div>
     </div>
-
     </body>
     <!-- Scripts cambiables -->
-    <!-- <script src="js/validar.js"></script> -->
-    <script src="js/confirmacion.js"></script>
-    <script src="js/validar.js"></script>
-    <script src="../../../library/jquery-3.6.0.min.js"></script>
+    <script src="js/peticion.js"></script>                    
 
     <!--====== Scripts pagina ¡¡NO CAMBIAR!! -->
     <script src="../../../layout/js/jquery-3.1.1.min.js"></script>
