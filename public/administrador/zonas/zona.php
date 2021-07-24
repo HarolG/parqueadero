@@ -37,12 +37,10 @@ if (isset($_SESSION['tipo']) && isset($_SESSION['nom']) && isset($_SESSION['ape'
 						$sql = "SELECT * FROM usuario WHERE id_tip_usu = 1";
 						$result = mysqli_query($mysqli, $sql);
 						while ($row2 = mysqli_fetch_array($result)) {
-							/*almacenamos el nombre de la ruta en la variable $ruta_img*/
 							$ruta_img = $row2["foto"];
 						}
 						?>
 						<img src="../perfil/fotos/<?php echo $ruta_img; ?>" class="imagen" alt="">
-						<!-- <img src="../../../img/foto_perfil.png" alt="UserIcon"> -->
 						<div class="text-center text-titles">
 							<p class="profile_welcome">Bienvenido,</p>
 							<p class="profile_name">
@@ -72,24 +70,20 @@ if (isset($_SESSION['tipo']) && isset($_SESSION['nom']) && isset($_SESSION['ape'
 							<i class="fas fa-home"></i> Inicio
 						</a>
 					</li>
-					
 					<li>
 						<a href="zona.php" class="btn-sideBar-SubMenu">
 							<i class="fa fa-plus" aria-hidden="true"></i> Crear zonas
 						</a>
-
 					</li>
 					<li>
 						<a href="../usuarios/usuarios.php" class="btn-sideBar-SubMenu">
 							<i class="fa fa-users" aria-hidden="true"></i> Crear usuarios
 						</a>
-
 					</li>
 					<li>
 						<a href="../crear/crearusu.php" class="btn-sideBar-SubMenu">
 							<i class="fa fa-car" aria-hidden="true"></i> Registro de vehiculos
 						</a>
-
 					</li>
 					<li>
 						<a href="../parqueo/parqueo.php" class="btn-sideBar-SubMenu">
@@ -100,7 +94,6 @@ if (isset($_SESSION['tipo']) && isset($_SESSION['nom']) && isset($_SESSION['ape'
 						<a href="../reporte_vehiculo/reporte.php" class="btn-sideBar-SubMenu">
 							<i class="fa fa-car" aria-hidden="true"></i> Reporte vehiculos
 						</a>
-
 					</li>
 				</ul>
 			</div>
@@ -128,7 +121,6 @@ if (isset($_SESSION['tipo']) && isset($_SESSION['nom']) && isset($_SESSION['ape'
 			<div class="cont">
 				<form action="php/crear_zona.php" id="form" method="POST" onsubmit="return validar();">
 					<h2 class="titulo" style="font-weight: bold; color:black;">CREAR ZONAS</h2>
-					<!-- <input type="text" name="idzona" id="inputzona" placeholder="Ingrese el id de la zona" autocomplete="off" required> -->
 					<select name="tipozona" id="tipozona">
 						<option value="">Seleccione un tipo de zona</option>
 						<?php
@@ -142,7 +134,6 @@ if (isset($_SESSION['tipo']) && isset($_SESSION['nom']) && isset($_SESSION['ape'
 						}
 						?>
 					</select>
-					<!-- <input type="text" name="cupos_zona" id="inputcupos" placeholder="Ingrese la cantidad de cupos" autocomplete="off"> -->
 					<select name="cupozona" id="cupozona">
 						<option value="">Seleccione un estado</option>
 						<?php
@@ -166,7 +157,6 @@ if (isset($_SESSION['tipo']) && isset($_SESSION['nom']) && isset($_SESSION['ape'
 						<tr>
 							<td class="head_table">ID ZONA</td>
 							<td class="head_table">TIPO DE ZONA</td>
-							<!-- <td class="head_table">CANTIDAD DE CUPOS</td> -->
 							<td class="head_table">ESTADO</td>
 							<td class="head_table">OPERACIONES</td>
 						</tr>
@@ -181,86 +171,81 @@ if (isset($_SESSION['tipo']) && isset($_SESSION['nom']) && isset($_SESSION['ape'
 							<tr>
 								<td class="body_table"><b><?php echo $row['id_zona'] ?></b></td>
 								<td class="body_table"><b><?php echo $row['nom_tip_zona'] ?></b></td>
-								<!-- <td class="body_table"><b>cupos</b></td> -->
 								<td class="body_table"><b><?php echo $row['nom_estado']; ?></b></td>
 								<td class="body_table">
 									<a href="php/editar.php?id_zona=<?php echo $row['id_zona'] ?>" class="eliminarlink2">
-										<!-- <i id="marker" class="fas fa-marker"></i> -->
 										<i class="fas fa-marker"></i>
 									</a>
 									<a href="php/eliminar.php?id_zona=<?php echo $row['id_zona'] ?>" class="eliminarlink">
 										<i class="fas fa-trash"></i>
-										<!-- ELIMINAR -->
 									</a>
 								</td>
 							</tr>
 						<?php } ?>
 					</tbody>
 				</table>
-			<div class="cont">
+				<div class="cont">
 
-				<form action="php/crear_cupo.php" id="formulario" method="POST">
-					<p class="crear_cupo" style="font-weight: bold; color:black;">CREAR CUPOS</p>
-					<select name="id_zona" id="id_zona">
-						<option value="" selected>Seleccione una zona</option>
-						<?php
-						$sql = "SELECT * FROM zona_parqueo, tipo_zona WHERE zona_parqueo.id_tip_zona = tipo_zona.id_tip_zona";
-						$query = mysqli_query($mysqli, $sql);
+					<form action="php/crear_cupo.php" id="formulario" method="POST" onsubmit="return valid()">
+						<p class="crear_cupo" style="font-weight: bold; color:black;">CREAR CUPOS</p>
+						<select name="id_zona" id="id_zona">
+							<option value="" selected>Seleccione una zona</option>
+							<?php
+							$sql = "SELECT * FROM zona_parqueo, tipo_zona WHERE zona_parqueo.id_tip_zona = tipo_zona.id_tip_zona";
+							$query = mysqli_query($mysqli, $sql);
 
-						while ($row = mysqli_fetch_array($query)) {
-						?>
-							<option value="<?php echo $row['id_zona']; ?>"><?php echo $row['id_zona']; ?>. <?php echo $row['nom_tip_zona']; ?></option>
-						<?php
-						}
-						?>
-					</select>
-					<input type="number" name="cantidad_cupos" id="nombre_cupo" class="nombre_cupo" placeholder="Cantidad Cupos">
-					<select name="estado_cupo" id="estado_cupo">
-						<option value="" selected>Seleccione el estado del cupo</option>
-						<?php
-						$sql = "SELECT * FROM estado WHERE id_categoria = 2";
-						$query = mysqli_query($mysqli, $sql);
+							while ($row = mysqli_fetch_array($query)) {
+							?>
+								<option value="<?php echo $row['id_zona']; ?>"><?php echo $row['id_zona']; ?>. <?php echo $row['nom_tip_zona']; ?></option>
+							<?php
+							}
+							?>
+						</select>
+						<input type="number" name="cantidad_cupos" id="nombre_cupo" class="nombre_cupo" placeholder="Cantidad Cupos">
+						<select name="estado_cupo" id="estado_cupo">
+							<option value="" selected>Seleccione el estado del cupo</option>
+							<?php
+							$sql = "SELECT * FROM estado WHERE id_categoria = 2";
+							$query = mysqli_query($mysqli, $sql);
 
-						while ($row = mysqli_fetch_array($query)) {
-						?>
-							<option value="<?php echo $row['id_estado']; ?>"><?php echo $row['nom_estado']; ?></option>
-						<?php
-						}
-						?>
-						<input type="submit" name="enviar_cupo" id="enviar_cupo" class="enviar_cupo" value="CREAR CUPO">
-					</select>
-				</form>
+							while ($row = mysqli_fetch_array($query)) {
+							?>
+								<option value="<?php echo $row['id_estado']; ?>"><?php echo $row['nom_estado']; ?></option>
+							<?php
+							}
+							?>
+							<input type="submit" name="enviar_cupo" id="enviar_cupo" class="enviar_cupo" value="CREAR CUPO">
+						</select>
+					</form>
 		</section>
 
 		<!-- Dialog help -->
-    <div class="modal fade" tabindex="-1" role="dialog" id="Dialog-Help">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-                            aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title">Ayuda!!</h4>
-                </div>
-                <div class="modal-body">
-                    <p>
-                       Hola querido usuario, Bienvenido!! <br>
-                       Aqui encontraras los manuales que te podran ayudar a saber el funcionamiento de nuestra pagina y los manuales son los siguientes: <br>
+		<div class="modal fade" tabindex="-1" role="dialog" id="Dialog-Help">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						<h4 class="modal-title">Ayuda!!</h4>
+					</div>
+					<div class="modal-body">
+						<p>
+							Hola querido usuario, Bienvenido!! <br>
+							Aqui encontraras los manuales que te podran ayudar a saber el funcionamiento de nuestra pagina y los manuales son los siguientes: <br>
 
-                       <a href="https://drive.google.com/file/d/1H_dSFSHAyf4bWmgumzvoaixI6uW7P6A3/view?usp=sharing">Manual de Usuarios</a> <br>
-                       <a href="https://drive.google.com/file/d/1dfh-e8XFyhJfa4qRkmCpH0x2e9evBs34/view?usp=sharing">Manual tecnico</a>
-                    </p>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-primary btn-raised" data-dismiss="modal">Ok <i
-                            class="fas fa-exclamation"></i> </button>
-                </div>
-            </div>
-        </div>
-    </div>
+							<a href="https://drive.google.com/file/d/1H_dSFSHAyf4bWmgumzvoaixI6uW7P6A3/view?usp=sharing">Manual de Usuarios</a> <br>
+							<a href="https://drive.google.com/file/d/1dfh-e8XFyhJfa4qRkmCpH0x2e9evBs34/view?usp=sharing">Manual tecnico</a>
+						</p>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-primary btn-raised" data-dismiss="modal">Ok <i class="fas fa-exclamation"></i> </button>
+					</div>
+				</div>
+			</div>
+		</div>
 
 	</body>
 	<!-- Scripts cambiables -->
-	<!-- <script src="js/validar.js"></script> -->
+	
 	<script src="js/confirmacion.js"></script>
 	<script src="js/validar.js"></script>
 	<script src="../../../library/jquery-3.6.0.min.js"></script>

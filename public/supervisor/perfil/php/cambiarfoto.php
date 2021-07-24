@@ -63,7 +63,7 @@ if (isset($_SESSION['tipo']) && isset($_SESSION['nom']) && isset($_SESSION['ape'
                             </a>
                         </li>
                         <li>
-                            <a href="#" class="btn-exit-system">
+                            <a href="#" class="btn-exit-system2">
                                 <i class="fas fa-power-off"></i>
                             </a>
                         </li>
@@ -77,7 +77,7 @@ if (isset($_SESSION['tipo']) && isset($_SESSION['nom']) && isset($_SESSION['ape'
                         </a>
                     </li>
                     <li>
-                        <a href="../buzon.php">
+                        <a href="../../mensajeria/buzon.php">
                             <i class="far fa-envelope"></i> Buzón de mensajeria
                         </a>
                     </li>
@@ -96,9 +96,8 @@ if (isset($_SESSION['tipo']) && isset($_SESSION['nom']) && isset($_SESSION['ape'
                             <i class="fa fa-sign-in-alt"></i> Gestión del Parqueadero
                         </a>
                     </li>
-                    
                     <li>
-                        <a href="../reportes_entradas/reportes.php" class="btn-sideBar-SubMenu">
+                        <a href="../../reportes_entradas/reportes.php" class="btn-sideBar-SubMenu">
                             <i class="fa fa-sign-in-alt" aria-hidden="true"></i> Reporte de entradas
                         </a>
                     </li>
@@ -152,7 +151,6 @@ if (isset($_SESSION['tipo']) && isset($_SESSION['nom']) && isset($_SESSION['ape'
                             $sql = "SELECT * FROM usuario WHERE id_tip_usu = 3";
                             $result = mysqli_query($mysqli, $sql);
                             while ($row2 = mysqli_fetch_array($result)) {
-                                /*almacenamos el nombre de la ruta en la variable $ruta_img*/
                                 $ruta_img = $row2["foto"];
                             }
                             ?>

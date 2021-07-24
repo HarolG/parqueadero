@@ -167,6 +167,11 @@
 						<i class="fa fa-sign-in-alt"></i> Reportes de Entradas
 					</a>
 				</li>
+                <li>
+                    <a href="../reporte_vehiculo/reporte.php" class="btn-sideBar-SubMenu">
+                        <i class="fa fa-car" aria-hidden="true"></i> Reporte vehiculos
+                    </a>
+                </li>
             </ul>
         </div>
     </section>
@@ -317,7 +322,7 @@
                             <h5 class="card-title">Interpretación de los colores:</h5>
                             <div class="interpretacion_container">
                                 <div>
-                                    <div class="cupo cupo_Disponible"></div>
+                                    <div class="cupo cupo_Libre"></div>
                                     <p>Zona Disponible</p>
                                 </div>
                                 <div>

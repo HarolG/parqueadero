@@ -167,15 +167,15 @@ include("../../../php/conexion.php");
                         <td class="body_table"><?php echo $row['apellido'] ?></td>
                         <td class="body_table"><?php echo $row['nom_tip_usu'] ?></td>
                         <?php
-                        if ($row['id_estado'] == 1) {
+                        if ($row['id_estado'] == 6) {
                         ?>
                             <td class="body_table2" id="estado"><b><?php echo $row['nom_estado'] ?></b></td>
                         <?php
-                        } else if ($row['id_estado'] == 2) {
+                        } else if ($row['id_estado'] == 7) {
                         ?>
                             <td class="body_table3" id="estado"><b><?php echo $row['nom_estado'] ?></b></td>
                         <?php
-                        } else {
+                        } else if ($row['id_estado'] == 8) {
                         ?>
                             <td class="body_table4" id="estado"><b><?php echo $row['nom_estado'] ?></b></td>
                         <?php

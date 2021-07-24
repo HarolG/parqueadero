@@ -122,6 +122,11 @@
 						<i class="fa fa-sign-in-alt"></i> Reportes de Entradas
 					</a>
 				</li>
+				<li>
+					<a href="../reporte_vehiculo/reporte.php">
+						<i class="fa fa-car"></i> Reporte vehiculos
+					</a>
+				</li>
 			</ul>
 		</div>
 	</section>

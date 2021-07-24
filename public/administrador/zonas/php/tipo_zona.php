@@ -2,7 +2,7 @@
 
 include("../../../../php/conexion.php");
 
-if (isset($_POST['guardar'])) {
+if(isset($_POST['guardar'])) {
     $zona = $_POST['zonita'];
 
     $sql = "INSERT INTO tipo_zona (id_tip_zona, nom_tip_zona) VALUES (NULL, '$zona')";
