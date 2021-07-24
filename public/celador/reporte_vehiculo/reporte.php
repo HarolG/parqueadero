@@ -125,18 +125,19 @@ if (isset($_SESSION['tipo']) && isset($_SESSION['nom']) && isset($_SESSION['ape'
 
                     <tbody>
                     <?php
-						$query = "SELECT * FROM detalle_vehiculo, vehiculo, usuario, modelo, color, marca, tipo_vehiculo 
-                                    WHERE detalle_vehiculo.documento = usuario.documento 
-                                    AND detalle_vehiculo.placa = vehiculo.placa 
-                                    AND vehiculo.id_modelo = modelo.id_modelo 
-                                    AND vehiculo.id_marca = marca.id_marca 
-                                    AND vehiculo.id_tip_vehiculo = tipo_vehiculo.id_tipo_vehiculo 
-                                    AND vehiculo.id_color = color.id_color";
+						$query = "SELECT * FROM detalle_vehiculo, usuario, vehiculo, estado, color, modelo, marca, tipo_vehiculo 
+                        WHERE detalle_vehiculo.documento = usuario.documento 
+                        AND detalle_vehiculo.placa = vehiculo.placa 
+                        AND detalle_vehiculo.id_estado = estado.id_estado 
+                        AND vehiculo.id_color = color.id_color 
+                        AND vehiculo.id_modelo = modelo.id_modelo 
+                        AND vehiculo.id_marca = marca.id_marca 
+                        AND vehiculo.id_tip_vehiculo = tipo_vehiculo.id_tipo_vehiculo";
 						$result_tasks = mysqli_query($mysqli, $query);
 
 						while ($row = mysqli_fetch_assoc($result_tasks)) { ?>
 							<tr>
-                                <td class="body_table"><b><?php echo $row['documento']?>/<?php echo $row['nombre'] ?></b></td>
+                                <td class="body_table"><b><?php echo $row['documento']?> <?php echo $row['nombre'] ?></b></td>
 								<td class="body_table"><b><?php echo $row['placa'] ?></b></td>
 								<td class="body_table"><b><?php echo $row['nom_marca'] ?></b></td>
 								<td class="body_table"><b><?php echo $row['nom_modelo']; ?></b></td>
