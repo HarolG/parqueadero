@@ -198,16 +198,15 @@ if (isset($_SESSION['tipo']) && isset($_SESSION['nom']) && isset($_SESSION['ape'
                     </li>
                    
                     <li>
-                        <a href="../reportes_entradas/reportes.php" class="btn-sideBar-SubMenu">
+                        <a href="../../reportes_entradas/reportes.php" class="btn-sideBar-SubMenu">
                             <i class="fa fa-sign-in-alt" aria-hidden="true"></i> Reporte de entradas
                         </a>
 				    </li>
-                    <!-- <li>
-                        <a href="../../crear/crearusu.php" class="btn-sideBar-SubMenu">
-                            <i class="fa fa-car" aria-hidden="true"></i> Registro de vehiculos
+                    <li>
+                        <a href="../../reporte_vehiculo/reporte.php" class="btn-sideBar-SubMenu">
+                            <i class="fa fa-car" aria-hidden="true"></i> Reporte vehiculos
                         </a>
-
-                    </li> -->
+                    </li>
                 </ul>
             </div>
         </section>
