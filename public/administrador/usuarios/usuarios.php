@@ -338,7 +338,7 @@ Favor revisar los direccionamientos
 								$mail->Port       = 587;                                    //TCP port to connect to, use 465 for `PHPMailer::ENCRYPTION_SMTPS` above
 
 								//Recipients
-								$mail->setFrom('parkin.system.adsi@gmail.com', 'Codigo de barras - Parking System');
+								$mail->setFrom('parkin.system.adsi@gmail.com', 'Parking System - Código de Barras');
 								$mail->addAddress($correo, 'prueba');     //Add a recipient
 
 								//Content
@@ -419,7 +419,7 @@ Favor revisar los direccionamientos
 											<p>Ahora formas parte del Sistema Informático para el Control de Entradas y Salidas de Vehículos - Parqueadero SENA.</p><br>
 											<p>Con el siguiente código de barras podrás ingresar tu vehículo automotor o no automotor al parqueadero del Centro de Industria y la Construcción, Regional Tolima, pero recuerda cumplir con todos los requisitos y documentos para el registro de tu vehículo.</p>
 
-											<img  alt="Barcode Generator TEC-IT" src="https://barcode.tec-it.com/barcode.ashx?data='.$documento.'"/>
+											<img  alt="Barcode Generator TEC-IT" src="https://barcode.tec-it.com/barcode.ashx?data='.$codigo.'"/>
 
 											<div class="info_registro">
 												<h4>Requisitos Necesarios: </h4>
@@ -428,13 +428,13 @@ Favor revisar los direccionamientos
 												</ol>
 												<h4>Documentos:</h4>
 												<ol>
-													<li>Tarjeta de propiedad del vehículo a registrar (Formato PDF)</li>
+													<li>Tarjeta de propiedad del vehículo a registrar (Formato .jpeg/.jpg/.png/)</li>
 													<li>Imagen del vehículo a registrar. (Formato .jpeg/.jpg/.png/)</li>
 												</ol>
 											</div>
 
 											<div class="descarga">
-												<a style="color: white; text-decoration: none;" download href="https://barcode.tec-it.com/barcode.ashx?data='.$documento.'">Descargar Código de Barras</a>
+												<a style="color: white; text-decoration: none;" download href="https://barcode.tec-it.com/barcode.ashx?data='.$codigo.'">Descargar Código de Barras</a>
 											</div>
 										</div>
 									</div>

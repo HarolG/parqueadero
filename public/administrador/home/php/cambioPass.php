@@ -51,7 +51,7 @@
         if( $clave == $claveDos){
 
             $cambioPass = $mysqli -> query ("UPDATE usuario SET clave = '$clave' WHERE usuario.documento = '$docu'");
-            $cambioEstadoPass = $mysqli -> query ("UPDATE usuario SET id_estado_pass = 9 WHERE usuario.documento = '$docu'");
+            $cambioEstadoPass = $mysqli -> query ("UPDATE usuario SET id_estado = 9 WHERE usuario.documento = '$docu'");
         ?>
             <script>
                 Swal.fire({

@@ -7,7 +7,7 @@
 		$datos_usu = $mysqli -> query ("SELECT * FROM usuario WHERE documento = '$docu'");
 		$registro = mysqli_fetch_array($datos_usu);
 
-		$id_estado_pass = $registro['id_estado_pass'];
+		$id_estado_pass = $registro['id_estado'];
 
 		if($id_estado_pass == 10){
 			echo '<script type="text/javascript">window.location.href="php/cambioPass.php";</script>';
