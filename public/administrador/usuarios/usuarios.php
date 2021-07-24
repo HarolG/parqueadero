@@ -151,7 +151,7 @@ Favor revisar los direccionamientos
 	</div>
 	<!-- BOTONOES DE REGISTRO -->
 	<div class="registro btn-group" role="group" aria-label="Basic example" style="align-items:center;">
-		<a onclick="bajar();" class="but btn btn-primary" type="submit"><i class="fas fa-user-plus"> Registrar</i></a>
+		<a onclick="bajar();" class="but btn btn-primary" type="submit"><i class="fas fa-user-plus"> Registrar Usuarios</i></a>
 		<a href="php/registrar_tipdoc.php" class="but btn btn-primary" type="submit"><i class="fas fa-plus-circle"> Resgistrar tipos de Documento</i></a>
 		<a href="php/registrar_tipusu.php" class="but btn btn-primary" type="submit"><i class="fas fa-plus-circle"> Resgistrar tipos de Usuario</i></a>
 		
@@ -164,10 +164,69 @@ Favor revisar los direccionamientos
 						<h3 class="col-sm-offset-2 col-sm-8 text-center">					
 						Formulario de Registro de Usuarios</h3>
 					</div>
+					<!-- tipo de usuario -->
+					<div class="form-group">
+						<label class="col-sm-2 control-label" >Tipo de usuario</label>
+							<div class="col-sm-8">
+								<select id="" name="tipo_usuario" class="form-control">
+								<!-- consultas y codigo para validar que los registros esten el la bd y guardarlos en una lista -->
+											<option value="">Seleccione</option>
+											<?php
+												$sql="SELECT*FROM tipo_usuario WHERE id_categoria = 6";
+												$query=mysqli_query($mysqli,$sql);
+												while($row=mysqli_fetch_array($query)){
+											?>
+												<option value="<?php echo $row['id_tip_usu']?>">
+													<?php echo $row['nom_tip_usu']?>
+												</option>
+								
+											<?php
+												}
+											?>
+								</select>
+							</div>
+					</div>
+					<!-- tipo de documento -->
+					<div class="form-group">
+						<label for="cor" class="col-sm-2 control-label">Tipo de documento</label>
+						<div class="col-sm-8">
+								<select id="" name="tipo_documento" class="form-control">
+								<!-- consultas y codigo para validar que los registros esten el la bd y guardarlos en una lista -->
+									<option value="">Seleccione</option>
+											<?php
+												$sql="SELECT*FROM tipo_documento";
+												$query=mysqli_query($mysqli,$sql);
+												while($row=mysqli_fetch_array($query)){
+											?>
+												<option value="<?php echo $row['id_tip_doc']?>">
+													<?php echo $row['nom_tip_doc']?>
+												</option>
+								
+											<?php
+												}
+											?>
+								</select>
+							</div>
+					</div>
 					<div class="form-group">
 						<label for="doc" class="col-sm-2 control-label">Documento</label>
 						<div class="col-sm-8"><input id="doc" name="doc" type="number" class="form-control" required maxlength="11" autocomplete="off" autofocus></div>
 					</div>
+						<?php 
+
+							function aleatorioCode($length = 6) { 
+    							return substr(str_shuffle("0123456789"), 0, $length); 
+							} 
+							$aleatorio  = aleatorioCode();					
+
+						?>
+
+
+					<div class="form-group">
+						<label for="code" class="col-sm-2 control-label">Codigo</label>
+						<div class="col-sm-8"><input id="code" name="code" type="number" value="<?php echo $aleatorio;?>" class="form-control" required maxlength="11" autocomplete="off" autofocus></div>
+					</div>
+
 					<div class="form-group">
 						<label for="nom" class="col-sm-2 control-label">Nombres</label>
 						<div class="col-sm-8"><input id="nom" name="nom" type="text" class="form-control" required autocomplete="off"></div>				
@@ -196,50 +255,6 @@ Favor revisar los direccionamientos
 						<label for="clave" class="col-sm-2 control-label">Contraseña</label>
 						<div class="col-sm-8"><input id="clave" name="clave" type="password" class="form-control" required autocomplete="off"></div>
 					</div>
-					<!-- tipo de documento -->
-					<div class="form-group">
-						<label for="cor" class="col-sm-2 control-label">Tipo de documento</label>
-						<div class="col-sm-8">
-								<select id="" name="tipo_documento" class="form-control">
-								<!-- consultas y codigo para validar que los registros esten el la bd y guardarlos en una lista -->
-									<option value="">Seleccione</option>
-											<?php
-												$sql="SELECT*FROM tipo_documento";
-												$query=mysqli_query($mysqli,$sql);
-												while($row=mysqli_fetch_array($query)){
-											?>
-												<option value="<?php echo $row['id_tip_doc']?>">
-													<?php echo $row['nom_tip_doc']?>
-												</option>
-								
-											<?php
-												}
-											?>
-								</select>
-							</div>
-					</div>
-					<!-- tipo de usuario -->
-					<div class="form-group">
-                        <label class="col-sm-2 control-label" >Tipo de usuario</label> <br>
-							<div class="col-sm-8">
-								<select id="" name="tipo_usuario" class="form-control">
-								<!-- consultas y codigo para validar que los registros esten el la bd y guardarlos en una lista -->
-											<option value="">Seleccione</option>
-											<?php
-												$sql="SELECT*FROM tipo_usuario";
-												$query=mysqli_query($mysqli,$sql);
-												while($row=mysqli_fetch_array($query)){
-											?>
-												<option value="<?php echo $row['id_tip_usu']?>">
-													<?php echo $row['nom_tip_usu']?>
-												</option>
-								
-											<?php
-												}
-											?>
-								</select>
-							</div>
-                    </div>
 					<div class="form-group">
 						<label for="cor" class="col-sm-2 control-label">Tipo de estado</label>
 						<div class="col-sm-8">
@@ -275,6 +290,7 @@ Favor revisar los direccionamientos
                 <?php   
                     if(isset($_POST['registrar'])){
                         $documento=$_POST['doc'];
+						$codigo=$_POST['code'];
                         $nombre=$_POST['nom'];
                         $apellido=$_POST['ape'];
                         $edad=$_POST['ed'];
@@ -287,10 +303,11 @@ Favor revisar los direccionamientos
 						$tip_estado=$_POST['tipo_estado'];
                         
 						if($tip_usu == 1){
-							$sql="INSERT INTO usuario (documento, codigo, nombre, apellido, edad, celular, direccion,correo, clave, id_tip_usu,id_tip_doc,id_estado,'id_estado_pass') VALUES ('$documento', '$documento','$nombre','$apellido','$edad','$celular','$direccion','$correo','$clave','$tip_usu','$tip_docu','$tip_estado', 10)";
+							$sql="INSERT INTO usuario (documento, codigo, nombre, apellido, edad, celular, direccion,correo, clave, id_tip_usu,id_tip_doc,id_estado) VALUES ('$documento', '$codigo','$nombre','$apellido','$edad','$celular','$direccion','$correo','$clave','$tip_usu','$tip_docu',10)";
 							
 						}else{
-							$sql="INSERT INTO usuario (documento, codigo, nombre, apellido, edad, celular, direccion,correo, clave, id_tip_usu,id_tip_doc,id_estado,'id_estado_pass') VALUES ('$documento', '$documento' ,'$nombre','$apellido','$edad','$celular','$direccion','$correo','$clave','$tip_usu','$tip_docu','$tip_estado', NULL)";
+							$sql="INSERT INTO usuario (documento, codigo, nombre, apellido, edad, celular, direccion,correo, clave, id_tip_usu,id_tip_doc,id_estado) VALUES ('$documento', '$codigo' ,'$nombre','$apellido','$edad','$celular','$direccion','$correo','$clave','$tip_usu','$tip_docu','$tip_estado')";
+							
 						}
                         
                             
@@ -321,7 +338,7 @@ Favor revisar los direccionamientos
 								$mail->Port       = 587;                                    //TCP port to connect to, use 465 for `PHPMailer::ENCRYPTION_SMTPS` above
 
 								//Recipients
-								$mail->setFrom('parkin.system.adsi@gmail.com', 'Codigo de barras - Parking System');
+								$mail->setFrom('parkin.system.adsi@gmail.com', 'Parking System - Código de Barras');
 								$mail->addAddress($correo, 'prueba');     //Add a recipient
 
 								//Content
@@ -402,7 +419,7 @@ Favor revisar los direccionamientos
 											<p>Ahora formas parte del Sistema Informático para el Control de Entradas y Salidas de Vehículos - Parqueadero SENA.</p><br>
 											<p>Con el siguiente código de barras podrás ingresar tu vehículo automotor o no automotor al parqueadero del Centro de Industria y la Construcción, Regional Tolima, pero recuerda cumplir con todos los requisitos y documentos para el registro de tu vehículo.</p>
 
-											<img  alt="Barcode Generator TEC-IT" src="https://barcode.tec-it.com/barcode.ashx?data='.$documento.'"/>
+											<img  alt="Barcode Generator TEC-IT" src="https://barcode.tec-it.com/barcode.ashx?data='.$codigo.'"/>
 
 											<div class="info_registro">
 												<h4>Requisitos Necesarios: </h4>
@@ -411,13 +428,13 @@ Favor revisar los direccionamientos
 												</ol>
 												<h4>Documentos:</h4>
 												<ol>
-													<li>Tarjeta de propiedad del vehículo a registrar (Formato PDF)</li>
+													<li>Tarjeta de propiedad del vehículo a registrar (Formato .jpeg/.jpg/.png/)</li>
 													<li>Imagen del vehículo a registrar. (Formato .jpeg/.jpg/.png/)</li>
 												</ol>
 											</div>
 
 											<div class="descarga">
-												<a style="color: white; text-decoration: none;" download href="https://barcode.tec-it.com/barcode.ashx?data='.$documento.'">Descargar Código de Barras</a>
+												<a style="color: white; text-decoration: none;" download href="https://barcode.tec-it.com/barcode.ashx?data='.$codigo.'">Descargar Código de Barras</a>
 											</div>
 										</div>
 									</div>
@@ -445,6 +462,7 @@ Favor revisar los direccionamientos
             ?>
 		</div>
 	</div>
+
 	<div class="contenedor conteiner">
 		<div id="cuadro2" class="col-sm-12 col-md-12 col-lg-12 ocultar">
 			<form id="form" class="form-horizontal" action="" method="POST">
@@ -505,6 +523,7 @@ Favor revisar los direccionamientos
 					<thead>
 						<tr>								
 							<th>Documento</th>
+							<th>Codigo</th>
 							<th>Nombre</th>
 							<th>Apellidos</th>
 							<th>edad</th>
@@ -665,6 +684,7 @@ Favor revisar los direccionamientos
 				},
 				"columns":[
 					{"data": "documento" },
+					{"data": "codigo" },
 					{"data":"nombre"},
 					{"data":"apellido"},
 					{"data":"edad"},
@@ -674,7 +694,7 @@ Favor revisar los direccionamientos
 					{ "data": "nom_tip_doc" },
 					{ "data": "nom_tip_usu" },
 					{ "data": "nom_estado" },
-					{"defaultContent": "<button type='button' class='editar btn btn-primary'><i class='fa fa-pencil-square-o'></i></button><button type='button' id='eliminar' class='eliminar btn btn-danger'><i class='fa fa-trash-o'></i></button>"}	
+					{"defaultContent": "<a href='' type='button' class='editar btn btn-primary'><i class='fa fa-pencil-square-o'></i></a><button type='button' id='eliminar' class='eliminar btn btn-danger'><i class='fa fa-trash-o'></i></button>"}	
 				],
 				"language": idioma_espanol,
 				"lengthMenu":[[2,5,10,50,-1],[2,5,10,50,"Todos los"]],
@@ -721,7 +741,7 @@ Favor revisar los direccionamientos
 
 		var obtener_data_editar = function(tbody, table){
 			$(tbody).on("click", "button.editar", function(){
-				var data = table.row( $(this).parents("tr") ).data();
+				
 				var documento = $("#documento").val( data.documento ),
 					nombre = $("#nombre").val( data.nombre ),
 					apellidos = $("#apellido").val( data.apellido ),
