@@ -135,18 +135,40 @@ Favor revisar los direccionamientos
 				<form class="formu form-horizontal" action="" method="POST">
 					<div class="form-group">
 						<label class="col-sm-2 control-label">Tipo de Usuario</label>
-						<div class="col-sm-8"><input id="restipusu" name="restipusu" type="text" class="form-control" required autocomplete="off" placeholder="Nuevo Tipo De Usuario"></div>	
-						<input type="submit" value="Registrar" class="btn btn-primary">
-						<input type="hidden" name="regisusu">
+						<div class="col-sm-8"><input id="resti" name="resti" type="text" class="form-control" required autocomplete="off" placeholder="Nuevo Tipo De Usuario"></div>	
 					</div>  
-					 
+					<div class="form-group">
+						<label for="cor" class="col-sm-2 control-label">Tipo de documento</label>
+						<div class="col-sm-8">
+							<select id="" name="tipo_categoria" class="form-control">
+								<!-- consultas y codigo para validar que los registros esten el la bd y guardarlos en una lista -->
+								<option value="">Seleccione</option>
+											<?php
+												$sql="SELECT*FROM categoria_estado WHERE id_categoria = 6 or id_categoria = 7";
+												$query=mysqli_query($mysqli,$sql);
+												while($row=mysqli_fetch_array($query)){
+											?>
+												<option value="<?php echo $row['id_categoria']?>">
+													<?php echo $row['nom_categoria']?>
+												</option>
+												
+												<?php
+												}
+											?>
+								</select>
+							</div>
+							<input type="submit" value="Registrar" class="btn btn-primary">
+							<input type="hidden" name="regis">
+						</div>
+						
+						
 				</form>
 				<?php
-						if(isset($_POST['regisusu'])){
-							$tipusu1=$_POST['restipusu'];
-						
+						if(isset($_POST['regis'])){
+							$tipusu1=$_POST['resti'];
+							$categoria=$_POST['tipo_categoria'];
 							
-							$sql="INSERT INTO `tipo_usuario` (nom_tip_usu) VALUES ('$tipusu1')";
+							$sql="INSERT INTO `tipo_usuario` (nom_tip_usu, id_categoria) VALUES ('$tipusu1','$categoria')";
 								
 							$resul=mysqli_query($mysqli,$sql);
 								
@@ -188,7 +210,7 @@ Favor revisar los direccionamientos
 							<td><?php echo $mostrar1['id_tip_usu']; ?></td>
 							<td><?php echo $mostrar1['nom_tip_usu']; ?></td>
 							<td>
-								<a href="eliminarusu.php?id_tip_usu=<?php echo $mostrar1['id_tip_usu']?>" class="eliminarlink btn btn-danger">
+								<a href="eliminartipusu.php?id_tip_usu=<?php echo $mostrar1['id_tip_usu']?>" class="eliminarlink btn btn-danger">
 									<i class="fas fa-trash"></i>
 										<!-- ELIMINAR -->
 								</a>

@@ -151,18 +151,21 @@ Favor revisar los direccionamientos
 	</div>
 	<!-- BOTONOES DE REGISTRO -->
 	<div class="registro btn-group" role="group" aria-label="Basic example" style="align-items:center;">
-		<a onclick="bajar();" class="but btn btn-primary" type="submit"><i class="fas fa-user-plus"> Registrar Usuarios</i></a>
+		<a onclick="bajar2();" class="but btn btn-primary" type="submit"><i class="fas fa-user-plus"> Registrar Usuarios Regulares</i></a>
+		<a onclick="bajar();" class="but btn btn-primary" type="submit"><i class="fas fa-user-plus"> Registrar Administrativos</i></a>
 		<a href="php/registrar_tipdoc.php" class="but btn btn-primary" type="submit"><i class="fas fa-plus-circle"> Resgistrar tipos de Documento</i></a>
 		<a href="php/registrar_tipusu.php" class="but btn btn-primary" type="submit"><i class="fas fa-plus-circle"> Resgistrar tipos de Usuario</i></a>
 		
 	</div>
 
-	<div class="container">
+	
+<!-- registro de usuarios administrativos  -->
+<div class="container">
 				<div id="registro" class="col-sm-12 col-md-12 col-lg-12 ocultar">
 				<form class="form-horizontal" action="" method="POST">
 					<div class="form-group">
 						<h3 class="col-sm-offset-2 col-sm-8 text-center">					
-						Formulario de Registro de Usuarios</h3>
+						Formulario de Registro de Administrativos</h3>
 					</div>
 					<!-- tipo de usuario -->
 					<div class="form-group">
@@ -254,29 +257,7 @@ Favor revisar los direccionamientos
 					<div class="form-group">
 						<label for="clave" class="col-sm-2 control-label">Contraseña</label>
 						<div class="col-sm-8"><input id="clave" name="clave" type="password" class="form-control" required autocomplete="off"></div>
-					</div>
-					<div class="form-group">
-						<label for="cor" class="col-sm-2 control-label">Tipo de estado</label>
-						<div class="col-sm-8">
-								<select id="" name="tipo_estado" class="form-control">
-								<!-- consultas y codigo para validar que los registros esten el la bd y guardarlos en una lista -->
-											<option value="">Seleccione</option>
-											<?php
-												$sql="SELECT*FROM estado";
-												$query=mysqli_query($mysqli,$sql);
-												while($row=mysqli_fetch_array($query)){
-											?>
-												<option value="<?php echo $row['id_estado']?>">
-													<?php echo $row['nom_estado']?>
-												</option>
-								
-											<?php
-												}
-											?>
-								</select>
-							</div>
-					</div>
-					
+					</div>	
 					<div class="form-group">
 						<div class="col-sm-offset-2 col-sm-8">
 							<input type="submit" class="btn btn-primary" value="Registrar">
@@ -300,13 +281,13 @@ Favor revisar los direccionamientos
                         $clave=$_POST['clave'];
                         $tip_usu=$_POST['tipo_usuario'];
                         $tip_docu=$_POST['tipo_documento'];
-						$tip_estado=$_POST['tipo_estado'];
+						
                         
 						if($tip_usu == 1){
 							$sql="INSERT INTO usuario (documento, codigo, nombre, apellido, edad, celular, direccion,correo, clave, id_tip_usu,id_tip_doc,id_estado) VALUES ('$documento', '$codigo','$nombre','$apellido','$edad','$celular','$direccion','$correo','$clave','$tip_usu','$tip_docu',10)";
 							
 						}else{
-							$sql="INSERT INTO usuario (documento, codigo, nombre, apellido, edad, celular, direccion,correo, clave, id_tip_usu,id_tip_doc,id_estado) VALUES ('$documento', '$codigo' ,'$nombre','$apellido','$edad','$celular','$direccion','$correo','$clave','$tip_usu','$tip_docu','$tip_estado')";
+							$sql="INSERT INTO usuario (documento, codigo, nombre, apellido, edad, celular, direccion,correo, clave, id_tip_usu,id_tip_doc,id_estado) VALUES ('$documento', '$codigo' ,'$nombre','$apellido','$edad','$celular','$direccion','$correo','$clave','$tip_usu','$tip_docu',6)";
 							
 						}
                         
@@ -461,65 +442,156 @@ Favor revisar los direccionamientos
                     }
             ?>
 		</div>
-	</div>
-
-	<div class="contenedor conteiner">
-		<div id="cuadro2" class="col-sm-12 col-md-12 col-lg-12 ocultar">
-			<form id="form" class="form-horizontal" action="" method="POST">
-				<div class="form-group">
-					<h3 class="col-sm-offset-2 col-sm-8 text-center">					
-					Formulario de Edicion de Usuarios</h3>
-				</div>
-				<!-- <input type="hidden" id="documento" name="documento" value="0"> -->
-				<input type="hidden" id="opcion" name="opcion" value="registrar">
-				<div class="form-group">
-					<label for="documento" class="col-sm-2 control-label">Documento</label>
-					<div class="col-sm-8"><input id="documento" name="documento" type="text" class="form-control" maxlength="11"></div>
-				</div>
-				<div class="form-group">
-					<label for="nombre" class="col-sm-2 control-label">Nombres</label>
-					<div class="col-sm-8"><input id="nombre" name="nombre" type="text" class="form-control"></div>				
-				</div>
-				<div class="form-group">
-					<label for="apellidos" class="col-sm-2 control-label">Apellidos</label>
-					<div class="col-sm-8"><input id="apellido" name="apellido" type="text" class="form-control"></div>
-				</div>
-				<div class="form-group">
-					<label for="edad" class="col-sm-2 control-label">Edad</label>
-					<div class="col-sm-8"><input id="edad" name="edad" type="text" class="form-control" maxlength="2" autofocus></div>
-				</div>
-				<div class="form-group">
-					<label for="celular" class="col-sm-2 control-label">Celular</label>
-					<div class="col-sm-8"><input id="celular" name="celular" type="text" class="form-control" maxlength="10"></div>
-				</div>
-				<div class="form-group">
-					<label for="direccion" class="col-sm-2 control-label">Direccion</label>
-					<div class="col-sm-8"><input id="direccion" name="direccion" type="text" class="form-control" maxlength="50"></div>
-				</div>
-				<div class="form-group">
-					<label for="correo" class="col-sm-2 control-label">Correo</label>
-					<div class="col-sm-8"><input id="correo" name="correo" type="text" class="form-control" maxlength="50"></div>
-				</div>
-				<div class="form-group">
-					<div class="col-sm-offset-2 col-sm-8">
-						<input id="" type="submit" class="btn btn-primary" value="Guardar">
-						<input onclick="listar();" id="btn_listar" type="button" class="btn btn-success" value="Listar">
+</div>
+<!-- registro de usuarios rregulares -->
+<div class="container">
+			<div id="registro2" class="col-sm-12 col-md-12 col-lg-12 ocultar">
+				<form class="form-horizontal" action="" method="POST">
+					<div class="form-group">
+						<h3 class="col-sm-offset-2 col-sm-8 text-center">					
+						Formulario de Registro de Usuarios Regulares</h3>
 					</div>
-				</div>
-			</form>
-			<div class="col-sm-offset-2 col-sm-8">
-				<p class="mensaje"></p>
+					<!-- tipo de usuario -->
+					<div class="form-group">
+						<label class="col-sm-2 control-label" >Tipo de usuario</label>
+							<div class="col-sm-8">
+								<select id="" name="tipo_usuario" class="form-control">
+								<!-- consultas y codigo para validar que los registros esten el la bd y guardarlos en una lista -->
+											<option value="">Seleccione</option>
+											<?php
+												$sql="SELECT*FROM tipo_usuario WHERE id_categoria = 7";
+												$query=mysqli_query($mysqli,$sql);
+												while($row=mysqli_fetch_array($query)){
+											?>
+												<option value="<?php echo $row['id_tip_usu']?>">
+													<?php echo $row['nom_tip_usu']?>
+												</option>
+								
+											<?php
+												}
+											?>
+								</select>
+							</div>
+					</div>
+					<!-- tipo de documento -->
+					<div class="form-group">
+						<label for="cor" class="col-sm-2 control-label">Tipo de documento</label>
+						<div class="col-sm-8">
+								<select id="" name="tipo_documento" class="form-control">
+								<!-- consultas y codigo para validar que los registros esten el la bd y guardarlos en una lista -->
+									<option value="">Seleccione</option>
+											<?php
+												$sql="SELECT*FROM tipo_documento";
+												$query=mysqli_query($mysqli,$sql);
+												while($row=mysqli_fetch_array($query)){
+											?>
+												<option value="<?php echo $row['id_tip_doc']?>">
+													<?php echo $row['nom_tip_doc']?>
+												</option>
+								
+											<?php
+												}
+											?>
+								</select>
+							</div>
+					</div>
+					<div class="form-group">
+						<label for="doc" class="col-sm-2 control-label">Documento</label>
+						<div class="col-sm-8"><input id="doc" name="doc" type="number" class="form-control" required maxlength="11" autocomplete="off" autofocus></div>
+					</div>
+						<?php 
+
+							function aleatorioCode2($length = 6) { 
+    							return substr(str_shuffle("0123456789"), 0, $length); 
+							} 
+							$aleatorio2  = aleatorioCode2();					
+
+						?>
+
+
+					<div class="form-group">
+						<label for="code" class="col-sm-2 control-label">Codigo</label>
+						<div class="col-sm-8"><input id="code" name="code" type="number" value="<?php echo $aleatorio2;?>" class="form-control" required maxlength="11" autocomplete="off" autofocus></div>
+					</div>
+
+					<div class="form-group">
+						<label for="nom" class="col-sm-2 control-label">Nombres</label>
+						<div class="col-sm-8"><input id="nom" name="nom" type="text" class="form-control" required autocomplete="off"></div>				
+					</div>
+					<div class="form-group">
+						<label for="ape" class="col-sm-2 control-label">Apellidos</label>
+						<div class="col-sm-8"><input id="ape" name="ape" type="text" class="form-control" required autocomplete="off"></div>
+					</div>
+					<div class="form-group">
+						<label for="ed" class="col-sm-2 control-label">Edad</label>
+						<div class="col-sm-8"><input id="ed" name="ed" type="number" class="form-control" required maxlength="2" autocomplete="off"></div>
+					</div>
+					<div class="form-group">
+						<label for="celu" class="col-sm-2 control-label">Celular</label>
+						<div class="col-sm-8"><input id="celu" name="celu" type="number" class="form-control" required maxlength="10"  autocomplete="off"></div>
+					</div>
+					<div class="form-group">
+						<label for="direc" class="col-sm-2 control-label">Direccion</label>
+						<div class="col-sm-8"><input id="direc" name="direc" type="text" class="form-control" required maxlength="50"  autocomplete="off"></div>
+					</div>
+					<div class="form-group">
+						<label for="cor" class="col-sm-2 control-label">Correo</label>
+						<div class="col-sm-8"><input id="cor" name="cor" type="email" class="form-control" required maxlength="50"  autocomplete="off"></div>
+					</div>
+					<div class="form-group">
+						<div class="col-sm-offset-2 col-sm-8">
+							<input type="submit" class="btn btn-primary" value="Registrar">
+							<input type="hidden" name="registrar2" value="registrar_usuario">
+							<input onclick="listar();" type="button" class="btn btn-success" value="Listar">
+						</div>
+					</div>
+				</form>
 			</div>
-			
+			<!-- CODIGO PHP PARA REGISTRAR USUARIOS -->
+                <?php   
+                    if(isset($_POST['registrar2'])){
+                        $documento=$_POST['doc'];
+						$codigo=$_POST['code'];
+                        $nombre=$_POST['nom'];
+                        $apellido=$_POST['ape'];
+                        $edad=$_POST['ed'];
+                        $celular=$_POST['celu'];
+                        $direccion=$_POST['direc'];
+                        $correo=$_POST['cor'];
+                        $tip_usu=$_POST['tipo_usuario'];
+                        $tip_docu=$_POST['tipo_documento'];
+						
+                        
+							$sql="INSERT INTO usuario (documento, codigo, nombre, apellido, edad, celular, direccion,correo, id_tip_usu,id_tip_doc,id_estado) VALUES ('$documento', '$codigo','$nombre','$apellido','$edad','$celular','$direccion','$correo','$tip_usu','$tip_docu',6)";
+							$resul=mysqli_query($mysqli,$sql);
+
+						if($resul){
+							echo "<script language='JavaScript'>
+										alert('Se ha creado el usuario correctamente'); 
+								  </script>";  
+						}else{
+                            echo "<script language='JavaScript'>
+                            alert('los datos no fueron ingresados correctamente');
+                            </script>";
+                        }
+                        	mysqli_close($mysqli);
+                    }else{          
+                ?>
+                <?php
+                    }
+            ?>
 		</div>
-	</div>
+</div>
+
+
+<!-- tabla donde se listan los usuarios -->
 	<div class="row">
 		<div id="cuadro1" class="col-sm-12 col-md-12 col-lg-12">
 			<div class="col-sm-offset-2 col-sm-8">
 				<h3 class="text-center"> <small class="mensaje"></small></h3>
 			</div>
 			<div class="table-responsive col-sm-12">		
-				<table id="dt_cliente" class="table table-bordered table-hover" cellspacing="0" width="100%" >
+				<table id="tabla_usu" class="table table-bordered table-hover" cellspacing="0" width="100%" >
 					<thead>
 						<tr>								
 							<th>Documento</th>
@@ -567,6 +639,32 @@ Favor revisar los direccionamientos
             </div>
         </div>
     </div>
+
+	<div>
+		<form id="frmEliminarUsuario" action="" method="POST">
+			<input type="hidden" id="documento" name="documento" value="">
+			<input type="hidden" id="opcion" name="opcion" value="eliminar">
+			<!-- Modal -->
+			<div class="modal fade" id="modalEliminar" tabindex="-1" role="dialog" aria-labelledby="modalEliminarLabel">
+				<div class="modal-dialog" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+							<h4 class="modal-title" id="modalEliminarLabel">Eliminar Usuario</h4>
+						</div>
+						<div class="modal-body">							
+							¿Está seguro de eliminar al usuario?<strong data-name=""></strong>
+						</div>
+						<div class="modal-footer">
+							<button type="button" id="eliminar-usuario" class="btn btn-primary" data-dismiss="modal">Aceptar</button>
+							<button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- Modal -->
+		</form>
+	</div>
 <!--====== Scripts pagina cambiables -->
 
 	<script src="js/jquery-1.12.3.js"></script>
@@ -675,8 +773,9 @@ Favor revisar los direccionamientos
 		var listar = function(){
 			$("#cuadro1").slideDown("slow");
 			$("#registro").slideUp("slow");
+			$("#registro2").slideUp("slow");
 			$("#cuadro2").slideUp("slow");
-			var table = $("#dt_cliente").DataTable({
+			var table = $("#tabla_usu").DataTable({
 				"destroy":true,
 				"ajax":{
 					"method":"POST",
@@ -694,7 +793,7 @@ Favor revisar los direccionamientos
 					{ "data": "nom_tip_doc" },
 					{ "data": "nom_tip_usu" },
 					{ "data": "nom_estado" },
-					{"defaultContent": "<a href='' type='button' class='editar btn btn-primary'><i class='fa fa-pencil-square-o'></i></a><button type='button' id='eliminar' class='eliminar btn btn-danger'><i class='fa fa-trash-o'></i></button>"}	
+					{"defaultContent": "<a href='' type='button' class='editar btn btn-primary'><i class='fa fa-pencil-square-o'></i></a> <button type='button' class='eliminar btn btn-danger' data-toggle='modal' data-target='#modalEliminar' ><i class='fa fa-trash-o'></i></button>"}	
 				],
 				"language": idioma_espanol,
 				"lengthMenu":[[2,5,10,50,-1],[2,5,10,50,"Todos los"]],
@@ -720,10 +819,9 @@ Favor revisar los direccionamientos
 					}
 					]
 			});
-
-			obtener_data_editar("#dt_cliente tbody", table);
-			obtener_id_eliminar("#dt_cliente tbody", table);
+			obtener_id_eliminar("#tabla_usu tbody", table);
 		}
+
 
 		var bajar = function(){
 			limpiar_datos();
@@ -731,39 +829,21 @@ Favor revisar los direccionamientos
 			$("#cuadro1").slideUp("slow");
 			
 		}
-		var bajar_edicion = function(){
+
+		
+		var bajar2 = function(){
 			limpiar_datos();
-			$("#cuadro2").slideDown("slow");
+			$("#registro2").slideDown("slow");
 			$("#cuadro1").slideUp("slow");
 			
 		}
-
-
-		var obtener_data_editar = function(tbody, table){
-			$(tbody).on("click", "button.editar", function(){
-				
-				var documento = $("#documento").val( data.documento ),
-					nombre = $("#nombre").val( data.nombre ),
-					apellidos = $("#apellido").val( data.apellido ),
-					edad = $("#edad").val( data.edad ),
-					celular = $("#celular").val(data.celular),
-					direccion = $("#direccion").val(data.direccion),
-					correo = $("#correo").val(data.correo),
-					nom_tip_doc = $("#tipdoc").val(data.nom_tip_doc),
-					nom_tip_usu = $("#tipusu").val(data.nom_tip_usu),
-					nom_estado_usu = $("#estausu").val(data.nom_estado_usu),
-					opcion = $("#opcion").val("modificar");
-					$("#cuadro2").slideDown("slow");
-					$("#cuadro1").slideUp("slow");
-			});
-		}
-
+		
 		var obtener_id_eliminar = function(tbody, table){
-			$(tbody).on("click", "button.eliminar", function(){
-				var data = table.row( $(this).parents("tr") ).data();
-				var documento = $("#frmEliminarUsuario #documento").val( data.documento );
-			});
-		}
+				$(tbody).on("click", "button.eliminar", function(){
+					var data = table.row( $(this).parents("tr") ).data();
+					var documento = $("#frmEliminarUsuario #documento").val( data.documento );
+				});
+			}
 
 		var idioma_espanol = {
 		    "sProcessing":     "Procesando...",
