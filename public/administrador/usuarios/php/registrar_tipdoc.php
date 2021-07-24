@@ -153,7 +153,7 @@ Favor revisar los direccionamientos
 							if($resul){  
 								echo "<script language='JavaScript'>
 								alert('Se ha creado el tipo de documento correctamente');
-								window.location.href='usuarios.php';
+								window.location.href='../usuarios.php';
 								</script>";  
 							}else{
 								echo "<script language='JavaScript'>
@@ -188,7 +188,7 @@ Favor revisar los direccionamientos
 							<td><?php echo $mostrar1['id_tip_doc']; ?></td>
 							<td><?php echo $mostrar1['nom_tip_doc']; ?></td>
 							<td>
-								<a href="eliminardoc.php?id_tip_doc=<?php echo $mostrar1['id_tip_doc']?>" class="eliminarlink btn btn-danger">
+								<a href="eliminartipdoc.php?id_tip_doc=<?php echo $mostrar1['id_tip_doc']?>" class="eliminarlink btn btn-danger">
 									<i class="fas fa-trash"></i>
 										<!-- ELIMINAR -->
 								</a>
