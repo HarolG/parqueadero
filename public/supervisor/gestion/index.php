@@ -71,42 +71,31 @@ include("../../../php/conexion.php");
 			</div>
 			<!-- SideBar Menu -->
 			<ul class="list-unstyled full-box dashboard-sideBar-Menu">
-				<li>
-					<a href="../home/home.php">
-						<i class="fas fa-home"></i> Inicio
-					</a>
-				</li>
-				<li>
-					<a href="../mensajeria/buzon.php">
-						<i class="far fa-envelope"></i>  Buzón de mensajeria
-					</a>
-				</li>
-				<li>
-					<a href="../celadores/index.php">
-						<i class="fas fa-chart-line"></i> Informe Inicio de Sesión
-					</a>
-				</li>
-				<li>
-					<a href="../gestion/index.php">
-						<i class="fas fa-users-cog"></i> Gestión de Usuarios
-					</a>
-				</li>
-				<li>
-					<a href="../gestion_parqueadero/home.php">
-						<i class="fa fa-sign-in-alt"></i> Gestión del Parqueadero
-					</a>
-				</li>
-				<li>
-					<a href="../reportes_entradas/reportes.php" class="btn-sideBar-SubMenu">
-						<i class="fa fa-sign-in-alt" aria-hidden="true"></i> Reporte de entradas
-					</a>
-				</li>
-				<li>
-                        <a href="../reporte_vehiculo/reporte.php" class="btn-sideBar-SubMenu">
-                            <i class="fa fa-car" aria-hidden="true"></i> Reporte vehiculos
-                        </a>
-                    </li>
-				
+			<li>
+                    <a href="../home/home.php">
+                        <i class="fas fa-home"></i> Inicio
+                    </a>
+                </li>
+                <li>
+                    <a href="../mensajeria/buzon.php">
+                        <i class="far fa-envelope"></i>  Buzón de mensajeria
+                    </a>
+                </li>
+                <li>
+                    <a href="index.php">
+                        <i class="fas fa-users-cog"></i> Gestión de Usuarios
+                    </a>
+                </li>
+                <li>
+                    <a href="../gestion_parqueadero/home.php">
+                        <i class="fa fa-sign-in-alt"></i> Gestión del Parqueadero
+                    </a>
+                </li>
+                <li>
+                    <a href="../reportes/reportes.php">
+                        <i class="fa fa-sign-in-alt"></i> Reportes
+                    </a>
+                </li>
 			</ul>
 		</div>
 	</section>
@@ -146,7 +135,7 @@ include("../../../php/conexion.php");
 			</ul>
 		</nav>
 		<!-- Aquí va el contenido -->
-		<h2 class="titulo_informe"><b>GESTION DE USUARIOS</b></h2>
+		<h2 class="titulo_informe"><b>GESTIÓN DE USUARIOS</b></h2>
         <table class="celadores_login">
             <thead>
                 <tr>
