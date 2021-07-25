@@ -25,14 +25,16 @@
             title: "CAMBIO DE CONTRASEÑA",
             html:`
                 <p class='parrafoPass'>Hola Administrador, por cuestiones de seguridad, Parking System solicita el cambio de contraseña para acceder por primera vez a tu cuenta.</p>
-                <form method='POST' class='formPass'>
+                <p class='parrafoPass2'><strong>RECUERDE:</strong>La contraseña debe contener mínimo 8 a 15 caracteres, y puede tener números, letras mayúsculas o minúsculas, NO puede contener espacios ni caracteres especiales.</p>
+                <form method='POST' class='formPass' autocomplete='off'>
                     <div>
                         <label for='clave'>Nueva Contraseña:</label>
-                        <input type='password' name='clave' required autocomplete='off'>
+                        <input class='inputPass' type='password' name='clave'  pattern='[a-z,A-Z,0-9]{8,15}' required>
                     </div>
                     <div>
                         <label for='claveDos'>Confirmar Contraseña:</label>
-                        <input type='password' name='claveDos' required autocomplete='off'>
+                        <input class='inputPass' type='password' name='claveDos'  pattern='[a-z,A-Z,0-9]{8,15}' required>
+                       
                     </div>
                     <input type='submit' name='actualizarPass' class='btnCambiar' value='Guardar'>
                 </form><br>`,
