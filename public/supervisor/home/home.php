@@ -2,6 +2,16 @@
     include_once("../../../php/conexion.php");
 
     if(isset($_SESSION['tipo']) && isset($_SESSION['nom']) && isset($_SESSION['ape']) && isset($_SESSION['pass']) ) {
+		
+		$docu = $_SESSION['doc'];
+		$datos_usu = $mysqli -> query ("SELECT * FROM usuario WHERE documento = '$docu'");
+		$registro = mysqli_fetch_array($datos_usu);
+
+		$id_estado_pass = $registro['id_estado'];
+
+		if($id_estado_pass == 10){
+			echo '<script type="text/javascript">window.location.href="php/cambioPass.php";</script>';
+		}
 
         #Consulta para obtener todos los datos de los vehiculos ingresados el día hoy
         $sql = "SELECT * FROM registro_parqueadero WHERE fecha = CURDATE() ORDER BY hora ASC";
@@ -39,7 +49,7 @@
     
 
 ?>
-
+<!-- codigo de harold -->
 <!DOCTYPE html>
 <html lang="es">
 
@@ -74,7 +84,7 @@
 				<figure class="full-box">
 						<?php
 
-                            $sql = "SELECT * FROM usuario WHERE id_tip_usu = 3";
+                            $sql = "SELECT * FROM usuario WHERE id_tip_usu = 1";
                             $result = mysqli_query($mysqli,$sql);
                             while ($row2=mysqli_fetch_array($result))
                             {
@@ -140,22 +150,10 @@
 	<!-- barra de menus-->
 	<section class="full-box dashboard-contentPage">
 		<!-- NavBar -->
-    <?php
-      $s2 = "SELECT * FROM mensajes WHERE leido = 1";
-      $resul2=mysqli_query($mysqli,$s2);
-      $row2=mysqli_num_rows($resul2);
-
-    ?>
 		<nav class="full-box dashboard-Navbar">
 			<ul class="full-box list-unstyled text-right">
 				<li class="pull-left">
 					<a href="#!" class="btn-menu-dashboard"><i class="fa fa-bars" aria-hidden="true"></i></a>
-				</li>
-				<li>
-					<a href="#!" class="btn-Notifications-area">
-						<i class="far fa-envelope"></i>
-						<span class="badge"><?php echo $row2; ?></span>
-					</a>
 				</li>
 				<li>
 					<a href="#!" class="btn-modal-help">
@@ -221,6 +219,7 @@
 											<input class="btn btn-secondary" type="submit" value="Generar">
 										</select>
 									</form>
+									<!-- En este div se genera la gráfica -->
 									<div id="graficaHistoria" class="graficaHistoria"></div>
 								</div>
 							</div>
@@ -242,50 +241,65 @@
 	</section>
 
 	<!-- Notifications area -->
-				
+
 	<section class="full-box Notifications-area">
 		<div class="full-box Notifications-bg btn-Notifications-area">
+
 		</div>
 		<div class="full-box Notifications-body">
 			<div class="Notifications-body-title text-titles text-center">
-				Notificaciones <i class="fas fa-times-circle btn-Notifications-area"></i>
-			</div>	
+				Notifications <i class="fas fa-times-circle btn-Notifications-area"></i>
+			</div>
 			<div class="list-group">
 				<div class="list-group-item">
 					<div class="row-action-primary">
 						<i class="zmdi zmdi-alert-triangle"></i>
 					</div>
-					<?php
-						$notificacion ="SELECT * FROM mensajes WHERE leido = 1";
-						$resultado=mysqli_query($mysqli,$notificacion);
-                            
-                        while($row2 = mysqli_fetch_array($resultado)) {
-							
-					?>
-						
-						<div class="list-group-separator"></div>
-						<div class="list-group-item">
-							<div class="row-content">
-								<p style="font-weight:600" class="list-group-item-text"><i style="color:#FF5722; font-size: 20px;" class="fas fa-envelope-square"></i> Tienes nueva notificacion de: <?php echo $row2['de'];?></p>
-								<p style="font-weight:600" class="list-group-item-text">A la hora: <?php echo $row2['fecha'];?></p>
-							</div>
-						</div>
-						
-						
-					<?php
-						}
-					?>
-
-					<div class="list-group-item">
-						<a style="margin-left:40%" href="../buzon.php">VER MAS</a>
-					</div>	
-
+					<div class="row-content">
+						<div class="least-content">17m</div>
+						<h4 class="list-group-item-heading">Tile with a label</h4>
+						<p class="list-group-item-text">Donec id elit non mi porta gravida at eget metus.</p>
+					</div>
+				</div>
+				<div class="list-group-separator"></div>
+				<div class="list-group-item">
+					<div class="row-action-primary">
+						<i class="zmdi zmdi-alert-octagon"></i>
+					</div>
+					<div class="row-content">
+						<div class="least-content">15m</div>
+						<h4 class="list-group-item-heading">Tile with a label</h4>
+						<p class="list-group-item-text">Donec id elit non mi porta gravida at eget metus.</p>
+					</div>
+				</div>
+				<div class="list-group-separator"></div>
+				<div class="list-group-item">
+					<div class="row-action-primary">
+						<i class="zmdi zmdi-help"></i>
+					</div>
+					<div class="row-content">
+						<div class="least-content">10m</div>
+						<h4 class="list-group-item-heading">Tile with a label</h4>
+						<p class="list-group-item-text">Maecenas sed diam eget risus varius blandit.</p>
+					</div>
+				</div>
+				<div class="list-group-separator"></div>
+				<div class="list-group-item">
+					<div class="row-action-primary">
+						<i class="zmdi zmdi-info"></i>
+					</div>
+					<div class="row-content">
+						<div class="least-content">8m</div>
+						<h4 class="list-group-item-heading">Tile with a label</h4>
+						<p class="list-group-item-text">Maecenas sed diam eget risus varius blandit.</p>
+					</div>
 				</div>
 			</div>
 
 		</div>
 	</section>
-		<!-- Dialog help -->
+
+	<!-- Dialog help -->
     <div class="modal fade" tabindex="-1" role="dialog" id="Dialog-Help">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -295,11 +309,12 @@
                     <h4 class="modal-title">Ayuda!!</h4>
                 </div>
                 <div class="modal-body">
+					<p>Documento del que ingresó: <?php echo ($docu);?></p>
                     <p>
                        Hola querido usuario, Bienvenido!! <br>
-                       Aqui encontraras los manuales que te podran ayudar a saber el funcionamiento de nuestra pagina y el manual es el siguiente: <br>
+                       Aqui encontraras los manuales que te podran ayudar a saber el funcionamiento de nuestra pagina y los manuales son los siguientes: <br>
 
-                       
+                       <a href="https://drive.google.com/file/d/1H_dSFSHAyf4bWmgumzvoaixI6uW7P6A3/view?usp=sharing">Manual de Usuarios</a> <br>
                        <a href="https://drive.google.com/file/d/1dfh-e8XFyhJfa4qRkmCpH0x2e9evBs34/view?usp=sharing">Manual tecnico</a>
                     </p>
                 </div>
@@ -310,6 +325,7 @@
             </div>
         </div>
     </div>
+
 </body>
 <!-- Scripts cambiables -->
 <!-- Libreria para crear gráficas -->
