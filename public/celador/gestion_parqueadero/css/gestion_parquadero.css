@@ -85,7 +85,7 @@
     width: 95%;
 }
 
-#select_codigo_vehiculo {
+.select_codigo {
     display: none;
 }
 

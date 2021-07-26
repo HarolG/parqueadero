@@ -93,9 +93,20 @@
             <div class="row container_qr">
                 <div id="reader" class="col-md-6"></div>
                 <div class="col-md-6">
-                    <select class="form-select btn-block" name="" id="select_codigo_vehiculo">
-                        <option value="0" selected>Seleccione el vehiculo</option>
-                    </select>
+                    <div class="form-group select_codigo" id="select_codigo_1">
+                        <label for="select_codigo_entrada">Seleccione el tipo de entrada</label>
+                        <select class="form-select btn-block" name="" id="select_codigo_entrada">
+                            <option value="0" selected>Seleccione la entrada</option>
+                            <option value="1">Entrada</option>
+                            <option value="2">Salida</option>
+                        </select>
+                    </div>
+                    <div class="form-group select_codigo" id="select_codigo_2">
+                        <label for="select_codigo_vehiculo">Seleccione el vehiculo</label>
+                        <select class="form-select btn-block" name="" id="select_codigo_vehiculo">
+                            <option value="0" selected>Seleccione el vehiculo</option>
+                        </select>
+                    </div>
                 </div>
             </div>
             <div class="group-form boton_qr">
