@@ -93,9 +93,20 @@
             <div class="row container_qr">
                 <div id="reader" class="col-md-6"></div>
                 <div class="col-md-6">
-                    <select class="form-select btn-block" name="" id="select_codigo_vehiculo">
-                        <option value="0" selected>Seleccione el vehiculo</option>
-                    </select>
+                    <div class="form-group select_codigo" id="select_codigo_1">
+                        <label for="select_codigo_entrada">Seleccione el tipo de entrada</label>
+                        <select class="form-select btn-block" name="" id="select_codigo_entrada">
+                            <option value="0" selected>Seleccione la entrada</option>
+                            <option value="1">Entrada</option>
+                            <option value="2">Salida</option>
+                        </select>
+                    </div>
+                    <div class="form-group select_codigo" id="select_codigo_2">
+                        <label for="select_codigo_vehiculo">Seleccione el vehiculo</label>
+                        <select class="form-select btn-block" name="" id="select_codigo_vehiculo">
+                            <option value="0" selected>Seleccione el vehiculo</option>
+                        </select>
+                    </div>
                 </div>
             </div>
             <div class="group-form boton_qr">
@@ -152,14 +163,14 @@
             </div>
             <!-- SideBar Menu -->
             <ul class="list-unstyled full-box dashboard-sideBar-Menu">
-            <li>
+                <li>
                     <a href="../home/home.php">
                         <i class="fas fa-home"></i> Inicio
                     </a>
                 </li>
                 <li>
-					<a href="../mensajeria/buzon.php">
-                        <i class="far fa-envelope"></i>  Buzón de mensajeria
+                    <a href="../mensajeria/buzon.php">
+                        <i class="far fa-envelope"></i> Buzón de mensajeria
                     </a>
                 </li>
                 <li>
@@ -177,7 +188,7 @@
                         <i class="fa fa-sign-in-alt"></i> Reportes
                     </a>
                 </li>
-			</ul>
+            </ul>
         </div>
     </section>
 
@@ -261,7 +272,8 @@
                             <h5 class="card-title">Escanee la entrada o salida del parqueadero</h5>
                             <div class="container-qr">
                                 <i class="fa fa-qrcode" aria-hidden="true"></i>
-                                <button type="submit" id="boton_codigo" class="btn btn-primary btn-block text-center boton">Escanear
+                                <button type="submit" id="boton_codigo"
+                                    class="btn btn-primary btn-block text-center boton">Escanear
                                     Código</button>
                             </div>
                         </div>
@@ -327,7 +339,7 @@
                             <h5 class="card-title">Interpretación de los colores:</h5>
                             <div class="interpretacion_container">
                                 <div>
-                                    <div class="cupo cupo_Disponible"></div>
+                                    <div class="cupo cupo_Libre"></div>
                                     <p>Zona Disponible</p>
                                 </div>
                                 <div>
