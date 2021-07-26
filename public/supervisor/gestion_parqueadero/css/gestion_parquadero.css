@@ -85,7 +85,7 @@
     width: 95%;
 }
 
-#select_codigo_vehiculo {
+.select_codigo {
     display: none;
 }
 
@@ -151,7 +151,7 @@ select {
     font-size: 30px;
 }
 
-.cupo_Disponible {
+.cupo_Libre {
     background-color: #4BB831;
 }
 
