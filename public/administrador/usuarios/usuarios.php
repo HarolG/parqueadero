@@ -573,7 +573,7 @@ Favor revisar los direccionamientos
 										alert('Se ha creado el usuario correctamente'); 
 								  </script>";  
 
-								  correo($correo,$codigo, $nombre);
+								//   correo($correo,$codigo, $nombre);
 								  
 						}else{
                             echo "<script language='JavaScript'>

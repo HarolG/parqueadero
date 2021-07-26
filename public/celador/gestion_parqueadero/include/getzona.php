@@ -40,7 +40,7 @@
     if(isset($_POST['id_zona'])) {
         $id_zona = $_POST['id_zona'];
 
-        $sql = "SELECT * FROM detalle_cupos, estado WHERE detalle_cupos.id_estado = estado.id_estado AND id_zona = '$id_zona' AND estado.nom_estado = 'Disponible'";
+        $sql = "SELECT * FROM detalle_cupos, estado WHERE detalle_cupos.id_estado = estado.id_estado AND id_zona = '$id_zona' AND estado.id_estado = 4";
         $query = mysqli_query($mysqli, $sql);
 
         while($row = mysqli_fetch_array($query)) {
