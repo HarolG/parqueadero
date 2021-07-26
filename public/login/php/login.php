@@ -41,10 +41,20 @@
                             alert("Este usuario esta con una incapacidad");
                             window.location.href="../login.html";
                         </script>';
+                } else if ($_SESSION['tipo'] == 2 && $estadousu == null) {
+                    echo '<script type="text/javascript">
+                            alert("Ha ocurrido un error, comuniquese con el supervisor para verificar el estado en su plataforma");
+                            window.location.href="../login.html";
+                        </script>';
                 }
                 
-            } elseif ($_SESSION['tipo'] == 3) {
+            } else if ($_SESSION['tipo'] == 3) {
                 header("Location: ../../supervisor/home/home.php");
+            } else if ($_SESSION['tipo'] == 4 || $_SESSION['tipo'] == 5 || $_SESSION['tipo'] == 6) {
+                echo '<script type="text/javascript">
+                        alert("Este tipo de usuario no tiene permiso para ingresar a la plataforma");
+                        window.location.href="../login.html";
+                    </script>';
             }
 
             // if ($_SESSION['pass'] == $pass) {
