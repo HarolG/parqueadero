@@ -161,12 +161,14 @@ Favor revisar los direccionamientos
 	
 <!-- registro de usuarios administrativos  -->
 <div class="container">
-				<div id="registro" class="col-sm-12 col-md-12 col-lg-12 ocultar">
-				<form class="form-horizontal" action="" method="POST">
-					<div class="form-group">
+			<div id="registro" class="col-sm-12 col-md-12 col-lg-12 ocultar">
+				<div class="form-group">
 						<h3 class="col-sm-offset-2 col-sm-8 text-center">					
 						Formulario de Registro de Administrativos</h3>
-					</div>
+				</div>
+					
+				<form style="margin-top:-33px" class="form-horizontal" action="" method="POST">
+					
 					<!-- tipo de usuario -->
 					<div class="form-group">
 						<label class="col-sm-2 control-label" >Tipo de usuario</label>
@@ -229,7 +231,7 @@ Favor revisar los direccionamientos
 						<label for="code" class="col-sm-2 control-label">Codigo</label>
 						<div class="col-sm-8"><input id="code" name="code" type="number" value="<?php echo $aleatorio;?>" class="form-control" required maxlength="11" autocomplete="off" autofocus></div>
 					</div>
-
+						
 					<div class="form-group">
 						<label for="nom" class="col-sm-2 control-label">Nombres</label>
 						<div class="col-sm-8"><input id="nom" name="nom" type="text" class="form-control" required autocomplete="off"></div>				

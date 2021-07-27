@@ -24,6 +24,16 @@ Favor revisar los direccionamientos
 	<link
 		href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;1,100;1,300;1,400&display=swap"
 		rel="stylesheet">
+	
+		<script type="text/javascript">
+		
+		function confirmar(){
+			return confirm('¿Estas Seguro? se eliminaran el tipo de documento y no podras restaurarlos');
+
+		}
+
+	</script>
+		</script>
 	<script src="https://kit.fontawesome.com/a90c49b6b2.js" crossorigin="anonymous"></script>
 </head>
 <body>
@@ -188,10 +198,7 @@ Favor revisar los direccionamientos
 							<td><?php echo $mostrar1['id_tip_doc']; ?></td>
 							<td><?php echo $mostrar1['nom_tip_doc']; ?></td>
 							<td>
-								<a href="eliminartipdoc.php?id_tip_doc=<?php echo $mostrar1['id_tip_doc']?>" class="eliminarlink btn btn-danger">
-									<i class="fas fa-trash"></i>
-										<!-- ELIMINAR -->
-								</a>
+								<?php echo "<a class='eliminarlink btn btn-danger' href='eliminartipdoc.php?id_tip_doc=".$mostrar1['id_tip_doc']."'onclick='return confirmar()'> <i class='fas fa-trash'></i> </a>";?>
 							</td>
                 		</tr>
 					</tbody>
