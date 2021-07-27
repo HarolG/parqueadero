@@ -95,6 +95,56 @@ $(document).ready(function () {
                         actualizarDatos(postData.placa);
                     });
 
+                    $('#boton_search-owner').click(function (e) {
+                        e.preventDefault();
+                        $('#search_vetanaModal-container').css('display', 'flex');
+                        $('#search_vetanaModal-owner').css('display', 'block');
+
+                        let postData = {
+                            placa: $('#search_placa').val(),
+                            estado: 'Propietarios'
+                        }
+
+                        $.post("php/class_vehiculo.php", postData,
+                            function (response) {
+                                if(response != 'badConsultaPropietario') {
+                                    if(response != 'sinPropietarios') {
+                                        const respuesta = JSON.parse(response)
+                                        let template = ``
+
+                                        respuesta.forEach(element => {
+                                            template += `
+                                                        <tr class="">
+                                                            <td scope="row">${element.documento}</td>
+                                                            <td>${element.nom_tip_doc}</td>
+                                                            <td>${element.nombre}</td>
+                                                            <td>${element.apellido}</td>
+                                                            <td>${element.edad} años</td>
+                                                            <td>${element.telefono}</td>
+                                                            <td>${element.direccion}</td>
+                                                            <td>${element.correo}</td>
+                                                        </tr>`
+                                        });
+
+                                        $('#search_vetanaModal-owner_tr').html(template);
+
+                                    } else {
+                                        alert("El vehiculo no tiene ningún propietario asignado")
+                                    }
+                                } else {
+                                    alert("Error")
+                                }
+                            }
+                        );
+
+                        $('#owner_boton-cerrar').click(function (e) { 
+                            e.preventDefault();
+                            $('#search_vetanaModal-container').css('display', 'none');
+                            $('#search_vetanaModal-owner').css('display', 'none');
+                        });
+
+                    });
+
                     $('#boton_search-eliminar').click(function (e) {
                         e.preventDefault();
                         if (confirm('¿Estás seguro de eliminar este registro?')) {
@@ -259,8 +309,18 @@ $(document).ready(function () {
 
                         $.post("php/class_vehiculo.php", postData,
                             function (response) {
-                                alert(response)
-                                window.location.reload();
+                                if(response == 'actualizarOk') {
+                                    notificacionExitosa('Datos actualizados correctamente')
+                                    $('#crud_container').html("");
+                                    $('#search_vetanaModal-container').css('display', 'none');
+                                    $('#search_vetanaModal-update').css('display', 'none');
+
+                                } else if(response == 'actualizarBad'){
+                                    notificacionErronea('Ha ocurrido un error al momento de actualizar los datos')
+                                    $('#crud_container').html("");
+                                    $('#search_vetanaModal-container').css('display', 'none');
+                                    $('#search_vetanaModal-update').css('display', 'none');
+                                }
                             }
                         );
                     });
