@@ -1,3 +1,18 @@
+<?php 
+include("../../../php/conexion.php");
+if( isset( $_SESSION['error'] ) ){
+	$class = 'error';
+	$mensaje = $_SESSION['error'];
+	unset( $_SESSION['error'] );
+}else if( isset( $_SESSION['rta'] ) ){
+	$class = 'ok';
+	$mensaje = $_SESSION['rta'];
+}else{
+	$class = 'info';
+	$mensaje = 'Ingresa tu correo y te haremos recuperar la clave de acceso al blog';
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,14 +35,14 @@
                 </video>
             </div>
             <div class="recupera_container-right">
-                <form action="php/login.php" class="form_recuperar" method="POST">
+                <form action="../php/recuperar_clave.php" class="form_recuperar" method="POST">
                     <div class="container_form">
                         <h2>RECUPERACIÓN DE USUARIO Y/O CONTRASEÑA</h2> <br>
 
                         <p>Haz perdido tu usuario o contraseña para recuperarlo ingresa el correo electronico con el cual estas registrado</p>
                         <div class="grupo grupo_datos-recupera">
                             <label for="">Correo electronico</label>
-                            <input type="text" name="username" id="username" placeholder="" required autocomplete="off">
+                            <input type="text" name="correo" id="correo" placeholder="" required autocomplete="off">
                         </div>
                         <div class="grupo grupo_boton-recupera">
                             <input type="submit" name="enviar" class="btnInicio" value="RECUPERAR">
