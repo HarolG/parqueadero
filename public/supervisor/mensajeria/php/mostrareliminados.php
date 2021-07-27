@@ -160,7 +160,7 @@ include_once("../../../../php/conexion.php");
 								<th style="text-align:center">Acción</th>
 							</tr>
 							<?php
-								$s ="SELECT * FROM mensajes WHERE id_tip_usu = 3 AND estado != 'normal' ORDER BY id desc";
+								$s ="SELECT * FROM mensajes WHERE estado != 'normal' ORDER BY id desc";
 								$resul=mysqli_query($mysqli,$s);
 					
 								while($row = mysqli_fetch_array($resul)) {

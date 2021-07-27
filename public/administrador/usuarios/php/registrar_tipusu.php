@@ -25,6 +25,13 @@ Favor revisar los direccionamientos
 		href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;1,100;1,300;1,400&display=swap"
 		rel="stylesheet">
 	<script src="https://kit.fontawesome.com/a90c49b6b2.js" crossorigin="anonymous"></script>
+	<script type="text/javascript">
+		function confirmar(){
+			return confirm('¿Estas Seguro? se eliminara el tipo de usuario y no podras restaurarlos');
+
+		}
+
+	</script>
 </head>
 <body>
 	<!-- SideBar -->
@@ -210,10 +217,7 @@ Favor revisar los direccionamientos
 							<td><?php echo $mostrar1['id_tip_usu']; ?></td>
 							<td><?php echo $mostrar1['nom_tip_usu']; ?></td>
 							<td>
-								<a href="eliminartipusu.php?id_tip_usu=<?php echo $mostrar1['id_tip_usu']?>" class="eliminarlink btn btn-danger">
-									<i class="fas fa-trash"></i>
-										<!-- ELIMINAR -->
-								</a>
+								<?php echo "<a class='eliminarlink btn btn-danger' href='eliminartipusu.php?id_tip_usu=".$mostrar1['id_tip_usu']."'onclick='return confirmar()'> <i class='fas fa-trash'></i> </a>";?>
 							</td>
                 		</tr>
 					</tbody>

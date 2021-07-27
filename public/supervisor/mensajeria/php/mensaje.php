@@ -161,16 +161,20 @@ include_once("../../../../php/conexion.php");
 			  $actualizar2 = "UPDATE mensajes SET leido = 1 WHERE id= '".$_GET['id']."' AND estado = 'eliminado'";
               $res2=mysqli_query($mysqli,$actualizar2);
             ?>
-
-            De: <?php echo $row['de']; ?>
-            <br><br>
-
-            Asunto: <?php echo $row['titulo']; ?>
-            <br><br>
-
-            Mensaje: <?php echo $row['mensaje']; ?>
-            <br><br>
-            <a class="btn btn-success" href="../buzon.php">volver</a>
+			<a class="boton btn btn-success" href="../buzon.php">volver</a>
+			
+           	<div class="estilitos">
+				<div class="caja">Tienes mensaje de: <?php echo $row['de']; ?> </div> 
+						<div class="linea"> 
+							Asunto: <?php echo $row['titulo']; ?>
+							<br><br>
+						</div>
+						<div class="caja2"> 
+							Mensaje: <?php echo $row['mensaje']; ?>
+							<br><br>
+						</div>
+			   </div>
+            </div>
             <?php
             }
             ?>
@@ -189,7 +193,7 @@ include_once("../../../../php/conexion.php");
 			<div class="list-group">
 				<div class="list-group-item">
 					<div class="row-action-primary">
-						<i class="zmdi zmdi-alert-triangle"></i>
+						
 					</div>
 					<?php
 						$notificacion ="SELECT * FROM mensajes WHERE leido = 1";
@@ -272,7 +276,7 @@ include_once("../../../../php/conexion.php");
 <?php
     } else {
         echo '<script type="text/javascript">
-                    window.location.href="../../login/login.html";
+                    window.location.href="../../../login/login.html";
                 </script>';
     }
 ?>           

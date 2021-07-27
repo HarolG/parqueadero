@@ -1,0 +1,57 @@
+.caja { 
+    box-shadow: 0px 0px 20px 0px #333 ;
+    font-family: "Helvetica Neue", Roboto, Arial, "Droid Sans", sans-serif; 
+    color: #ffffff; 
+    font-size: 18px; 
+    font-weight: 400; 
+    text-align: center; 
+    background: rgba(11, 129, 133, 0.933);; 
+    margin: 30px 0px 0px; 
+    overflow: hidden; 
+    padding: 20px; 
+    border-radius: 35px 0px 35px 0px; 
+    -moz-border-radius: 35px 35px 0px 0px; 
+    -webkit-border-radius: 35px 35px 0px 0px; 
+    border: 2px solid rgba(11, 129, 133, 0.933);;
+
+}
+.linea{
+    box-shadow: 0px 0px 20px 0px #333 ;
+    height: 60px;
+    color: #ffffff;
+    font-weight: 400;
+    font-family: "Helvetica Neue", Roboto, Arial, "Droid Sans", sans-serif; 
+    margin: 2px 0px 0px; 
+    font-size: 18px;
+    padding: 10px 10px;
+    background: rgba(11, 129, 133, 0.933);;
+    overflow: hidden; 
+    border: 2px solid rgba(11, 129, 133, 0.933);;
+}
+.caja2 { 
+    box-shadow: 0px 0px 20px 0px #333 ;
+    font-family: "Helvetica Neue", Roboto, Arial, "Droid Sans", sans-serif; 
+    color: #000000; 
+    font-size: 18px; 
+    font-weight: 400; 
+    background: #ffffff; 
+    margin: 2px 0px 0px; 
+    padding: 10px 10px; 
+    height: 350px;
+    border: 2px solid rgba(11, 129, 133, 0.933);;
+
+}
+
+
+.boton{
+    margin-top: 20px;
+    margin-left: 20px;
+    padding: 10px 20px;
+}
+
+.estilitos{
+  margin: 2px 300px 0px;  
+}
+.estilitos:hover{
+    transform: scale(1.1);
+}
