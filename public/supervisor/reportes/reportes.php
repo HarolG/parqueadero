@@ -102,11 +102,7 @@ if (isset($_SESSION['tipo']) && isset($_SESSION['nom']) && isset($_SESSION['ape'
 
         <!-- barra de menus-->
         <section class="full-box dashboard-contentPage">
-        <?php
-        $s2 = "SELECT * FROM mensajes WHERE leido = 1";
-        $resul2=mysqli_query($mysqli,$s2);
-        $row2=mysqli_num_rows($resul2);
-        ?>
+       
             <!-- NavBar -->
         <nav class="full-box dashboard-Navbar">
 			<ul class="full-box list-unstyled text-right">
@@ -114,12 +110,6 @@ if (isset($_SESSION['tipo']) && isset($_SESSION['nom']) && isset($_SESSION['ape'
 					<a href="#!" class="btn-menu-dashboard"><i class="fa fa-bars" aria-hidden="true"></i></a>
 				</li>
                 <a class="btn-group ventana"><button type="button" class="open-modal" data-open="modal1"><i class="fas fa-eye" aria-hidden="true"></i></button></a>
-				<li>
-					<a href="#!" class="btn-Notifications-area">
-						<i class="far fa-envelope"></i>
-						<span class="badge"><?php echo $row2; ?></span>
-					</a>
-				</li>
 				<li>
 					<a href="#!" class="btn-modal-help">
 						<i class="far fa-question-circle"></i>

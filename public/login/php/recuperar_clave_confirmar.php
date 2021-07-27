@@ -14,8 +14,9 @@ if( ! $a ){
 
 //OBTENEMOS LA CLAVE Y ACTUALIZAMOS AL USUARIO+
 $clave = $a['clave_nueva'];
-$c2 = "UPDATE usuario SET clave=('$clave') WHERE correo='$correo' LIMIT 1";
+$c2 = "UPDATE usuario SET clave=('$clave'), id_estado = 10  WHERE correo='$correo' LIMIT 1";
 mysqli_query($mysqli, $c2);
+
 
 //ELIMINAR ESTA SOLICITUD DE RECUPERO
 
