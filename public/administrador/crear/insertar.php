@@ -13,6 +13,7 @@
         $tarjeta = $_POST["tarjeta"];
         $foto = $_POST["vehic"];
         $doc = $_POST['doc'];
+        $estado_vehiculo = 6;
         
         $fichero_subido = $dir_subida . basename($_FILES['tarjeta']['name']);
         $fichero_subido = $dir_subida . basename($_FILES['vehic']['name']);
@@ -20,8 +21,8 @@
         //Hacemos la consulta para que me seleccione los datos en la BD y valide
         $consul = "INSERT INTO vehiculo (placa, id_modelo, id_marca, id_tip_vehiculo, id_color, anotaciones, foto, Tarjeta_Prop) 
         VALUES ('$placa', '$modelo', '$marca', '$vehiculo', '$color', '$anota', '$foto', '$tarjeta')";
-        $consulta = "INSERT INTO detalle_vehiculo (placa, documento) 
-        VALUES ('$placa', '$doc')";
+        $consulta = "INSERT INTO detalle_vehiculo (placa, documento, id_estado) 
+        VALUES ('$placa', '$doc', '$estado_vehiculo')";
         $query = mysqli_query($mysqli, $consul);
         $query = mysqli_query($mysqli,$consulta);
 

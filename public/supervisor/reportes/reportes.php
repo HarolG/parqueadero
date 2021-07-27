@@ -2,22 +2,25 @@
 include("../../../php/conexion.php");
 
 if (isset($_SESSION['tipo']) && isset($_SESSION['nom']) && isset($_SESSION['ape']) && isset($_SESSION['pass'])) {
+    $tipoZona = $mysqli -> query ("SELECT id_zona, nom_tip_zona FROM zona_parqueo, tipo_zona WHERE zona_parqueo.id_tip_zona = tipo_zona.id_tip_zona");
+    $zonas = $mysqli -> query ("SELECT id_zona,id_estado,nom_tip_zona FROM zona_parqueo, tipo_zona WHERE zona_parqueo.id_tip_zona = tipo_zona.id_tip_zona");
 ?>
 
     <!DOCTYPE html>
     <html lang="es">
 
     <head>
-        <title>Inicio</title>
+        <title>Reportes</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
         <link rel="icon" href="../../../img/logo.ico" />
         <!-- estilos generales -->
         <link rel="stylesheet" href="../../../layout/css/main.css">
-        <link rel="stylesheet" href="css/perfil.css">
+        <link rel="stylesheet" href="../../administrador/parqueo/css/estilos.css">
         <!-- Tipo de letra -->
         <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;1,100;1,300;1,400&display=swap" rel="stylesheet">
         <script src="https://kit.fontawesome.com/a90c49b6b2.js" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="css/style.css">
     </head>
 
     <body>
@@ -32,21 +35,22 @@ if (isset($_SESSION['tipo']) && isset($_SESSION['nom']) && isset($_SESSION['ape'
                 <!-- SideBar User info -->
                 <div class="full-box dashboard-sideBar-UserInfo">
                     <figure class="full-box">
-                        <?php
+                            <?php
 
-                        $sql = "SELECT * FROM usuario WHERE id_tip_usu = 3";
-                        $result = mysqli_query($mysqli, $sql);
-                        while ($row2 = mysqli_fetch_array($result)) {
-                            /*almacenamos el nombre de la ruta en la variable $ruta_img*/
-                            $ruta_img = $row2["foto"];
-                        }
-                        ?>
-                        <img src="../perfil/fotos/<?php echo $ruta_img; ?>" class="imagen" alt="">
+                                $sql = "SELECT * FROM usuario WHERE id_tip_usu = 3";
+                                $result = mysqli_query($mysqli,$sql);
+                                while ($row2=mysqli_fetch_array($result))
+                                {
+                                    /*almacenamos el nombre de la ruta en la variable $ruta_img*/
+                                    $ruta_img = $row2["foto"];
+                                }
+                            ?>
+                            <img src="../perfil/fotos/<?php echo $ruta_img; ?>" class="imagen" alt="">
                         <!-- <img src="../../../img/foto_perfil.png" alt="UserIcon"> -->
                         <div class="text-center text-titles">
                             <p class="profile_welcome">Bienvenido,</p>
                             <p class="profile_name">
-                                <?php echo $_SESSION['nom'], " ", $_SESSION['ape'] ?>
+                                <?php echo $_SESSION['nom']," ", $_SESSION['ape']?>
                             </p>
                         </div>
 
@@ -54,7 +58,7 @@ if (isset($_SESSION['tipo']) && isset($_SESSION['nom']) && isset($_SESSION['ape'
 
                     <ul class="full-box list-unstyled text-center">
                         <li>
-                            <a href="#!">
+                            <a href="../perfil/perfil.php">
                                 <i class="fas fa-cogs"></i>
                             </a>
                         </li>
@@ -69,7 +73,7 @@ if (isset($_SESSION['tipo']) && isset($_SESSION['nom']) && isset($_SESSION['ape'
                 <ul class="list-unstyled full-box dashboard-sideBar-Menu">
                     <li>
                         <a href="../home/home.php">
-                            <i class="fas fa-home"></i> Inicio
+                                <i class="fas fa-home"></i> Inicio
                         </a>
                     </li>
                     <li>
@@ -88,28 +92,28 @@ if (isset($_SESSION['tipo']) && isset($_SESSION['nom']) && isset($_SESSION['ape'
                         </a>
                     </li>
                     <li>
-                        <a href="../reportes/reportes.php">
+                        <a href="reportes.php">
                             <i class="fa fa-sign-in-alt"></i> Reportes
                         </a>
                     </li>
-			    </ul>
+                </ul>
             </div>
         </section>
 
         <!-- barra de menus-->
-	<section class="full-box dashboard-contentPage">
-		<!-- NavBar -->
-    <?php
-      $s2 = "SELECT * FROM mensajes WHERE leido = 1";
-      $resul2=mysqli_query($mysqli,$s2);
-      $row2=mysqli_num_rows($resul2);
-
-    ?>
-		<nav class="full-box dashboard-Navbar">
+        <section class="full-box dashboard-contentPage">
+        <?php
+        $s2 = "SELECT * FROM mensajes WHERE leido = 1";
+        $resul2=mysqli_query($mysqli,$s2);
+        $row2=mysqli_num_rows($resul2);
+        ?>
+            <!-- NavBar -->
+        <nav class="full-box dashboard-Navbar">
 			<ul class="full-box list-unstyled text-right">
 				<li class="pull-left">
 					<a href="#!" class="btn-menu-dashboard"><i class="fa fa-bars" aria-hidden="true"></i></a>
 				</li>
+                <a class="btn-group ventana"><button type="button" class="open-modal" data-open="modal1"><i class="fas fa-eye" aria-hidden="true"></i></button></a>
 				<li>
 					<a href="#!" class="btn-Notifications-area">
 						<i class="far fa-envelope"></i>
@@ -131,96 +135,80 @@ if (isset($_SESSION['tipo']) && isset($_SESSION['nom']) && isset($_SESSION['ape'
 			</ul>
 		</nav>
             <!-- Aquí va el contenido -->
-            <div class="cont">
-                <table class="zonas_registradas">
-                    <thead>
-                        <tr>
-                            <td class="head_table">DOCUMENTO</td>
-                            <td class="head_table">NOMBRE</td>
-                            <td class="head_table">APELLIDO</td>
-                            <td class="head_table">CELULAR</td>
-                            <td class="head_table">DIRECCION</td>
-                            <td class="head_table">CORREO</td>
-                            <td class="head_table">OPERACIONES</td>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php
-                        $query = "SELECT * FROM usuario WHERE id_tip_usu = 3";
-                        $result_tasks = mysqli_query($mysqli, $query);
+            <div class="ingreso">
+                <div class="modal" id="modal1" data-animation="slideInOutLeft">
+                    <div class="modal-dialog">
+                        <h2>Cupos disponibles</h2>
+                        <header class="modal-header">
 
-                        while ($row = mysqli_fetch_assoc($result_tasks)) { ?>
-                            <tr>
-                                <td class="body_table"><b><?php echo $row['documento'] ?></b></td>
-                                <td class="body_table"><b><?php echo $row['nombre'] ?></b></td>
-                                <!-- <td class="body_table"><b>cupos</b></td> -->
-                                <td class="body_table"><b><?php echo $row['apellido']; ?></b></td>
-                                <td class="body_table"><b><?php echo $row['celular']; ?></b></td>
-                                <td class="body_table"><b><?php echo $row['direccion']; ?></b></td>
-                                <td class="body_table"><b><?php echo $row['correo']; ?></b></td>
-                                <td class="body_table">
-                                    <a href="php/editar.php?documento=<?php echo $row['documento'] ?>" class="eliminarlink2">
-                                        <!-- <i id="marker" class="fas fa-marker"></i> -->
-                                        <i class="fas fa-marker"></i>
-                                    </a>
-                                </td>
-                            </tr>
-                        <?php } ?>
-                    </tbody>
-                </table>
+                            <div class="infoZonas">
+                            <?php
+                                while ($resul2 = mysqli_fetch_array($zonas)) {
+                                    $cupos_libres = $mysqli -> query ("SELECT * FROM detalle_cupos WHERE id_zona = '$resul2[id_zona]' AND id_estado = '4'");
+                                    $resul_cupos = $cupos_libres->num_rows;
+                                    
+                                    echo "
+                                        <div class='darosZonas'>
+                                            <h2>ZONA $resul2[id_zona]</h2>
+                                            <h3>$resul2[nom_tip_zona]</h3>
+                                            <label>Cupos Disponibles: $resul_cupos</label>
+                                        </div>
+                                            
+                                        ";
+                                    }
+                            ?>
+                            </div>                            
+                            <button class="close-modal" aria-label="close modal" data-close>✕</button>
+                        </header>
+                </div>
             </div>
+            <div class="reportes">
+                <h2>REPORTES E INFORMES</h2>
+                <p>Seleccione el tipo de reporte que desea ver</p>
+
+                <a href="../reportes_entradas/reportes.php">
+                    <div class="cuadro">
+                        <div class="ico">
+                            <i class="fa fa-sign-in-alt" aria-hidden="true"></i>
+                        </div>
+                        
+                        <div class="info">
+                            <h3>REPORTE DE ENTRADAS Y SALIDAS PARQUEADERO</h3>
+                            <p>Permite consultar los registros almacenados de entradas y salidas de vehículos, según la zona de parqueo que desee seleccionar.</p>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="../reporte_vehiculo/reporte.php">
+                    <div class="cuadro">
+                        <div class="ico">
+                            <i class="fa fa-car" aria-hidden="true"></i>
+                        </div>
+                        
+                        <div class="info">
+                            <h3>REPORTE DE REGISTRO DE VEHICULOS</h3>
+                            <p>Permite visualizar todos los registro almacenados de los vehículos permitidos para el ingreso al parqueadero.</p>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="../celadores/index.php">
+                    <div class="cuadro">
+                        <div class="ico">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        
+                        <div class="info">
+                            <h3>INFORME DE INICIO DE SESION DE USUARIO </h3>
+                            <p>Permite conocer los horarios en los cuales los celadores laboran.</p>
+                        </div>
+                    </div>
+                </a>
             </div>
-            </div>
-            </div>
+  
+    </section>
 
-        </section>
-
-      <!-- Notifications area -->
-
-	<section class="full-box Notifications-area">
-		<div class="full-box Notifications-bg btn-Notifications-area">
-		</div>
-		<div class="full-box Notifications-body">
-			<div class="Notifications-body-title text-titles text-center">
-				Notificaciones <i class="fas fa-times-circle btn-Notifications-area"></i>
-			</div>	
-			<div class="list-group">
-				<div class="list-group-item">
-					<div class="row-action-primary">
-						<i class="zmdi zmdi-alert-triangle"></i>
-					</div>
-					<?php
-						$notificacion ="SELECT * FROM mensajes WHERE leido = 1";
-						$resultado=mysqli_query($mysqli,$notificacion);
-                            
-                        while($row2 = mysqli_fetch_array($resultado)) {
-							
-					?>
-						
-						<div class="list-group-separator"></div>
-						<div class="list-group-item">
-							<div class="row-content">
-								<p style="font-weight:600" class="list-group-item-text"><i style="color:#FF5722; font-size: 20px;" class="fas fa-envelope-square"></i> Tienes nueva notificacion de: <?php echo $row2['de'];?></p>
-								<p style="font-weight:600" class="list-group-item-text">A la hora: <?php echo $row2['fecha'];?></p>
-							</div>
-						</div>
-						
-						
-					<?php
-						}
-					?>
-
-					<div class="list-group-item">
-						<a style="margin-left:40%" href="../buzon.php">VER MAS</a>
-					</div>	
-
-				</div>
-			</div>
-
-		</div>
-	</section>
-
-        	<!-- Dialog help -->
+       	<!-- Dialog help -->
     <div class="modal fade" tabindex="-1" role="dialog" id="Dialog-Help">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -245,13 +233,8 @@ if (isset($_SESSION['tipo']) && isset($_SESSION['nom']) && isset($_SESSION['ape'
             </div>
         </div>
     </div>
-
     </body>
-    <!-- Scripts cambiables -->
-    <!-- <script src="js/validar.js"></script> -->
-    <script src="js/confirmacion.js"></script>
-    <script src="js/validar.js"></script>
-    <script src="../../../library/jquery-3.6.0.min.js"></script>
+    <script src="../../administrador/parqueo/js/main.js"></script>
 
     <!--====== Scripts pagina ¡¡NO CAMBIAR!! -->
     <script src="../../../layout/js/jquery-3.1.1.min.js"></script>

@@ -71,33 +71,23 @@ if (isset($_SESSION['tipo']) && isset($_SESSION['nom']) && isset($_SESSION['ape'
                         </a>
                     </li>
                     <li>
-                        <a href="../mensajeria/buzon.php" class="btn-sideBar-SubMenu">
-                            <i class="far fa-envelope" aria-hidden="true"></i> Buzon de mensajeria
+                        <a href="../mensajeria/buzon.php">
+                            <i class="far fa-envelope"></i>  Buzón de mensajeria
                         </a>
                     </li>
                     <li>
-                        <a href="../celadores/index.php" class="btn-sideBar-SubMenu">
-                            <i class="fas fa-chart-line" aria-hidden="true"></i> Informe Inicio de Sesion
+                        <a href="../gestion/index.php">
+                            <i class="fas fa-users-cog"></i> Gestión de Usuarios
                         </a>
                     </li>
                     <li>
-                        <a href="../gestion/index.php" class="btn-sideBar-SubMenu">
-                            <i class="fas fa-users-cog" aria-hidden="true"></i> Gestion de Usuarios
+                        <a href="../gestion_parqueadero/home.php">
+                            <i class="fa fa-sign-in-alt"></i> Gestión del Parqueadero
                         </a>
                     </li>
                     <li>
-                        <a href="../gestion_parqueadero/home.php" class="btn-sideBar-SubMenu">
-                            <i class="fa fa-sign-in-alt" aria-hidden="true"></i> Gestion del Parqueadero
-                        </a>
-                    </li>
-                    <li>
-                        <a href="../reportes_entradas/reportes.php" class="btn-sideBar-SubMenu">
-                            <i class="fa fa-sign-in-alt" aria-hidden="true"></i> Reporte de entradas
-                        </a>
-                    </li>
-                    <li>
-                        <a href="reporte.php" class="btn-sideBar-SubMenu">
-                            <i class="fa fa-car" aria-hidden="true"></i> Reporte vehiculos
+                        <a href="../reportes/reportes.php">
+                            <i class="fa fa-sign-in-alt"></i> Reportes
                         </a>
                     </li>
                 </ul>
