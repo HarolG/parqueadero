@@ -213,12 +213,17 @@
         </div>
 
 
+        <div class="search_vetanaModal-container" id="search_vetanaModal-container">
+            <div class="search_vetanaModal-update card crud_container" id="search_vetanaModal-update">
+                
 
+            </div>
+        </div>
 
 
         <!-- Aquí va el contenido -->
-        <main class="main">
-            <div class="form_container">
+        <main class="main row">
+            <div class="form_container col-md-5 container">
                 <div class="wrapper">
                     <div class="form_title">
                         <p>Formulario para el registro de Vehiculos</p>
@@ -345,14 +350,16 @@
                                     <!-- MAX_FILE_SIZE debe preceder al campo de entrada del fichero -->
                                     <input type="hidden" name="tarjeta" id="tarjet" value="30000" />
                                     <!-- El nombre del elemento de entrada determina el nombre en el array $_FILES -->
-                                    Subir Tarjeta de Propiedad: <input name="tarjeta" id="tarjeta" type="file" required onchange="return fileValidation2()"/>
+                                    Subir Tarjeta de Propiedad: <input name="tarjeta" id="tarjeta" type="file" required
+                                        onchange="return fileValidation2()" />
                                 </div>
 
                                 <div class="grupo_cargue" id="imagePreview">
                                     <!-- MAX_FILE_SIZE debe preceder al campo de entrada del fichero -->
                                     <input type="hidden" id="vehic" name="vehic" value="30000" />
                                     <!-- El nombre del elemento de entrada determina el nombre en el array $_FILES -->
-                                    Imagen del Vehiculo: <input id="imagen" name="vehic" type="file" required onchange="return fileValidation()"/>
+                                    Imagen del Vehiculo: <input id="imagen" name="vehic" type="file" required
+                                        onchange="return fileValidation()" />
                                 </div>
                             </div>
                         </div>
@@ -363,19 +370,29 @@
                     </form>
                 </div>
             </div>
-            <div class="crud_container">
-                <div class="table_container">
-                    <form id="form_info_vehiculo" class="form_search">
-                        <input type="search" name="search_vehiculo" id="search_vehiculo" class="search_bar"
-                            placeholder="Ingrese la placa del Vehiculo" autocomplete="off">
-                        <button type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
-                    </form>
-
-                    <div class="tabla_container" id="table_container">
-
+            <div class="col-md-7">
+                <div class="card crud_container">
+                    <div class="card-header text-center">
+                        Barra de busqueda para Vehiculos
                     </div>
-
+                    <div class="card-body">
+                        <h5 class="card-title text-center">Consulte la información de los vehiculos</h5>
+                        <div class="notificacion_busqueda text-center container" id="search_notificacion">
+                            <!-- Error, el vehiculo no fue encontrado -->
+                        </div>
+                        <form class="container" id="form_search_vehiculo">
+                            <div class="form-group">
+                                <label for="">Digite la placa</label>
+                                <input type="text" name="search_placa" id="search_placa" class="form-control"
+                                    aria-describedby="helpId">
+                                <p id="helpId" class="text-muted">Escriba la placa del vehiculo registrada en la
+                                    aplicación</p>
+                                <input type="submit" class="btn btn-primary" value="Buscar">
+                            </div>
+                        </form>
+                    </div>
                 </div>
+                <div class="card crud_container" id="crud_container"></div>
             </div>
         </main>
 
@@ -385,7 +402,7 @@
                     <i class="fa fa-times-circle-o" aria-hidden="true" id="cerrarModal"></i>
                 </div>
                 <div class="container_gruposModales" id="container_gruposModales">
-                    
+
                 </div>
             </div>
         </div>
@@ -401,11 +418,14 @@
                 </div>
                 <div class="modal-body">
                     <p>
-                       Hola querido usuario, Bienvenido!! <br>
-                       Aqui encontraras los manuales que te podran ayudar a saber el funcionamiento de nuestra pagina y los manuales son los siguientes: <br>
+                        Hola querido usuario, Bienvenido!! <br>
+                        Aqui encontraras los manuales que te podran ayudar a saber el funcionamiento de nuestra pagina y
+                        los manuales son los siguientes: <br>
 
-                       <a href="https://drive.google.com/file/d/1H_dSFSHAyf4bWmgumzvoaixI6uW7P6A3/view?usp=sharing">Manual de Usuarios</a> <br>
-                       <a href="https://drive.google.com/file/d/1dfh-e8XFyhJfa4qRkmCpH0x2e9evBs34/view?usp=sharing">Manual tecnico</a>
+                        <a href="https://drive.google.com/file/d/1H_dSFSHAyf4bWmgumzvoaixI6uW7P6A3/view?usp=sharing">Manual
+                            de Usuarios</a> <br>
+                        <a href="https://drive.google.com/file/d/1dfh-e8XFyhJfa4qRkmCpH0x2e9evBs34/view?usp=sharing">Manual
+                            tecnico</a>
                     </p>
                 </div>
                 <div class="modal-footer">
@@ -420,6 +440,7 @@
 <!-- Scripts cambiables -->
 <script src="../../../library/jquery-3.6.0.min.js"></script>
 <script src="js/info_vehiculo.js"></script>
+<script src="js/crear.js"></script>
 
 <!--====== Scripts pagina ¡¡NO CAMBIAR!! -->
 <script src="../../../layout/js/jquery-3.1.1.min.js"></script>
