@@ -48,7 +48,9 @@ body {
 
 .form_recuperar {
     width: 95%;
-    height: 95%
+    height: 95%;
+    margin: 30px;
+    margin-top: 18%;
 
 }
 

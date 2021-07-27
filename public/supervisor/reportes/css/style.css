@@ -7,6 +7,7 @@
 .reportes p{
     font-style: oblique;
 }
+
 .cuadro{
     display: flex;
     flex-direction: row;
@@ -17,7 +18,7 @@
 }
 
 .cuadro:hover{
-    border: 2px solid rgb(0, 143, 43);
+    border: 2px solid #ac2925;
 }
 
 .cuadro .ico{
@@ -33,6 +34,6 @@
     font-size: 42px;
 }
 .cuadro .info{
-    padding: 10px;
+    padding: 7px;
     width: 700px;
 }

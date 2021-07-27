@@ -1,5 +1,7 @@
 <?php 
 include("../../../php/conexion.php");
+include_once("PHPMailer/correo.php");
+
 if( isset( $_SESSION['error'] ) ){
 	$class = 'error';
 	$mensaje = $_SESSION['error'];
@@ -35,7 +37,7 @@ if( isset( $_SESSION['error'] ) ){
                 </video>
             </div>
             <div class="recupera_container-right">
-                <form action="../php/recuperar_clave.php" class="form_recuperar" method="POST">
+                <form action="" class="form_recuperar" method="POST">
                     <div class="container_form">
                         <h2>RECUPERACIÓN DE USUARIO Y/O CONTRASEÑA</h2> <br>
 
@@ -55,3 +57,36 @@ if( isset( $_SESSION['error'] ) ){
     </div>
 </body>
 </html>
+
+<?php 
+if(isset($_POST['enviar'])) {
+    $correo = $_POST['correo'];
+
+    $c = "SELECT documento, IFNULL( NOMBRE, 'nombre' ) as NOMBRE FROM usuario WHERE correo='$correo' LIMIT 1";
+    $f = mysqli_query( $mysqli , $c );
+    $a = mysqli_fetch_assoc($f);
+    if( ! $a ){
+        $_SESSION['error'] = 'Correo inexistente';
+
+        echo '<script type="text/javascript">
+            alert("Lo sentimos, el correo que ha ingresado no se encuentra registrado en el sistema, por favor verifique e intente nuevamente");
+			window.location.href="../recuperar_usuario/recuperar.php";
+            </script>';
+        die( );
+    }
+
+    //generar una clave aleatoria 
+    $clave_nueva = rand( 10000000, 99999999 );
+    $nombreUsu = $a['nombre'];
+    $docu = $a['documento'];
+
+    //enviar correo con la nuea clave 
+    correo($correo, $nombreUsu, $clave_nueva);
+
+    //actualizar clave
+    $cambioPass = $mysqli -> query ("UPDATE usuario SET clave = '$clave_nueva' WHERE usuario.documento = '$docu'");
+
+
+}
+
+?>
