@@ -11,14 +11,10 @@ class escanerCodigoQR {
     public function __construct($conexion, $codigo, $estado) {
 
         $this->conexion = $conexion;
-        $this->datosUsuario = $this->consultarDatosUsuario($codigo);
+        $this->datosUsuario = $this->consultarDatosUsuario($codigo, $estado);
 
         if($estado == 'Inicial') {
-            if($this->datosUsuario == 'badUsuario') {
-                echo 'badUsuario';
-            } else {
-                echo 'okUsuario';
-            }
+            echo $this->datosUsuario;
         }
 
         if($estado == 'buscarVehiculo') {
@@ -53,17 +49,24 @@ class escanerCodigoQR {
         
     }
 
-    private function consultarDatosUsuario($codigo) {
+    private function consultarDatosUsuario($codigo, $estado) {
         $sql = "SELECT * FROM usuario WHERE usuario.codigo = $codigo";
         $query = mysqli_query($this->conexion, $sql);
-        
-        $numeroFilas = mysqli_num_rows($query);
 
-        if($numeroFilas > 0) {
-            return mysqli_fetch_assoc($query);
+        if($query) {
+            if($estado == 'Inicial') {
+                if(mysqli_num_rows($query) > 0) {
+                    echo 'okUsuario';
+                } else {
+                    echo 'badUsuario';
+                }
+            } else {
+                return mysqli_fetch_assoc($query);
+            }
         } else {
-            echo "badUsuario";
+            echo 'badUsuario';
         }
+    
     }
 
     private function obtenerTodoslosVehiculos($datosUsuario) {
