@@ -166,13 +166,13 @@ Favor revisar los direccionamientos
 						<h3 class="col-sm-offset-2 col-sm-8 text-center">					
 						Formulario de Registro de Administrativos</h3>
 				</div>
-					
-				<form style="margin-top:-33px" class="form-horizontal" action="" method="POST">
+					<br><br><br>
+				<form class="form-horizontal" action="" method="POST">
 					
 					<!-- tipo de usuario -->
 					<div class="form-group">
-						<label class="col-sm-2 control-label" >Tipo de usuario</label>
-							<div class="col-sm-8">
+						<label for="cor" class="col-sm-2 control-label">Tipo de usuarios</label>
+						<div class="col-sm-8">
 								<select id="" name="tipo_usuario" class="form-control">
 								<!-- consultas y codigo para validar que los registros esten el la bd y guardarlos en una lista -->
 											<option value="">Seleccione</option>
@@ -189,7 +189,7 @@ Favor revisar los direccionamientos
 												}
 											?>
 								</select>
-							</div>
+						</div>
 					</div>
 					<!-- tipo de documento -->
 					<div class="form-group">
@@ -229,9 +229,8 @@ Favor revisar los direccionamientos
 
 					<div class="form-group">
 						<label for="code" class="col-sm-2 control-label">Codigo</label>
-						<div class="col-sm-8"><input id="code" name="code" type="number" value="<?php echo $aleatorio;?>" class="form-control" required maxlength="11" autocomplete="off" autofocus></div>
-					</div>
-						
+						<div class="col-sm-8"><input id="code" name="code" type="number" value="<?php echo $aleatorio;?>" class="form-control" required maxlength="11" autocomplete="off"></div>
+					</div>	
 					<div class="form-group">
 						<label for="nom" class="col-sm-2 control-label">Nombres</label>
 						<div class="col-sm-8"><input id="nom" name="nom" type="text" class="form-control" required autocomplete="off"></div>				
@@ -271,6 +270,7 @@ Favor revisar los direccionamientos
 			</div>
 			<!-- CODIGO PHP PARA REGISTRAR USUARIOS -->
                 <?php   
+					
                     if(isset($_POST['registrar'])){
                         $documento=$_POST['doc'];
 						$codigo=$_POST['code'];
@@ -283,20 +283,20 @@ Favor revisar los direccionamientos
                         $clave=$_POST['clave'];
                         $tip_usu=$_POST['tipo_usuario'];
                         $tip_docu=$_POST['tipo_documento'];
+
 						
-                        
 						if($tip_usu == 1){
 							$sql="INSERT INTO usuario (documento, codigo, nombre, apellido, edad, celular, direccion,correo, clave, id_tip_usu,id_tip_doc,id_estado) VALUES ('$documento', '$codigo','$nombre','$apellido','$edad','$celular','$direccion','$correo','$clave','$tip_usu','$tip_docu',10)";
 							
 						}else{
-							$sql="INSERT INTO usuario (documento, codigo, nombre, apellido, edad, celular, direccion,correo, clave, id_tip_usu,id_tip_doc,id_estado) VALUES ('$documento', '$codigo' ,'$nombre','$apellido','$edad','$celular','$direccion','$correo','$clave','$tip_usu','$tip_docu',6)";
+							$sql="INSERT INTO usuario (documento, codigo, nombre, apellido, edad, celular, direccion,correo, clave, id_tip_usu,id_tip_doc,id_estado) VALUES ('$documento', '$codigo','$nombre','$apellido','$edad','$celular','$direccion','$correo','$clave','$tip_usu','$tip_docu',6)";
 							
 						}
-                        
-                            
+						
+                           
                         $resul=mysqli_query($mysqli,$sql);
                             
-                        if($resul){  
+                        if(!$resul){  
 							echo "<script language='JavaScript'>
 										alert('Se ha creado el usuario correctamente'); 
 								  </script>";  
@@ -590,7 +590,56 @@ Favor revisar los direccionamientos
             ?>
 		</div>
 </div>
-
+	<div class="contenedor conteiner">
+		<div id="cuadro2" class="col-sm-12 col-md-12 col-lg-12 ocultar">
+			<form id="form" class="form-horizontal" action="" method="POST">
+				<div class="form-group">
+					<h3 class="col-sm-offset-2 col-sm-8 text-center">					
+					Formulario de Edicion de Usuarios</h3>
+				</div>
+				<!-- <input type="hidden" id="documento" name="documento" value="0"> -->
+				<input type="hidden" id="opcion" name="opcion" value="registrar">
+				<div class="form-group">
+					<label for="documento" class="col-sm-2 control-label">Documento</label>
+					<div class="col-sm-8"><input id="documento" name="documento" type="text" class="form-control" maxlength="11"></div>
+				</div>
+				<div class="form-group">
+					<label for="nombre" class="col-sm-2 control-label">Nombres</label>
+					<div class="col-sm-8"><input id="nombre" name="nombre" type="text" class="form-control" disabled></div>				
+				</div>
+				<div class="form-group">
+					<label for="apellidos" class="col-sm-2 control-label">Apellidos</label>
+					<div class="col-sm-8"><input id="apellido" name="apellido" type="text" class="form-control" disabled></div>
+				</div>
+				<div class="form-group">
+					<label for="edad" class="col-sm-2 control-label">Edad</label>
+					<div class="col-sm-8"><input id="edad" name="edad" type="text" class="form-control" maxlength="2" autofocus></div>
+				</div>
+				<div class="form-group">
+					<label for="celular" class="col-sm-2 control-label">Celular</label>
+					<div class="col-sm-8"><input id="celular" name="celular" type="text" class="form-control" maxlength="10"></div>
+				</div>
+				<div class="form-group">
+					<label for="direccion" class="col-sm-2 control-label">Direccion</label>
+					<div class="col-sm-8"><input id="direccion" name="direccion" type="text" class="form-control" maxlength="50"></div>
+				</div>
+				<div class="form-group">
+					<label for="correo" class="col-sm-2 control-label">Correo</label>
+					<div class="col-sm-8"><input id="correo" name="correo" type="text" class="form-control" maxlength="50"></div>
+				</div>
+				<div class="form-group">
+					<div class="col-sm-offset-2 col-sm-8">
+						<input id="" type="submit" class="btn btn-primary" value="Guardar">
+						<input id="btn_listar" type="button" class="btn btn-success" value="Listar">
+					</div>
+				</div>
+			</form>
+			<div class="col-sm-offset-2 col-sm-8">
+				<p class="mensaje"></p>
+			</div>
+			
+		</div>
+	</div>
 
 <!-- tabla donde se listan los usuarios -->
 	<div class="row">
@@ -780,9 +829,9 @@ Favor revisar los direccionamientos
 
 		var listar = function(){
 			$("#cuadro1").slideDown("slow");
+			$("#cuadro2").slideUp("slow");
 			$("#registro").slideUp("slow");
 			$("#registro2").slideUp("slow");
-			$("#cuadro2").slideUp("slow");
 			var table = $("#tabla_usu").DataTable({
 				"destroy":true,
 				"ajax":{
@@ -801,7 +850,7 @@ Favor revisar los direccionamientos
 					{ "data": "nom_tip_doc" },
 					{ "data": "nom_tip_usu" },
 					{ "data": "nom_estado" },
-					{"defaultContent": "<a href='' type='button' class='editar btn btn-primary'><i class='fa fa-pencil-square-o'></i></a> <button type='button' class='eliminar btn btn-danger' data-toggle='modal' data-target='#modalEliminar' ><i class='fa fa-trash-o'></i></button>"}	
+					{"defaultContent": "<button type='button' class='editar btn btn-primary'><i class='fa fa-pencil-square-o'></i></button> <button type='button' class='eliminar btn btn-danger' data-toggle='modal' data-target='#modalEliminar' ><i class='fa fa-trash-o'></i></button>"}	
 				],
 				"language": idioma_espanol,
 				"lengthMenu":[[2,5,10,50,-1],[2,5,10,50,"Todos los"]],
@@ -827,6 +876,7 @@ Favor revisar los direccionamientos
 					}
 					]
 			});
+			obtener_data_editar("#tabla_usu tbody", table);
 			obtener_id_eliminar("#tabla_usu tbody", table);
 		}
 
@@ -845,6 +895,23 @@ Favor revisar los direccionamientos
 			$("#cuadro1").slideUp("slow");
 			
 		}
+
+		var obtener_data_editar = function(tbody, table){
+			$(tbody).on("click", "button.editar", function(){
+				var data = table.row( $(this).parents("tr") ).data();
+				var documento = $("#documento").val( data.documento ),
+						nombre = $("#nombre").val( data.nombre ),
+						apellidos = $("#apellido").val( data.apellido ),
+						edad = $("#edad").val( data.edad ),
+						celular = $("#celular").val(data.celular),
+						direccion = $("#direccion").val(data.direccion),
+						correo = $("#correo").val(data.correo),
+						opcion = $("#opcion").val("modificar");
+						$("#cuadro2").slideDown("slow");
+						$("#cuadro1").slideUp("slow");
+			});
+		}
+
 		
 		var obtener_id_eliminar = function(tbody, table){
 				$(tbody).on("click", "button.eliminar", function(){
