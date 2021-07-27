@@ -9,7 +9,8 @@ require 'PHPMailer/PHPMailer.php';
 require 'PHPMailer/SMTP.php';
 
 
-function correo($correo, $codigo, $nombre){
+function correo($correo, $nombreUsu, $clave_nueva){
+
 	$mail = new PHPMailer(true);
 	$mail->SMTPOptions = array(
 		'ssl' => array(
@@ -30,7 +31,7 @@ function correo($correo, $codigo, $nombre){
 		$mail->Port       = 587;                                    //TCP port to connect to, use 465 for `PHPMailer::ENCRYPTION_SMTPS` above
 
 		//Recipients
-		$mail->setFrom('parkin.system.adsi@gmail.com', 'Parking System - Codigo de Barras');
+		$mail->setFrom('parkin.system.adsi@gmail.com', 'Parking System - Actializacion de clave');
 		$mail->addAddress($correo, 'prueba');     //Add a recipient
 
 		//Content
@@ -43,12 +44,11 @@ function correo($correo, $codigo, $nombre){
 			<meta http-equiv="X-UA-Compatible" content="IE=edge">
 			<meta name="viewport" content="width=device-width, initial-scale=1.0">
 			<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
-			<link rel="stylesheet" href="barcode.php">
 			<style>
 			.carnet{
-				width: 60%;
-				height: 80%;
-				margin: 50px;
+				width: 40%;
+				height: 50%;
+				margin: 10px;
 				padding: 20px 30px;
 				background-color: #F8F8F8;
 			}
@@ -58,8 +58,8 @@ function correo($correo, $codigo, $nombre){
 			}
 
 			.logo{
-				width: 80%;
-				height: 30%;
+				width: 70%;
+				height: 20%;
 				margin: 5px 50px;
 			}
 
@@ -73,32 +73,6 @@ function correo($correo, $codigo, $nombre){
 				width: 35%;
 			}
 
-			ol, h4{
-				font-family: "Poppins", sans-serif;
-				color: black;
-			}
-
-			.descarga{
-				width: 50%;
-				cursor: pointer;
-				display: block;
-				border-radius: 25px;
-				outline: none;
-				border: none;
-				background-image: linear-gradient(to right, #325ebe, #3dd338, #e7eb26);
-				background-size: 200%;
-				font-size: 1rem;
-				transition: .5s;
-				font-family: "Poppins", sans-serif;
-				padding: 12px;
-				margin: 50px 100px 10px 130px;
-				text-align: center;
-			}
-
-			.descarga:hover{
-				background-position: right;
-			}
-
 			
 			</style>
 		</head>
@@ -107,27 +81,10 @@ function correo($correo, $codigo, $nombre){
 			<div class="margen" id="codigo">
 				<img class ="logo" src="https://i.ibb.co/7vwFLtz/Logo-negro.png" alt="Logo-negro">
 				<div class="mensaje">
-					<h2>¡Bienvenido '.$nombre.'!</h2>
-					<p>Ahora formas parte del Sistema Informático para el Control de Entradas y Salidas de Vehículos - Parqueadero SENA.</p><br>
-					<p>Con el siguiente código de barras podrás ingresar tu vehículo automotor o no automotor al parqueadero del Centro de Industria y la Construcción, Regional Tolima, pero recuerda cumplir con todos los requisitos y documentos para el registro de tu vehículo.</p>
-
-					<img  alt="Barcode Generator TEC-IT" src="https://barcode.tec-it.com/barcode.ashx?data='.$codigo.'"/>
-
-					<div class="info_registro">
-						<h4>Requisitos Necesarios: </h4>
-						<ol>
-							<li>Tener algún cargo en dicha institución (aprendiz, instructor, administrativo, etc.) y en estado activo.</li>
-						</ol>
-						<h4>Documentos:</h4>
-						<ol>
-							<li>Tarjeta de propiedad del vehículo a registrar (Formato .jpeg/.jpg/.png/)</li>
-							<li>Imagen del vehículo a registrar. (Formato .jpeg/.jpg/.png/)</li>
-						</ol>
-					</div>
-
-					<div class="descarga">
-						<a style="color: white; text-decoration: none;" download href="https://barcode.tec-it.com/barcode.ashx?data='.$codigo.'">Descargar Código de Barras</a>
-					</div>
+					<h2>ACTULIZACION DE CONTRASEÑA EXITOSO</h2>
+					<h2>¡Hola Usuario'.$nombreUsu.'!</h2>
+					<p>Has solicitado recuperar tu contraseña, por tal motivo Parking System a generado una nueva para ti,</p>
+					<p><strong>Nueva Contraseña: </strong>'.$clave_nueva.'</p>
 				</div>
 			</div>
 		</div>
@@ -140,5 +97,11 @@ function correo($correo, $codigo, $nombre){
 	} catch (Exception $e) {
 		echo "Error Presentado: {$mail->ErrorInfo}";
 	}
+
+	echo '<script type="text/javascript">
+            alert("La nueva contraseña ha sido enviada correctamente al correo registrado");
+			window.location.href="../login.html";
+            </script>';
 }
+
 ?>
