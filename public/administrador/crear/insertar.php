@@ -13,7 +13,7 @@
         $tarjeta = $_POST["tarjeta"];
         $foto = $_POST["vehic"];
         $doc = $_POST['doc'];
-        $estado_vehiculo = 6;
+        $estado_vehiculo = 4;
         
         $fichero_subido = $dir_subida . basename($_FILES['tarjeta']['name']);
         $fichero_subido = $dir_subida . basename($_FILES['vehic']['name']);
