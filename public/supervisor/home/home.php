@@ -148,12 +148,24 @@
 	</section>
 
 	<!-- barra de menus-->
+	<?php
+      $s2 = "SELECT * FROM mensajes WHERE leido = 1";
+      $resul2=mysqli_query($mysqli,$s2);
+      $row2=mysqli_num_rows($resul2);
+
+    ?>
 	<section class="full-box dashboard-contentPage">
 		<!-- NavBar -->
 		<nav class="full-box dashboard-Navbar">
 			<ul class="full-box list-unstyled text-right">
 				<li class="pull-left">
 					<a href="#!" class="btn-menu-dashboard"><i class="fa fa-bars" aria-hidden="true"></i></a>
+				</li>
+				<li>
+					<a href="#!" class="btn-Notifications-area">
+						<i class="far fa-envelope"></i>
+						<span class="badge"><?php echo $row2; ?></span>
+					</a>
 				</li>
 				<li>
 					<a href="#!" class="btn-modal-help">
@@ -242,57 +254,44 @@
 
 	<!-- Notifications area -->
 
+				
 	<section class="full-box Notifications-area">
 		<div class="full-box Notifications-bg btn-Notifications-area">
-
 		</div>
 		<div class="full-box Notifications-body">
 			<div class="Notifications-body-title text-titles text-center">
-				Notifications <i class="fas fa-times-circle btn-Notifications-area"></i>
-			</div>
+				Notificaciones <i class="fas fa-times-circle btn-Notifications-area"></i>
+			</div>	
 			<div class="list-group">
 				<div class="list-group-item">
 					<div class="row-action-primary">
 						<i class="zmdi zmdi-alert-triangle"></i>
 					</div>
-					<div class="row-content">
-						<div class="least-content">17m</div>
-						<h4 class="list-group-item-heading">Tile with a label</h4>
-						<p class="list-group-item-text">Donec id elit non mi porta gravida at eget metus.</p>
-					</div>
-				</div>
-				<div class="list-group-separator"></div>
-				<div class="list-group-item">
-					<div class="row-action-primary">
-						<i class="zmdi zmdi-alert-octagon"></i>
-					</div>
-					<div class="row-content">
-						<div class="least-content">15m</div>
-						<h4 class="list-group-item-heading">Tile with a label</h4>
-						<p class="list-group-item-text">Donec id elit non mi porta gravida at eget metus.</p>
-					</div>
-				</div>
-				<div class="list-group-separator"></div>
-				<div class="list-group-item">
-					<div class="row-action-primary">
-						<i class="zmdi zmdi-help"></i>
-					</div>
-					<div class="row-content">
-						<div class="least-content">10m</div>
-						<h4 class="list-group-item-heading">Tile with a label</h4>
-						<p class="list-group-item-text">Maecenas sed diam eget risus varius blandit.</p>
-					</div>
-				</div>
-				<div class="list-group-separator"></div>
-				<div class="list-group-item">
-					<div class="row-action-primary">
-						<i class="zmdi zmdi-info"></i>
-					</div>
-					<div class="row-content">
-						<div class="least-content">8m</div>
-						<h4 class="list-group-item-heading">Tile with a label</h4>
-						<p class="list-group-item-text">Maecenas sed diam eget risus varius blandit.</p>
-					</div>
+					<?php
+						$notificacion ="SELECT * FROM mensajes WHERE leido = 1";
+						$resultado=mysqli_query($mysqli,$notificacion);
+                            
+                        while($row2 = mysqli_fetch_array($resultado)) {
+							
+					?>
+						
+						<div class="list-group-separator"></div>
+						<div class="list-group-item">
+							<div class="row-content">
+								<p style="font-weight:600" class="list-group-item-text"><i style="color:#FF5722; font-size: 20px;" class="fas fa-envelope-square"></i> Tienes nueva notificacion de: <?php echo $row2['de'];?></p>
+								<p style="font-weight:600" class="list-group-item-text">A la hora: <?php echo $row2['fecha'];?></p>
+							</div>
+						</div>
+						
+						
+					<?php
+
+						}
+					?>
+					<div class="list-group-item">
+					<a style="margin-left:40%" href="buzon.php">VER MAS</a>
+					</div>	
+
 				</div>
 			</div>
 

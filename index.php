@@ -108,7 +108,7 @@ include_once("php/conexion.php");
             $titulo = $_POST['titulo'];
             $mensaje = $_POST['mensaje'];
 
-            $sql="INSERT INTO mensajes (titulo , mensaje , de , id_tip_usu , fecha , leido , estado) VALUES ('$titulo' , '$mensaje' , '$de' , 3 , NOW() , 1 ,'normal')";
+            $sql="INSERT INTO mensajes (titulo , mensaje , de , fecha , leido , id_categoria) VALUES ('$titulo' , '$mensaje' , '$de' , NOW() , 1 ,11)";
                             
             $resul=mysqli_query($mysqli,$sql);
 		    if ($resul) {

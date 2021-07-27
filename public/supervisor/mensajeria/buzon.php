@@ -151,7 +151,7 @@ include_once("../../../php/conexion.php");
 								<th style="text-align:center">Acción</th>
 							</tr>
 							<?php
-								$s ="SELECT * FROM mensajes WHERE estado != 'eliminado' ORDER BY id desc";
+								$s ="SELECT * FROM mensajes WHERE id_categoria != '12' ORDER BY id desc";
 								$resul=mysqli_query($mysqli,$s);
 					
 								while($row = mysqli_fetch_array($resul)) {

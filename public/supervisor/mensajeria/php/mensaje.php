@@ -146,7 +146,7 @@ include_once("../../../../php/conexion.php");
               $actualizar = "UPDATE mensajes SET leido = 0 WHERE id= '".$_GET['id']."'";
               $res=mysqli_query($mysqli,$actualizar);
 
-			  $actualizar2 = "UPDATE mensajes SET leido = 1 WHERE id= '".$_GET['id']."' AND estado = 'eliminado'";
+			  $actualizar2 = "UPDATE mensajes SET leido = 1 WHERE id= '".$_GET['id']."' AND id_categoria = '12'";
               $res2=mysqli_query($mysqli,$actualizar2);
             ?>
 			<a class="boton btn btn-success" href="../buzon.php">volver</a>

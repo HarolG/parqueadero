@@ -143,21 +143,19 @@ include_once("../../../../php/conexion.php");
 					<div style="padding: 20px" class="table-responsive col-sm-12">
 						<table id="poper" class="table table-bordered table-hover" cellspacing="8" width="100%">
 							<tr>
-								<th style="text-align:center">Estado</th>
 								<th style="text-align:center" width="150">De</th>
 								<th style="text-align:center">Asunto</th>
 								<th style="text-align:center">Fecha</th>
 								<th style="text-align:center">Acción</th>
 							</tr>
 							<?php
-								$s ="SELECT * FROM mensajes WHERE estado != 'normal' ORDER BY id desc";
+								$s ="SELECT * FROM mensajes WHERE id_categoria != '11' ORDER BY id desc";
 								$resul=mysqli_query($mysqli,$s);
 					
 								while($row = mysqli_fetch_array($resul)) {
 								
 							?>
 								<tr>
-									<td style="text-align:center"><?php echo $row['estado'];?></td>
 									<td style="text-align:left"><?php echo $row['de']; ?></td>
 									<td style="text-align:center"><a href="mensaje.php?id=<?php echo $row['id']; ?>"> <?php echo $row['titulo']; ?></a></td>
 									<td style="text-align:center"><?php echo $row['fecha']; ?></td>
