@@ -36,6 +36,10 @@ class Vehiculo {
             case 'Eliminar':
                 echo $this->eliminarRegistro($placa);
                 break;
+            
+            case 'Propietarios':
+                echo $this->consultarPropietarios($placa);
+                break;
 
             default: 
                 echo 'Error';
@@ -55,9 +59,37 @@ class Vehiculo {
         $query = mysqli_query($this->conexion,$sql);
 
         if($query) {
-            return "Datos actualizados correctamente";
+            return "actualizarOk";
         } else {
-            return "Ha ocurrido un error al momento de actualizar los datos";
+            return "actualizarBad";
+        }
+    }
+
+    public function consultarPropietarios($placa) {
+        $sql = "SELECT * FROM usuario, detalle_vehiculo, tipo_documento WHERE tipo_documento.id_tip_doc = usuario.id_tip_doc AND usuario.documento = detalle_vehiculo.documento AND detalle_vehiculo.placa = '$placa'";
+        $query = mysqli_query($this->conexion,$sql);
+
+        if($query){
+            if(mysqli_num_rows($query) > 0) {
+                while($row = mysqli_fetch_array($query)) {
+                    $json[] = array(
+                        'documento' => $row['documento'],
+                        'codigo' => $row['codigo'],
+                        'nombre' => $row['nombre'],
+                        'apellido' => $row['apellido'],
+                        'edad' => $row['edad'],
+                        'celular' => $row['celular'],
+                        'direccion' => $row['direccion'],
+                        'correo' => $row['correo'],
+                        'nom_tip_doc' => $row['nom_tip_doc']
+                    );
+                }
+                return json_encode($json);
+            } else {
+                return 'sinPropietarios';
+            }
+        } else {
+            return 'badConsultaPropietario';
         }
     }
 

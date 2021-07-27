@@ -214,16 +214,39 @@
 
 
         <div class="search_vetanaModal-container" id="search_vetanaModal-container">
-            <div class="search_vetanaModal-update card crud_container" id="search_vetanaModal-update">
-                
-
+            <div class="search_vetanaModal-update card crud_container" id="search_vetanaModal-update"></div>
+            <div class="search_vetanaModal-owner card crud_container" id="search_vetanaModal-owner">
+                <div class="card-header text-center">
+                    Información de los propietarios
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title text-center">Tabla con la información de los propietarios</h5>
+                    <table class="table container">
+                        <thead>
+                            <tr>
+                                <th>Documento</th>
+                                <th>Tipo de documento</th>
+                                <th>Nombres</th>
+                                <th>Apellidos</th>
+                                <th>Edad</th>
+                                <th>Celular</th>
+                                <th>Direccion</th>
+                                <th>Correo</th>
+                            </tr>
+                        </thead>
+                        <tbody id="search_vetanaModal-owner_tr"></tbody>
+                    </table>
+                    <div class="form-group container">
+                        <input type="submit" name="" id="owner_boton-cerrar" class="btn btn-danger" value="CERRAR">
+                    </div>
+                </div>`
             </div>
         </div>
 
 
         <!-- Aquí va el contenido -->
         <main class="main row">
-            <div class="form_container col-md-5 container">
+            <div class="form_container col-md-4 container">
                 <div class="wrapper">
                     <div class="form_title">
                         <p>Formulario para el registro de Vehiculos</p>
@@ -370,7 +393,7 @@
                     </form>
                 </div>
             </div>
-            <div class="col-md-7">
+            <div class="col-md-8">
                 <div class="card crud_container">
                     <div class="card-header text-center">
                         Barra de busqueda para Vehiculos
