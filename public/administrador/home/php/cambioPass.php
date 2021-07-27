@@ -24,7 +24,7 @@
             icon: "info",
             title: "CAMBIO DE CONTRASEÑA",
             html:`
-                <p class='parrafoPass'>Hola Administrador, por cuestiones de seguridad, Parking System solicita el cambio de contraseña para acceder por primera vez a tu cuenta.</p>
+                <p class='parrafoPass'>Hola, por cuestiones de seguridad, Parking System solicita el cambio de contraseña para acceder por primera vez a tu cuenta.</p>
                 <p class='parrafoPass2'><strong>RECUERDE:</strong>La contraseña debe contener mínimo 8 a 15 caracteres, y puede tener números, letras mayúsculas o minúsculas, NO puede contener espacios ni caracteres especiales.</p>
                 <form method='POST' class='formPass' autocomplete='off'>
                     <div>
