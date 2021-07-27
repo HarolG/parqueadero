@@ -28,7 +28,7 @@ include_once("php/conexion.php");
 
                 <h1>Sistema Informático para el Control de Entradas y Salidas de Vehículos </h1>
                 <h2>PARQUEADERO SENA</h2>
-                <a href="#about"><input type="button" class="btnIndex" value="Conocer mas "></a>
+                <a href="#about"><input type="button" class="btnIndex" value="Conocer Más "></a>
             </div>
         </div>
     </div>
@@ -58,7 +58,7 @@ include_once("php/conexion.php");
         </div>
         <div class="entry_exit">
             <i class="fas fa-door-open"></i><br>
-            <label for="">Registro de Entrada y Salida de Vehículos</label>
+            <label for="">Scaner de Código de Barras para Entrada y Salida de Vehículos </label>
         </div>
         <div class="user">
             <i class="fas fa-user-shield"></i><br>
