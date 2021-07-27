@@ -161,13 +161,13 @@ Favor revisar los direccionamientos
 						Formulario de Registro de Administrativos</h3>
 				</div>
 					<br><br><br>
-				<form class="form-horizontal" action="" method="POST">
+				<form class="form-horizontal" action="" method="POST" onsubmit="return validacion2()">
 					
 					<!-- tipo de usuario -->
 					<div class="form-group">
 						<label for="cor" class="col-sm-2 control-label">Tipo de usuarios</label>
 						<div class="col-sm-8">
-								<select id="" name="tipo_usuario" class="form-control">
+								<select id="tip_usu" name="tipo_usuario" class="form-control">
 								<!-- consultas y codigo para validar que los registros esten el la bd y guardarlos en una lista -->
 											<option value="">Seleccione</option>
 											<?php
@@ -189,7 +189,7 @@ Favor revisar los direccionamientos
 					<div class="form-group">
 						<label for="cor" class="col-sm-2 control-label">Tipo de documento</label>
 						<div class="col-sm-8">
-								<select id="" name="tipo_documento" class="form-control">
+								<select id="tip_docu" name="tipo_documento" class="form-control">
 								<!-- consultas y codigo para validar que los registros esten el la bd y guardarlos en una lista -->
 									<option value="">Seleccione</option>
 											<?php
@@ -209,7 +209,7 @@ Favor revisar los direccionamientos
 					</div>
 					<div class="form-group">
 						<label for="doc" class="col-sm-2 control-label">Documento</label>
-						<div class="col-sm-8"><input id="doc" name="doc" type="number" class="form-control" required maxlength="11" autocomplete="off" autofocus></div>
+						<div class="col-sm-8"><input id="doc" name="doc" type="number" class="form-control" maxlength="11" autocomplete="off" autofocus></div>
 					</div>
 						<?php 
 
@@ -223,35 +223,35 @@ Favor revisar los direccionamientos
 
 					<div class="form-group">
 						<label for="code" class="col-sm-2 control-label">Codigo</label>
-						<div class="col-sm-8"><input id="code" name="code" type="number" value="<?php echo $aleatorio;?>" class="form-control" required maxlength="11" autocomplete="off"></div>
+						<div class="col-sm-8"><input id="code" name="code" type="number" value="<?php echo $aleatorio;?>" class="form-control" maxlength="11" autocomplete="off"></div>
 					</div>	
 					<div class="form-group">
 						<label for="nom" class="col-sm-2 control-label">Nombres</label>
-						<div class="col-sm-8"><input id="nom" name="nom" type="text" class="form-control" required autocomplete="off"></div>				
+						<div class="col-sm-8"><input id="nom" name="nom" type="text" class="form-control" autocomplete="off"></div>				
 					</div>
 					<div class="form-group">
 						<label for="ape" class="col-sm-2 control-label">Apellidos</label>
-						<div class="col-sm-8"><input id="ape" name="ape" type="text" class="form-control" required autocomplete="off"></div>
+						<div class="col-sm-8"><input id="ape" name="ape" type="text" class="form-control" autocomplete="off"></div>
 					</div>
 					<div class="form-group">
 						<label for="ed" class="col-sm-2 control-label">Edad</label>
-						<div class="col-sm-8"><input id="ed" name="ed" type="number" class="form-control" required maxlength="2" autocomplete="off"></div>
+						<div class="col-sm-8"><input id="ed" name="ed" type="number" class="form-control" maxlength="2" autocomplete="off"></div>
 					</div>
 					<div class="form-group">
 						<label for="celu" class="col-sm-2 control-label">Celular</label>
-						<div class="col-sm-8"><input id="celu" name="celu" type="number" class="form-control" required maxlength="10"  autocomplete="off"></div>
+						<div class="col-sm-8"><input id="celu" name="celu" type="number" class="form-control" maxlength="10"  autocomplete="off"></div>
 					</div>
 					<div class="form-group">
 						<label for="direc" class="col-sm-2 control-label">Dirección</label>
-						<div class="col-sm-8"><input id="direc" name="direc" type="text" class="form-control" required maxlength="50"  autocomplete="off"></div>
+						<div class="col-sm-8"><input id="direc" name="direc" type="text" class="form-control" maxlength="50"  autocomplete="off"></div>
 					</div>
 					<div class="form-group">
 						<label for="cor" class="col-sm-2 control-label">Correo</label>
-						<div class="col-sm-8"><input id="cor" name="cor" type="email" class="form-control" required maxlength="50"  autocomplete="off"></div>
+						<div class="col-sm-8"><input id="cor" name="cor" type="email" class="form-control" maxlength="50"  autocomplete="off"></div>
 					</div>
 					<div class="form-group">
 						<label for="clave" class="col-sm-2 control-label">Contraseña</label>
-						<div class="col-sm-8"><input id="clave" name="clave" type="password" class="form-control" required autocomplete="off"></div>
+						<div class="col-sm-8"><input id="clave" name="clave" type="password" class="form-control" autocomplete="off"></div>
 					</div>	
 					<div class="form-group">
 						<div class="col-sm-offset-2 col-sm-8">
@@ -313,7 +313,7 @@ Favor revisar los direccionamientos
 <!-- registro de usuarios rregulares -->
 <div class="container">
 			<div id="registro2" class="col-sm-12 col-md-12 col-lg-12 ocultar">
-				<form class="form-horizontal" action="" method="POST">
+				<form class="form-horizontal" action="" method="POST" onsubmit="return validacion()">
 					<div class="form-group">
 						<h3 class="col-sm-offset-2 col-sm-8 text-center">					
 						Formulario de Registro de Usuarios Regulares</h3>
@@ -322,7 +322,7 @@ Favor revisar los direccionamientos
 					<div class="form-group">
 						<label class="col-sm-2 control-label" >Tipo de usuario</label>
 							<div class="col-sm-8">
-								<select id="" name="tipo_usuario" class="form-control">
+								<select id="select_tip_user" name="tipo_usuario" class="form-control">
 								<!-- consultas y codigo para validar que los registros esten el la bd y guardarlos en una lista -->
 											<option value="">Seleccione</option>
 											<?php
@@ -344,7 +344,7 @@ Favor revisar los direccionamientos
 					<div class="form-group">
 						<label for="cor" class="col-sm-2 control-label">Tipo de documento</label>
 						<div class="col-sm-8">
-								<select id="" name="tipo_documento" class="form-control">
+								<select id="select_tip_doc" name="tipo_documento" class="form-control">
 								<!-- consultas y codigo para validar que los registros esten el la bd y guardarlos en una lista -->
 									<option value="">Seleccione</option>
 											<?php
@@ -364,7 +364,7 @@ Favor revisar los direccionamientos
 					</div>
 					<div class="form-group">
 						<label for="doc" class="col-sm-2 control-label">Documento</label>
-						<div class="col-sm-8"><input id="doc" name="doc" type="number" class="form-control" required maxlength="11" autocomplete="off" autofocus></div>
+						<div class="col-sm-8"><input id="docu" name="doc" type="number" class="form-control" maxlength="11" autocomplete="off" autofocus></div>
 					</div>
 						<?php 
 
@@ -378,32 +378,32 @@ Favor revisar los direccionamientos
 
 					<div class="form-group">
 						<label for="code" class="col-sm-2 control-label">Codigo</label>
-						<div class="col-sm-8"><input id="code" name="code" type="number" value="<?php echo $aleatorio2;?>" class="form-control" required maxlength="11" autocomplete="off" autofocus></div>
+						<div class="col-sm-8"><input id="code" name="code" type="number" value="<?php echo $aleatorio2;?>" class="form-control" maxlength="11" autocomplete="off" autofocus></div>
 					</div>
 
 					<div class="form-group">
 						<label for="nom" class="col-sm-2 control-label">Nombres</label>
-						<div class="col-sm-8"><input id="nom" name="nom" type="text" class="form-control" required autocomplete="off"></div>				
+						<div class="col-sm-8"><input id="nomb" name="nom" type="text" class="form-control" autocomplete="off"></div>				
 					</div>
 					<div class="form-group">
 						<label for="ape" class="col-sm-2 control-label">Apellidos</label>
-						<div class="col-sm-8"><input id="ape" name="ape" type="text" class="form-control" required autocomplete="off"></div>
+						<div class="col-sm-8"><input id="apel" name="ape" type="text" class="form-control" autocomplete="off"></div>
 					</div>
 					<div class="form-group">
 						<label for="ed" class="col-sm-2 control-label">Edad</label>
-						<div class="col-sm-8"><input id="ed" name="ed" type="number" class="form-control" required maxlength="2" autocomplete="off"></div>
+						<div class="col-sm-8"><input id="eda" name="ed" type="number" class="form-control" maxlength="2" autocomplete="off"></div>
 					</div>
 					<div class="form-group">
 						<label for="celu" class="col-sm-2 control-label">Celular</label>
-						<div class="col-sm-8"><input id="celu" name="celu" type="number" class="form-control" required maxlength="10"  autocomplete="off"></div>
+						<div class="col-sm-8"><input id="celuc" name="celu" type="number" class="form-control" maxlength="10"  autocomplete="off"></div>
 					</div>
 					<div class="form-group">
 						<label for="direc" class="col-sm-2 control-label">Direccion</label>
-						<div class="col-sm-8"><input id="direc" name="direc" type="text" class="form-control" required maxlength="50"  autocomplete="off"></div>
+						<div class="col-sm-8"><input id="direci" name="direc" type="text" class="form-control" maxlength="50"  autocomplete="off"></div>
 					</div>
 					<div class="form-group">
 						<label for="cor" class="col-sm-2 control-label">Correo</label>
-						<div class="col-sm-8"><input id="cor" name="cor" type="email" class="form-control" required maxlength="50"  autocomplete="off"></div>
+						<div class="col-sm-8"><input id="core" name="cor" type="email" class="form-control" maxlength="50"  autocomplete="off"></div>
 					</div>
 					<div class="form-group">
 						<div class="col-sm-offset-2 col-sm-8">
@@ -586,6 +586,7 @@ Favor revisar los direccionamientos
 	</div>
 <!--====== Scripts pagina cambiables -->
 
+	<script src="js/validacion.js"></script>
 	<script src="js/jquery-1.12.3.js"></script>
 	<script src="js/bootstrap.min.js"></script>
 	<script src="js/jquery.dataTables.min.js"></script>
