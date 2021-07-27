@@ -154,7 +154,7 @@ if (isset($_SESSION['tipo']) && isset($_SESSION['nom']) && isset($_SESSION['ape'
             </div>
             <div class="reportes">
                 <h2>REPORTES E INFORMES</h2>
-                <p>Seleccione el tipo de reporte que desea ver</p>
+                <p>Seleccione el tipo de reporte o informe que desee consultar</p>
 
                 <a href="../reportes_entradas/reportes.php">
                     <div class="cuadro">
