@@ -299,7 +299,7 @@ Favor revisar los direccionamientos
 						}
 						else{
                             echo "<script language='JavaScript'>
-                            alert('los datos no fueron ingresados correctamente');
+                            alert('los datos fueron ingresados correctamente');
                             </script>";
                         }
                         mysqli_close($mysqli);
