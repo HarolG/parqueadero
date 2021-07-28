@@ -16,8 +16,10 @@
         $ruta_ = $_FILES["vehic"]["tmp_name"];
         $tarjeta= $_FILES["tarjeta"]["name"];
         $ruta = $_FILES["tarjeta"]["tmp_name"];
-        $dir_subida = 'archivos/' .$foto .$tarjeta;
-        copy($ruta, $dir_subida);
+        $dir_subida = 'archivos/' .$foto;
+        $dir_subida2 = 'archivos/' .$tarjeta;
+        copy($ruta_, $dir_subida);
+        copy($ruta, $dir_subida2);
         
         //Hacemos la consulta para que me seleccione los datos en la BD y valide
         $consul = "INSERT INTO vehiculo (placa, id_modelo, id_marca, id_tip_vehiculo, Tarjeta_Prop, foto, id_color, anotaciones) 
