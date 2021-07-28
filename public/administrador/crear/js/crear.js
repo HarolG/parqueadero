@@ -120,7 +120,7 @@ $(document).ready(function () {
                                                             <td>${element.nombre}</td>
                                                             <td>${element.apellido}</td>
                                                             <td>${element.edad} años</td>
-                                                            <td>${element.telefono}</td>
+                                                            <td>${element.celular}</td>
                                                             <td>${element.direccion}</td>
                                                             <td>${element.correo}</td>
                                                         </tr>`
