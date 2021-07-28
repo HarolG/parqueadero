@@ -223,7 +223,7 @@ Favor revisar los direccionamientos
 
 					<div class="form-group">
 						<label for="code" class="col-sm-2 control-label">Codigo</label>
-						<div class="col-sm-8"><input id="code" name="code" type="number" value="<?php echo $aleatorio;?>" class="form-control" maxlength="11" autocomplete="off"></div>
+						<div class="col-sm-8"><input id="code" name="code" type="number" value="<?php echo $aleatorio;?>" class="form-control" maxlength="6" autocomplete="off"></div>
 					</div>	
 					<div class="form-group">
 						<label for="nom" class="col-sm-2 control-label">Nombres</label>
@@ -251,7 +251,7 @@ Favor revisar los direccionamientos
 					</div>
 					<div class="form-group">
 						<label for="clave" class="col-sm-2 control-label">Contraseña</label>
-						<div class="col-sm-8"><input id="clave" name="clave" type="password" class="form-control" autocomplete="off"></div>
+						<div class="col-sm-8"><input id="clave" name="clave" type="password" maxlength="15" class="form-control" autocomplete="off"></div>
 					</div>	
 					<div class="form-group">
 						<div class="col-sm-offset-2 col-sm-8">
@@ -479,7 +479,7 @@ Favor revisar los direccionamientos
 				</div>
 				<div class="form-group">
 					<label for="celular" class="col-sm-2 control-label">Celular</label>
-					<div class="col-sm-8"><input id="celular" name="celular" type="text" class="form-control" maxlength="10"></div>
+					<div class="col-sm-8"><input id="celular" name="celular" type="text" class="form-control" maxlength="11"></div>
 				</div>
 				<div class="form-group">
 					<label for="direccion" class="col-sm-2 control-label">Direccion</label>
