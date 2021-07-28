@@ -234,7 +234,7 @@
                                 </div>
                                 <div class="form-group">
                                     <select class="form-select btn-block" id="select_tipo_zona">
-                                        <option selected>Seleccione el tipo de zona</option>
+                                        <option value="0" selected>Seleccione el tipo de zona</option>
                                         <?php
                                             $tipozona = "SELECT * FROM tipo_zona";
                                             $query = mysqli_query($mysqli, $tipozona);
