@@ -168,7 +168,7 @@ class escanerCodigoQR {
         #Salida
         else if ($tipoEntrada == 'Salida') {
 
-            $sql = "UPDATE registro_parqueadero SET id_estado = '7' WHERE id_deta_vehiculo = $id_deta_vehiculo AND id_estado = 6";
+            $sql = "UPDATE registro_parqueadero SET hora_salida = CURRENT_TIME(), id_estado = '7' WHERE id_deta_vehiculo = $id_deta_vehiculo AND id_estado = 6";
             $query = mysqli_query($this->conexion, $sql);
 
             $sql2 = "UPDATE detalle_cupos SET id_deta_vehiculo = NULL, id_estado = '4' WHERE id_deta_vehiculo = $id_deta_vehiculo AND id_estado = 5";
