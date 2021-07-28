@@ -201,7 +201,7 @@ if (isset($_SESSION['tipo']) && isset($_SESSION['nom']) && isset($_SESSION['ape'
 							}
 							?>
 						</select>
-						<input type="number" name="cantidad_cupos" id="nombre_cupo" class="nombre_cupo" placeholder="Cantidad Cupos">
+						<input type="number" name="cantidad_cupos" id="nombre_cupo" class="nombre_cupo" min="1" pattern="^[0-9]+" placeholder="Cantidad Cupos">
 						<select name="estado_cupo" id="estado_cupo">
 							<option value="" selected>Seleccione el estado del cupo</option>
 							<?php
