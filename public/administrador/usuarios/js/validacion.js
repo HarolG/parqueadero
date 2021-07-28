@@ -53,6 +53,12 @@ function validacion() {
         return false;
     } else if (documento.length < 7) {
         alert("El documento es muy corto, debe tener entre 7 y 10 digitos solo numeros");
+    } else if (celular.length > 10) {
+        alert("El numero de celular no es valido, recuerde que debe tener 10 caracteres");
+        return false;
+    } else if (celular.length < 10) {
+        alert("El numero de celular no es valido, recuerde que debe tener 10 caracteres");
+        return false;
     }
 
 }
@@ -126,6 +132,12 @@ function validacion2() {
         return false;
     } else if (regex.test(clave.value)) {
         alert("la contraseña no es valida debe contener una mayuscula, un numero y debe estar en el rango (8 y 15) caracteres");
+        return false;
+    } else if (cel.length > 10) {
+        alert("El numero de celular no es valido, recuerde que debe tener 10 caracteres");
+        return false;
+    } else if (cel.length < 10) {
+        alert("El numero de celular no es valido, recuerde que debe tener 10 caracteres");
         return false;
     }
 
