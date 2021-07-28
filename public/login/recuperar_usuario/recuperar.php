@@ -62,7 +62,7 @@ if( isset( $_SESSION['error'] ) ){
 if(isset($_POST['enviar'])) {
     $correo = $_POST['correo'];
 
-    $c = "SELECT documento, IFNULL( NOMBRE, 'nombre' ) as NOMBRE FROM usuario WHERE correo='$correo' LIMIT 1";
+    $c = "SELECT documento, nombre FROM usuario WHERE correo='$correo' LIMIT 1";
     $f = mysqli_query( $mysqli , $c );
     $a = mysqli_fetch_assoc($f);
     if( ! $a ){
@@ -84,7 +84,7 @@ if(isset($_POST['enviar'])) {
     correo($correo, $nombreUsu, $clave_nueva);
 
     //actualizar clave
-    $cambioPass = $mysqli -> query ("UPDATE usuario SET clave = '$clave_nueva' WHERE usuario.documento = '$docu'");
+    $cambioPass = $mysqli -> query ("UPDATE usuario SET id_estado = 10 , clave = '$clave_nueva' WHERE usuario.documento = '$docu'");
 
 
 }

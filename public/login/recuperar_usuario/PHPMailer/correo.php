@@ -82,7 +82,7 @@ function correo($correo, $nombreUsu, $clave_nueva){
 				<img class ="logo" src="https://i.ibb.co/7vwFLtz/Logo-negro.png" alt="Logo-negro">
 				<div class="mensaje">
 					<h2>ACTULIZACION DE CONTRASEÑA EXITOSO</h2>
-					<h2>¡Hola Usuario'.$nombreUsu.'!</h2>
+					<h2>¡Hola '.$nombreUsu.'!</h2>
 					<p>Has solicitado recuperar tu contraseña, por tal motivo Parking System a generado una nueva para ti,</p>
 					<p><strong>Nueva Contraseña: </strong>'.$clave_nueva.'</p>
 				</div>
