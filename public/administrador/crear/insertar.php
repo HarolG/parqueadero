@@ -18,21 +18,10 @@
         $ruta = $_FILES["tarjeta"]["tmp_name"];
         $dir_subida = 'archivos/' .$foto .$tarjeta;
         copy($ruta, $dir_subida);
-
-        $consu = "INSERT INTO vehiculo (foto, Tarjeta_Prop) VALUES ('$foto', '$tarjeta')";
-        $query = mysqli_query($mysqli,$consu);
-
-            if ($query) {
-                echo '<script type="text/javascript">
-                        alert("Se actualizo el avatar correctamente");
-                        window.location.href="../perfil.php";
-                    </script>';
-            } 
-        
         
         //Hacemos la consulta para que me seleccione los datos en la BD y valide
-        $consul = "INSERT INTO vehiculo (placa, id_modelo, id_marca, id_tip_vehiculo, id_color, anotaciones) 
-        VALUES ('$placa', '$modelo', '$marca', '$vehiculo', '$color', '$anota')";
+        $consul = "INSERT INTO vehiculo (placa, id_modelo, id_marca, id_tip_vehiculo, Tarjeta_Prop, foto, id_color, anotaciones) 
+        VALUES ('$placa', '$modelo', '$marca', '$vehiculo', '$tarjeta', '$foto', '$color', '$anota')";
         $consulta = "INSERT INTO detalle_vehiculo (placa, documento, id_estado)     
         VALUES ('$placa', '$doc', '$estado_vehiculo')";
         $query = mysqli_query($mysqli, $consul);

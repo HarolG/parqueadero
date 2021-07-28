@@ -142,10 +142,10 @@ Favor revisar los direccionamientos
         <h2>REGISTRAR NUEVOS TIPOS DE DOCUMENTOS</h2>
 		<div id="tipos" class="formu">
 			<!-- codigo para registrar un tipo de usuario nuevo -->
-				<form class="formu form-horizontal" action="" method="POST">
+				<form class="formu form-horizontal" action="" method="POST" onsubmit="return valid()">
 					<div class="form-group">
 						<label class="col-sm-2 control-label">Tipo de Documento</label>
-						<div class="col-sm-8"><input id="restipdoc" name="restipdoc" type="text" class="form-control" required autocomplete="off" placeholder="Nuevo Tipo De Documento"></div>	
+						<div class="col-sm-8"><input id="restipdoc" name="restipdoc" type="text" class="form-control" autocomplete="off" placeholder="Nuevo Tipo De Documento"></div>	
 						<input type="submit" value="Registrar" class="btn btn-primary">
 						<input type="hidden" name="regisdoc">	
 					</div>  
@@ -239,7 +239,7 @@ Favor revisar los direccionamientos
 </body>
 <!--====== Scripts pagina cambiables -->
 
-
+<script src="../js/validacion.js"></script>
 
 <!--====== Scripts pagina ¡¡NO CAMBIAR!! -->
 <script src="../../../../layout/js/jquery-3.1.1.min.js"></script>

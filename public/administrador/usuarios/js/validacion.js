@@ -130,3 +130,41 @@ function validacion2() {
     }
 
 }
+
+function valid(){
+    let tipodoc;
+
+    tipodoc = document.getElementById("restipdoc").value;
+
+    if (tipodoc === "") {
+        alert("Por favor complete el campo tipo de documento");
+        return false;
+    } else if (tipodoc.length < 6) {
+        alert("El tipo de documento es muy corto");
+        return false;        
+    } else if (tipodoc.length > 30) {
+        alert("El tipo de documento es muy largo");
+        return false;
+    }
+}
+
+function val(){
+    let tipousua, tipocategoria;
+
+    tipousua = document.getElementById("resti").value;
+    tipocategoria = document.getElementById("select_docu").value;
+
+    if (tipousua === "") {
+        alert("Por favor complete el campo tipo de usuario");
+        return false;
+    } else if (tipousua.length < 6) {
+        alert("El tipo de usuario es muy corto");
+        return false;
+    } else if (tipousua.length > 30) {
+        alert("el tipo de usuario es muy largo");
+        return false;
+    } else if (tipocategoria === "") {
+        alert("Por favor seleccione una categoria");
+        return false;
+    }
+}
