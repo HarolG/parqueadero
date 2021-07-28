@@ -272,8 +272,7 @@
                             <h5 class="card-title">Escanee la entrada o salida del parqueadero</h5>
                             <div class="container-qr">
                                 <i class="fa fa-qrcode" aria-hidden="true"></i>
-                                <button type="submit" id="boton_codigo"
-                                    class="btn btn-primary btn-block text-center boton">Escanear
+                                <button type="submit" id="boton_codigo" class="btn btn-primary btn-block text-center boton">Escanear
                                     Código</button>
                             </div>
                         </div>
