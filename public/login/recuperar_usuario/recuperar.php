@@ -62,7 +62,7 @@ if( isset( $_SESSION['error'] ) ){
 if(isset($_POST['enviar'])) {
     $correo = $_POST['correo'];
 
-    $c = "SELECT documento, nombre FROM usuario WHERE correo='$correo' LIMIT 1";
+    $c = "SELECT documento, nombre FROM usuario WHERE correo='$correo' and id_tip_usu <= 3 LIMIT 1";
     $f = mysqli_query( $mysqli , $c );
     $a = mysqli_fetch_assoc($f);
     if( ! $a ){

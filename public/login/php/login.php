@@ -65,7 +65,7 @@
             // }
         } else {
             echo '<script type="text/javascript">
-                    alert("Este usuario no existe");
+                    alert("Documento y/o contraseña incorrecto, verifique los datos ingresados");
                     window.location.href="../login.html";
                 </script>';
         }
