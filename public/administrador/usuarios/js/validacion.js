@@ -141,6 +141,20 @@ function validacion2() {
         return false;
     }
 
+    var espacios = false;
+    var cont = 0;
+
+    while (!espacios && (cont < clave.length)) {
+        if (clave.charAt(cont) == " ")
+            espacios = true;
+            cont++;
+    }
+   
+    if (espacios) {
+        alert ("La contraseña no puede contener espacios en blanco");
+        return false;
+    }
+
 }
 
 function valid(){
