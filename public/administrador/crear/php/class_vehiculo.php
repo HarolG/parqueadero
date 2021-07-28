@@ -141,7 +141,7 @@ class Vehiculo {
 
     public function consultarDatosVehiculo($placa) 
     {
-        $sql = "SELECT * FROM vehiculo, detalle_vehiculo, modelo, marca, tipo_vehiculo, color, estado WHERE detalle_vehiculo.placa = '$placa' AND modelo.id_modelo = vehiculo.id_modelo AND marca.id_marca = vehiculo.id_marca AND tipo_vehiculo.id_tipo_vehiculo = vehiculo.id_tip_vehiculo AND estado.id_estado = detalle_vehiculo.id_estado AND color.id_color = vehiculo.id_color";
+        $sql = "SELECT * FROM vehiculo, detalle_vehiculo, modelo, marca, tipo_vehiculo, color, estado WHERE vehiculo.id_modelo = modelo.id_modelo AND vehiculo.id_marca = marca.id_marca AND vehiculo.id_tip_vehiculo = tipo_vehiculo.id_tipo_vehiculo AND vehiculo.id_color = color.id_color AND detalle_vehiculo.id_estado = estado.id_estado AND detalle_vehiculo.placa = vehiculo.placa AND detalle_vehiculo.placa = '$placa'";
         $query = mysqli_query($this->conexion, $sql);
         $filas = mysqli_num_rows($query);
 

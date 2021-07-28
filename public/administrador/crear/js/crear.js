@@ -55,9 +55,9 @@ $(document).ready(function () {
 
                                             <div class="row">
                                                 <div class="col-md-6">
-                                                    <img src="archivos/thumb2-lamborghini-aventador-sv-superveloce-lp-750-2018-purple-sports-car.jpg"
+                                                    <img src="archivos/${respuesta.foto}"
                                                         style="width: 100%;" alt="Foto Vehiculo">
-                                                    <p class="btn btn-block btn-primary">Foto del Vehiculo</p>
+                                                    <a target="_blank" href="archivos/${respuesta.foto}" class="btn btn-block btn-primary">Foto del Vehiculo</a>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <label for="">Anotaciones</label>
@@ -352,12 +352,12 @@ $(document).ready(function () {
             function (response) {
 
                 switch (response) {
-                    case 'eliminarOk':
+                    case 'eliminarBad':
                         notificacionExitosa('El registro se ha borrado correctamente');
                         $('#crud_container').html("");
                         break;
 
-                    case 'eliminarBad':
+                    case 'eliminarOk':
                         notificacionErronea('Ha ocurrido un error al intentar borrar el registro');
                         $('#crud_container').html("");
                         break;
