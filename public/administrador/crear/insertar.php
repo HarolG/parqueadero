@@ -131,7 +131,7 @@ require '../../../php/conexion.php';
                 echo '<script> alert ("Exito al registrarlo");</script>';
                 echo '<script> window.location="crearusu.php" </script>';
             }
-        }
+        };
 ?>
 
 
