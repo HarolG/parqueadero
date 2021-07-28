@@ -143,6 +143,9 @@ function validacion2() {
     } else if (cel.length < 10) {
         alert("El numero de celular no es valido, recuerde que debe tener 10 caracteres");
         return false;
+    } else if (eda.length > 2) {
+        alert("La edad es muy larga");
+        return false;
     }
 
     var espacios = false;
