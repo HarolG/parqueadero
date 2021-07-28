@@ -53,6 +53,7 @@ function validacion() {
         return false;
     } else if (documento.length < 7) {
         alert("El documento es muy corto, debe tener entre 7 y 10 digitos solo numeros");
+        return false;
     } else if (celular.length > 10) {
         alert("El numero de celular no es valido, recuerde que debe tener 10 caracteres");
         return false;
