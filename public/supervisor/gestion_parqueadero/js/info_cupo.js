@@ -60,7 +60,7 @@ $(document).ready(function () {
             salida_deta_cupos: $('#salida_deta_cupos').val()
         }
 
-        if (postData.nom_estado_cupo == "Disponible") {
+        if (postData.nom_estado_cupo == "Libre") {
             alert("Acción imposible, el cupo se encuentra disponible")
         } else {
             $.post("include/form_salida.php", postData,

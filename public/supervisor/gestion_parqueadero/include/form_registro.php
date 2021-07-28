@@ -27,8 +27,14 @@
             $sql3 = "UPDATE `detalle_vehiculo` SET `id_estado` = '5' WHERE `detalle_vehiculo`.`id_deta_vehiculo` = $id_deta_vehiculo";
             $query3 = mysqli_query($mysqli, $sql3);
 
-            if($query2 && $query && $query3) {
-                echo "El vehiculo con placas $placa ha sido parqueado en la zona $select_zona con el cupo $select_cupo";
+            $sql4 = "SELECT * FROM detalle_cupos WHERE id_deta_cupos = $select_cupo";
+            $query4 = mysqli_query($mysqli, $sql4);
+            $resultado4 = mysqli_fetch_assoc($query4);
+
+            $nombre_cupo = $resultado4['nombre_cupo'];
+
+            if($query2 && $query && $query3 && $query4) {
+                echo "El vehiculo con placas $placa ha sido parqueado en la zona $select_zona con el cupo $nombre_cupo";
             } else {
                 echo "Ups! algo ha fallado";
             }
