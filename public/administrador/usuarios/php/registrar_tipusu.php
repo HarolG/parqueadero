@@ -145,15 +145,15 @@ Favor revisar los direccionamientos
         <h2>REGISTRAR NUEVOS TIPOS DE USUARIOS</h2>
 		<div id="tipos" class="formu">
 			<!-- codigo para registrar un tipo de usuario nuevo -->
-				<form class="formu form-horizontal" action="" method="POST">
+				<form class="formu form-horizontal" action="" method="POST" onsubmit="return val()">
 					<div class="form-group">
 						<label class="col-sm-2 control-label">Tipo de Usuario</label>
-						<div class="col-sm-8"><input id="registipusu" name="resti" type="text" class="form-control" autocomplete="off" placeholder="Nuevo Tipo De Usuario"></div>	
+						<div class="col-sm-8"><input id="resti" name="resti" type="text" class="form-control" autocomplete="off" placeholder="Nuevo Tipo De Usuario"></div>	
 					</div>  
 					<div class="form-group">
 						<label for="cor" class="col-sm-2 control-label">Categoria</label>
 						<div class="col-sm-8">
-							<select id="sele" name="tipo_categoria" class="form-control">
+							<select id="select_docu" name="tipo_categoria" class="form-control">
 								<!-- consultas y codigo para validar que los registros esten el la bd y guardarlos en una lista -->
 								<option value="">Seleccione</option>
 											<?php
@@ -263,8 +263,9 @@ Favor revisar los direccionamientos
 
 </body>
 <!--====== Scripts pagina cambiables -->
+
 <script src="../js/validacion.js"></script>
-<script src="../js/validar.js"></script>
+<!-- <script src="../js/validar.js"></script> -->
 
 <!--====== Scripts pagina ¡¡NO CAMBIAR!! -->
 <script src="../../../../layout/js/jquery-3.1.1.min.js"></script>
