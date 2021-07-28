@@ -16,18 +16,40 @@ $(document).ready(function () {
             select_cupo: $('#select_cupo').val()
         }
 
-        $.post("include/form_registro.php", postData,
-            function (response) {
-                alert(response)
-                window.location.href="home.php";
+        if (postData.placa != "") {
+            if (postData.documento != 0 || postData.documento != '0') {
+                if (postData.select_tipo_zona != 0 || postData.select_tipo_zona != '0') {
+                    if (postData.select_zona != 0 || postData.select_zona != '0') {
+                        if (postData.select_cupo != 0 || postData.select_cupo != '0') {
+                            $.post("include/form_registro.php", postData,
+                                function (response) {
+                                    alert(response)
+                                    window.location.href = "home.php";
+                                }
+                            );
+                        } else {
+                            alert("El cupo no puede ir vacio")
+                        }
+                    } else {
+                        alert("La zona seleccionada no es valida")
+                    }
+                } else {
+                    alert("El tipo de zona seleccionado no es valido")
+                }
+            } else {
+                alert("El documento elegido no es valido")
             }
-        );
+        } else {
+            alert("La placa no puede ir vacia")
+        }
+
+
 
     });
 
-    $('#formSalida').submit(function (e) { 
+    $('#formSalida').submit(function (e) {
         e.preventDefault();
-        
+
         const postData = {
             id_zona: $("#salida_idZona").val(),
             placa: $('#salida_placa').val(),
@@ -35,16 +57,16 @@ $(document).ready(function () {
             nombre_cupo: $('#salida_cupo').val(),
             nom_estado_cupo: $('#salida_nomEstadoCupo').val(),
             nom_tip_zona: $('#salida_nomTipZona').val(),
-            salida_deta_cupos: $('#salida_deta_cupos').val() 
+            salida_deta_cupos: $('#salida_deta_cupos').val()
         }
 
-        if(postData.nom_estado_cupo == "Disponible") {
+        if (postData.nom_estado_cupo == "Disponible") {
             alert("Acción imposible, el cupo se encuentra disponible")
         } else {
             $.post("include/form_salida.php", postData,
                 function (response) {
                     alert(response)
-                    window.location.href="home.php";
+                    window.location.href = "home.php";
                 }
             );
         }
