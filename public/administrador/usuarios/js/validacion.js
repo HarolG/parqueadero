@@ -30,6 +30,9 @@ function validacion() {
     } else if (edad === "") {
         alert("Complete el campo edad");
         return false;
+    } else if (edad.length > 2) {
+        alert("La edad es muy larga");
+        return false;
     } else if (celular === "") {
         alert("Complete el campo celular")
         return false;
