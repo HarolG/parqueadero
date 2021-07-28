@@ -1,3 +1,27 @@
+var input = document.getElementById('celuc');
+    input.addEventListener('input', function () {
+        if (this.value.length > 10)
+            this.value = this.value.slice(0, 10);
+})
+
+var input = document.getElementById('celu');
+    input.addEventListener('input', function () {
+        if (this.value.length > 10)
+            this.value = this.value.slice(0, 10);
+})
+
+var input = document.getElementById('docu');
+    input.addEventListener('input', function () {
+        if (this.value.length > 11)
+            this.value = this.value.slice(0, 11);
+})
+
+var input = document.getElementById('doc');
+    input.addEventListener('input', function () {
+        if (this.value.length > 11)
+            this.value = this.value.slice(0, 11);
+})
+
 function validacion() {
     let tipo_usuario, tipo_documento, documento, nombre, apellido, edad, celular, direccion, correo;
     tipo_usuario = document.getElementById("select_tip_user").value;
@@ -151,17 +175,17 @@ function validacion2() {
     while (!espacios && (cont < clave.length)) {
         if (clave.charAt(cont) == " ")
             espacios = true;
-            cont++;
+        cont++;
     }
-   
+
     if (espacios) {
-        alert ("La contraseña no puede contener espacios en blanco");
+        alert("La contraseña no puede contener espacios en blanco");
         return false;
     }
 
 }
 
-function valid(){
+function valid() {
     let tipodoc;
 
     tipodoc = document.getElementById("restipdoc").value;
@@ -171,14 +195,14 @@ function valid(){
         return false;
     } else if (tipodoc.length < 6) {
         alert("El tipo de documento es muy corto");
-        return false;        
+        return false;
     } else if (tipodoc.length > 30) {
         alert("El tipo de documento es muy largo");
         return false;
     }
 }
 
-function val(){
+function val() {
     let tipousua, tipocategoria;
 
     tipousua = document.getElementById("resti").value;
