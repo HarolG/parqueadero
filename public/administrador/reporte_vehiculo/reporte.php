@@ -126,15 +126,16 @@ if (isset($_SESSION['tipo']) && isset($_SESSION['nom']) && isset($_SESSION['ape'
             <!-- Aquí va el contenido -->
             <div class="contenedor_informe">
                 
-
+                <h2 style="text-align: center;">VEHICULOS REGISTRADOS</h2>
                 <table class="zonas_registradas">
                     <thead>
-                        <th class="head_table">Dueño</th>
-                        <th class="head_table">Placa</th>
-                        <th class="head_table">Marca</th>
-                        <th class="head_table">Modelo</th>
-                        <th class="head_table">Tipo Vehiculo</th>
-                        <th class="head_table">Color</th>
+                        <th class="head_table">DOCUMENTO</th>
+                        <th class="head_table">DUEÑO</th>
+                        <th class="head_table">PLACA</th>
+                        <th class="head_table">MARCA</th>
+                        <th class="head_table">MODELO</th>
+                        <th class="head_table">T. DE VEHICULO</th>
+                        <th class="head_table">COLOR</th>
                     </thead>
 
                     <tbody>
@@ -150,13 +151,14 @@ if (isset($_SESSION['tipo']) && isset($_SESSION['nom']) && isset($_SESSION['ape'
 
 						while ($row = mysqli_fetch_assoc($result_tasks)) { ?>
 							<tr>
-                                <td class="body_table"><b><?php echo $row['documento']?>/<?php echo $row['nombre'] ?></b></td>
-								<td class="body_table"><b><?php echo $row['placa'] ?></b></td>
-								<td class="body_table"><b><?php echo $row['nom_marca'] ?></b></td>
+                                <td class="body_table"><?php echo $row['documento']?></td>
+                                <td class="body_table"><?php echo $row['nombre']?> <?php echo $row['apellido'] ?></td>
+								<td class="body_table"><?php echo $row['placa'] ?></td>
+								<td class="body_table"><?php echo $row['nom_marca'] ?></td>
 								<!-- <td class="body_table"><b>cupos</b></td> -->
-								<td class="body_table"><b><?php echo $row['nom_modelo']; ?></b></td>
-                                <td class="body_table"><b><?php echo $row['nom_tipo_vehiculo']; ?></b></td>
-                                <td class="body_table"><b><?php echo $row['nom_color']; ?></b></td>
+								<td class="body_table"><?php echo $row['nom_modelo']; ?></td>
+                                <td class="body_table"><?php echo $row['nom_tipo_vehiculo']; ?></td>
+                                <td class="body_table"><?php echo $row['nom_color']; ?></td>
 							</tr>
 						<?php } ?>
                     </tbody>

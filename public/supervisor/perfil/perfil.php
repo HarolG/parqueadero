@@ -1,7 +1,7 @@
 <?php
 include("../../../php/conexion.php");
 
-if (isset($_SESSION['tipo']) && isset($_SESSION['nom']) && isset($_SESSION['ape']) && isset($_SESSION['pass'])) {
+if (isset($_SESSION['tipo']) && isset($_SESSION['nom']) && isset($_SESSION['doc']) && isset($_SESSION['ape']) && isset($_SESSION['pass'])) {
 ?>
 
     <!DOCTYPE html>
@@ -34,7 +34,9 @@ if (isset($_SESSION['tipo']) && isset($_SESSION['nom']) && isset($_SESSION['ape'
                     <figure class="full-box">
                         <?php
 
-                        $sql = "SELECT * FROM usuario WHERE id_tip_usu = 3";
+                        $id = $_SESSION['doc'];
+
+                        $sql = "SELECT * FROM usuario WHERE documento = $id";
                         $result = mysqli_query($mysqli, $sql);
                         while ($row2 = mysqli_fetch_array($result)) {
                             /*almacenamos el nombre de la ruta en la variable $ruta_img*/
@@ -146,14 +148,16 @@ if (isset($_SESSION['tipo']) && isset($_SESSION['nom']) && isset($_SESSION['ape'
                     </thead>
                     <tbody>
                         <?php
-                        $query = "SELECT * FROM usuario WHERE id_tip_usu = 3";
+
+                        $id = $_SESSION['doc'];
+
+                        $query = "SELECT * FROM usuario WHERE documento = $id";
                         $result_tasks = mysqli_query($mysqli, $query);
 
                         while ($row = mysqli_fetch_assoc($result_tasks)) { ?>
                             <tr>
                                 <td class="body_table"><b><?php echo $row['documento'] ?></b></td>
                                 <td class="body_table"><b><?php echo $row['nombre'] ?></b></td>
-                                <!-- <td class="body_table"><b>cupos</b></td> -->
                                 <td class="body_table"><b><?php echo $row['apellido']; ?></b></td>
                                 <td class="body_table"><b><?php echo $row['celular']; ?></b></td>
                                 <td class="body_table"><b><?php echo $row['direccion']; ?></b></td>
@@ -168,11 +172,6 @@ if (isset($_SESSION['tipo']) && isset($_SESSION['nom']) && isset($_SESSION['ape'
                         <?php } ?>
                     </tbody>
                 </table>
-            </div>
-            </div>
-            </div>
-            </div>
-
         </section>
 
       <!-- Notifications area -->

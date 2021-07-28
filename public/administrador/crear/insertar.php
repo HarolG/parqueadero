@@ -1,6 +1,5 @@
 <?php
     require '../../../php/conexion.php';
-    $dir_subida = 'archivos/';
 
     if(isset($_POST["registro"])){
         //Declaramos las variables para almacenar los datos digitados
@@ -10,18 +9,31 @@
         $vehiculo = $_POST['vehiculo'];
         $color = $_POST['color'];
         $anota = $_POST['anotaciones'];
-        $tarjeta = $_POST["tarjeta"];
-        $foto = $_POST["vehic"];
         $doc = $_POST['doc'];
-        $estado_vehiculo = 6;
+        $estado_vehiculo = 4;
         
-        $fichero_subido = $dir_subida . basename($_FILES['tarjeta']['name']);
-        $fichero_subido = $dir_subida . basename($_FILES['vehic']['name']);
+        $foto = $_FILES["vehic"]["name"];
+        $ruta_ = $_FILES["vehic"]["tmp_name"];
+        $tarjeta= $_FILES["tarjeta"]["name"];
+        $ruta = $_FILES["tarjeta"]["tmp_name"];
+        $dir_subida = 'archivos/' .$foto .$tarjeta;
+        copy($ruta, $dir_subida);
+
+        $consu = "INSERT INTO vehiculo (foto, Tarjeta_Prop) VALUES ('$foto', '$tarjeta')";
+        $query = mysqli_query($mysqli,$consu);
+
+            if ($query) {
+                echo '<script type="text/javascript">
+                        alert("Se actualizo el avatar correctamente");
+                        window.location.href="../perfil.php";
+                    </script>';
+            } 
+        
         
         //Hacemos la consulta para que me seleccione los datos en la BD y valide
-        $consul = "INSERT INTO vehiculo (placa, id_modelo, id_marca, id_tip_vehiculo, id_color, anotaciones, foto, Tarjeta_Prop) 
-        VALUES ('$placa', '$modelo', '$marca', '$vehiculo', '$color', '$anota', '$foto', '$tarjeta')";
-        $consulta = "INSERT INTO detalle_vehiculo (placa, documento, id_estado) 
+        $consul = "INSERT INTO vehiculo (placa, id_modelo, id_marca, id_tip_vehiculo, id_color, anotaciones) 
+        VALUES ('$placa', '$modelo', '$marca', '$vehiculo', '$color', '$anota')";
+        $consulta = "INSERT INTO detalle_vehiculo (placa, documento, id_estado)     
         VALUES ('$placa', '$doc', '$estado_vehiculo')";
         $query = mysqli_query($mysqli, $consul);
         $query = mysqli_query($mysqli,$consulta);
@@ -34,10 +46,6 @@
             echo '<script> alert ("Exito al registrarlo");</script>';
             echo '<script> window.location="crearusu.php" </script>';
         }
-    }
-    else{
-        echo '<script> alert ("El formulario ha sido registrado correctamente");</script>';
-        echo '<script> window.location="crearusu.php" </script>';
     }
 
 
@@ -65,11 +73,6 @@ require '../../../php/conexion.php';
             echo '<script> window.location="crearusu.php" </script>';
         }
     }
-    else{
-        echo '<script> alert ("Ups algo fallo, intentalo de nuevo");</script>';
-        echo '<script> window.location="crearusu.php" </script>';
-    }
-
 
 
     if(isset($_POST["enviar-marca"])){
@@ -88,10 +91,6 @@ require '../../../php/conexion.php';
                 echo '<script> alert ("Exito al registrarlo");</script>';
                 echo '<script> window.location="crearusu.php" </script>';
             }
-        }
-        else{
-            echo '<script> alert ("Ups algo fallo, intentalo de nuevo");</script>';
-            echo '<script> window.location="crearusu.php" </script>';
         }
 
 
@@ -113,10 +112,6 @@ require '../../../php/conexion.php';
                 echo '<script> window.location="crearusu.php" </script>';
             }
         }
-        else{
-            echo '<script> alert ("Ups algo fallo, intentalo de nuevo");</script>';
-            echo '<script> window.location="crearusu.php" </script>';
-        }
         
         
         
@@ -136,10 +131,6 @@ require '../../../php/conexion.php';
                 echo '<script> alert ("Exito al registrarlo");</script>';
                 echo '<script> window.location="crearusu.php" </script>';
             }
-        }
-        else{
-            echo '<script> alert ("Ups algo fallo, intentalo de nuevo");</script>';
-            echo '<script> window.location="crearusu.php" </script>';
         }
 ?>
 
