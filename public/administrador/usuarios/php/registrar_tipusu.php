@@ -72,7 +72,7 @@ Favor revisar los direccionamientos
 						</a>
 					</li>
 					<li>
-						<a href="#" class="btn-exit-system">
+						<a href="" class="btn-exit-system2">
 							<i class="fas fa-power-off"></i>
 						</a>
 					</li>
@@ -99,13 +99,19 @@ Favor revisar los direccionamientos
 					
 				</li>
 				<li>
+					<a href="../../crear/crearusu.php" class="btn-sideBar-SubMenu">
+						<i class="fa fa-car" aria-hidden="true"></i> Registro de vehiculos
+					</a>
+					
+				</li>
+				<li>
 					<a href="../../parqueo/parqueo.php" class="btn-sideBar-SubMenu">
 						<i class="fa fa-sign-in-alt" aria-hidden="true"></i> Reporte de entradas
 					</a>
 				</li>
 				<li>
-					<a href="../../crear/crearusu.php" class="btn-sideBar-SubMenu">
-						<i class="fa fa-car" aria-hidden="true"></i> Registro de vehiculos
+					<a href="../../reporte_vehiculo/reporte.php" class="btn-sideBar-SubMenu">
+						<i class="fa fa-car" aria-hidden="true"></i> Reporte vehiculos
 					</a>
 					
 				</li>
@@ -145,7 +151,7 @@ Favor revisar los direccionamientos
 						<div class="col-sm-8"><input id="resti" name="resti" type="text" class="form-control" autocomplete="off" placeholder="Nuevo Tipo De Usuario"></div>	
 					</div>  
 					<div class="form-group">
-						<label for="cor" class="col-sm-2 control-label">Tipo de documento</label>
+						<label for="cor" class="col-sm-2 control-label">Categoria</label>
 						<div class="col-sm-8">
 							<select id="select_docu" name="tipo_categoria" class="form-control">
 								<!-- consultas y codigo para validar que los registros esten el la bd y guardarlos en una lista -->

@@ -75,7 +75,7 @@ Favor revisar los direccionamientos
 						</a>
 					</li>
 					<li>
-						<a href="#" class="btn-exit-system">
+						<a href="#" class="btn-exit-system2">
 							<i class="fas fa-power-off"></i>
 						</a>
 					</li>
@@ -102,13 +102,19 @@ Favor revisar los direccionamientos
 					
 				</li>
 				<li>
+					<a href="../../crear/crearusu.php" class="btn-sideBar-SubMenu">
+						<i class="fa fa-car" aria-hidden="true"></i> Registro de vehiculos
+					</a>
+					
+				</li>
+				<li>
 					<a href="../../parqueo/parqueo.php" class="btn-sideBar-SubMenu">
 						<i class="fa fa-sign-in-alt" aria-hidden="true"></i> Reporte de entradas
 					</a>
 				</li>
 				<li>
-					<a href="../../crear/crearusu.php" class="btn-sideBar-SubMenu">
-						<i class="fa fa-car" aria-hidden="true"></i> Registro de vehiculos
+					<a href="../../reporte_vehiculo/reporte.php" class="btn-sideBar-SubMenu">
+						<i class="fa fa-car" aria-hidden="true"></i> Reporte vehiculos
 					</a>
 					
 				</li>
