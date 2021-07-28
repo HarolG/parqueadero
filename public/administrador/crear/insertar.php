@@ -36,7 +36,7 @@
         $consulta = "INSERT INTO detalle_vehiculo (placa, documento, id_estado)     
         VALUES ('$placa', '$doc', '$estado_vehiculo')";
         $query = mysqli_query($mysqli, $consul);
-        $query = mysqli_query($mysqli,$consulta);;
+        $query = mysqli_query($mysqli,$consulta);
 
         if(!$query){
             echo '<script> alert ("Error al registrarlo");</script>';
