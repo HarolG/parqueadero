@@ -407,7 +407,7 @@
                             <div class="form-group">
                                 <label for="">Digite la placa</label>
                                 <input type="text" name="search_placa" id="search_placa" class="form-control"
-                                    aria-describedby="helpId">
+                                    aria-describedby="helpId" autocomplete="off">
                                 <p id="helpId" class="text-muted">Escriba la placa del vehiculo registrada en la
                                     aplicación</p>
                                 <input type="submit" class="btn btn-primary" value="Buscar">
