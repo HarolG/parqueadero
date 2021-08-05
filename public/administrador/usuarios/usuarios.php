@@ -223,7 +223,7 @@ Favor revisar los direccionamientos
 
 					<div class="form-group">
 						<label for="code" class="col-sm-2 control-label">Codigo</label>
-						<div class="col-sm-8"><input id="code" name="code" type="number" value="<?php echo $aleatorio;?>" class="form-control" maxlength="6" autocomplete="off"></div>
+						<div class="col-sm-8"><input id="code" name="code" type="password" value="<?php echo $aleatorio;?>" class="form-control" maxlength="6" autocomplete="off"></div>
 					</div>	
 					<div class="form-group">
 						<label for="nom" class="col-sm-2 control-label">Nombres</label>

@@ -1,14 +1,13 @@
 <?php
 
-    if(isset($_POST['placa']) && isset($_POST['documento']) && isset($_POST['select_tipo_zona']) && isset($_POST['select_zona']) && isset($_POST['select_cupo'])) {
+    if(isset($_POST['placa']) && isset($_POST['documento'])  && isset($_POST['select_zona']) && isset($_POST['select_cupo'])) {
         
-        if($_POST['placa'] != "" && $_POST['documento'] != "" && $_POST['select_tipo_zona'] != "" && $_POST['select_zona'] != "" && $_POST['select_cupo'] != "") {
+        if($_POST['placa'] != "" && $_POST['documento'] != "" && $_POST['select_zona'] != "" && $_POST['select_cupo'] != "") {
 
             include("../../../../php/conexion.php");
             
             $placa = $_POST['placa'];
             $id_deta_vehiculo = $_POST['documento'];
-            $select_tipo_zona = $_POST['select_tipo_zona'];
             $select_zona = $_POST['select_zona'];
             $select_cupo = $_POST['select_cupo'];
 

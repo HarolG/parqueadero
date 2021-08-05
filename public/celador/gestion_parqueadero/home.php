@@ -227,24 +227,7 @@
                                         <option selected>Seleccione el documento</option>
                                     </select>
                                 </div>
-                                <div class="form-group">
-                                    <select class="form-select btn-block" id="select_tipo_zona">
-                                        <option value="0" selected>Seleccione el tipo de zona</option>
-                                        <?php
-                                            $tipozona = "SELECT * FROM tipo_zona";
-                                            $query = mysqli_query($mysqli, $tipozona);
-
-                                            while($row = mysqli_fetch_array($query)) {
-                                        ?>
-                                        <option value="<?php echo $row['id_tip_zona'];?>">
-                                            <?php echo $row['nom_tip_zona'];?></option>
-                                        <?php
-                                            }
-
-                                        ?>
-
-                                    </select>
-                                </div>
+                                
                                 <div class="form-group">
                                     <select class="form-select btn-block" aria-label="Default select example"
                                         id="select_zona">

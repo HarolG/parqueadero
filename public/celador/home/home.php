@@ -92,7 +92,7 @@
                                 $ruta_img = $row2["foto"];
                             }
                         ?>
-                        <img src="../perfil/fotos/<?php echo $ruta_img; ?>" class="imagen" alt="">
+                        <img src="../../perfil/fotos/<?php echo $ruta_img; ?>" class="imagen" alt="">
 					<!-- <img src="../../../img/foto_perfil.png" alt="UserIcon"> -->
 					<div class="text-center text-titles">
 						<p class="profile_welcome">Bienvenido,</p>
@@ -129,7 +129,7 @@
 					</a>
 				</li>
 				<li>
-					<a href="../parqueo/parqueo.php" class="btn-sideBar-SubMenu">
+					<a href="../reporte_vehiculo/reporte.php" class="btn-sideBar-SubMenu">
 						<i class="fa fa-sign-in-alt" aria-hidden="true"></i> Reporte de entradas
 					</a>
 				</li>

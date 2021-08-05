@@ -7,12 +7,13 @@ $(document).ready(function () {
 
         $.post("include/getzona.php", {placa: placa},
             function (data) {
-                const respuesta = JSON.parse(data)
+                console.log(data);
+              const respuesta = JSON.parse(data)
                 let template = '<option value="0" selected>Seleccione el documento</option>'
 
                 respuesta.forEach(element => {
                     template += `
-                                    <option value="${element.id_deta_vehiculo}">${element.documento}</option>
+                                    <option value="${element.id_deta_vehiculo}">${element.documento}-${element.nombre} ${element.apellido}</option>
                                 `
                 });
 
@@ -21,31 +22,28 @@ $(document).ready(function () {
         );
     });
 
-    $('#select_tipo_zona').change(function (e) {
+    $('#form_placa').blur(function (e) {
         $('#select_zona').html('<option value="0" selected>Seleccione la zona</option>');
         $('#select_cupo').html('<option value="0" selected>Seleccione el cupo</option>');
         
-        $("#select_tipo_zona option:selected").each(function () {
-            let id_tipo_zona = $(this).val()
+        let placaZonas = $(this).val()
 
-            $.post("include/getzona.php", {id_tipo_zona: id_tipo_zona},
-                function (data) {
-                    const respuesta = JSON.parse(data)
-                    let template = '<option value="0" selected>Seleccione la zona</option>'
+        $.post("include/getzona.php", {placaZonas: placaZonas},
+            function (data) {
+                const respuesta = JSON.parse(data)
+                let template = '<option value="0" selected>Seleccione la zona</option>'
 
-                    respuesta.forEach(element => {
-                        template += `
-                                        <option value="${element.id_zona}">Zona ${element.id_zona}</option>
-                                    `
-                    });
+                respuesta.forEach(element => {
+                    template += `
+                                    <option value="${element.id_zona}">Zona ${element.id_zona} - ${element.nom_tip_zona}</option>
+                                `
+                });
 
-                    $('#select_zona').html(template);
-                }
-            );
-        })
+                $('#select_zona').html(template);
+            }
+        );
 
     });
-
 
     $('#select_zona').change(function (e) { 
         $('#select_cupo').html('<option value="0" selected>Seleccione el cupo</option>');
