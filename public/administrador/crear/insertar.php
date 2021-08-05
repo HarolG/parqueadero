@@ -9,7 +9,7 @@
         $vehiculo = $_POST['vehiculo'];
         $color = $_POST['color'];
         $anota = $_POST['anotaciones'];
-        $doc = $_POST['doc'];
+        $doc = $_POST['documento'];
         $estado_vehiculo = 4;
         
         $foto = $_FILES["vehic"]["name"];
@@ -31,7 +31,7 @@
 
         if(!$query){
             echo '<script> alert ("Error al registrarlo");</script>';
-            echo '<script> window.location="crearusu.php </script>';
+            echo '<script> window.location="crearusu.php" </script>';
         }
         else{
             echo '<script> alert ("Exito al registrarlo");</script>';

@@ -129,7 +129,7 @@
             </ul>
         </nav>
 
-        <!-- Ventana Modal Tipo de Vehiculo -->
+        <!-- Crea una Ventana Modal Tipo de Vehiculo en el perfil Administrativo -->
         <div class="ventana-modal" id="ventana-modal1">
 
             <form class="formu" action="insertar.php" method="POST">
@@ -149,7 +149,7 @@
 
         </div>
 
-        <!-- Ventana Marca-->
+        <!--Crea una Ventana Marca en el perfil Administrativo-->
         <div class="ventana-modal" id="ventana-modal2">
 
             <form class="formu" action="insertar.php" method="POST">
@@ -169,7 +169,7 @@
             </form>
         </div>
 
-        <!-- Ventana Modal Modelo Vehiculo-->
+        <!-- Crea una Ventana Modal para el Modelo Vehiculo en el perfil Administrativo-->
         <div class="ventana-modal" id="ventana-modal3">
 
             <form class="formu" action="insertar.php" method="POST">
@@ -190,7 +190,7 @@
             </form>
         </div>
 
-        <!-- Ventana Modal Color Vehiculo-->
+        <!--Crea una Ventana Modal Color Vehiculo en el perfil Administrativo-->
         <div class="ventana-modal" id="ventana-modal4">
 
             <form class="formu" action="insertar.php" method="POST">
@@ -256,12 +256,25 @@
                             <div class="column_form">
 
                                 <!-- Número de documento del propietario -->
-                                <div class="grupo_formulario grupo_formulario-documento">
-                                    <label for="placa">Documento</label>
-                                    <input type="text" class="doc" name="doc" id="documento"
-                                        placeholder="Numero de Documento" autocomplete="off">
+                                <div class="grupo_formulario grupo_formulario-tipoDocumento">
+                                    <label class="documento" for="placa" style="cursor: pointer;">Documento</label>
+                                    <select class="documento" name="documento" id="documento" autocomplete="off">
+
+                                        <option value="0">Documento</option>
+                                        <?php
+                                                    $doc = "SELECT * FROM usuario WHERE documento";
+                                                    $docu = mysqli_query($mysqli,$doc);
+                                                    while($doc = mysqli_fetch_array($docu)){
+                                                ?>
+                                        <option name="tipo" value="<?php echo $doc[0]; ?>"><?php echo $doc[0]; ?>
+                                        </option>
+                                        <?php
+                                                }
+                                                ?>
+                                    </select>
                                 </div>
-                                <!--    Tipo de Vehiculo-->
+
+                                <!-- Tipo de Vehiculo mediante un select-->
                                 <div class="grupo_formulario grupo_formulario-tipoVehiculo">
                                     <label class="vehiculo" for="placa" style="cursor: pointer;"><a id="ventana1">Tipo
                                             de Vehiculo<i class="fas fa-plus"></i></a></label>
@@ -279,11 +292,9 @@
                                                 }
                                                 ?>
                                     </select>
-
-
                                 </div>
 
-                                <!--    Modelo-->
+                                <!--Modelo del Vehiculo-->
                                 <div class="grupo_formulario grupo_formulario-modelo">
 
                                     <label class="placa" for="placa" style="cursor: pointer;"><a id="ventana3">Modelo<i

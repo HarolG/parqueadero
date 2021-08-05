@@ -66,7 +66,7 @@ function enviarFormulario(){
         alert("Por favor, diligencie el campo Placa");
         return false;
     } else if(documento === "" ){
-        alert("Por favor, diligencie el campo Documento");
+        alert("Por favor, seleccione un Documento");
         return false;
     }else if(vehiculo == null || vehiculo == 0 ){
         alert("Por favor, Seleccione un Vehiculo");
@@ -123,5 +123,6 @@ function fileValidation2(){
         }
     }
 }
+
 
 
