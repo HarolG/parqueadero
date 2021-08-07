@@ -67,6 +67,7 @@ function validarIngresoParqueadero(codigo) {
                     case "okUsuario":
                         document.getElementById('select_codigo_1').style.display = "block";
                         document.getElementById('select_codigo_2').style.display = "block";
+                        document.getElementById('select_codigo_3').style.display = "block";
                         break;
 
                     default:
@@ -102,12 +103,16 @@ function validarIngresoParqueadero(codigo) {
 
                     default:
                         let vehiculosEncontrados = JSON.parse(response);
+                        let template2 = "";
 
                         vehiculosEncontrados.forEach(element => {
                             template += `<option value="${element.id_deta_vehiculo}">${element.placa}</option>`
+                            template2 = `<label for="select_codigo_vehiculo">Documento y nombre del Propietario</label>     
+                            <p class="form-control btn-block">${element.documento}-${element.nombre}</p>`
                         });
 
                         $('#select_codigo_vehiculo').html(template);
+                        $('#select_codigo_3').html(template2);
                         break;
                 }
             }

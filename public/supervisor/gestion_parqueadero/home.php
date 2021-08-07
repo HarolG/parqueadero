@@ -107,6 +107,8 @@
                             <option value="0" selected>Seleccione el vehiculo</option>
                         </select>
                     </div>
+                    <div class="form-group select_codigo" id="select_codigo_3">                
+                    </div>
                 </div>
             </div>
             <div class="group-form boton_qr">

@@ -17,7 +17,7 @@
 
             // $id_deta_vehiculo = $fila['id_deta_vehiculo'];
 
-            $sql = "INSERT INTO registro_parqueadero (id_registro, id_deta_vehiculo, fecha, hora, hora_salida, id_zona, id_estado) VALUES (NULL, '$id_deta_vehiculo', CURRENT_DATE(), CURRENT_TIME(), NULL,'$select_zona', '6')";
+            $sql = "INSERT INTO registro_parqueadero (id_registro, id_deta_vehiculo, fecha, hora, hora_salida, id_zona, id_estado, id_deta_cupos) VALUES (NULL, '$id_deta_vehiculo', CURRENT_DATE(), CURRENT_TIME(), NULL,'$select_zona', '6', '$select_cupo')";
             $query = mysqli_query($mysqli, $sql);
 
             $sql2 = "UPDATE detalle_cupos SET id_deta_vehiculo = '$id_deta_vehiculo', id_estado = '5' WHERE id_zona = '$select_zona' AND id_deta_cupos = '$select_cupo'";
