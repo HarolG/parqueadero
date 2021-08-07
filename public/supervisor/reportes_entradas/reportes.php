@@ -254,6 +254,8 @@ if (isset($_SESSION['tipo']) && isset($_SESSION['nom']) && isset($_SESSION['ape'
                                         <th class="cabera">H. Ingreso</th>
                                         <th class="cabera">H. Salida</th>
                                         <th class="cabera">H. Estadia</th>
+                                        <th class="cabera">Zona</th>
+                                        <th class="cabera">Cupo</th>
                                     </tr>
                                 </thead>';
                         
@@ -274,6 +276,8 @@ if (isset($_SESSION['tipo']) && isset($_SESSION['nom']) && isset($_SESSION['ape'
                                         <td>".$fila['nombre']." ".$fila['apellido']." </td>
                                         <td>".$fila['celular']."</td>
                                         <td>$formato</td>
+                                        <td>".$fila['hora']."</td>;
+                                        <td>".$fila['hora']."</td>;
                                         <td>".$fila['hora']."</td>";
 
                                         

@@ -378,7 +378,7 @@ Favor revisar los direccionamientos
 
 					<div class="form-group">
 						<label for="code" class="col-sm-2 control-label">Codigo</label>
-						<div class="col-sm-8"><input id="code" name="code" type="number" value="<?php echo $aleatorio2;?>" class="form-control" maxlength="11" autocomplete="off" autofocus></div>
+						<div class="col-sm-8"><input id="code" name="code" type="password" value="<?php echo $aleatorio2;?>" class="form-control" maxlength="11" autocomplete="off" autofocus></div>
 					</div>
 
 					<div class="form-group">

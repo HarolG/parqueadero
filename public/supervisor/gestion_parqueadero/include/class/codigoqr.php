@@ -85,12 +85,15 @@ class escanerCodigoQR {
             $query = mysqli_query($this->conexion, $sql);
             $numero_vehiculos = mysqli_num_rows($query);
     
-            if($query && $numero_vehiculos > 0) {
+            if($query && $numero_vehiculos > 0) { 
+                $nombre = $datosUsuario['nombre'];
                 while ($row = mysqli_fetch_array($query)) {
                     $json[] = array(
                         'id_deta_vehiculo' => $row['id_deta_vehiculo'],
                         'documento' => $row['documento'],
-                        'placa' => $row['placa']
+                        'placa' => $row['placa'],
+                        'documento' => $documento, 
+                        'nombre' => $nombre,
                     );
                 }
             
@@ -150,7 +153,7 @@ class escanerCodigoQR {
             $id_cupo = $cupo['cupo_disponible'];
             $cupo_disponible = $cupo['nombre_cupo'];
 
-            $sql = "INSERT INTO registro_parqueadero (id_registro, id_deta_vehiculo, fecha, hora, hora_salida, id_zona, id_estado) VALUES (NULL, '$id_deta_vehiculo', CURRENT_DATE(), CURRENT_TIME(), NULL,'$zona', '6')";
+            $sql = "INSERT INTO registro_parqueadero (id_registro, id_deta_vehiculo, fecha, hora, hora_salida, id_zona, id_estado, id_deta_cupos) VALUES (NULL, '$id_deta_vehiculo', CURRENT_DATE(), CURRENT_TIME(), NULL,'$zona', '6', '$id_cupo')";
             $query = mysqli_query($this->conexion, $sql);
 
             $sql2 = "UPDATE detalle_cupos SET id_deta_vehiculo = '$id_deta_vehiculo', id_estado = '5' WHERE id_zona = '$zona' AND id_deta_cupos = '$id_cupo'";
